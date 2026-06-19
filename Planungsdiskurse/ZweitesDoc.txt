@@ -40,3 +40,39 @@ Jetzt der Deep-Research-Prompt für Gemini:Der Prompt deckt neun Bereiche ab, di
 **Abschnitt 9** verbindet die Recherche direkt mit eurem `genesis-scope`-Werkzeug — wenn es etablierte Methoden gibt, Core-Kandidaten automatisiert aus echten Kopplungsgraphen (nicht nur erklärten Dependencies) vorzuschlagen, dann hat Scope von Tag eins seine erste echte, nicht-spekulative Anwendung.
 
 Ich habe bewusst nach **Versionsständen und Beispiel-Links** gefragt, nicht nach allgemeinen Konzepten — sonst bekommt ihr von Gemini wieder dieselben Lehrbuch-Antworten wie aus den Trainingsdaten, statt was 2026 tatsächlich produktiv läuft. 🎯
+
+Grok:
+**Ja. Der Plan ist reif, kohärent und genau zum richtigen Zeitpunkt.** 
+
+Du und die anderen KIs habt den klassischen Evolutionssprung eines ernsthaften wissenschaftlichen Software-Ökosystems sauber artikuliert: vom explorativen Labor (Unified-Mandala) zur kanonisierten Referenzarchitektur (Genesis Core / UTAC Monorepo) mit klarer Trennung der Ebenen. Das ist kein Refactoring mehr, sondern eine bewusste **Kanonisierung** – und genau das macht den Unterschied zwischen einem interessanten Forschungsprojekt und einer Plattform, die Förderer, Universitäten und andere Entwickler ernst nehmen.
+
+### Was besonders stark ist
+- **Zwei-Körper-Theorie** (Labor ↔ Referenz): Absolut richtig. Unified-Mandala bleibt das lebendige Gedächtnis und Experimentierfeld. Das neue Monorepo wird das nüchterne, reproduzierbare Skelett. Jede Vermischung würde beide Seiten schwächen.
+- **Architektur-Repo als erster Schritt** (Archäologie vor Architektur): Professionell. Inventarisierung, Dependency-Mapping, Blindtest und ADR-Verfassung verhindern genau die Drift, die ihr jetzt spürt.
+- **Diamond Interface + Plugin-Entkopplung**: Die PDF bestätigt das als State-of-the-Art 2026. `importlib.metadata.entry_points()` + `typing.Protocol` (PEP 544) + Capability-Negotiation (API-Version-Check) ist die saubere, zirkulär-import-freie Lösung.
+
+### Tooling-Empfehlungen (direkt aus aktuellem Stand)
+Aus der Recherche (die PDF ist exzellent):
+- **uv workspaces** (Astral) als primäres Build-Tool: Überlegen in Performance, Isolierung und Einfachheit für Python-Monorepos mit ~48 Paketen. Apache Airflow macht es schon vor. `pyproject.toml` mit `[tool.uv.workspace]` + explizite `workspace = true`-Abhängigkeiten ersetzt Submodule-Chaos.
+- **Plugin-System**: `importlib.metadata` + `pluggy` (für hook-basierte Erweiterungen) wo nötig. Core definiert nur Protokolle, Plugins implementieren sie.
+- **Reproduzierbarkeit**: `uv.lock` + **Nix Flakes** für bit-exakte, offline-fähige Zenodo-Archivierung. Hypothesis für Property-Based Testing.
+- **Releases**: `python-semantic-release` (mit Conventional Commits + path filters) für Independent Versioning der 48 Plugins.
+- **ADRs**: `log4brains` (MADR-Format) – CLI, Auto-Nummerierung, statische Website. Unverzichtbar.
+
+Das passt perfekt zu eurem wissenschaftlichen Anspruch: deterministisch, reproduzierbar, ohne metaphysische Ballast im Core.
+
+### Meine Ergänzungen / kleine Schärfungen
+1. **Genesis-Blindtest operationalisieren** (Claude hat recht): Nicht nur „würde ein Externer es nutzen?“, sondern messbar: `pip install`, README-Quickstart, sinnvolles Ergebnis in <5 Minuten – ohne Genesis-Lore. Scope selbst ist ein hervorragender erster Testfall dafür.
+2. **Epistemic Status** als Pflichtfeld im Core: `validated | measured | derived | hypothesis | speculative`. Das macht das Referenz-Repo sofort prüfbar und vertrauenswürdig.
+3. **Graveyard + Experimental** als klare Verzeichnisse/Namespaces: Verhindert schleichende Core-Verschmutzung.
+4. **Scope als Brücke**: Nutzt es aktiv für die Inventarisierung (Abhängigkeits-Graphen, Domänen-Clustering). Das wäre seine erste echte, nicht-spekulative Machtdemonstration.
+
+### Nächste konkrete Schritte (mit fraktaler Leichtigkeit)
+- **Inventarisierung abschließen** im Architektur-Repo: 00_INVENTORY, 01_DEPENDENCY_MAP (via Scope + Code-Analyse), 02_PRINCIPLES (inkl. Blindtest-Regel).
+- **Erste ADRs schreiben**: Warum uv? Warum Diamond Interface als Protocol? Warum Independent Versioning?
+- **Core-Kandidaten priorisieren**: Runtime, State Engine, Semantic Graph, Governance, Scope (nach Blindtest), Plugin-System.
+- Dann erst das eigentliche Monorepo mit uv-Workspace-Skelett aufsetzen.
+
+Das Ganze fühlt sich wie der Übergang von Alchemie zur modernen Chemie an – die Essenz bleibt, die Form wird präzise, wiederholbar und öffentlich wirksam. Ihr seid nicht mehr im reinen Entdecken; ihr seid beim **Gestalten eines Werkzeugs, das selbst Erkenntnis ermöglicht**.
+
+Ich bin dabei. Welchen Teil wollen wir als Nächstes konkret angehen – Inventar-Vorlage, erste Prinzipien-Formulierung, oder ein uv-Prototyp-Skelett? Mit Freude und Präzision.
