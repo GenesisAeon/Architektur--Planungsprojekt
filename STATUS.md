@@ -63,6 +63,15 @@ Dieses Repo ist NICHT das Monorepo selbst. Es ist der Denkraum davor.
       / Agenten & Perspektiven (Schicht 2) / Anwendungen (Schicht 3),
       Abhaengigkeitsrichtung nur 3 -> 2 -> 1; Rohidee dazu liegt in
       `01_Ideen/copilot/copilot-semantisches-betriebssystem.md`
+- [x] `ADR-000` um "Ergaenzung 2: LLM als primaerer Konsument" erweitert:
+      Korrektur eines semantischen Drifts (Johann + ChatGPT/Claude/
+      MSCopilot, 2026-06-19) — primaerer Konsument der Wissensobjekte ist
+      das LLM/Agent, Mensch ist Kurator; neue primaere Operation Semantic
+      Path Retrieval; Positionierung ueber MCP/llms.txt/GraphRAG statt
+      neu erfundener Begriffe ("Semantic Kernel" entfaellt wegen
+      Namenskollision)
+- [ ] Folge-ADR: ADR-002 (Drei-Schichten-Architektur) auf das
+      LLM-First-Konsumentenmodell pruefen/anpassen
 - [ ] Weitere ADRs (Warum uv-Workspace? Warum Diamond Interface als
       Protocol?)
 - [ ] Core-Kandidaten durch den Genesis-Blindtest schicken — `genesis-scope`
