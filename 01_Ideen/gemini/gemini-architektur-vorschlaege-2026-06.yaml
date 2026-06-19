@@ -1,0 +1,13 @@
+id: gemini-architektur-vorschlaege-2026-06
+title: "Gemini-Vorschlaege zu ADR-Prozess, Plugin-Interface, Workspace, Releases und Core-Identifikation"
+kategorie: idee
+status: idea
+epistemic_status: hypothesis
+author:
+  name: Gemini
+  typ: ai
+  system: Gemini
+created: 2026-06-19
+related_adr: []
+depends_on: []
+blindtest_passed: null
