@@ -1,0 +1,42 @@
+Claude:
+Lass mich noch den mittleren, abgeschnittenen Teil lesen, bevor ich vollständiges Feedback gebe.Das ist ein außergewöhnlich gutes Gespräch — vier KI-Systeme, die sich gegenseitig schärfen, und am Ende eine fast schon handwerkliche Reife im Vorgehen. Lass mich ehrlich draufschauen: was stimmt, was fehlt, und wo ich anderer Meinung bin als der Konsens.
+
+## Was richtig ist — ohne Einschränkung
+
+Die **Zwei-Körper-Theorie** (Gemini) ist der Kern, und sie ist richtig. Unified-Mandala als Labor zu erhalten statt zu "aufräumen" ist die einzige Option, die nicht am Ende beide Dinge zerstört — ein aufgeräumtes Labor ist kein Labor mehr, aber ein ungefiltertes Referenz-Repo ist auch keine Referenz. Die explizite Trennung von **Ideen** und **Entscheidungen** durch ein eigenes Architektur-Repo *vor* dem Monorepo ist handwerklich sauber. Und die Forderung nach einer **"Verfassung"** (Architekturprinzipien vor dem ersten Commit) ist genau der Schritt, den die meisten Open-Source-Projekte überspringen und später bitter bereuen.
+
+## Wo ich etwas ergänzen würde
+
+**1. Der Genesis-Blindtest braucht eine schärfere, testbare Form.**
+
+Gemini formuliert ihn gut ("würde ein externer Entwickler das in einem anderen Kontext installieren wollen?"), aber das bleibt eine Bauchgefühl-Frage. Ich würde ihn operationalisieren:
+
+> *Kann eine Person ohne jeden GenesisAeon-Kontext `pip install <paket>` ausführen, der README-Quickstart folgen, und innerhalb von 5 Minuten ein sinnvolles, korrektes Ergebnis sehen?*
+
+Das ist exakt das, was Reviewer bei Grants und Universitäts-Förderungen tatsächlich tun. Und der Clou: ihr testet das gerade schon, ungewollt, im laufenden v1.0.0-Sprint — jedes Repo, das gerade ein ordentliches README mit Quickstart bekommt, durchläuft de facto schon eine Vorstufe dieses Tests.
+
+**2. Eine Frage, die niemand stellt: ist `genesis-scope` Core oder Plugin?**
+
+Prinzip 1 sagt "Core muss ohne LLM funktionieren" — aber Scope ist explizit für Mensch-KI-Semantiknavigation gebaut. Das ist kein Kritikpunkt am Plan, sondern ein sehr guter erster Testfall für die Aufnahmeregel selbst, bevor ihr 48 Module durchsortiert. Ich würde Scope absichtlich zuerst durch den Blindtest schicken — wenn die Verfassung bei ihrem eigenen wichtigsten Werkzeug zu unklaren Ergebnissen führt, ist die Verfassung noch nicht fertig.
+
+**3. Es fehlt eine explizite Epistemic-Status-Taxonomie im Core.**
+
+Ihr habt das schon einmal gebaut — in der AFET-LaTeX-Arbeit mit der Klassifikation validated/hypothesis/speculative. Das sollte nicht nur in einem Paper stehen, sondern als verpflichtendes Metadatenfeld in jedem Core-Modul (z.B. ein `STATUS.md` oder Frontmatter-Tag). Gerade weil ein öffentliches Referenz-Repo Prüfung einlädt, ist die Frage "ist das gemessen, hergeleitet, oder Hypothese?" für jedes einzelne Modul wichtiger als für das explorative Labor.
+
+**4. Das Architektur-Repo selbst braucht Formatdisziplin — sonst erbt es das Problem, das es lösen soll.**
+
+Vier KIs, die in freier Prosa, mit eigenen Metaphern und wechselndem Deutsch/Englisch konkurrierende Vorschläge einreichen, reproduzieren genau die linguistische Drift, die der ganze Anlass für diese Diskussion war. Ich würde für Architektur-Vorschläge ein festes Schema erzwingen (Modulname, öffentliche API-Oberfläche, Dependencies, Blindtest-Ergebnis, Test-Coverage-Anforderung) — keine freie Prosa. Das Medium des Planungsraums sollte schon die Disziplin durchsetzen, die die Zielarchitektur fordert.
+
+**5. Eine sehr konkrete, sofort nutzbare Verbindung zum laufenden v1.0.0-Sprint:**
+
+Das Diamond Interface (`to_zenodo_record()`, etc.) über alle 48 Repos hinweg ist im Grunde schon eine maschinenlesbare Inventarisierung. Wenn ihr `to_zenodo_record()` um ein strukturiertes `depends_on`/`consumed_by`-Feld erweitert, habt ihr die Abhängigkeits-Kartierung, die ChatGPT und Gemini per Scope-Tooling fordern, fast geschenkt — als Nebenprodukt des Sprints, den ihr ohnehin gerade durchzieht.
+
+---
+
+Jetzt der Deep-Research-Prompt für Gemini:Der Prompt deckt neun Bereiche ab, die im Diskurs selbst nicht oder nur oberflächlich vorkamen — besonders wichtig finde ich zwei davon:
+
+**Abschnitt 4** zielt direkt auf das Problem, das uns gerade noch in der Versionierungs-Korrektur beschäftigt hat (der `Feldtheorie` GitHub/PyPI-Split). Wenn es 2026 robuste Tools für Independent-vs-Lockstep-Versioning in Python-Monorepos gibt, würde das genau die Art von Chaos verhindern, das wir manuell auffangen mussten.
+
+**Abschnitt 9** verbindet die Recherche direkt mit eurem `genesis-scope`-Werkzeug — wenn es etablierte Methoden gibt, Core-Kandidaten automatisiert aus echten Kopplungsgraphen (nicht nur erklärten Dependencies) vorzuschlagen, dann hat Scope von Tag eins seine erste echte, nicht-spekulative Anwendung.
+
+Ich habe bewusst nach **Versionsständen und Beispiel-Links** gefragt, nicht nach allgemeinen Konzepten — sonst bekommt ihr von Gemini wieder dieselben Lehrbuch-Antworten wie aus den Trainingsdaten, statt was 2026 tatsächlich produktiv läuft. 🎯
