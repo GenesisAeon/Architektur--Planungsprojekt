@@ -45,14 +45,27 @@ Idee, die reift, wird nicht editiert — sie wird in den naechsten Ordner
 Feld haben. Eine Architekturentscheidung ohne dokumentierte Begruendung
 existiert nicht.
 
+ADR-Eintraege selbst tragen wie jeder Trylayer-Eintrag einen normalen
+lowercase-`id`-Slug (z.B. `adr-001-warum-monorepo`), zusaetzlich aber ein
+Pflichtfeld `adr_number` (`ADR-001`), ueber das andere Eintraege per
+`related_adr` referenzieren. Die beiden Felder kollidieren bewusst nicht
+im selben Pattern.
+
 ## Regel 4 — Reife darf nicht von Unreife abhaengen
 
 Status-Rang: `idea`=0 < `draft`=1 < `review`=2 < `accepted`=3 < `core`=4.
 
-Jeder Eintrag in `depends_on` muss einen Rang >= dem eigenen Rang haben.
-Ein `accepted`-Modul darf nicht heimlich von einer `idea` abhaengen.
-Wenn eine Architektur eine Idee braucht, muss die Idee zuerst selbst
-durch die Kette Idee -> Plan -> Architektur (mit ADR) reifen.
+Diese Regel gilt **nur** fuer `kategorie` in `architektur`, `programm`,
+`hilfsprogramm`: jeder Eintrag in `depends_on` muss dort einen Rang >=
+dem eigenen Rang haben. Ein `accepted`-Modul darf nicht heimlich von
+einer `idea` abhaengen. Wenn eine Architektur eine Idee braucht, muss die
+Idee zuerst selbst durch die Kette Idee -> Plan -> Architektur (mit ADR)
+reifen.
+
+Fuer `idee` und `plan` gilt diese Pruefung bewusst NICHT — ein Plan baut
+per Definition auf Ideen auf, die noch nicht reif sind. Dafuer gibt es das
+separate Feld `derived_from`: reine Herkunfts-Referenz ohne Rang-Zwang,
+um zu dokumentieren, aus welchen Ideen ein Plan synthetisiert wurde.
 
 ## Regel 5 — Epistemic Status ist Pflicht
 
@@ -89,8 +102,18 @@ Herkunft oder Begeisterung.
 
 Dieses Repo zitiert und destilliert aus Unified-Mandala, kopiert es aber
 nicht. Inhalte, die nur mit Kenntnis der Genesis-Erzaehlung Sinn ergeben,
-bleiben in `01_Ideen/` oder wandern nach `archive/` (Friedhof) — sie
+bleiben in `01_Ideen/` oder wandern nach `archive/` (Regel 11) — sie
 werden nicht `accepted`.
+
+## Regel 11 — Verwerfen ist kein Loeschen
+
+`archive/` nimmt Eintraege jeder `kategorie` mit `status: deprecated` oder
+`archived` auf. Die urspruengliche `kategorie` bleibt erhalten (ein
+verworfener Architektur-Vorschlag bleibt `kategorie: architektur`, nur
+sein `status` aendert sich). Das beendet die Diskussion "Gehoert das in
+den Core?" ohne den Inhalt zu zerstoeren — Unified-Mandala bleibt die
+vollstaendige Historie, `archive/` ist der kuratierte Zwischenstand
+innerhalb dieses Repos.
 
 ## Regel 10 — Validierung ist nicht optional
 

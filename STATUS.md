@@ -10,30 +10,52 @@ Sprint auf ca. 5-6 Tage Gesamtdauer).
 
 Dieses Repo ist NICHT das Monorepo selbst. Es ist der Denkraum davor.
 
-## Was bereits entschieden ist
+## Was bereits entschieden und umgesetzt ist
 
 - Zwei-Koerper-Trennung: Unified-Mandala bleibt Labor, ein neues Genesis
   Core / UTAC Core Monorepo wird die Referenzarchitektur (siehe
   `Planungsdiskurse/`)
-- Trylayer-Format (yaml + ai.json + md) als Pflichtformat fuer jede
-  Wissenseinheit in diesem Repo (siehe `PRINCIPLES.md`, Regel 1)
-- Genesis-Blindtest als Aufnahmekriterium fuer den Core (Regel 6)
+- Trylayer-Format (yaml + ai.json + md) als Pflichtformat, durchgesetzt
+  von `scripts/validate_trylayer.py` (`PRINCIPLES.md`, Regel 1+2)
+- Die 10 Architekturprinzipien liegen als Trylayer-Eintraege in
+  `00_Regeln/` vor, nicht nur als Prosa in `PRINCIPLES.md`
+- ADR-Pflicht vor Core (Regel 3), inkl. Cross-Referenz-Pruefung
+  (`related_adr` muss auf existierende `adr_number` zeigen)
+- Rang-Abhaengigkeitsregel (Regel 4) — bewusst eingeschraenkt auf
+  `architektur`/`programm`/`hilfsprogramm`; Ideen/Plaene nutzen
+  `derived_from` ohne Rang-Zwang
+- Genesis-Blindtest als Pflicht-Gate vor `accepted` (Regel 6)
+- `archive/`-Verzeichnis fuer "wertvoll aber nicht Core" (Regel 11)
+- Validierung laeuft sowohl als pre-commit-Hook als auch in CI
+  (`.github/workflows/trylayer.yml`)
+
+## Bekannte, noch nicht geschlossene Luecken
+
+- `scripts/validate_trylayer.py` prueft nur die yaml-Metadaten, nicht die
+  Struktur von `content` in `.ai.json` — siehe `AGENTS.md`, Abschnitt
+  "Wie du einen Vorschlag einreichst", Punkt 4
+- `06_Sprachen/` ist noch leer und unbewiesen — bleibt vorerst stehen,
+  wird aber nicht als fertige Saeule behandelt
+- Uebergangskriterium `review` (02_Plaene) -> `accepted` (03_Architektur)
+  ist nur ueber `status` definiert, nicht ueber ein explizites
+  Pruefkriterium — aktuell Ermessen des Maintainers
 
 ## Was noch offen ist
 
 - [ ] Repository-Kartierung der 48 bestehenden Pakete
 - [ ] Abhaengigkeits-Kartierung (echte Kopplung, nicht nur erklaerte)
-- [ ] Erste ADRs schreiben (Warum Monorepo? Warum uv-Workspace? Warum
-      Diamond Interface als Protocol?)
+- [ ] Erste echte ADRs schreiben (Warum Monorepo? Warum uv-Workspace?
+      Warum Diamond Interface als Protocol?) — `adr/` ist aktuell leer
 - [ ] Core-Kandidaten durch den Genesis-Blindtest schicken — `genesis-scope`
-      als erster Testfall
-- [ ] Graveyard/Archiv-Verzeichnis fuer "wertvoll aber nicht Core"
-- [ ] Bereinigung dieses Repos selbst: `src/`, `contracts/`, `scripts/`,
-      `tests/`, `docs/`, `mkdocs.yml`, `pyproject.toml` sind aktuell noch
-      unveraendertes diamond-setup-Scaffold-Leftover und gehoeren fachlich
-      nicht in dieses Planungsrepo
+      als erster Testfall liegt bereits als Idee in `01_Ideen/claude/` vor
+- [ ] Bereinigung dieses Repos selbst: `src/`, `contracts/runtime.schema.yaml`,
+      `scripts/` (Diamond-spezifische Skripte), `tests/`, `docs/`,
+      `mkdocs.yml`, `pyproject.toml` sind aktuell noch unveraendertes
+      diamond-setup-Scaffold-Leftover und gehoeren fachlich nicht in
+      dieses Planungsrepo
 
 ## Naechster konkreter Schritt
 
-Inventarisierung starten: erstes Trylayer-Tripel in `01_Ideen/` fuer
-`genesis-scope` anlegen und durch den Blindtest schicken.
+Erstes echtes ADR schreiben (`ADR-001-warum-monorepo`), damit `adr/`
+nicht laenger leer ist und die erste reale Core-Architekturentscheidung
+formal getroffen werden kann.

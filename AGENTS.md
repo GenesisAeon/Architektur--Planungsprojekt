@@ -27,20 +27,23 @@ danach.
 ## Ordnerstruktur
 
 ```
-00_Regeln/          Architekturprinzipien als Trylayer-Eintraege (status: core)
+00_Regeln/          Die 10 Architekturprinzipien als Trylayer-Eintraege (status: core)
 01_Ideen/           Roh-Vorschlaege, jede KI legt hier eigene Unterordner an
 02_Plaene/          Ideen, die in konkrete Planung uebergegangen sind
 03_Architektur/     Kanonisierte Architekturentscheidungen (braucht ADR)
 04_Programme/       Core-Modul-Spezifikationen (braucht ADR + Blindtest)
 05_Hilfsprogramme/  Plugin-/Tool-Spezifikationen
-06_Sprachen/        Glossar, Terminologie, Namenskonventionen
+06_Sprachen/        Glossar, Terminologie, Namenskonventionen (noch unbefuellt)
 adr/                Architecture Decision Records
+archive/            Verworfenes / "wertvoll aber nicht Core" (Regel 11)
 Planungsdiskurse/   Archiv des urspruenglichen Multi-AI-Diskurses (read-only)
 ```
 
 Vollstaendige Regeln: `PRINCIPLES.md`. Kurzfassung: jeder Ordner erlaubt
-nur bestimmte `status`-Werte (Regel 2), und Reife darf nicht von Unreife
-abhaengen (Regel 4).
+nur bestimmte `status`-Werte (Regel 2). Reife darf nicht von Unreife
+abhaengen (Regel 4) — das gilt aber nur fuer `architektur`, `programm`,
+`hilfsprogramm`. Eine Idee oder ein Plan darf ganz bewusst auf unreiferen
+Vorstufen aufbauen; nutze dafuer `derived_from` statt `depends_on`.
 
 ## Wie du einen Vorschlag einreichst
 
@@ -51,8 +54,14 @@ abhaengen (Regel 4).
 3. Fuelle `epistemic_status` ehrlich aus — die meisten neuen Vorschlaege
    sind `hypothesis`, nicht `validated`.
 4. Kein freier Fliesstext als Strukturersatz: die `.md`-Datei ist Prosa
-   fuer Menschen, aber `.ai.json` MUSS das volle Schema einhalten
-   (Modulname, Zweck, Dependencies, Blindtest-Einschaetzung, Status).
+   fuer Menschen, `.ai.json` ist maschinenlesbar. Empfohlenes Minimum im
+   `content`-Feld: `problem`, `vorschlag`, `erwartetes_ergebnis`,
+   `naechster_schritt`, `alternativen_betrachtet` (siehe
+   `01_Ideen/claude/genesis-scope-blindtest.ai.json` als Beispiel).
+   **Ehrlicher Hinweis:** `scripts/validate_trylayer.py` prueft aktuell
+   nur die Metadaten (yaml-Kopf), NICHT die Struktur von `content` selbst.
+   Ein leeres `content: {}` waere technisch gueltig — die Konvention oben
+   ist (noch) nicht maschinell erzwungen.
 5. Fuehre `python scripts/validate_trylayer.py` aus, bevor du fertig bist.
 
 ## Der Genesis-Blindtest (Regel 6)

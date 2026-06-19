@@ -1,0 +1,12 @@
+id: "regel-04-reife-vor-unreife"
+title: "Reife darf nicht von Unreife abhaengen"
+kategorie: "regel"
+status: "core"
+epistemic_status: "validated"
+author:
+  name: Johann
+  typ: human
+created: "2026-06-19"
+related_adr: []
+depends_on: []
+blindtest_passed: null

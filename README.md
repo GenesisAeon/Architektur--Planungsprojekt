@@ -34,14 +34,15 @@ Schema: [`contracts/trylayer.schema.yaml`](contracts/trylayer.schema.yaml)
 ## Struktur
 
 ```
-00_Regeln/          Architekturprinzipien als Trylayer-Einträge
+00_Regeln/          Die 10 Architekturprinzipien als Trylayer-Einträge
 01_Ideen/            Roh-Vorschläge (status: idea, draft)
 02_Plaene/           Konkretisierte Planung (status: draft, review)
 03_Architektur/      Kanonisierte Entscheidungen (status: accepted, core)
 04_Programme/        Core-Modul-Spezifikationen
 05_Hilfsprogramme/   Plugin-/Tool-Spezifikationen
-06_Sprachen/         Glossar, Terminologie
+06_Sprachen/         Glossar, Terminologie (noch unbefüllt)
 adr/                 Architecture Decision Records
+archive/             Verworfenes / "wertvoll aber nicht Core"
 Planungsdiskurse/    Archiv des ursprünglichen Multi-AI-Diskurses (read-only)
 ```
 
@@ -51,7 +52,7 @@ Planungsdiskurse/    Archiv des ursprünglichen Multi-AI-Diskurses (read-only)
 python scripts/validate_trylayer.py
 ```
 
-Läuft auch als pre-commit-Hook.
+Läuft als pre-commit-Hook und in CI ([`.github/workflows/trylayer.yml`](.github/workflows/trylayer.yml)).
 
 ---
 

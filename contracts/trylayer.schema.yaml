@@ -71,23 +71,46 @@ properties:
     type: string
     format: date
 
+  adr_number:
+    type: string
+    pattern: "^ADR-[0-9]{3,}$"
+    description: >
+      Pflichtfeld NUR fuer kategorie=adr. Eindeutige ADR-Nummer, ueber die
+      andere Eintraege per related_adr referenzieren. Getrennt vom Feld
+      "id" (das bleibt fuer ADRs ein normaler lowercase-Slug, z.B.
+      "adr-001-warum-monorepo"), damit das ID-Pattern nicht mit dem
+      ADR-Nummernformat kollidiert.
+
   related_adr:
     type: array
     items:
       type: string
       pattern: "^ADR-[0-9]{3,}$"
     description: >
-      Pflicht (nicht-leer) fuer kategorie=architektur, programm, hilfsprogramme
-      mit status in [accepted, core]. Siehe Regel 3.
+      Pflicht (nicht-leer) fuer kategorie=architektur, programm, hilfsprogramm
+      mit status in [accepted, core]. Siehe Regel 3. Verweist auf adr_number
+      eines Eintrags in adr/, nicht auf dessen id.
 
   depends_on:
     type: array
     items:
       type: string
     description: >
-      Liste von Trylayer-IDs, von denen dieser Eintrag fachlich abhaengt.
-      Jede referenzierte ID muss einen Status-Rang >= dem eigenen Rang haben
-      (Regel 4 — Reife darf nicht von Unreife abhaengen).
+      Liste von Trylayer-IDs einer HARTEN fachlichen/architektonischen
+      Abhaengigkeit. Rang-Pruefung (Regel 4) gilt NUR fuer Eintraege mit
+      kategorie in [architektur, programm, hilfsprogramm] — dort darf eine
+      Abhaengigkeit keinen niedrigeren Status-Rang haben. Fuer kategorie in
+      [idee, plan] wird depends_on nicht rang-geprueft, da Plaene bewusst
+      auf unreifen Ideen aufbauen duerfen.
+
+  derived_from:
+    type: array
+    items:
+      type: string
+    description: >
+      Liste von Trylayer-IDs, aus denen dieser Eintrag synthetisiert wurde
+      (z.B. ein Plan, der mehrere Ideen zusammenfuehrt). Reine Herkunfts-
+      Referenz, KEINE Rang-Pruefung — das ist der normale Idee-zu-Plan-Weg.
 
   blindtest_passed:
     type: ["boolean", "null"]

@@ -1,0 +1,12 @@
+id: "regel-10-validierung-pflicht"
+title: "Validierung ist nicht optional"
+kategorie: "regel"
+status: "core"
+epistemic_status: "validated"
+author:
+  name: Johann
+  typ: human
+created: "2026-06-19"
+related_adr: []
+depends_on: []
+blindtest_passed: null

@@ -15,7 +15,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 
-FOLDER_RULES: dict[str, tuple[str, set[str]]] = {
+FOLDER_RULES: dict[str, tuple[str | None, set[str]]] = {
     "00_Regeln": ("regel", {"core"}),
     "01_Ideen": ("idee", {"idea", "draft"}),
     "02_Plaene": ("plan", {"draft", "review"}),
@@ -24,6 +24,9 @@ FOLDER_RULES: dict[str, tuple[str, set[str]]] = {
     "05_Hilfsprogramme": ("hilfsprogramm", {"accepted", "core"}),
     "06_Sprachen": ("sprache", {"accepted", "core"}),
     "adr": ("adr", {"accepted"}),
+    # archive nimmt demotierte Eintraege jeder kategorie auf (Regel 9/Graveyard) —
+    # kategorie wird daher nicht erzwungen, nur der Status.
+    "archive": (None, {"deprecated", "archived"}),
 }
 
 STATUS_RANK = {
@@ -35,6 +38,10 @@ STATUS_RANK = {
 }
 
 ADR_REQUIRED_KATEGORIEN = {"architektur", "programm", "hilfsprogramm"}
+
+# Rang-Pruefung (Regel 4) gilt nur fuer diese Kategorien. Ideen und Plaene
+# duerfen bewusst auf unreiferen Vorstufen aufbauen (siehe derived_from).
+RANK_CHECKED_KATEGORIEN = {"architektur", "programm", "hilfsprogramm"}
 
 
 @dataclass
@@ -102,7 +109,7 @@ def check_folder_rules(entry: Entry, errors: list[str]) -> None:
     kategorie = entry.meta.get("kategorie")
     status = entry.meta.get("status")
 
-    if kategorie != expected_kategorie:
+    if expected_kategorie is not None and kategorie != expected_kategorie:
         errors.append(
             f"[{entry.folder}] '{entry.slug}': kategorie '{kategorie}' passt nicht zu "
             f"Ordner (erwartet '{expected_kategorie}') (Regel 2)"
@@ -127,6 +134,29 @@ def check_adr_required(entry: Entry, errors: list[str]) -> None:
             )
 
 
+def check_adr_number(entry: Entry, errors: list[str]) -> None:
+    if entry.meta.get("kategorie") == "adr" and not entry.meta.get("adr_number"):
+        errors.append(
+            f"[{entry.folder}] '{entry.slug}': kategorie=adr ohne adr_number "
+            f"(Pflichtfeld, siehe contracts/trylayer.schema.yaml)"
+        )
+
+
+def check_related_adr_exists(entries: list[Entry], errors: list[str]) -> None:
+    known_adr_numbers = {
+        e.meta["adr_number"]
+        for e in entries
+        if e.meta.get("kategorie") == "adr" and e.meta.get("adr_number")
+    }
+    for entry in entries:
+        for adr_number in entry.meta.get("related_adr") or []:
+            if adr_number not in known_adr_numbers:
+                errors.append(
+                    f"[{entry.folder}] '{entry.slug}': related_adr verweist auf "
+                    f"unbekannte '{adr_number}' (kein adr/-Eintrag mit dieser adr_number)"
+                )
+
+
 def check_blindtest(entry: Entry, errors: list[str]) -> None:
     kategorie = entry.meta.get("kategorie")
     status = entry.meta.get("status")
@@ -141,10 +171,6 @@ def check_blindtest(entry: Entry, errors: list[str]) -> None:
 def check_dependency_rank(entries: list[Entry], errors: list[str]) -> None:
     by_id = {e.meta.get("id"): e for e in entries if e.meta.get("id")}
     for entry in entries:
-        own_status = entry.meta.get("status")
-        own_rank = STATUS_RANK.get(own_status)
-        if own_rank is None:
-            continue
         for dep_id in entry.meta.get("depends_on") or []:
             dep = by_id.get(dep_id)
             if dep is None:
@@ -152,14 +178,29 @@ def check_dependency_rank(entries: list[Entry], errors: list[str]) -> None:
                     f"[{entry.folder}] '{entry.slug}': depends_on unbekannte id '{dep_id}'"
                 )
                 continue
+
+            if entry.meta.get("kategorie") not in RANK_CHECKED_KATEGORIEN:
+                continue
+
+            own_rank = STATUS_RANK.get(entry.meta.get("status"))
             dep_rank = STATUS_RANK.get(dep.meta.get("status"))
-            if dep_rank is None:
+            if own_rank is None or dep_rank is None:
                 continue
             if dep_rank < own_rank:
                 errors.append(
-                    f"[{entry.folder}] '{entry.slug}' (status={own_status}) haengt von "
-                    f"'{dep_id}' (status={dep.meta.get('status')}) ab — Reife darf nicht "
-                    f"von Unreife abhaengen (Regel 4)"
+                    f"[{entry.folder}] '{entry.slug}' (status={entry.meta.get('status')}) "
+                    f"haengt von '{dep_id}' (status={dep.meta.get('status')}) ab — Reife "
+                    f"darf nicht von Unreife abhaengen (Regel 4)"
+                )
+
+
+def check_derived_from_exists(entries: list[Entry], errors: list[str]) -> None:
+    by_id = {e.meta.get("id"): e for e in entries if e.meta.get("id")}
+    for entry in entries:
+        for ref_id in entry.meta.get("derived_from") or []:
+            if ref_id not in by_id:
+                errors.append(
+                    f"[{entry.folder}] '{entry.slug}': derived_from unbekannte id '{ref_id}'"
                 )
 
 
@@ -171,9 +212,12 @@ def main() -> int:
         check_required_fields(entry, errors)
         check_folder_rules(entry, errors)
         check_adr_required(entry, errors)
+        check_adr_number(entry, errors)
         check_blindtest(entry, errors)
 
+    check_related_adr_exists(entries, errors)
     check_dependency_rank(entries, errors)
+    check_derived_from_exists(entries, errors)
 
     if errors:
         print(f"Trylayer-Validierung fehlgeschlagen ({len(errors)} Verstoss/Verstoesse):\n")

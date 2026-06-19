@@ -1,0 +1,19 @@
+{
+  "id": "regel-03-kein-core-ohne-adr",
+  "title": "Kein Core ohne ADR",
+  "kategorie": "regel",
+  "status": "core",
+  "epistemic_status": "validated",
+  "author": {
+    "name": "Johann",
+    "typ": "human"
+  },
+  "created": "2026-06-19",
+  "related_adr": [],
+  "depends_on": [],
+  "blindtest_passed": null,
+  "content": {
+    "summary": "kategorie in [architektur, programm, hilfsprogramm] mit status in [accepted, core] MUSS ein nicht-leeres related_adr-Feld haben.",
+    "quelle": "PRINCIPLES.md"
+  }
+}
