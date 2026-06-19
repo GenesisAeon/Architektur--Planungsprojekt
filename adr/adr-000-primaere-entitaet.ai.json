@@ -1,0 +1,47 @@
+{
+  "id": "adr-000-primaere-entitaet",
+  "title": "Was ist die primaere Entitaet des Systems?",
+  "kategorie": "adr",
+  "adr_number": "ADR-000",
+  "status": "accepted",
+  "epistemic_status": "derived",
+  "author": {
+    "name": "Johann",
+    "typ": "human",
+    "system": null
+  },
+  "created": "2026-06-19",
+  "related_adr": ["ADR-001"],
+  "depends_on": [],
+  "derived_from": [],
+  "blindtest_passed": null,
+  "content": {
+    "kontext": "ADR-001 legt fest, dass ein eigenes Genesis Core / UTAC Core Monorepo entsteht, und 02_Plaene/genesis-core-scope.md beginnt, den Core von Programmen und Hilfsprogrammen abzugrenzen. Beide Dokumente setzen implizit voraus, worum es im System ueberhaupt geht, ohne das je explizit zu benennen. Diese Luecke wird sichtbar, sobald man das System mit anderen Plattformen vergleicht: Wikipedia hat den Artikel, GitHub das Repository, Reddit die Diskussion, Discord die Nachricht — jede Plattform hat eine primaere Entitaet, um die sich Datenmodell, UI und Governance organisieren. Ohne diese Festlegung wackelt jede nachfolgende Architekturentscheidung: Monorepo-Struktur, Datenmodell, Plugin-System und die Einordnung von Modulen wie genesis-scope und genesis-os haengen davon ab, ob das System als einzelne Domaenenanwendung (Klima, Forschung, Gemeinwohl, soziales Netzwerk) gedacht wird oder als domaenenuebergreifendes Fundament, auf dem solche Anwendungen erst aufgesetzt werden.",
+    "entscheidung": "Die primaere Entitaet des Systems ist nicht eine Domaenenanwendung, sondern ein Wissensobjekt (semantischer Konzeptknoten) — ein adressierbarer Zustand im Wissensraum, der von Menschen und Agenten gemeinsam erzeugt, verknuepft und navigiert werden kann. Damit ist Genesis Core / UTAC Core kein Endprodukt fuer eine einzelne Domaene (Klimaplattform, Forschungsplattform, soziales Netzwerk), sondern eine Infrastruktur fuer kollektive Orientierung in komplexen Wissensraeumen, auf der domaenenspezifische Anwendungen (Forschung, Gemeinwohl, Klima, KI-Kollaboration, persoenlicher Wissensraum) als Programme bzw. Hilfsprogramme/Plugins aufgesetzt werden, nicht als Teil des Cores selbst.",
+    "begruendung": [
+      "Module wie genesis-scope (human-AI navigation layer) und die Pheromonpfad-/semantische-Kartografie-Konzepte aus den Planungsdiskursen sind bereits implizit auf ein Wissensobjekt als Adressierungseinheit ausgelegt, nicht auf Dateien, Chatnachrichten oder Posts.",
+      "Regel 8 (keine privilegierte Domaene) verlangt ohnehin, dass der Core keine einzelne Anwendungsdomaene bevorzugt. Eine domaenenspezifische primaere Entitaet (z. B. 'Klimamodell' oder 'Forschungsartikel') wuerde dieser Regel widersprechen; ein domaenenneutrales Wissensobjekt erfuellt sie.",
+      "02_Plaene/genesis-core-scope.md ordnet alle ~35 domaenenspezifischen Pakete bereits als Hilfsprogramme/Plugins ein, die den Core als Bibliothek nutzen — das ist nur konsistent, wenn der Core selbst domaenenneutral bleibt und sich um eine gemeinsame, domaenenunabhaengige Entitaet organisiert.",
+      "Eine explizite Festlegung jetzt verhindert, dass spaetere ADRs (Datenmodell, Diamond-Interface-Protokoll, Plugin-System) implizit unterschiedliche Annahmen ueber die primaere Entitaet treffen."
+    ],
+    "alternativen_betrachtet": [
+      {
+        "alternative": "Keine primaere Entitaet festlegen, sondern pro Domaenenanwendung unterschiedliche Datenmodelle zulassen",
+        "warum_verworfen": "Macht eine gemeinsame Governance-Ebene (Regel 4, Rang-Abhaengigkeit) und ein einheitliches Plugin-System praktisch unmoeglich, da jedes Programm seine eigene Grundentitaet mitbringen wuerde."
+      },
+      {
+        "alternative": "Die primaere Entitaet explizit auf eine Domaene festlegen (z. B. 'Forschungsartikel' oder 'Klimaszenario')",
+        "warum_verworfen": "Verletzt Regel 8 und wuerde den Core faktisch zu einer Forschungs- oder Klimaplattform machen, auf der alles andere nur noch Anhaengsel waere — widerspricht der in genesis-core-scope.md bereits begonnenen domaenenneutralen Core/Programm/Hilfsprogramm-Trennung."
+      },
+      {
+        "alternative": "Datei/Dokument als primaere Entitaet (wie bei klassischen Wissensmanagement-Tools)",
+        "warum_verworfen": "Bildet die in den Planungsdiskursen beschriebene semantische Verknuepfung zwischen Konzepten, Agentenperspektiven und Wissensraeumen nicht ab — ein Dateibegriff ist zu grobkoernig fuer Pheromonpfade und semantische Kartografie."
+      }
+    ],
+    "konsequenzen": [
+      "Nachfolgende ADRs zu Datenmodell, Diamond-Interface und Plugin-System muessen sich auf das Wissensobjekt als primaere Entitaet beziehen (related_adr: [ADR-000]).",
+      "genesis-scope und vergleichbare Module sind Kandidaten dafuer, die Navigations- und Verknuepfungsschicht ueber Wissensobjekten zu sein — das ist im Genesis-Blindtest (Regel 6) explizit zu pruefen, bevor ein entsprechender Architektur-Eintrag accepted wird.",
+      "Domaenenspezifische Anwendungen (Klima, Forschung, Gemeinwohl, KI-Kollaboration) bleiben Programme/Hilfsprogramme, die Wissensobjekte ueber den Core erzeugen und verknuepfen — sie definieren keine eigene primaere Entitaet."
+    ]
+  }
+}

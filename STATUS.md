@@ -55,6 +55,9 @@ Dieses Repo ist NICHT das Monorepo selbst. Es ist der Denkraum davor.
       topologisch sortiert)
 - [x] Erstes echtes ADR geschrieben: `ADR-001-warum-monorepo`
       (Zwei-Koerper-Trennung Unified-Mandala vs. Genesis Core/UTAC Core)
+- [x] `ADR-000-primaere-entitaet` geschrieben: legt das Wissensobjekt
+      (semantischer Konzeptknoten) als primaere Entitaet fest und den
+      Core als domaenenneutrale Infrastruktur statt Einzelanwendung
 - [ ] Weitere ADRs (Warum uv-Workspace? Warum Diamond Interface als
       Protocol?)
 - [ ] Core-Kandidaten durch den Genesis-Blindtest schicken — `genesis-scope`

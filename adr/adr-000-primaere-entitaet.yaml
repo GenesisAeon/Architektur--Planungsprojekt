@@ -1,0 +1,15 @@
+id: adr-000-primaere-entitaet
+title: "Was ist die primaere Entitaet des Systems?"
+kategorie: adr
+adr_number: "ADR-000"
+status: accepted
+epistemic_status: derived
+author:
+  name: Johann
+  typ: human
+  system: null
+created: "2026-06-19"
+related_adr: ["ADR-001"]
+depends_on: []
+derived_from: []
+blindtest_passed: null
