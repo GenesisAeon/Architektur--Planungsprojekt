@@ -1,0 +1,98 @@
+# Architekturprinzipien (Verfassung)
+
+Dieses Dokument ist die einzige Quelle der Wahrheit fuer die Regeln dieses
+Repos. Jede Aenderung an diesen Prinzipien braucht ein eigenes ADR
+(`adr/`). Diese Regeln sind kein Stilvorschlag, sondern werden durch
+`scripts/validate_trylayer.py` maschinell durchgesetzt (CI + pre-commit).
+
+## Regel 1 — Trylayer-Pflicht
+
+Jede Wissenseinheit (Idee, Plan, Architekturentscheidung, Programm-,
+Hilfsprogramm- oder Begriffsdefinition) existiert ausschliesslich als
+Dreifach-Datei mit identischem Slug:
+
+```
+<slug>.yaml       Index/Metadaten (siehe contracts/trylayer.schema.yaml)
+<slug>.ai.json     AI-Vollversion (Metadaten + vollstaendiger struktur. Inhalt)
+<slug>.md          Menschenversion (Prosa, Begruendung, Kontext)
+```
+
+Ein unvollstaendiges Tripel ist ungueltig. Es gibt keine Ausnahme.
+
+## Regel 2 — Ordner bestimmt erlaubten Status
+
+Jeder Ordner akzeptiert nur Einträge mit bestimmtem `status`:
+
+| Ordner               | kategorie       | erlaubter status              |
+|----------------------|-----------------|--------------------------------|
+| `00_Regeln/`         | regel           | `core` (nur via ADR aenderbar) |
+| `01_Ideen/`          | idee            | `idea`, `draft`                |
+| `02_Plaene/`         | plan            | `draft`, `review`               |
+| `03_Architektur/`    | architektur     | `accepted`, `core`             |
+| `04_Programme/`      | programm        | `accepted`, `core`             |
+| `05_Hilfsprogramme/` | hilfsprogramm   | `accepted`, `core`             |
+| `06_Sprachen/`       | sprache         | `accepted`, `core`             |
+| `adr/`               | adr             | `accepted`                      |
+
+Ein Eintrag, dessen Status nicht zum Ordner passt, ist ungueltig. Eine
+Idee, die reift, wird nicht editiert — sie wird in den naechsten Ordner
+**verschoben** (neuer Pfad = neue Entscheidung, sichtbar im Diff).
+
+## Regel 3 — Kein Core ohne ADR
+
+`kategorie` in `architektur`, `programm`, `hilfsprogramm` mit
+`status` in `accepted` oder `core` MUSS ein nicht-leeres `related_adr`
+Feld haben. Eine Architekturentscheidung ohne dokumentierte Begruendung
+existiert nicht.
+
+## Regel 4 — Reife darf nicht von Unreife abhaengen
+
+Status-Rang: `idea`=0 < `draft`=1 < `review`=2 < `accepted`=3 < `core`=4.
+
+Jeder Eintrag in `depends_on` muss einen Rang >= dem eigenen Rang haben.
+Ein `accepted`-Modul darf nicht heimlich von einer `idea` abhaengen.
+Wenn eine Architektur eine Idee braucht, muss die Idee zuerst selbst
+durch die Kette Idee -> Plan -> Architektur (mit ADR) reifen.
+
+## Regel 5 — Epistemic Status ist Pflicht
+
+Jeder Eintrag deklariert `epistemic_status`:
+`validated | measured | derived | hypothesis | speculative`.
+Kein Eintrag darf als selbstverstaendlich wahr erscheinen, ohne zu sagen,
+auf welcher Erkenntnisstufe er steht.
+
+## Regel 6 — Genesis-Blindtest vor `accepted`
+
+Bevor ein Eintrag in `kategorie` `architektur` oder `programm` von
+`review` zu `accepted` wechselt, muss der Blindtest beantwortet sein:
+
+> Kann eine Person ohne jeden GenesisAeon-Kontext den Quickstart der
+> README folgen und innerhalb von 5 Minuten ein sinnvolles, korrektes
+> Ergebnis sehen — ohne die Genesis-/Unified-Mandala-Geschichte zu kennen?
+
+Ergebnis wird im Feld `blindtest_passed` (true/false) dokumentiert.
+`false` oder `null` blockiert den Wechsel zu `accepted`.
+
+## Regel 7 — Core funktioniert ohne LLM und ohne Internet
+
+`kategorie: programm` mit `status: core` darf keine Laufzeitabhaengigkeit
+zu einem LLM oder einer Netzwerkverbindung haben. KI-gestuetzte Features
+sind immer Plugin (`hilfsprogramm`), nie Core.
+
+## Regel 8 — Keine privilegierte Domaene
+
+Kein Modul bekommt Sonderrechte im Core, weil es historisch wichtig war.
+Aufnahme entscheidet ausschliesslich ueber Regel 3, 4 und 6 — nicht ueber
+Herkunft oder Begeisterung.
+
+## Regel 9 — Unified-Mandala ist Quelle, nicht Ziel
+
+Dieses Repo zitiert und destilliert aus Unified-Mandala, kopiert es aber
+nicht. Inhalte, die nur mit Kenntnis der Genesis-Erzaehlung Sinn ergeben,
+bleiben in `01_Ideen/` oder wandern nach `archive/` (Friedhof) — sie
+werden nicht `accepted`.
+
+## Regel 10 — Validierung ist nicht optional
+
+`scripts/validate_trylayer.py` laeuft als pre-commit-Hook und in CI.
+Ein Commit, der Regel 1-7 verletzt, wird zurueckgewiesen.

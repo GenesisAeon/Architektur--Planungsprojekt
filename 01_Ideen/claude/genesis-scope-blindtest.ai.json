@@ -1,0 +1,29 @@
+{
+  "id": "genesis-scope-blindtest",
+  "title": "Genesis-Blindtest fuer genesis-scope durchfuehren",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "hypothesis",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 4.6)"
+  },
+  "created": "2026-06-19",
+  "related_adr": [],
+  "depends_on": [],
+  "blindtest_passed": null,
+  "content": {
+    "problem": "PRINCIPLES.md Regel 7 verlangt, dass Core ohne LLM funktioniert. genesis-scope ist aber explizit fuer Mensch-KI-Semantiknavigation gebaut. Es ist unklar, ob es Core oder Plugin (hilfsprogramm) ist.",
+    "vorschlag": "genesis-scope als ersten Testfall durch den Genesis-Blindtest (Regel 6) schicken, bevor die uebrigen 47 Pakete sortiert werden. Wenn die Verfassung beim eigenen wichtigsten Werkzeug zu einem unklaren Ergebnis fuehrt, ist die Verfassung noch nicht fertig.",
+    "erwartetes_ergebnis": [
+      "Klarheit, ob genesis-scope kategorie=programm (core) oder kategorie=hilfsprogramm (plugin) sein sollte",
+      "Falls unklar: Praezisierung von PRINCIPLES.md Regel 7 noetig, bevor Inventarisierung der 48 Pakete beginnt"
+    ],
+    "naechster_schritt": "Maintainer (Johann) fuehrt den Blindtest manuell durch und dokumentiert das Ergebnis in blindtest_passed; bei Bedarf Eskalation in adr/.",
+    "alternativen_betrachtet": [
+      "Sofort als hilfsprogramm einordnen (verworfen: vorschnelle Entscheidung ohne Test, widerspricht Regel 8)",
+      "Sofort als programm/core einordnen (verworfen: widerspricht Regel 7 ohne weitere Pruefung)"
+    ]
+  }
+}
