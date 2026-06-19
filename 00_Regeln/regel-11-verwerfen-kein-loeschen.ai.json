@@ -1,0 +1,19 @@
+{
+  "id": "regel-11-verwerfen-kein-loeschen",
+  "title": "Verwerfen ist kein Loeschen",
+  "kategorie": "regel",
+  "status": "core",
+  "epistemic_status": "validated",
+  "author": {
+    "name": "Johann",
+    "typ": "human"
+  },
+  "created": "2026-06-19",
+  "related_adr": [],
+  "depends_on": [],
+  "blindtest_passed": null,
+  "content": {
+    "summary": "archive/ nimmt Eintraege jeder kategorie mit status deprecated/archived auf, ohne deren urspruengliche kategorie zu aendern. Beendet die Core-Diskussion ohne Inhalte zu zerstoeren.",
+    "quelle": "PRINCIPLES.md"
+  }
+}

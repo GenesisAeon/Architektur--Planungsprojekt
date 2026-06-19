@@ -105,6 +105,11 @@ nicht. Inhalte, die nur mit Kenntnis der Genesis-Erzaehlung Sinn ergeben,
 bleiben in `01_Ideen/` oder wandern nach `archive/` (Regel 11) — sie
 werden nicht `accepted`.
 
+## Regel 10 — Validierung ist nicht optional
+
+`scripts/validate_trylayer.py` laeuft als pre-commit-Hook und in CI.
+Ein Commit, der Regel 1-7 verletzt, wird zurueckgewiesen.
+
 ## Regel 11 — Verwerfen ist kein Loeschen
 
 `archive/` nimmt Eintraege jeder `kategorie` mit `status: deprecated` oder
@@ -115,7 +120,15 @@ den Core?" ohne den Inhalt zu zerstoeren — Unified-Mandala bleibt die
 vollstaendige Historie, `archive/` ist der kuratierte Zwischenstand
 innerhalb dieses Repos.
 
-## Regel 10 — Validierung ist nicht optional
+## Regel 12 — Es gibt genau einen Standardweg ins Repo
 
-`scripts/validate_trylayer.py` laeuft als pre-commit-Hook und in CI.
-Ein Commit, der Regel 1-7 verletzt, wird zurueckgewiesen.
+`ENTRY.yaml` ist der einzige verbindliche Einstiegspunkt. Jede KI (und
+jeder Mensch), die/der zum ersten Mal mit diesem Repo arbeitet, folgt der
+darin definierten Reihenfolge (`README.md` -> `STATUS.md` ->
+`PRINCIPLES.md` -> `AGENTS.md` -> optional `00_Regeln/` und
+`Planungsdiskurse/`) — unabhaengig davon, bei welcher Datei sie/er zuerst
+gelandet ist. Jede Einstiegsdatei (`README.md`, `AGENTS.md`, `STATUS.md`)
+verweist deshalb selbst zuerst auf `ENTRY.yaml`, statt sich auf einen
+einzigen "richtigen" Lesepfad zu verlassen, den man zufaellig kennen
+muss. `scripts/validate_trylayer.py` prueft, dass alle in `ENTRY.yaml`
+referenzierten Dateien/Ordner tatsaechlich existieren.

@@ -1,5 +1,10 @@
 # Architektur--Planungsprojekt
 
+> **Standardweg:** [`ENTRY.yaml`](ENTRY.yaml) definiert die verbindliche
+> Lesereihenfolge fuer dieses Repo (Regel 12). Dieses README ist Schritt 1
+> davon — wenn du hier zufaellig zuerst gelandet bist, lies trotzdem
+> `ENTRY.yaml`, um den vollstaendigen Pfad zu sehen.
+
 Planungs-/Architektur-Workspace für den Übergang des GenesisAeon-
 Ökosystems von Unified-Mandala (explorativem Forschungslabor) zu einer
 kanonisierten, öffentlichkeitsfähigen Referenzarchitektur (Genesis Core /
@@ -34,7 +39,7 @@ Schema: [`contracts/trylayer.schema.yaml`](contracts/trylayer.schema.yaml)
 ## Struktur
 
 ```
-00_Regeln/          Die 10 Architekturprinzipien als Trylayer-Einträge
+00_Regeln/          Die 12 Architekturprinzipien als Trylayer-Einträge
 01_Ideen/            Roh-Vorschläge (status: idea, draft)
 02_Plaene/           Konkretisierte Planung (status: draft, review)
 03_Architektur/      Kanonisierte Entscheidungen (status: accepted, core)
@@ -56,8 +61,19 @@ Läuft als pre-commit-Hook und in CI ([`.github/workflows/trylayer.yml`](.github
 
 ---
 
-Hinweis: `src/`, `contracts/runtime.schema.yaml`, `tests/`, `docs/`,
-`mkdocs.yml` und `pyproject.toml` sind aktuell noch Reste des
-`diamond-setup`-Scaffolds, aus dem dieses Repo ursprünglich erzeugt wurde.
-Sie gehören fachlich nicht zu diesem Planungsprojekt — siehe `STATUS.md`,
-offener Punkt "Bereinigung".
+## KI als Schnittstelle
+
+Wenn Ideen oder Vorschläge von anderen Systemen (anderen LLMs, Tools,
+Menschen ausserhalb des Kernteams) eingebracht werden sollen, läuft das
+über ein KI-System (z.B. Claude), das den Vorschlag erst Repo-konform
+nach Trylayer-Format aufbereitet (siehe `AGENTS.md`), bevor er
+eingereicht wird. Das hält die Eingangsschwelle für Externe niedrig,
+ohne die Formatstrenge des Repos aufzuweichen.
+
+---
+
+Hinweis: `_diamond-setup-legacy/` enthaelt Reste des `diamond-setup`-
+Scaffolds, aus dem dieses Repo ursprünglich erzeugt wurde (Python-
+Projektgenerator, fachlich nicht Teil dieses Planungsprojekts). Sie
+wurden dorthin verschoben, um den Repo-Root sauber zu halten, bleiben
+aber per Git-Historie nachvollziehbar.

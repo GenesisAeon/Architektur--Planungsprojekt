@@ -204,9 +204,33 @@ def check_derived_from_exists(entries: list[Entry], errors: list[str]) -> None:
                 )
 
 
+def check_entry_yaml(errors: list[str]) -> None:
+    entry_path = ROOT / "ENTRY.yaml"
+    if not entry_path.exists():
+        errors.append("ENTRY.yaml fehlt — Regel 12 verlangt genau einen Standardweg.")
+        return
+    try:
+        doc = yaml.safe_load(entry_path.read_text(encoding="utf-8")) or {}
+    except yaml.YAMLError as exc:
+        errors.append(f"ENTRY.yaml ist kein gueltiges YAML: {exc}")
+        return
+    for step in doc.get("standardweg") or []:
+        datei = step.get("datei", "")
+        if not datei:
+            errors.append(f"ENTRY.yaml: Schritt {step.get('schritt')} hat kein 'datei'-Feld")
+            continue
+        if not (ROOT / datei).exists():
+            errors.append(
+                f"ENTRY.yaml: Schritt {step.get('schritt')} verweist auf nicht "
+                f"existierenden Pfad '{datei}' (Regel 12)"
+            )
+
+
 def main() -> int:
     errors: list[str] = []
     entries = collect_entries(errors)
+
+    check_entry_yaml(errors)
 
     for entry in entries:
         check_required_fields(entry, errors)

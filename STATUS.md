@@ -1,5 +1,9 @@
 # Ist-Stand
 
+> **Standardweg:** [`ENTRY.yaml`](ENTRY.yaml) ist der verbindliche
+> Einstiegspunkt (Regel 12). Dieses Dokument ist Schritt 2 davon — lies
+> danach `PRINCIPLES.md` und `AGENTS.md`.
+
 Letztes Update: 2026-06-19
 
 ## Phase
@@ -48,11 +52,11 @@ Dieses Repo ist NICHT das Monorepo selbst. Es ist der Denkraum davor.
       Warum Diamond Interface als Protocol?) — `adr/` ist aktuell leer
 - [ ] Core-Kandidaten durch den Genesis-Blindtest schicken — `genesis-scope`
       als erster Testfall liegt bereits als Idee in `01_Ideen/claude/` vor
-- [ ] Bereinigung dieses Repos selbst: `src/`, `contracts/runtime.schema.yaml`,
-      `scripts/` (Diamond-spezifische Skripte), `tests/`, `docs/`,
-      `mkdocs.yml`, `pyproject.toml` sind aktuell noch unveraendertes
-      diamond-setup-Scaffold-Leftover und gehoeren fachlich nicht in
-      dieses Planungsrepo
+- [x] Bereinigung dieses Repos selbst: diamond-setup-Scaffold-Leftover
+      (`src/`, `tests/`, `docs/`, `mkdocs.yml`, `pyproject.toml`,
+      `contracts/runtime.schema.yaml` u.a.) nach `_diamond-setup-legacy/`
+      verschoben (Git-Historie erhalten); Repo-Root enthaelt jetzt nur
+      noch Planungsprojekt-relevante Inhalte
 
 ## Naechster konkreter Schritt
 

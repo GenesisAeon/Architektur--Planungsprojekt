@@ -1,0 +1,19 @@
+{
+  "id": "regel-12-ein-standardweg",
+  "title": "Es gibt genau einen Standardweg ins Repo",
+  "kategorie": "regel",
+  "status": "core",
+  "epistemic_status": "validated",
+  "author": {
+    "name": "Johann",
+    "typ": "human"
+  },
+  "created": "2026-06-19",
+  "related_adr": [],
+  "depends_on": [],
+  "blindtest_passed": null,
+  "content": {
+    "summary": "ENTRY.yaml ist der einzige verbindliche Einstiegspunkt. README.md, AGENTS.md und STATUS.md verweisen alle zuerst auf ENTRY.yaml, damit der Lesepfad unabhaengig vom Einstiegspunkt eindeutig ist.",
+    "quelle": "PRINCIPLES.md"
+  }
+}

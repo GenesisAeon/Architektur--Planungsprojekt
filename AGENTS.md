@@ -1,13 +1,13 @@
 # AGENTS.md — Regeln fuer KI-Systeme in diesem Repo
 
+> **Standardweg:** [`ENTRY.yaml`](ENTRY.yaml) ist der verbindliche
+> Einstiegspunkt (Regel 12). Dieses Dokument ist Schritt 4 davon. Wenn du
+> direkt hier gelandet bist, ohne `ENTRY.yaml` gesehen zu haben, lies es
+> trotzdem zuerst — es zeigt den vollstaendigen Pfad inkl. `STATUS.md`
+> und `PRINCIPLES.md`, die du vor diesem Dokument lesen solltest.
+
 Du liest dieses Repo wahrscheinlich, um Architektur-Vorschlaege fuer das
 GenesisAeon-Oekosystem einzubringen oder den aktuellen Stand zu verstehen.
-Lies in dieser Reihenfolge:
-
-1. **`STATUS.md`** — wo stehen wir gerade (Phase, offene Fragen, was laeuft parallel)
-2. **`PRINCIPLES.md`** — die Verfassung, maschinell durchgesetzt, nicht verhandelbar ohne ADR
-3. Dieses Dokument — wie du konkret beitraegst
-4. Bei Bedarf: `Planungsdiskurse/` — historischer Diskurs, NICHT die aktuelle Wahrheit
 
 ## Was dieses Repo ist
 
@@ -27,7 +27,7 @@ danach.
 ## Ordnerstruktur
 
 ```
-00_Regeln/          Die 10 Architekturprinzipien als Trylayer-Eintraege (status: core)
+00_Regeln/          Die 12 Architekturprinzipien als Trylayer-Eintraege (status: core)
 01_Ideen/           Roh-Vorschlaege, jede KI legt hier eigene Unterordner an
 02_Plaene/          Ideen, die in konkrete Planung uebergegangen sind
 03_Architektur/     Kanonisierte Architekturentscheidungen (braucht ADR)
@@ -47,6 +47,12 @@ Vorstufen aufbauen; nutze dafuer `derived_from` statt `depends_on`.
 
 ## Wie du einen Vorschlag einreichst
 
+Externe Systeme (andere LLMs, Tools, Menschen ausserhalb des Kernteams)
+reichen Vorschlaege nicht direkt als rohe Trylayer-Dateien ein, sondern
+typischerweise als formloser Text/Chat-Export an eine KI-Schnittstelle
+(z.B. Claude), die den Inhalt zuerst nach Trylayer transformiert. Wer
+selbst direkt im Repo arbeitet, folgt direkt den Schritten unten:
+
 1. Lege in `01_Ideen/<dein-system-name>/` ein neues Trylayer-Tripel an:
    `<slug>.yaml`, `<slug>.ai.json`, `<slug>.md` — Schema in
    `contracts/trylayer.schema.yaml`.
@@ -63,6 +69,37 @@ Vorstufen aufbauen; nutze dafuer `derived_from` statt `depends_on`.
    Ein leeres `content: {}` waere technisch gueltig — die Konvention oben
    ist (noch) nicht maschinell erzwungen.
 5. Fuehre `python scripts/validate_trylayer.py` aus, bevor du fertig bist.
+
+## Rohformat fuer externe Einreichungen
+
+Ein externes System muss das Trylayer-Format nicht selbst kennen. Es
+reicht ein einzelnes Markdown-Dokument mit diesem minimalen Kopf, das an
+die KI-Schnittstelle uebergeben wird:
+
+```markdown
+---
+quelle_system: <Name des einreichenden Systems/Person>
+datum: <YYYY-MM-DD>
+---
+
+## Problem
+...
+
+## Vorschlag
+...
+
+## Erwartetes Ergebnis
+...
+
+## Alternativen betrachtet (optional)
+...
+```
+
+Die KI-Schnittstelle uebernimmt daraus `author.system`/`author.name` und
+`created`, fuellt `epistemic_status` ehrlich aus (im Zweifel
+`hypothesis`), waehlt Ordner/`kategorie`/`status` nach Regel 2 und
+erzeugt das vollstaendige Trylayer-Tripel in `01_Ideen/`. Das Rohformat
+selbst wird nicht im Repo abgelegt — nur das daraus erzeugte Tripel.
 
 ## Der Genesis-Blindtest (Regel 6)
 
