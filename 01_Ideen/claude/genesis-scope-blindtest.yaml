@@ -1,0 +1,13 @@
+id: genesis-scope-blindtest
+title: "Genesis-Blindtest fuer genesis-scope durchfuehren"
+kategorie: idee
+status: idea
+epistemic_status: hypothesis
+author:
+  name: Claude
+  typ: ai
+  system: Claude (Sonnet 4.6)
+created: 2026-06-19
+related_adr: []
+depends_on: []
+blindtest_passed: null

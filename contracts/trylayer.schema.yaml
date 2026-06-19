@@ -1,0 +1,120 @@
+# Trylayer Entry Schema — Architektur-Planungsprojekt
+#
+# Jede Wissenseinheit im Repo (Idee, Plan, Architekturentscheidung, Programm-
+# spezifikation, Hilfsprogramm, Sprach-/Begriffsdefinition) wird als Tripel
+# aus drei Dateien mit identischem Slug abgelegt:
+#
+#   <slug>.yaml      Index/Metadaten — schnelle Navigation, von diesem Schema validiert
+#   <slug>.ai.json    AI-Vollversion — vollstaendig strukturierter Inhalt fuer Maschinen
+#   <slug>.md         Menschenversion — Prosa, Begruendung, Kontext
+#
+# Fehlt eine der drei Dateien, ist das Tripel ungueltig (siehe scripts/validate_trylayer.py).
+# yaml und json teilen denselben Metadaten-Kopf (dieses Schema); json enthaelt
+# zusaetzlich das Feld "content" mit dem vollstaendigen strukturierten Inhalt.
+
+$schema: "http://json-schema.org/draft-07/schema#"
+$id: "https://github.com/GenesisAeon/Architektur--Planungsprojekt/contracts/trylayer.schema.yaml"
+title: "Trylayer Entry"
+type: object
+required:
+  - id
+  - title
+  - kategorie
+  - status
+  - epistemic_status
+  - created
+  - author
+additionalProperties: true
+
+properties:
+  id:
+    type: string
+    pattern: "^[a-z0-9][a-z0-9-]*$"
+    description: Eindeutiger Slug, identisch mit Dateiname ohne Endung.
+
+  title:
+    type: string
+    minLength: 3
+
+  kategorie:
+    type: string
+    enum: ["regel", "idee", "plan", "architektur", "programm", "hilfsprogramm", "sprache", "adr"]
+    description: Muss zum Ordner passen (siehe PRINCIPLES.md, Regel 2).
+
+  status:
+    type: string
+    enum: ["idea", "draft", "review", "accepted", "core", "deprecated", "archived"]
+    description: >
+      Reifegrad. Rang fuer die Abhaengigkeitsregel (Regel 4):
+      idea=0 < draft=1 < review=2 < accepted=3 < core=4.
+      deprecated/archived sind von der Rangregel ausgenommen.
+
+  epistemic_status:
+    type: string
+    enum: ["validated", "measured", "derived", "hypothesis", "speculative"]
+    description: Pflichtfeld. Siehe PRINCIPLES.md, Regel 5.
+
+  author:
+    type: object
+    required: ["name", "typ"]
+    properties:
+      name:
+        type: string
+      typ:
+        type: string
+        enum: ["human", "ai"]
+      system:
+        type: string
+        description: "Bei typ=ai: z.B. Claude, ChatGPT, Gemini, Grok, MSCopilot."
+
+  created:
+    type: string
+    format: date
+
+  adr_number:
+    type: string
+    pattern: "^ADR-[0-9]{3,}$"
+    description: >
+      Pflichtfeld NUR fuer kategorie=adr. Eindeutige ADR-Nummer, ueber die
+      andere Eintraege per related_adr referenzieren. Getrennt vom Feld
+      "id" (das bleibt fuer ADRs ein normaler lowercase-Slug, z.B.
+      "adr-001-warum-monorepo"), damit das ID-Pattern nicht mit dem
+      ADR-Nummernformat kollidiert.
+
+  related_adr:
+    type: array
+    items:
+      type: string
+      pattern: "^ADR-[0-9]{3,}$"
+    description: >
+      Pflicht (nicht-leer) fuer kategorie=architektur, programm, hilfsprogramm
+      mit status in [accepted, core]. Siehe Regel 3. Verweist auf adr_number
+      eines Eintrags in adr/, nicht auf dessen id.
+
+  depends_on:
+    type: array
+    items:
+      type: string
+    description: >
+      Liste von Trylayer-IDs einer HARTEN fachlichen/architektonischen
+      Abhaengigkeit. Rang-Pruefung (Regel 4) gilt NUR fuer Eintraege mit
+      kategorie in [architektur, programm, hilfsprogramm] — dort darf eine
+      Abhaengigkeit keinen niedrigeren Status-Rang haben. Fuer kategorie in
+      [idee, plan] wird depends_on nicht rang-geprueft, da Plaene bewusst
+      auf unreifen Ideen aufbauen duerfen.
+
+  derived_from:
+    type: array
+    items:
+      type: string
+    description: >
+      Liste von Trylayer-IDs, aus denen dieser Eintrag synthetisiert wurde
+      (z.B. ein Plan, der mehrere Ideen zusammenfuehrt). Reine Herkunfts-
+      Referenz, KEINE Rang-Pruefung — das ist der normale Idee-zu-Plan-Weg.
+
+  blindtest_passed:
+    type: ["boolean", "null"]
+    description: >
+      Ergebnis des Genesis-Blindtests (siehe PRINCIPLES.md, Regel 6).
+      null = noch nicht getestet. Pflicht-Pruefung vor status=accepted bei
+      kategorie in [architektur, programm].

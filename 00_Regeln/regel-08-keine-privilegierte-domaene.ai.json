@@ -1,0 +1,19 @@
+{
+  "id": "regel-08-keine-privilegierte-domaene",
+  "title": "Keine privilegierte Domaene",
+  "kategorie": "regel",
+  "status": "core",
+  "epistemic_status": "validated",
+  "author": {
+    "name": "Johann",
+    "typ": "human"
+  },
+  "created": "2026-06-19",
+  "related_adr": [],
+  "depends_on": [],
+  "blindtest_passed": null,
+  "content": {
+    "summary": "Aufnahme in den Core entscheidet ausschliesslich ueber Regel 3, 4 und 6 — nicht ueber Herkunft oder Begeisterung.",
+    "quelle": "PRINCIPLES.md"
+  }
+}

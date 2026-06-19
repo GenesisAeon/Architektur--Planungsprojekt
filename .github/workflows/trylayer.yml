@@ -1,0 +1,21 @@
+name: Trylayer Validation
+
+on:
+  push:
+    branches: ["main", "master", "claude/**"]
+  pull_request:
+    branches: ["main", "master"]
+
+jobs:
+  validate:
+    name: Validate Trylayer entries
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install PyYAML
+        run: pip install pyyaml
+      - name: Run validator
+        run: python scripts/validate_trylayer.py

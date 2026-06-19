@@ -1,0 +1,19 @@
+{
+  "id": "regel-07-core-ohne-llm-internet",
+  "title": "Core funktioniert ohne LLM und ohne Internet",
+  "kategorie": "regel",
+  "status": "core",
+  "epistemic_status": "hypothesis",
+  "author": {
+    "name": "Johann",
+    "typ": "human"
+  },
+  "created": "2026-06-19",
+  "related_adr": [],
+  "depends_on": [],
+  "blindtest_passed": null,
+  "content": {
+    "summary": "kategorie=programm mit status=core darf keine Laufzeitabhaengigkeit zu einem LLM oder einer Netzwerkverbindung haben. KI-gestuetzte Features sind immer hilfsprogramm.",
+    "quelle": "PRINCIPLES.md"
+  }
+}

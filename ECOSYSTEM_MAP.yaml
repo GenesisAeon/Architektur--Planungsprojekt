@@ -1,0 +1,462 @@
+# Repository-Kartierung der 48 GenesisAeon-Pakete
+#
+# Kein Trylayer-Eintrag (keine Entscheidung, keine Idee) — reine
+# Bestandsaufnahme/Registry-Daten, abgeleitet aus der v1.0.0-Sprint-Roadmap
+# (siehe STATUS.md, "Was noch offen ist": Repository-Kartierung).
+# Quelle: Unified-Mandala-Oekosystem (Regel 9 — Quelle, nicht Ziel). Diese
+# Datei wird nicht von scripts/validate_trylayer.py geprueft.
+#
+# tier: T0-T16 = Release-Reihenfolge laut Dependency-Graph (T0 zuerst).
+#       "released" = bereits vor T0 freigegeben (entropy-table,
+#       implosive-genesis); "n/a" = genesis-os, der Orchestrator selbst.
+# depends_on: GenesisAeon-interne Paketnamen (ohne Versionsfloor), aus
+#       "DEPENDENCY PINS TO UPDATE" der Roadmap.
+# diamond: ob das Paket das Diamond-Interface implementiert
+#       (run_cycle, get_crep_state, get_utac_state, get_phase_events,
+#       to_zenodo_record) — relevant fuer einen spaeteren Genesis-Blindtest.
+
+erstellt: "2026-06-19"
+quelle: "v1.0.0-Sprint-Roadmap (von Johann uebergeben)"
+anzahl_pakete: 48
+
+pakete:
+  - repo: entropy-table
+    package_id: P-ENTROPY
+    domain: "relational entropy atlas engine"
+    gamma: null
+    diamond: false
+    tier: released
+    target_version: "2.0.0"
+    depends_on: []
+    hinweis: "v1.0.0/v1.0.1 nicht frei wegen bestehender hoeherer Tags"
+
+  - repo: implosive-genesis
+    package_id: P-IMPLOSIVE
+    domain: "implosive field dynamics engine"
+    gamma: null
+    diamond: false
+    tier: released
+    target_version: "1.0.0"
+    depends_on: []
+
+  - repo: diamond-setup
+    package_id: P-INFRA-1
+    domain: "ecosystem infrastructure / template scaffold"
+    gamma: null
+    diamond: false
+    tier: T0
+    target_version: "2.0.0"
+    depends_on: []
+    hinweis: "v1.0.0 bereits durch frueheren Scaffold-Release belegt; siehe _diamond-setup-legacy/ in diesem Repo"
+
+  - repo: genesis-scope
+    package_id: P39
+    domain: "semantic cartography / human-AI navigation layer"
+    gamma: null
+    diamond: true
+    tier: T0
+    target_version: "1.0.0"
+    depends_on: []
+    hinweis: "Testfall fuer Genesis-Blindtest, siehe 01_Ideen/claude/genesis-scope-blindtest"
+
+  - repo: Feldtheorie
+    package_id: P-FIELD-DE
+    domain: "field theory / Lagrangian core (German)"
+    gamma: null
+    diamond: false
+    tier: T0
+    target_version_github_tag: "13.0.0"
+    target_version_pypi: "6.0.0"
+    depends_on: []
+    hinweis: "Split-Versionierung; moeglicher Duplikat-Fall mit fieldtheory (T4)"
+
+  - repo: HexaAgent
+    package_id: P-HEXA
+    domain: "agent framework (6-role orchestration)"
+    gamma: null
+    diamond: false
+    tier: T0
+    target_version: "1.0.0"
+    depends_on: []
+
+  - repo: afet-tensions
+    package_id: P34
+    domain: "cosmology / Hubble & S8 tensions"
+    gamma: null
+    diamond: true
+    tier: T0
+    target_version: "1.0.0"
+    depends_on: []
+
+  - repo: amazon-utac
+    package_id: P19
+    domain: "ecology / rainforest savannisation"
+    gamma: 0.116
+    diamond: true
+    tier: T0
+    target_version: "1.0.0"
+    depends_on: []
+
+  - repo: amoc-utac
+    package_id: P18
+    domain: "oceanography / AMOC tipping"
+    gamma: 0.251
+    diamond: true
+    tier: T0
+    target_version: "1.0.0"
+    depends_on: []
+
+  - repo: beta-clustering-utac
+    package_id: P32
+    domain: "cross-domain meta-analysis / Phi^(1/3) scaling"
+    gamma: null
+    diamond: true
+    tier: T0
+    target_version: "1.0.0"
+    depends_on: []
+
+  - repo: cellular-genesis
+    package_id: P25
+    domain: "cell biology / apoptosis ATP threshold"
+    gamma: 0.090
+    diamond: true
+    tier: T0
+    target_version: "1.0.0"
+    depends_on: []
+
+  - repo: diffusive-routing
+    package_id: P30
+    domain: "network science / entropy-minimizing routing"
+    gamma: 0.443
+    diamond: false
+    tier: T0
+    target_version: "1.0.0"
+    depends_on: []
+
+  - repo: eml-utac-bridge
+    package_id: P37
+    domain: "mathematical foundations / EML operator"
+    gamma: null
+    diamond: true
+    tier: T0
+    target_version: "1.0.0"
+    depends_on: []
+
+  - repo: epi-sigillin
+    package_id: P28
+    domain: "epigenetics / runtime parameter mutation"
+    gamma: null
+    gamma_hinweis: "dynamisch, moduliert andere Gamma-Werte"
+    diamond: true
+    tier: T0
+    target_version: "1.0.0"
+    depends_on: []
+
+  - repo: genesis-q4-core
+    package_id: P-Q4
+    domain: "Q4 16-state space / Gray-code / Tesseract topology"
+    gamma: null
+    diamond: false
+    tier: T0
+    target_version: "1.0.0"
+    depends_on: []
+
+  - repo: hikari-ledger
+    package_id: P29
+    domain: "distributed systems / Proof-of-Resonance consensus"
+    gamma: 0.367
+    diamond: false
+    tier: T0
+    target_version: "1.0.0"
+    depends_on: []
+
+  - repo: neural-avalanche-utac
+    package_id: P20
+    domain: "neuroscience / cortical criticality"
+    gamma: 0.251
+    diamond: true
+    tier: T0
+    target_version: "1.0.0"
+    depends_on: []
+
+  - repo: phaethon-chimera
+    package_id: P35
+    domain: "asteroid dynamics / frustrated systems & chimera states"
+    gamma: 0.165
+    diamond: true
+    tier: T0
+    target_version: "1.0.0"
+    depends_on: []
+
+  - repo: phi-scaling-validator
+    package_id: P38
+    domain: "cross-domain meta-analysis / Phi^(1/3) validation"
+    gamma: null
+    diamond: true
+    tier: T0
+    target_version: "1.0.0"
+    depends_on: []
+
+  - repo: quantum-genesis
+    package_id: P24
+    domain: "quantum physics / decoherence threshold"
+    gamma: 0.050
+    diamond: true
+    tier: T0
+    target_version: "1.0.0"
+    depends_on: []
+
+  - repo: sa-sv-duality
+    package_id: P36
+    domain: "mathematical physics / entropy duality (foundational)"
+    gamma: null
+    diamond: true
+    tier: T0
+    target_version: "1.0.0"
+    depends_on: []
+
+  - repo: sandpile-utac
+    package_id: P22
+    domain: "statistical mechanics / self-organized criticality"
+    gamma: "0.296 (BTW) / 0.376 (Manna)"
+    diamond: true
+    tier: T0
+    target_version: "1.0.0"
+    depends_on: []
+
+  - repo: seismic-utac
+    package_id: P23
+    domain: "geophysics / Gutenberg-Richter SOC"
+    gamma: 0.200
+    diamond: true
+    tier: T0
+    target_version: "1.0.0"
+    depends_on: []
+
+  - repo: solar-flare-utac
+    package_id: P21
+    domain: "heliophysics / magnetic avalanche"
+    gamma: 0.014
+    diamond: true
+    tier: T0
+    target_version: "1.0.0"
+    depends_on: []
+
+  - repo: spiking-aeon
+    package_id: P26
+    domain: "neuromorphic hardware / SNN bridge (Loihi 2)"
+    gamma: 0.150
+    diamond: true
+    tier: T0
+    target_version: "1.0.0"
+    depends_on: []
+
+  - repo: theta-resonance
+    package_id: P27
+    domain: "cognitive neuroscience / brain oscillation bands"
+    gamma: 0.251
+    diamond: true
+    tier: T0
+    target_version: "1.0.0"
+    depends_on: []
+
+  - repo: unified-mandala
+    package_id: P-MANDALA
+    domain: "orchestration core (UI, CREP, agents)"
+    gamma: null
+    diamond: "partial (1/5, hat run_cycle)"
+    tier: T0
+    target_version: "1.0.0"
+    depends_on: []
+
+  - repo: vrig-cosmological
+    package_id: P31
+    domain: "information geometry / cosmological velocity"
+    gamma: null
+    diamond: true
+    tier: T0
+    target_version: "1.0.0"
+    depends_on: []
+
+  - repo: cygnus-jet-utac
+    package_id: P17
+    domain: "astrophysics / relativistic jets"
+    gamma: 0.046
+    diamond: true
+    tier: T0
+    target_version: "1.0.0"
+    depends_on: ["genesis-os"]
+
+  - repo: entropy-governance
+    package_id: P-GOV-1
+    domain: "governance / entropy-based ethics gate"
+    gamma: null
+    diamond: false
+    tier: T1
+    target_version: "1.0.0"
+    depends_on: ["implosive-genesis"]
+
+  - repo: unified-mandala-Demo
+    package_id: P-MANDALA-DEMO
+    domain: "demo/visualization fuer unified-mandala"
+    gamma: null
+    diamond: false
+    tier: T1
+    target_version: "1.0.0"
+    depends_on: ["unified-mandala"]
+
+  - repo: medium-modulation
+    package_id: P-MEDIUM
+    domain: "fractal modulation (S_A/S_V -> coherent emergence)"
+    gamma: null
+    diamond: false
+    tier: T2
+    target_version: "1.0.0"
+    depends_on: ["entropy-governance", "entropy-table", "implosive-genesis"]
+
+  - repo: cosmic-moment
+    package_id: P-MOMENT
+    domain: "discrete cosmic collapse events"
+    gamma: null
+    diamond: false
+    tier: T3
+    target_version: "1.0.0"
+    depends_on: ["entropy-governance", "entropy-table", "implosive-genesis", "medium-modulation"]
+
+  - repo: fieldtheory
+    package_id: P-FIELD-EN
+    domain: "field theory / Lagrangian core (English)"
+    gamma: null
+    diamond: false
+    tier: T4
+    target_version: "1.0.0"
+    depends_on: ["cosmic-moment", "entropy-governance", "entropy-table", "implosive-genesis", "medium-modulation"]
+    hinweis: "moeglicher Duplikat-Fall mit Feldtheorie (T0, deutsch)"
+
+  - repo: sigillin
+    package_id: P-SIGIL
+    domain: "semantic state anchors / symbolic interface"
+    gamma: null
+    diamond: false
+    tier: T5
+    target_version: "1.0.0"
+    depends_on: ["cosmic-moment", "entropy-governance", "entropy-table", "fieldtheory", "implosive-genesis", "medium-modulation"]
+
+  - repo: utac-core
+    package_id: P-CORE
+    domain: "UTAC base engine (logistic ODE, CREP tensor core)"
+    gamma: null
+    diamond: false
+    tier: T6
+    target_version: "1.0.0"
+    depends_on: ["cosmic-moment", "entropy-governance", "entropy-table", "implosive-genesis", "medium-modulation", "sigillin"]
+
+  - repo: mandala-visualize
+    package_id: P-MANDALA-VIZ
+    domain: "mandala layout & fractal rendering"
+    gamma: null
+    diamond: false
+    tier: T7
+    target_version: "1.0.0"
+    depends_on: ["cosmic-moment", "entropy-governance", "entropy-table", "implosive-genesis", "medium-modulation", "sigillin", "utac-core"]
+
+  - repo: implosive-origin-utac
+    package_id: P33
+    domain: "cosmology (speculative) / pre-inflation dark matter"
+    gamma: null
+    diamond: true
+    tier: T7
+    target_version: "1.0.0"
+    depends_on: ["utac-core", "implosive-genesis"]
+
+  - repo: sonification
+    package_id: P-SONIC
+    domain: "audio mapping of CREP/UTAC states"
+    gamma: null
+    diamond: false
+    tier: T8
+    target_version: "1.0.0"
+    depends_on: ["cosmic-moment", "entropy-governance", "entropy-table", "fieldtheory", "implosive-genesis", "mandala-visualize", "medium-modulation", "sigillin", "utac-core"]
+
+  - repo: climate-dashboard
+    package_id: P-CLIMATE-UI
+    domain: "ERA5 climate dashboard / UTAC visualization"
+    gamma: null
+    diamond: false
+    tier: T9
+    target_version: "1.0.0"
+    depends_on: ["cosmic-moment", "entropy-governance", "entropy-table", "fieldtheory", "implosive-genesis", "mandala-visualize", "medium-modulation", "sigillin", "sonification", "utac-core"]
+
+  - repo: mirror-machine
+    package_id: P-MIRROR
+    domain: "phase-transition detection / state mirroring"
+    gamma: null
+    diamond: false
+    tier: T10
+    target_version: "1.0.0"
+    depends_on: ["climate-dashboard", "cosmic-moment", "entropy-governance", "entropy-table", "fieldtheory", "implosive-genesis", "mandala-visualize", "medium-modulation", "sigillin", "sonification", "utac-core"]
+
+  - repo: cosmic-web
+    package_id: P-COSMICWEB
+    domain: "cosmic web / GADGET-4 benchmark"
+    gamma: null
+    diamond: false
+    tier: T11
+    target_version: "1.0.0"
+    depends_on: ["climate-dashboard", "cosmic-moment", "entropy-governance", "entropy-table", "fieldtheory", "implosive-genesis", "mandala-visualize", "medium-modulation", "mirror-machine", "sigillin", "sonification", "utac-core"]
+
+  - repo: AdvancedWeightingSystems
+    package_id: P-WEIGHT
+    domain: "meta-container / neural-statistical CREP weighting"
+    gamma: null
+    diamond: false
+    tier: T12
+    target_version: "1.0.0"
+    depends_on: ["cosmic-web", "entropy-governance", "mandala-visualize", "mirror-machine", "sigillin", "utac-core"]
+
+  - repo: aeon-ai
+    package_id: P-AI-CORE
+    domain: "AI core engine / Mirror-Machine self-reflection"
+    gamma: null
+    diamond: false
+    tier: T13
+    target_version: "1.0.0"
+    depends_on: ["AdvancedWeightingSystems", "cosmic-web", "entropy-governance", "fieldtheory", "mandala-visualize", "mirror-machine", "sigillin", "utac-core"]
+    hinweis: "hoechster Tier, von dem genesis-os selbst abhaengt"
+
+  - repo: universums-sim
+    package_id: P-COSMIC-SIM
+    domain: "cosmic emergence simulator"
+    gamma: null
+    diamond: false
+    tier: T14
+    target_version: "1.0.0"
+    depends_on: ["AdvancedWeightingSystems", "aeon-ai", "climate-dashboard", "cosmic-web", "entropy-governance", "entropy-table", "fieldtheory", "genesis-os", "implosive-genesis", "mandala-visualize", "mirror-machine", "sigillin", "sonification", "utac-core"]
+
+  - repo: worldview
+    package_id: P-GOV-3
+    domain: "governance / philosophical-ethical CREP evaluation"
+    gamma: null
+    diamond: false
+    tier: T15
+    target_version: "1.0.0"
+    depends_on: ["aeon-ai", "entropy-governance", "genesis-os", "sigillin", "unified-mandala", "universums-sim", "utac-core"]
+
+  - repo: gemeinwohl
+    package_id: P-GOV-2
+    domain: "governance / common-good normative scoring"
+    gamma: null
+    diamond: false
+    tier: T16
+    target_version: "1.0.0"
+    depends_on: ["aeon-ai", "entropy-governance", "genesis-os", "sigillin", "unified-mandala", "universums-sim", "worldview"]
+
+  - repo: genesis-os
+    package_id: P-CORE-OS
+    domain: "ecosystem orchestrator"
+    gamma: null
+    diamond: true
+    tier: "n/a"
+    target_version: "1.0.0 (bereits released; 1.0.1-Patch fuer Dependency-Pin-Sync nach T13 geplant)"
+    depends_on: ["entropy-table"]
+    hinweis: "einziger Orchestrator; spaeter erster Kandidat fuer Genesis-Blindtest + 03_Architektur/-Eintrag mit related_adr: [ADR-001]"

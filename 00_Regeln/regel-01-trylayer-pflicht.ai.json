@@ -1,0 +1,19 @@
+{
+  "id": "regel-01-trylayer-pflicht",
+  "title": "Trylayer-Pflicht",
+  "kategorie": "regel",
+  "status": "core",
+  "epistemic_status": "validated",
+  "author": {
+    "name": "Johann",
+    "typ": "human"
+  },
+  "created": "2026-06-19",
+  "related_adr": [],
+  "depends_on": [],
+  "blindtest_passed": null,
+  "content": {
+    "summary": "Jede Wissenseinheit existiert ausschliesslich als Dreifach-Datei (.yaml, .ai.json, .md) mit identischem Slug. Ein unvollstaendiges Tripel ist ungueltig, ohne Ausnahme.",
+    "quelle": "PRINCIPLES.md"
+  }
+}

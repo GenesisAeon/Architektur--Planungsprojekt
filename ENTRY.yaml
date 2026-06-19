@@ -1,0 +1,50 @@
+# ENTRY.yaml — Der einzige verbindliche Einstiegspunkt fuer dieses Repo.
+#
+# Jede KI (und jeder Mensch), die/der dieses Repo zum ersten Mal liest,
+# folgt dieser Reihenfolge — unabhaengig davon, bei welcher Datei sie/er
+# zufaellig gelandet ist. Siehe PRINCIPLES.md, Regel 12.
+#
+# Format: reine Daten, absichtlich ohne Prosa, damit eine KI mit einem
+# einzigen Parse-Schritt den vollstaendigen Pfad kennt.
+
+standardweg:
+  - schritt: 1
+    datei: "README.md"
+    zweck: "Was ist dieses Repo, was ist es nicht."
+    ergebnis: "Grundverstaendnis des Zwecks (Planungsrepo, kein Code-Repo)."
+
+  - schritt: 2
+    datei: "STATUS.md"
+    zweck: "Ist-Stand: Phase, was bereits umgesetzt ist, was offen ist."
+    ergebnis: "Weisst, in welcher Phase sich das Projekt gerade befindet."
+
+  - schritt: 3
+    datei: "PRINCIPLES.md"
+    zweck: "Die Verfassung — 12 nummerierte, maschinell durchgesetzte Regeln."
+    ergebnis: "Kennst die Regeln, die jeden Beitrag binden."
+
+  - schritt: 4
+    datei: "AGENTS.md"
+    zweck: "Konkrete Anleitung: wie du als KI einen Vorschlag einreichst."
+    ergebnis: "Weisst, wie ein gueltiger Beitrag aussieht und wo er hingehoert."
+
+  - schritt: 5
+    datei: "00_Regeln/"
+    zweck: "Die 12 Regeln als einzeln referenzierbare Trylayer-Eintraege."
+    ergebnis: "Kannst eine einzelne Regel direkt zitieren (per id), statt PRINCIPLES.md zu zitieren."
+    optional: true
+
+  - schritt: 6
+    datei: "Planungsdiskurse/"
+    zweck: "Historischer Multi-AI-Diskurs, aus dem dieses Repo entstanden ist."
+    ergebnis: "Kontext fuer 'warum' — NICHT die aktuelle Wahrheit, siehe Regel 9."
+    optional: true
+
+danach:
+  beitrag_einreichen: "01_Ideen/<dein-system-name>/<slug>.{yaml,ai.json,md} anlegen, siehe AGENTS.md."
+  validieren: "python scripts/validate_trylayer.py"
+  bei_unklarheit: "Frage den Maintainer (Johann), bevor du status hoeher als 'idea'/'draft' setzt."
+
+ungueltig_wenn:
+  - "Ein Schritt 1-4 wird ausgelassen, bevor ein Beitrag erstellt wird."
+  - "Status accepted/core wird vergeben, ohne PRINCIPLES.md gelesen zu haben."
