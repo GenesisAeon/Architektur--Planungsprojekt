@@ -46,8 +46,13 @@ Dieses Repo ist NICHT das Monorepo selbst. Es ist der Denkraum davor.
 
 ## Was noch offen ist
 
-- [ ] Repository-Kartierung der 48 bestehenden Pakete
-- [ ] Abhaengigkeits-Kartierung (echte Kopplung, nicht nur erklaerte)
+- [x] Repository-Kartierung der 48 bestehenden Pakete — siehe
+      [`ECOSYSTEM_MAP.yaml`](ECOSYSTEM_MAP.yaml), abgeleitet aus der
+      v1.0.0-Sprint-Roadmap (Tier, PACKAGE_ID, Domain, Gamma,
+      Diamond-Interface-Status, Zielversion je Paket)
+- [x] Abhaengigkeits-Kartierung (echte Kopplung, nicht nur erklaerte) —
+      ebenfalls in `ECOSYSTEM_MAP.yaml` (`depends_on` je Paket, T0-T16
+      topologisch sortiert)
 - [x] Erstes echtes ADR geschrieben: `ADR-001-warum-monorepo`
       (Zwei-Koerper-Trennung Unified-Mandala vs. Genesis Core/UTAC Core)
 - [ ] Weitere ADRs (Warum uv-Workspace? Warum Diamond Interface als
