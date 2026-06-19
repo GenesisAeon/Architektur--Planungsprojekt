@@ -89,3 +89,23 @@ Kartografie.
   Kollaboration) bleiben Programme/Hilfsprogramme, die Wissensobjekte
   über den Core erzeugen und verknüpfen — sie definieren keine eigene
   primäre Entität.
+
+## Ergänzung: Terminologie und Schichtenfrage
+
+Ein zweiter Multi-AI-Diskurs (MSCopilot, 2026-06-19) bestätigt die hier
+getroffene Entscheidung unabhängig und schlägt zusätzlich die Begriffe
+**State Object** und **Concept Node** als gleichwertige, in anderen
+Communities geläufigere Bezeichnungen für dasselbe Konzept vor. Dieses
+ADR hält an "Wissensobjekt / semantischer Konzeptknoten" als
+Primärbegriff fest (Kontinuität mit der bisherigen Trylayer-Terminologie),
+akzeptiert "State Object" / "Concept Node" aber als Synonyme in
+Folgedokumenten.
+
+Derselbe Diskurs wirft zusätzlich die Frage auf, *wie* der Core organisiert
+sein muss, um Wissensobjekte zu verwalten (Kernel-artige Schichtung
+Core/Agenten/Anwendungen). Das ist eine eigenständige Entscheidung mit
+eigener Begründung und Alternativenabwägung und wird daher nicht hier,
+sondern in `ADR-002-drei-schichten-architektur` behandelt, das auf dieses
+ADR aufbaut (`related_adr: [ADR-000, ADR-001]`). Die zugrunde liegende
+Rohidee ist dokumentiert in
+`01_Ideen/copilot/copilot-semantisches-betriebssystem.md`.

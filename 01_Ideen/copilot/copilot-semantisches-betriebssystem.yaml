@@ -1,0 +1,14 @@
+id: copilot-semantisches-betriebssystem
+title: "Semantisches Betriebssystem: GenesisAeon als Kernel fuer Wissensobjekte"
+kategorie: idee
+status: idea
+epistemic_status: hypothesis
+author:
+  name: Copilot
+  typ: ai
+  system: MSCopilot
+created: "2026-06-19"
+related_adr: ["ADR-000", "ADR-002"]
+depends_on: []
+derived_from: []
+blindtest_passed: null

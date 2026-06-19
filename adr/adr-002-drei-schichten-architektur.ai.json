@@ -1,0 +1,47 @@
+{
+  "id": "adr-002-drei-schichten-architektur",
+  "title": "Drei-Schichten-Architektur: Kernel, Agenten/Perspektiven, Anwendungen",
+  "kategorie": "adr",
+  "adr_number": "ADR-002",
+  "status": "accepted",
+  "epistemic_status": "derived",
+  "author": {
+    "name": "Johann",
+    "typ": "human",
+    "system": null
+  },
+  "created": "2026-06-19",
+  "related_adr": ["ADR-000", "ADR-001"],
+  "depends_on": [],
+  "derived_from": ["copilot-semantisches-betriebssystem"],
+  "blindtest_passed": null,
+  "content": {
+    "kontext": "ADR-000 legt fest, dass die primaere Entitaet des Systems das Wissensobjekt (semantischer Konzeptknoten, synonym 'State Object' / 'Concept Node') ist, und dass Genesis Core / UTAC Core eine domaenenneutrale Infrastruktur fuer kollektive Orientierung ist, nicht eine einzelne Domaenenanwendung. Offen bleibt dabei, wie der Core intern organisiert sein muss, um Wissensobjekte zu verwalten, und wie sich Module wie genesis-scope, genesis-os und die rund 35 domaenenspezifischen Pakete aus 02_Plaene/genesis-core-scope.md zueinander verhalten. Ohne eine explizite Schichtung droht, dass Navigations-/Agentenlogik (z. B. genesis-scope als 'human-AI navigation layer') und reine Domaenenlogik (z. B. climate-dashboard) im selben Topf landen und Regel 7 (kein Core mit LLM-/Internet-Abhaengigkeit) und Regel 8 (keine privilegierte Domaene) schwer durchsetzbar werden.",
+    "entscheidung": "Das System wird in drei Schichten organisiert, die jeweils auf der darunterliegenden aufbauen, nicht umgekehrt: (1) Kernel/Core — verwaltet ausschliesslich Wissensobjekte und ihre Struktur (Zustand, Beziehungen/semantischer Graph, Versionierung, Event-Log, Governance-Regeln), deterministisch, ohne LLM-/Netzwerk-Abhaengigkeit; entspricht der Fundament-Kette aus genesis-core-scope.md plus genesis-os als duenne Orchestrierungsschicht. (2) Agenten & Perspektiven — interpretiert/navigiert Wissensobjekte ohne neue Kern-Datentypen einzufuehren (genesis-scope, Multi-Agent-/LLM-Adapter, Perspektivenraeume, Simulationen); darf LLM/Netzwerk nutzen und kann deshalb nie Core werden (Regel 7). (3) Anwendungen — domaenenspezifische Programme/Hilfsprogramme (Forschung, Klima, Gemeinwohl, persoenlicher Wissensraum), die Schicht 1 und 2 als Bibliothek nutzen. Abhaengigkeiten verlaufen ausschliesslich von Schicht 3 ueber 2 nach 1, nie umgekehrt.",
+    "begruendung": [
+      "Die Trennung deckt sich mit der bereits in genesis-core-scope.md begonnenen Drei-Klassen-Karte: Schicht 1 = Core-Kandidaten, Schicht 2 = die dort explizit als 'nie Core' markierten LLM-/AI-abhaengigen Pakete (aeon-ai, genesis-scope, AdvancedWeightingSystems, worldview, gemeinwohl), Schicht 3 = die uebrigen ~35 Domaenenpakete.",
+      "Eine explizite Kernel/Agenten-Trennung macht Regel 7 technisch durchsetzbar: jedes Modul mit LLM-Bedarf ist per Definition Schicht 2, nie Schicht 1, unabhaengig davon wie zentral es sich anfuehlt (z. B. genesis-scope). Siehe auch die Rohidee 'Semantic Kernel' in 01_Ideen/copilot/copilot-semantisches-betriebssystem.md.",
+      "Die Top-down-Abhaengigkeitsrichtung (3 -> 2 -> 1) ist eine Verschaerfung von Regel 4 auf Schichtenebene und verhindert, dass eine Domaenenanwendung (Schicht 3) den Kernel um domaenenspezifische Konzepte erweitert — das wuerde Regel 8 verletzen.",
+      "genesis-os laesst sich damit praezise einordnen: duenne Orchestrierungsschicht innerhalb von Schicht 1, die Schicht-2-Plugins laden darf, ohne selbst eine LLM-Laufzeitabhaengigkeit zu haben — exakt wie im 'Sonderfall genesis-os' in genesis-core-scope.md gefordert."
+    ],
+    "alternativen_betrachtet": [
+      {
+        "alternative": "Zwei Schichten (Core vs. Anwendungen), Agentenlogik dem Core zuschlagen",
+        "warum_verworfen": "Wuerde genesis-scope und vergleichbare LLM-/Navigationsmodule zwingen, entweder im Core zu landen (Verstoss gegen Regel 7) oder als gewoehnliche Domaenenanwendung behandelt zu werden (verschleiert ihre tatsaechliche Querschnittsrolle ueber alle Domaenen)."
+      },
+      {
+        "alternative": "Vier oder mehr Schichten (z. B. zusaetzliche UI- oder Persistenz-Schicht)",
+        "warum_verworfen": "Zu diesem Zeitpunkt gibt es keinen am Code verifizierten Bedarf fuer weitere Schichten; zusaetzliche Differenzierung kann in separaten ADRs ergaenzt werden, ohne diese Drei-Schichten-Grundstruktur zu veraendern."
+      },
+      {
+        "alternative": "Keine formale Schichtung, Einordnung pro Modul ausschliesslich ueber den Genesis-Blindtest (Regel 6) ohne uebergeordnetes Modell",
+        "warum_verworfen": "Der Blindtest prueft, ob ein einzelnes Modul verstaendlich und domaenenneutral ist, beantwortet aber nicht, wie Module sich strukturell zueinander verhalten duerfen — ohne Schichtenmodell bliebe die Abhaengigkeitsrichtung zwischen Navigations-/Agentenmodulen und Domaenenpaketen ungeklaert."
+      }
+    ],
+    "konsequenzen": [
+      "Jeder neue Architektur-/Programm-/Hilfsprogramm-Eintrag muss bei der Aufnahme in 03_Architektur/, 04_Programme/ oder 05_Hilfsprogramme/ einer der drei Schichten zugeordnet werden; das geschieht im jeweiligen Genesis-Blindtest (Regel 6).",
+      "Schicht-1-Kandidaten aus der Fundament-Kette (genesis-core-scope.md) werden einzeln durch den Blindtest geschickt und erhalten related_adr: [ADR-000, ADR-002].",
+      "genesis-scope wird als erster Schicht-2-Testfall (Regel 6) behandelt, nicht als Core-Kandidat."
+    ]
+  }
+}

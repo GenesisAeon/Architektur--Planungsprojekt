@@ -42,6 +42,7 @@
       "Nachfolgende ADRs zu Datenmodell, Diamond-Interface und Plugin-System muessen sich auf das Wissensobjekt als primaere Entitaet beziehen (related_adr: [ADR-000]).",
       "genesis-scope und vergleichbare Module sind Kandidaten dafuer, die Navigations- und Verknuepfungsschicht ueber Wissensobjekten zu sein — das ist im Genesis-Blindtest (Regel 6) explizit zu pruefen, bevor ein entsprechender Architektur-Eintrag accepted wird.",
       "Domaenenspezifische Anwendungen (Klima, Forschung, Gemeinwohl, KI-Kollaboration) bleiben Programme/Hilfsprogramme, die Wissensobjekte ueber den Core erzeugen und verknuepfen — sie definieren keine eigene primaere Entitaet."
-    ]
+    ],
+    "ergaenzung_terminologie_und_schichtenfrage": "Ein zweiter Multi-AI-Diskurs (MSCopilot, 2026-06-19) bestaetigt die hier getroffene Entscheidung unabhaengig und schlaegt zusaetzlich die Begriffe 'State Object' und 'Concept Node' als gleichwertige, in anderen Communities gelaeufigere Bezeichnungen fuer dasselbe Konzept vor. Dieses ADR haelt an 'Wissensobjekt / semantischer Konzeptknoten' als Primaerbegriff fest (Kontinuitaet mit der bisherigen Trylayer-Terminologie), akzeptiert 'State Object' / 'Concept Node' aber als Synonyme in Folgedokumenten. Derselbe Diskurs wirft zusaetzlich die Frage auf, wie der Core organisiert sein muss, um Wissensobjekte zu verwalten (Kernel-artige Schichtung Core/Agenten/Anwendungen). Das ist eine eigenstaendige Entscheidung mit eigener Begruendung und Alternativenabwaegung und wird daher nicht hier, sondern in ADR-002-drei-schichten-architektur behandelt, das auf dieses ADR aufbaut. Die zugrunde liegende Rohidee ist dokumentiert in 01_Ideen/copilot/copilot-semantisches-betriebssystem.md."
   }
 }

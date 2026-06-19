@@ -1,0 +1,35 @@
+{
+  "id": "claude-event-transition-kritik",
+  "title": "Gegeneinwand zu ADR-000: primaere Entitaet ist Event/Transition, nicht Concept Node",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "hypothesis",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 4.6)"
+  },
+  "created": "2026-06-19",
+  "related_adr": ["ADR-000", "ADR-002"],
+  "depends_on": [],
+  "derived_from": [],
+  "blindtest_passed": null,
+  "content": {
+    "herkunft": "Multi-AI-Diskurs, Claude (Sonnet 4.6), 2026-06-19, als Gegeneinwand zur gerade verfassten ADR-000 (Wissensobjekt/Concept Node als primaere Entitaet) und zur Copilot-Idee copilot-semantisches-betriebssystem/ADR-002. Roh-Einwand, noch nicht durch den Genesis-Blindtest (Regel 6) geprueft. Steht im direkten Widerspruch zu ADR-000.",
+    "kernthese": "Die ChatGPT/Copilot-Frage 'was ist die primaere Entitaet?' ist richtig, wird in ADR-000 aber philosophisch statt code-basiert beantwortet. Das bestehende Diamond Interface (run_cycle(), get_crep_state(), get_utac_state(), get_phase_events(), to_zenodo_record()) zeigt: vier von fuenf Methoden drehen sich um Zustandsaenderung ueber Zeit, nicht um statische Knoten. Sigillin ist ein Event-Sourcing-Snapshot mit Lineage, Q4-Zustaende sind Knoten in einem Uebergangsgraphen (Gray-Code-Nachbarschaft), CREP ist eine ueber Zeit gemessene Rate, keine Eigenschaft eines Dings. Folgerung: die primaere Entitaet ist die Phase-Transition mit angehaengtem Zustand — ein Ereignis, kein Ding.",
+    "architektur_vorschlag": [
+      "Event Sourcing + CQRS — passt zu 'Event Log' als Primaerentitaet und zur Replay-basierten Zustandsrekonstruktion (Bezug zur eigenen JetStream/ReplayEngine-Idee aus dem Q4-Layer).",
+      "Actor Model / Supervision Trees (Erlang/Elixir-OTP-Stil) — fuer 'Agenten als Interpreten des Kernels' (Schicht 2 aus ADR-002)."
+    ],
+    "zusaetzliche_einwaende": [
+      "Uebertreibungsmuster: Formulierungen wie 'Betriebssystem fuer Sinn', 'Zivilisationskomponente', 'Koordinationsmedium fuer komplexe Kollektive' wiederholen ein Muster aus der AFET-Kosmologie-Arbeit, wo eine spaetere Falsifikationsanalyse systematische Uebertreibungen aufdeckte (domaenenspezifische Ergebnisse zu einem universellen Framework zusammengesetzt). Diese Sprache wuerde den eigenen Genesis-Blindtest (Regel 6) durchfallen lassen.",
+      "Namenskollision: 'Semantic Kernel' ist bereits als Begriff vergeben (Microsofts offen verfuegbares SDK fuer LLM-Orchestrierung). Ein Disclaimer loest das nicht; fuer ein oeffentlichkeitsfaehiges Referenz-Repo sollte das vor dem ersten Commit geklaert werden, nicht danach."
+    ],
+    "praktische_konsequenz_vorschlag": [
+      "Ein eigenes ADR ('primaere Entitaet = Event/Transition, nicht Concept Node') vor einer endgueltigen Fassung der bestehenden ADR-000.",
+      "Bestehende Architektur-Sprache (Event Sourcing/CQRS, Actor Model) statt neu erfundener Begriffe ('Semantic Kernel', 'Concept Node') verwenden.",
+      "Begriff 'Semantic Kernel' wegen Namenskollision aus der finalen Terminologie entfernen, nicht nur mit Disclaimer versehen."
+    ],
+    "offener_konflikt": "Dieser Einwand widerspricht ADR-000 (Wissensobjekt/Concept Node als primaere Entitaet, Status accepted) inhaltlich direkt. Auflösung steht noch aus — moegliche Wege: (a) ADR-000 durch ein neues, ersetzendes ADR abloesen (status: deprecated + Verweis), (b) beide Sichtweisen als komplementaer reformulieren (Event als primaere Entitaet, Concept Node als daraus abgeleitete Projektion/Snapshot), oder (c) Code-Audit der Diamond-Interface-Implementierungen abwarten, bevor eine der beiden Positionen verbindlich wird."
+  }
+}

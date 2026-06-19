@@ -1,0 +1,44 @@
+{
+  "id": "copilot-semantisches-betriebssystem",
+  "title": "Semantisches Betriebssystem: GenesisAeon als Kernel fuer Wissensobjekte",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "hypothesis",
+  "author": {
+    "name": "Copilot",
+    "typ": "ai",
+    "system": "MSCopilot"
+  },
+  "created": "2026-06-19",
+  "related_adr": ["ADR-000", "ADR-002"],
+  "depends_on": [],
+  "derived_from": [],
+  "blindtest_passed": null,
+  "content": {
+    "herkunft": "Multi-AI-Diskurs zwischen Johann und Microsoft Copilot, 2026-06-19, als Ergaenzung zu einer vorherigen ChatGPT-Diskussion. Roh-Synthese, noch nicht durch den Genesis-Blindtest (Regel 6) geprueft.",
+    "kernthese": "GenesisAeon baut kein Produkt fuer eine einzelne Domaene, sondern ein semantisches Betriebssystem — woertlich gemeint, nicht metaphorisch: ein Kernel, der nicht Prozesse, Dateien oder Hardware verwaltet, sondern Konzepte, Beziehungen, Perspektiven, Zustaende, Entscheidungen und Agenten. Die primaere Entitaet ist ein State Object / Concept Node (Synonyme fuer das in ADR-000 als 'Wissensobjekt' festgelegte Konzept).",
+    "drei_schichten": [
+      {
+        "schicht": "Semantic Kernel (Core)",
+        "primaere_entitaeten": ["State Object", "Concept Node", "Semantic Graph", "Event Log", "Governance Rules", "Runtime"]
+      },
+      {
+        "schicht": "Agents & Perspectives",
+        "module": ["genesis-scope", "UTAC", "Multi-Agent-Adapter", "LLM-Interfaces", "Simulationen", "perspektivische Raeume"]
+      },
+      {
+        "schicht": "Anwendungen",
+        "module": ["Forschungsplattform", "Gemeinwohlplattform", "Klimaplattform", "Wissensraeume", "persoenliche Notizsysteme", "Multi-Agent-Workflows"]
+      }
+    ],
+    "zusammenfassender_satz": "GenesisAeon baut ein semantisches Betriebssystem fuer kollektive Orientierung — ein Kernel, der Wissen, Perspektiven und Agenten in einem gemeinsamen Raum koordinierbar macht.",
+    "bezug_zu_bestehenden_entscheidungen": [
+      "Bestaetigt unabhaengig die Kernaussage von ADR-000 (Wissensobjekt/State Object als primaere Entitaet, Plattform als Infrastruktur statt Einzelanwendung).",
+      "Liefert die Begruendung und Struktur fuer ADR-002 (Drei-Schichten-Architektur Kernel/Agenten/Anwendungen)."
+    ],
+    "offene_punkte_fuer_blindtest": [
+      "Ob 'Semantic Kernel' als Begriff im Repo uebernommen wird oder nur als Erklaerhilfe dient (Verwechslungsgefahr mit Microsofts 'Semantic Kernel'-Framework — im Diskurs explizit als rein konzeptionelle Namensgleichheit markiert, keine technische Abhaengigkeit).",
+      "Ob genesis-os tatsaechlich als Teil von Schicht 1 (duenne Orchestrierung) oder als eigenstaendiges Schicht-1.5-Konzept gefuehrt werden sollte — noch nicht am Code verifiziert."
+    ]
+  }
+}

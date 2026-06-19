@@ -1,0 +1,14 @@
+id: claude-event-transition-kritik
+title: "Gegeneinwand zu ADR-000: primaere Entitaet ist Event/Transition, nicht Concept Node"
+kategorie: idee
+status: idea
+epistemic_status: hypothesis
+author:
+  name: Claude
+  typ: ai
+  system: "Claude (Sonnet 4.6)"
+created: "2026-06-19"
+related_adr: ["ADR-000", "ADR-002"]
+depends_on: []
+derived_from: []
+blindtest_passed: null

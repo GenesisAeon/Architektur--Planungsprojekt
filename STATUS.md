@@ -56,8 +56,13 @@ Dieses Repo ist NICHT das Monorepo selbst. Es ist der Denkraum davor.
 - [x] Erstes echtes ADR geschrieben: `ADR-001-warum-monorepo`
       (Zwei-Koerper-Trennung Unified-Mandala vs. Genesis Core/UTAC Core)
 - [x] `ADR-000-primaere-entitaet` geschrieben: legt das Wissensobjekt
-      (semantischer Konzeptknoten) als primaere Entitaet fest und den
-      Core als domaenenneutrale Infrastruktur statt Einzelanwendung
+      (semantischer Konzeptknoten, synonym State Object/Concept Node) als
+      primaere Entitaet fest und den Core als domaenenneutrale
+      Infrastruktur statt Einzelanwendung
+- [x] `ADR-002-drei-schichten-architektur` geschrieben: Kernel (Schicht 1)
+      / Agenten & Perspektiven (Schicht 2) / Anwendungen (Schicht 3),
+      Abhaengigkeitsrichtung nur 3 -> 2 -> 1; Rohidee dazu liegt in
+      `01_Ideen/copilot/copilot-semantisches-betriebssystem.md`
 - [ ] Weitere ADRs (Warum uv-Workspace? Warum Diamond Interface als
       Protocol?)
 - [ ] Core-Kandidaten durch den Genesis-Blindtest schicken — `genesis-scope`

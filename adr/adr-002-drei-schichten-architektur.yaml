@@ -1,0 +1,15 @@
+id: adr-002-drei-schichten-architektur
+title: "Drei-Schichten-Architektur: Kernel, Agenten/Perspektiven, Anwendungen"
+kategorie: adr
+adr_number: "ADR-002"
+status: accepted
+epistemic_status: derived
+author:
+  name: Johann
+  typ: human
+  system: null
+created: "2026-06-19"
+related_adr: ["ADR-000", "ADR-001"]
+depends_on: []
+derived_from: ["copilot-semantisches-betriebssystem"]
+blindtest_passed: null
