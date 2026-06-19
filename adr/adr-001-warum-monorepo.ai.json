@@ -1,0 +1,42 @@
+{
+  "id": "adr-001-warum-monorepo",
+  "title": "Warum Genesis Core / UTAC Core als eigenes Monorepo statt Erweiterung von Unified-Mandala",
+  "kategorie": "adr",
+  "adr_number": "ADR-001",
+  "status": "accepted",
+  "epistemic_status": "derived",
+  "author": {
+    "name": "Johann",
+    "typ": "human",
+    "system": null
+  },
+  "created": "2026-06-19",
+  "related_adr": [],
+  "depends_on": [],
+  "derived_from": [],
+  "blindtest_passed": null,
+  "content": {
+    "kontext": "Das GenesisAeon-Oekosystem ist aus Unified-Mandala entstanden: einem explorativen Forschungslabor mit 48 Micro-Packages, dialogisch und rekursiv gewachsener Terminologie (Mandala-, Genesis-, Sigillin-Begriffe) und einer Historie, die nur mit Kenntnis des urspruenglichen Diskurses Sinn ergibt. Diese Eigenschaften sind fuer ein Forschungslabor sinnvoll, kollidieren aber mit dem Ziel, eine oeffentlichkeitsfaehige, wissenschaftlich nuechterne Referenzarchitektur zu haben, die auch ohne Kenntnis der Genesis-Erzaehlung verstanden und genutzt werden kann (siehe Planungsdiskurse/, Regel 6 Genesis-Blindtest, Regel 9).",
+    "entscheidung": "Es wird ein neues, separates Monorepo (Genesis Core / UTAC Core) als Referenzarchitektur aufgebaut. Unified-Mandala wird NICHT umbenannt, refaktoriert oder ersetzt, sondern bleibt vollstaendig als Labor und historische Quelle bestehen (Zwei-Koerper-Trennung). Das neue Monorepo zitiert und destilliert aus Unified-Mandala, kopiert dessen Struktur aber nicht 1:1.",
+    "begruendung": [
+      "Micro-Packages und Monorepo sind keine Alternativen, sondern ergaenzen sich: Micro-Packages liefern Deployment-Granularitaet und Experimentierfreude, ein Monorepo liefert einheitliche Build-Pipelines, gemeinsame Typen/Protokolle, konsistente Versionierung und Architektur-Governance (siehe Planungsdiskurse/ErsterDiskursMonorepoPlattform.txt).",
+      "Eine nachtraegliche Bereinigung von Unified-Mandala selbst (Umbenennung der Module, Entfernen dialogischer Inhalte) wuerde die Historie zerstoeren, die als Forschungsgedaechtnis wertvoll ist (Regel 9 — Unified-Mandala ist Quelle, nicht Ziel).",
+      "Eine klare Trennung erlaubt es, im neuen Monorepo von Anfang an strenge Aufnahmekriterien durchzusetzen (Blindtest, ADR-Pflicht, kein Core ohne LLM/Internet-Unabhaengigkeit), ohne bestehenden Code im Labor sofort migrieren oder loeschen zu muessen.",
+      "Der parallele v1.0.0-Sprint der 48 bestehenden Pakete zeigt, dass Unified-Mandala als Labor weiterhin aktiv genutzt wird — eine sofortige Vereinheitlichung in ein einziges Repo wuerde diesen Sprint blockieren statt ihn zu unterstuetzen."
+    ],
+    "alternativen_betrachtet": [
+      {
+        "alternative": "Unified-Mandala selbst schrittweise bereinigen und als Referenzarchitektur weiterfuehren",
+        "warum_verworfen": "Wuerde die explorative Historie zerstoeren oder stark verschleiern; Trennung von Labor- und Referenz-Funktion waere im selben Repo schwer durchsetzbar (keine klare Statusgrenze moeglich)."
+      },
+      {
+        "alternative": "Alles in den 48 Micro-Packages lassen, kein Monorepo",
+        "warum_verworfen": "Fuehrt laut Diskurs zu semantischer Drift, Tooling-Overhead und Dokumentations-Chaos; keine gemeinsame Governance-Ebene fuer Typen/Protokolle/Architekturentscheidungen."
+      }
+    ],
+    "konsequenzen": [
+      "Dieses Planungsrepo (Architektur--Planungsprojekt) ist der Denkraum vor dem eigentlichen Monorepo, nicht das Monorepo selbst (siehe STATUS.md).",
+      "Jede Aufnahme eines Moduls aus Unified-Mandala in das neue Monorepo durchlaeuft den Genesis-Blindtest (Regel 6) und braucht ein eigenes ADR, falls es als architektur/programm/hilfsprogramm 'accepted' werden soll (Regel 3)."
+    ]
+  }
+}

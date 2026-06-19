@@ -48,8 +48,10 @@ Dieses Repo ist NICHT das Monorepo selbst. Es ist der Denkraum davor.
 
 - [ ] Repository-Kartierung der 48 bestehenden Pakete
 - [ ] Abhaengigkeits-Kartierung (echte Kopplung, nicht nur erklaerte)
-- [ ] Erste echte ADRs schreiben (Warum Monorepo? Warum uv-Workspace?
-      Warum Diamond Interface als Protocol?) — `adr/` ist aktuell leer
+- [x] Erstes echtes ADR geschrieben: `ADR-001-warum-monorepo`
+      (Zwei-Koerper-Trennung Unified-Mandala vs. Genesis Core/UTAC Core)
+- [ ] Weitere ADRs (Warum uv-Workspace? Warum Diamond Interface als
+      Protocol?)
 - [ ] Core-Kandidaten durch den Genesis-Blindtest schicken — `genesis-scope`
       als erster Testfall liegt bereits als Idee in `01_Ideen/claude/` vor
 - [x] Bereinigung dieses Repos selbst: diamond-setup-Scaffold-Leftover
@@ -60,6 +62,7 @@ Dieses Repo ist NICHT das Monorepo selbst. Es ist der Denkraum davor.
 
 ## Naechster konkreter Schritt
 
-Erstes echtes ADR schreiben (`ADR-001-warum-monorepo`), damit `adr/`
-nicht laenger leer ist und die erste reale Core-Architekturentscheidung
-formal getroffen werden kann.
+Erste echte `03_Architektur/`-Eintraege auf Basis von `ADR-001`
+formulieren (z.B. die Zwei-Koerper-Trennung selbst als
+Architektur-Eintrag mit `related_adr: [ADR-001]`), und/oder
+Repository-Kartierung der 48 Pakete beginnen.
