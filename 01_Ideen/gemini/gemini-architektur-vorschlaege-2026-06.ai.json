@@ -1,0 +1,36 @@
+{
+  "id": "gemini-architektur-vorschlaege-2026-06",
+  "title": "Gemini-Vorschlaege zu ADR-Prozess, Plugin-Interface, Workspace, Releases und Core-Identifikation",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "hypothesis",
+  "author": {
+    "name": "Gemini",
+    "typ": "ai",
+    "system": "Gemini"
+  },
+  "created": "2026-06-19",
+  "related_adr": [],
+  "depends_on": [],
+  "blindtest_passed": null,
+  "content": {
+    "problem": "Gemini hatte keinen direkten Zugriff auf dieses Repo (Zugriff verweigert/privat) und hat daher generische Vorschlaege fuer ein Multi-Plugin-Monorepo aus Allgemeinwissen ueber das GenesisAeon-Oekosystem formuliert, ohne PRINCIPLES.md, AGENTS.md oder den bestehenden ADR-Prozess (adr/adr-001-warum-monorepo) gesehen zu haben. Die Vorschlaege ueberlappen teils mit bereits getroffenen Entscheidungen und muessen gegen den tatsaechlichen Stand geprueft werden.",
+    "vorschlag": [
+      "1. ADR-Tooling: log4brains zur Generierung einer durchsuchbaren statischen Website fuer ADRs einsetzen. Hinweis: Das Repo hat bereits einen eigenen, schlankeren Trylayer-Tripel-ADR-Prozess (adr/, Format yaml+ai.json+md, validiert durch scripts/validate_trylayer.py) - log4brains waere ein zusaetzliches Tool, kein Ersatz, und muesste gegen den bestehenden Prozess abgewogen werden.",
+      "2. Plugin-Interface ('Diamond Interface'): typing.Protocol (PEP 544) fuer strukturelle Typisierung statt Vererbung vom Core, plus Capability-Negotiation ueber importlib.metadata Entry Points mit einer plugin_api_version, die der Core vor dem Laden prueft, um inkompatible Plugins ohne Laufzeitfehler abzuweisen.",
+      "3. uv-Workspace-Struktur: zentrale pyproject.toml mit [tool.uv.workspace] und members = [\"plugins/*\"] fuer alle Plugins; lokale Core-Abhaengigkeit ueber workspace = true. Zusaetzlich import-linter in der CI, um Querabhaengigkeiten zwischen Plugins und Core-Verschmutzung architektonisch zu verhindern.",
+      "4. Release-Automatisierung: Independent Versioning + Conventional Commits via python-semantic-release (conventional-monorepo-Parser) mit path_filters pro Plugin, sodass z.B. ein Commit 'feat(worldview): ...' nur die Version von worldview anhebt und unabhaengig published, ohne die anderen Pakete/den Core zu beruehren.",
+      "5. Core-Identifikation per AST-Analyse: Fan-in/Fan-out-Metriken via Graphenanalyse berechnen, um Module mit hohem Fan-in und niedrigem Fan-out als objektive Kandidaten fuer den neuen Kern zu identifizieren, statt rein gefuehlsbasiert zu entscheiden."
+    ],
+    "erwartetes_ergebnis": [
+      "Pruefung durch den Maintainer, welche der fuenf Punkte gegenueber dem bestehenden ADR-001 (Monorepo-Begruendung) und PRINCIPLES.md neue Information liefern vs. bereits abgedeckt sind",
+      "Falls Punkt 2 (Plugin-Interface/Capability Negotiation) und Punkt 5 (AST-basierte Core-Identifikation) neu sind: moegliche eigene Idee-Eintraege mit konkretem Bezug auf die 48 bestehenden Pakete",
+      "Punkt 1 (log4brains) und Punkt 3 (uv-Workspace, import-linter) sind Tooling-Entscheidungen fuer das spaetere Monorepo, nicht fuer dieses Planungsrepo - relevant fuer 04_Programme/05_Hilfsprogramme, sobald die Inventarisierung beginnt"
+    ],
+    "naechster_schritt": "Maintainer entscheidet, ob einzelne Punkte (insbesondere Capability Negotiation per Entry-Point-Metadaten und Fan-in/Fan-out-Analyse fuer die Core-Auswahl) als eigene, praezisere Ideen mit konkretem Bezug zu den 48 Paketen aufgenommen werden, oder ob die Vorschlaege zu generisch/redundant zu ADR-001 sind, um eigene Eintraege zu rechtfertigen.",
+    "alternativen_betrachtet": [
+      "Vorschlaege direkt als architektur/programm einordnen - verworfen, da Gemini das Repo nicht gesehen hat und der Genesis-Blindtest sowie ADR-Pflicht (Regel 3, 6) fuer diese Kategorie noch nicht durchlaufen wurden",
+      "Vorschlaege ignorieren, da generisch - verworfen, weil Punkt 2 (Capability Negotiation) und Punkt 5 (AST-Metriken) konkrete, pruefbare Techniken fuer offene Probleme dieses Repos sind (Diamond-Interface, Core-Abgrenzung) und daher mindestens als idea dokumentationswuerdig sind"
+    ]
+  }
+}
