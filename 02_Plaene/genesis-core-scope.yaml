@@ -1,0 +1,14 @@
+id: genesis-core-scope
+title: "Vorschlag: Scope des Genesis Core / UTAC Core (welche Pakete sind Core, Programm, Hilfsprogramm)"
+kategorie: plan
+status: draft
+epistemic_status: hypothesis
+author:
+  name: Claude
+  typ: ai
+  system: Claude (Sonnet 4.6)
+created: "2026-06-19"
+related_adr: []
+depends_on: []
+derived_from: []
+blindtest_passed: null

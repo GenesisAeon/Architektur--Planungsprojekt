@@ -1,0 +1,74 @@
+{
+  "id": "genesis-core-scope",
+  "title": "Vorschlag: Scope des Genesis Core / UTAC Core (welche Pakete sind Core, Programm, Hilfsprogramm)",
+  "kategorie": "plan",
+  "status": "draft",
+  "epistemic_status": "hypothesis",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 4.6)"
+  },
+  "created": "2026-06-19",
+  "related_adr": [],
+  "depends_on": [],
+  "derived_from": [],
+  "blindtest_passed": null,
+  "content": {
+    "problem": "ADR-001 legt fest, dass ein eigenes Genesis Core / UTAC Core Monorepo entsteht, aber nicht, WAS konkret in diesen Core gehoert. ECOSYSTEM_MAP.yaml listet 48 Pakete mit echten Abhaengigkeiten (Tier T0-T16), aber ohne Klassifikation nach PRINCIPLES.md Regel 7/8: welche Pakete duerfen ueberhaupt 'core' werden (LLM- und internetfrei), und welche sind zwingend Plugin/Hilfsprogramm?",
+    "vorschlag": {
+      "kernthese": "Der Core ist NICHT 'genesis-os als ein grosses Paket', sondern eine schmale, deterministische Laufzeit-Kette ohne LLM-/Netzwerk-Abhaengigkeit. Alles, was Visualisierung, Domaenen-Anwendung oder KI-Inferenz ist, bleibt Programm bzw. Hilfsprogramm/Plugin und haengt vom Core ab, nicht umgekehrt.",
+      "core_kandidaten": {
+        "begruendung": "Ausgewaehlt nach zwei Kriterien: (1) bereits in ECOSYSTEM_MAP.yaml als Fundament-Tier (released..T6) markiert, (2) Domaene ist mathematisch/deterministisch (ODE, Tensor, Governance-Logik), kein 'AI core' und kein reines UI/Dashboard.",
+        "pakete": [
+          {"repo": "entropy-table", "rolle": "relationale Entropie-Atlas-Engine, Tier released, keine internen Abhaengigkeiten"},
+          {"repo": "implosive-genesis", "rolle": "implosive Feld-Dynamik-Engine, Tier released, keine internen Abhaengigkeiten"},
+          {"repo": "entropy-governance", "rolle": "Entropie-basiertes Ethik-Gate, T1, rein regelbasiert (kein LLM erkennbar)"},
+          {"repo": "medium-modulation", "rolle": "fraktale Modulation S_A/S_V, T2"},
+          {"repo": "cosmic-moment", "rolle": "diskrete kosmische Kollaps-Events, T3"},
+          {"repo": "fieldtheory", "rolle": "Feldtheorie / Lagrangian-Kern (EN), T4 — Hinweis: moeglicher Duplikat-Fall mit Feldtheorie/DE, siehe ECOSYSTEM_MAP.yaml"},
+          {"repo": "sigillin", "rolle": "semantische Zustandsanker / symbolisches Interface, T5"},
+          {"repo": "utac-core", "rolle": "UTAC-Basis-Engine (logistische ODE, CREP-Tensor-Kern), T6 — strukturelles Zentrum der gesamten Kette"}
+        ]
+      },
+      "programm_kandidaten": {
+        "begruendung": "Bauen direkt auf dem Core auf, sind aber Anwendungs-/Visualisierungsschicht, nicht das mathematische Fundament selbst. Kein erkennbarer LLM-Bedarf, daher potenziell 'programm' statt 'hilfsprogramm' — muss pro Paket im Blindtest geprueft werden.",
+        "pakete": ["mandala-visualize", "implosive-origin-utac", "sonification", "climate-dashboard", "mirror-machine", "cosmic-web", "unified-mandala"]
+      },
+      "hilfsprogramm_kandidaten_wegen_regel_7": {
+        "begruendung": "Domaene oder Beschreibung deutet auf LLM-/AI-Abhaengigkeit hin ('AI core engine', 'semantic cartography... human-AI', neural-statistical Gewichtung, philosophisch-ethische Bewertung die typischerweise interpretativ/LLM-gestuetzt ist). Nach Regel 7 koennen diese NIE 'programm: core' werden, sondern bleiben Plugins.",
+        "pakete": [
+          {"repo": "aeon-ai", "grund": "explizit 'AI core engine / Mirror-Machine self-reflection'"},
+          {"repo": "genesis-scope", "grund": "explizit 'human-AI navigation layer', bereits als Blindtest-Kandidat in 01_Ideen/claude/ markiert"},
+          {"repo": "AdvancedWeightingSystems", "grund": "'neural-statistical CREP weighting' — neural impliziert lernbasierte/AI-Komponente"},
+          {"repo": "worldview", "grund": "'philosophisch-ethische CREP-Bewertung' — interpretative Bewertung ist typischerweise LLM-gestuetzt, zu pruefen"},
+          {"repo": "gemeinwohl", "grund": "'common-good normative scoring' — selbe Kategorie wie worldview"}
+        ]
+      },
+      "die_46_domaenen_pakete": {
+        "begruendung": "Die grosse Mehrheit der T0-Pakete (amazon-utac, amoc-utac, sandpile-utac, quantum-genesis, etc. — Diamond-Interface-Anwendungen aus Physik/Biologie/Soziologie) sind WEDER Core noch generisches Programm: sie sind domaenenspezifische Hilfsprogramme/Plugins, die den Core (utac-core/CREP) als Bibliothek nutzen, um eine einzelne wissenschaftliche Fragestellung (z.B. AMOC-Tipping, Sandpile-SOC) zu bearbeiten. Das passt zur urspruenglichen Diamond-Template-Architektur ('STUB — replace with genesis.core when genesis-os is installed') und zu Regel 8 (keine privilegierte Domaene: kein einzelnes Fachgebiet wird Core, nur weil es zuerst da war)."
+      },
+      "genesis_os_sonderfall": {
+        "frage": "Ist genesis-os (P-CORE-OS, Orchestrator) selbst Core?",
+        "vorlaeufige_einschaetzung": "Ja, aber als duenne Orchestrierungsschicht, nicht als Container fuer AI-Logik. genesis-os darf Plugins LADEN, die LLM nutzen (aeon-ai, genesis-scope), ohne selbst LLM-Laufzeitabhaengigkeit zu haben — vergleichbar mit einem Plugin-Loader, der nicht weiss, was die Plugins intern tun. Das muss am echten Code verifiziert werden, bevor genesis-os als 'architektur'/'programm' mit status=accepted eingereicht wird."
+      }
+    },
+    "erwartetes_ergebnis": "Eine vorlaeufige Drei-Klassen-Karte (Core/Programm/Hilfsprogramm) fuer alle 48 Pakete, die als Ausgangshypothese fuer die kommenden Genesis-Blindtests dient. Kein Paket wechselt durch diesen Plan selbst den Status — das passiert erst einzeln pro Paket nach Blindtest + ADR (Regel 3, Regel 6).",
+    "naechster_schritt": [
+      "Jedes Core-Kandidat-Paket (entropy-table bis utac-core) einzeln durch den Genesis-Blindtest schicken und als eigenen Trylayer-Eintrag in 03_Architektur/ (status: review, dann accepted) anlegen, mit related_adr: [ADR-001] und einem neuen ADR fuer die Kernfrage 'warum genau diese Kette und nicht mehr/weniger'.",
+      "Pruefen, ob fieldtheory (T4, EN) und Feldtheorie (T0, DE) tatsaechlich Duplikate sind (siehe Roadmap-Hinweis); falls ja, kann die Core-Kette um einen Schritt kuerzer werden.",
+      "genesis-os' tatsaechlichen Code pruefen (Diamond-Interface-Implementierung), bevor es als Core-Orchestrator eingereicht wird.",
+      "Fuer jeden Hilfsprogramm-Kandidaten (aeon-ai, genesis-scope, AdvancedWeightingSystems, worldview, gemeinwohl) explizit per Code-Review bestaetigen, ob eine LLM-Laufzeitabhaengigkeit wirklich vorliegt — die Einordnung hier basiert nur auf der Domaenen-Beschreibung aus der Roadmap, nicht auf Code-Inspektion."
+    ],
+    "alternativen_betrachtet": [
+      {
+        "alternative": "genesis-os selbst als alleinigen Core definieren, alles andere als Plugin",
+        "warum_verworfen": "genesis-os haengt laut ECOSYSTEM_MAP.yaml selbst von entropy-table ab und liegt 'oberhalb' der T0-T16-Kette — es kann nicht das mathematische Fundament SEIN, sondern orchestriert es nur. Ein Core ohne eigene Tensor-/ODE-Logik waere keine LLM-/Internet-unabhaengig nutzbare Bibliothek im Sinne von Regel 7."
+      },
+      {
+        "alternative": "Den gesamten T0-T16-Stack (alle 48 Pakete) als 'Core' behandeln",
+        "warum_verworfen": "Wuerde Regel 8 verletzen (keine privilegierte Domaene) und den Blindtest unmoeglich machen — niemand ohne Genesis-Kontext koennte in 5 Minuten verstehen, warum z.B. ein Asteroiden-Dynamik-Paket (phaethon-chimera) Teil des 'Kerns' einer generischen Engine sein soll."
+      }
+    ]
+  }
+}
