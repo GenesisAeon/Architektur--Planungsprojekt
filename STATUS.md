@@ -55,6 +55,8 @@ Dieses Repo ist NICHT das Monorepo selbst. Es ist der Denkraum davor.
       topologisch sortiert)
 - [x] Erstes echtes ADR geschrieben: `ADR-001-warum-monorepo`
       (Zwei-Koerper-Trennung Unified-Mandala vs. Genesis Core/UTAC Core)
+- [x] Zweites ADR geschrieben: `ADR-002-mission-statement-v1`
+      (Mission-Statement fuer GenesisAeon/`genesis-os`, siehe unten)
 - [ ] Weitere ADRs (Warum uv-Workspace? Warum Diamond Interface als
       Protocol?)
 - [ ] Core-Kandidaten durch den Genesis-Blindtest schicken — `genesis-scope`
@@ -65,9 +67,40 @@ Dieses Repo ist NICHT das Monorepo selbst. Es ist der Denkraum davor.
       verschoben (Git-Historie erhalten); Repo-Root enthaelt jetzt nur
       noch Planungsprojekt-relevante Inhalte
 
+## Mission-Statement v1 (2026-06-22)
+
+`ADR-002` legt ein vorlaeufiges, oeffentliches Mission-Statement fuer
+GenesisAeon/`genesis-os` fest (Multi-AI-Konsens, Protokoll in
+`Entwicklungsgespraeche/2026-06-22-mission-statement.md`):
+
+> "GenesisAeon generates, maintains and provides semantic maps, navigable
+> paths and contextual structures for LLMs and agent-based systems. Humans
+> act as curators, researchers and architects, shaping these maps through
+> rigorous inquiry."
+
+Damit gibt es jetzt einen expliziten Scope-Filter ("hilft das, semantische
+Karten/Pfade/Kontextstrukturen fuer Agenten zu erzeugen, zu pflegen oder
+bereitzustellen?") und eine Begriffszuordnungstabelle (Semantic Maps ->
+Scope, Navigable Paths -> Cartography/Pheromones/Drift, Contextual
+Structures -> UTAC/CREP, ...) als Ausgangshypothese fuer
+`02_Plaene/genesis-core-scope.md`.
+
+- [ ] GitHub-Gruppenbeschreibung und `genesis-os`-Repo-Beschreibung manuell
+      auf den ADR-002-Satz setzen (extern, Johann)
+- [ ] Zenodo-Community-Beschreibung
+      (https://zenodo.org/communities/genesisaeon) entsprechend anpassen
+      (extern, Johann)
+- [ ] Pro Zeile der Begriffszuordnungstabelle in ADR-002 einen eigenen
+      `01_Ideen/`- oder `02_Plaene/`-Eintrag anlegen (`derived_from:
+      [adr-002-mission-statement-v1]`), bevor sie als
+      `03_Architektur/`-Eintrag mit `status: accepted` durch Blindtest +
+      eigenes ADR geht
+
 ## Naechster konkreter Schritt
 
 Erste echte `03_Architektur/`-Eintraege auf Basis von `ADR-001`
 formulieren (z.B. die Zwei-Koerper-Trennung selbst als
 Architektur-Eintrag mit `related_adr: [ADR-001]`), und/oder
-Repository-Kartierung der 48 Pakete beginnen.
+Repository-Kartierung der 48 Pakete beginnen. Parallel: die
+Begriffszuordnungstabelle aus `ADR-002` Zeile fuer Zeile in eigene
+Trylayer-Eintraege ueberfuehren.

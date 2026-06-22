@@ -49,6 +49,7 @@ Schema: [`contracts/trylayer.schema.yaml`](contracts/trylayer.schema.yaml)
 adr/                 Architecture Decision Records
 archive/             Verworfenes / "wertvoll aber nicht Core"
 Planungsdiskurse/    Archiv des ursprünglichen Multi-AI-Diskurses (read-only)
+Entwicklungsgespraeche/ Rohprotokolle laufender Multi-AI-Gespräche (Eingabe, kein Trylayer)
 ```
 
 ## Validierung
