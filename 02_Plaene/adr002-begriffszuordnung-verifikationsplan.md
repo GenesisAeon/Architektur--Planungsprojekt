@@ -1,0 +1,64 @@
+# Verifikationsplan: ADR-002-Begriffszuordnung (externe Pakete)
+
+## Problem
+
+`ADR-002` enthaelt eine Begriffszuordnungstabelle (Semantic Maps,
+Navigable Paths, Contextual Structures, Agent-based Systems, Curators,
+Researchers, Architects). Drei der sieben Zeilen sind bereits durch
+`03_Architektur/rollenmodell-curator-researcher-architect.md`
+(Curators, Researchers, Architects) und ein Teilaspekt einer vierten Zeile
+durch `03_Architektur/trylayer-als-agenten-navigationsschicht.md`
+(Agent-based Systems, generischer Teil) abgedeckt — beide ohne Bezug auf
+externen Code, weil sie Mechanismen *dieses* Repos beschreiben.
+
+Die verbleibenden Zeilen verweisen auf konkrete externe Pakete
+(`genesis-scope`, Cartography/Pheromones/Drift, UTAC/CREP, MCP-Protokoll).
+Diese koennen von hier aus **nicht** verifiziert werden: dieses Repo
+enthaelt keinen Code dieser Pakete, nur Beschreibungen aus
+`ECOSYSTEM_MAP.yaml` und der Sprint-Roadmap. Eine Einordnung als
+`accepted` ohne Code-Pruefung wuerde Regel 6 (Genesis-Blindtest) und
+Regel 5 (ehrlicher Epistemic Status) verletzen.
+
+## Vorschlag
+
+Pro offener Zeile ein konkretes, pruefbares Kriterium festhalten, statt
+die Hypothese unveraendert stehen zu lassen oder vorschnell zu bestaetigen:
+
+| Mission-Begriff | Vermutete Entsprechung | Was fehlt zur Verifikation |
+|-------------------|--------------------------|-------------------------------|
+| Semantic Maps | `genesis-scope` | Bereits als Blindtest-Kandidat markiert (`01_Ideen/claude/genesis-scope-blindtest`). Braucht echten Zugriff auf das Quickstart/README von `genesis-scope`, nicht nur die Domaenen-Beschreibung aus der Roadmap. |
+| Navigable Paths | Cartography, Pheromones, Drift, Traces | Diese vier Begriffe sind in `ECOSYSTEM_MAP.yaml` nicht als eigene PACKAGE_IDs auffindbar (Stand 2026-06-19) — zuerst klaeren, ob es sich um Teilmodule innerhalb bestehender Pakete handelt oder um noch unklassifizierte Konzepte aus dem Genesis-Diskurs. |
+| Contextual Structures | UTAC/CREP, semantische Graphen | `utac-core` ist bereits Core-Kandidat in `02_Plaene/genesis-core-scope.md` (Fundament-Kette). Verifikation laeuft ueber denselben Plan, nicht separat hier. |
+| Agent-based Systems (MCP-Teil) | MCP-/Agent-Integration | Kein MCP-Server-/Client-Code in diesem Oekosystem identifiziert. Offene Frage: existiert eine MCP-Implementierung bereits in einem der 48 Pakete, oder ist das eine zukuenftige Anforderung? |
+
+## Erwartetes Ergebnis
+
+Fuer jede Zeile entweder (a) ein eigener `01_Ideen/`-Eintrag mit konkretem
+naechstem Pruefschritt, sobald Code-Zugriff besteht, oder (b) eine
+explizite Verschiebung nach `archive/` mit Begruendung, falls sich der
+Begriff als reine Genesis-Diskurs-Terminologie ohne externe Entsprechung
+herausstellt (Regel 9).
+
+## Naechster Schritt
+
+1. Cartography/Pheromones/Drift/Traces in `ECOSYSTEM_MAP.yaml` suchen
+   lassen bzw. den Maintainer fragen, ob es sich um Synonyme bestehender
+   PACKAGE_IDs handelt.
+2. `genesis-scope`-Blindtest tatsaechlich durchfuehren, sobald
+   Quickstart-Zugriff besteht (Maintainer-Aufgabe, siehe
+   `01_Ideen/claude/genesis-scope-blindtest.md`).
+3. MCP-Frage als eigene Idee in `01_Ideen/` einreichen, sobald klar ist,
+   ob es um Bestandscode oder eine neue Anforderung geht.
+
+## Alternativen betrachtet
+
+**Alle vier verbleibenden Zeilen sofort als `03_Architektur`-Eintraege mit
+`status: accepted` anlegen, basierend auf der Domaenen-Beschreibung aus
+der Roadmap.** Verworfen: das wuerde Regel 6 und Regel 5 verletzen — eine
+Domaenen-Beschreibung ist keine Code-Verifikation, und `epistemic_status:
+validated` waere unehrlich fuer etwas, das nur `hypothesis` ist.
+
+**Die vier Zeilen ignorieren, bis die externen Pakete in dieses Repo
+migriert werden.** Verworfen: das wuerde "Eventualitaeten" beim
+spaeteren Monorepo-Aufbau erhoehen statt verringern — explizite,
+pruefbare offene Fragen jetzt sind besser als implizite Annahmen spaeter.

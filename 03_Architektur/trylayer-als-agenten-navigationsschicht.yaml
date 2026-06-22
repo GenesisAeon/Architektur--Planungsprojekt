@@ -1,0 +1,15 @@
+id: trylayer-als-agenten-navigationsschicht
+title: "Trylayer + ENTRY.yaml als Agenten-Navigationsschicht"
+kategorie: architektur
+status: accepted
+epistemic_status: validated
+author:
+  name: Claude
+  typ: ai
+  system: Claude (Sonnet 4.6)
+created: 2026-06-22
+related_adr: ["ADR-001", "ADR-002"]
+depends_on: []
+derived_from:
+  - adr-002-mission-statement-v1
+blindtest_passed: true

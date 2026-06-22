@@ -4,7 +4,7 @@
 > Einstiegspunkt (Regel 12). Dieses Dokument ist Schritt 2 davon — lies
 > danach `PRINCIPLES.md` und `AGENTS.md`.
 
-Letztes Update: 2026-06-19
+Letztes Update: 2026-06-22
 
 ## Phase
 
@@ -85,22 +85,35 @@ Scope, Navigable Paths -> Cartography/Pheromones/Drift, Contextual
 Structures -> UTAC/CREP, ...) als Ausgangshypothese fuer
 `02_Plaene/genesis-core-scope.md`.
 
-- [ ] GitHub-Gruppenbeschreibung und `genesis-os`-Repo-Beschreibung manuell
-      auf den ADR-002-Satz setzen (extern, Johann)
-- [ ] Zenodo-Community-Beschreibung
-      (https://zenodo.org/communities/genesisaeon) entsprechend anpassen
-      (extern, Johann)
-- [ ] Pro Zeile der Begriffszuordnungstabelle in ADR-002 einen eigenen
-      `01_Ideen/`- oder `02_Plaene/`-Eintrag anlegen (`derived_from:
-      [adr-002-mission-statement-v1]`), bevor sie als
-      `03_Architektur/`-Eintrag mit `status: accepted` durch Blindtest +
-      eigenes ADR geht
+- [x] GitHub-Gruppenbeschreibung und `genesis-os`-Repo-Beschreibung auf den
+      ADR-002-Satz gesetzt (Johann, extern erledigt)
+- [x] Zenodo-Community-Beschreibung
+      (https://zenodo.org/communities/genesisaeon) angepasst (Johann,
+      extern erledigt)
+- [x] Mission-Statement im Repo selbst sichtbar verankert: `README.md`
+      hat jetzt einen `## Mission (ADR-002)`-Abschnitt, `PRINCIPLES.md`
+      verweist im Vorwort auf ADR-002 als Scope-Filter zusaetzlich zu den
+      12 Verfahrensregeln
+- [x] Drei der sieben Zeilen der Begriffszuordnungstabelle (Curators,
+      Researchers, Architects) plus ein Teilaspekt einer vierten
+      (Agent-based Systems, generischer Navigationsmechanismus) als
+      `03_Architektur/`-Eintraege mit `status: accepted` umgesetzt —
+      `rollenmodell-curator-researcher-architect` und
+      `trylayer-als-agenten-navigationsschicht`, beide
+      `related_adr: [ADR-002]`, `blindtest_passed: true`
+- [ ] Verbleibende vier Zeilen (Semantic Maps/`genesis-scope`, Navigable
+      Paths/Cartography-Pheromones-Drift, Contextual Structures/UTAC-CREP,
+      Agent-based Systems/MCP-Protokoll) brauchen externen Code-Zugriff
+      zur Verifikation — Pruefkriterien je Zeile in
+      `02_Plaene/adr002-begriffszuordnung-verifikationsplan.md`
 
 ## Naechster konkreter Schritt
 
-Erste echte `03_Architektur/`-Eintraege auf Basis von `ADR-001`
-formulieren (z.B. die Zwei-Koerper-Trennung selbst als
-Architektur-Eintrag mit `related_adr: [ADR-001]`), und/oder
-Repository-Kartierung der 48 Pakete beginnen. Parallel: die
-Begriffszuordnungstabelle aus `ADR-002` Zeile fuer Zeile in eigene
-Trylayer-Eintraege ueberfuehren.
+Die vier offenen Zeilen aus `02_Plaene/adr002-begriffszuordnung-
+verifikationsplan.md` einzeln abarbeiten: zuerst Cartography/Pheromones/
+Drift/Traces in `ECOSYSTEM_MAP.yaml` verorten (oder als reine
+Diskurs-Begriffe nach `archive/` verschieben, Regel 9), danach den
+`genesis-scope`-Blindtest tatsaechlich durchfuehren, sobald
+Quickstart-Zugriff besteht. Parallel: `02_Plaene/genesis-core-scope.md`
+weiterverfolgen (Core-Kandidaten `utac-core`-Kette einzeln durch den
+Blindtest schicken).

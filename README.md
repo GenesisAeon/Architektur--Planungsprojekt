@@ -13,6 +13,19 @@ Monorepo entsteht erst danach.
 
 **Bist du ein KI-System?** Lies zuerst [`AGENTS.md`](AGENTS.md).
 
+## Mission (ADR-002)
+
+> GenesisAeon generates, maintains and provides semantic maps, navigable
+> paths and contextual structures for LLMs and agent-based systems. Humans
+> act as curators, researchers and architects, shaping these maps through
+> rigorous inquiry.
+
+Verbindlicher Scope-Filter fuer jeden Beitrag in diesem Repo: Hilft er
+dabei, semantische Karten, Pfade oder Kontextstrukturen fuer Agenten
+besser zu erzeugen, zu pflegen oder bereitzustellen? Wenn nein, gehoert er
+wahrscheinlich nicht in den Core. Begruendung und Begriffszuordnung:
+[`adr/adr-002-mission-statement-v1.md`](adr/adr-002-mission-statement-v1.md).
+
 ## Ist-Stand
 
 → [`STATUS.md`](STATUS.md)

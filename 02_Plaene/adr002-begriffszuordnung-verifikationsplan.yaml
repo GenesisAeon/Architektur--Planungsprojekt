@@ -1,0 +1,17 @@
+id: adr002-begriffszuordnung-verifikationsplan
+title: "Verifikationsplan: ADR-002-Begriffszuordnung (externe Pakete)"
+kategorie: plan
+status: draft
+epistemic_status: hypothesis
+author:
+  name: Claude
+  typ: ai
+  system: Claude (Sonnet 4.6)
+created: 2026-06-22
+related_adr: []
+depends_on: []
+derived_from:
+  - adr-002-mission-statement-v1
+  - genesis-core-scope
+  - genesis-scope-blindtest
+blindtest_passed: null

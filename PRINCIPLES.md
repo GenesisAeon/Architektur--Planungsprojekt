@@ -5,6 +5,12 @@ Repos. Jede Aenderung an diesen Prinzipien braucht ein eigenes ADR
 (`adr/`). Diese Regeln sind kein Stilvorschlag, sondern werden durch
 `scripts/validate_trylayer.py` maschinell durchgesetzt (CI + pre-commit).
 
+Diese Regeln definieren *wie* Beitraege aufgenommen werden. *Was*
+aufgenommen wird, entscheidet zusaetzlich das Mission-Statement in
+`adr/adr-002-mission-statement-v1.md` (Regel 8 angewendet): jeder Beitrag
+muss erkennbar semantische Karten, Pfade oder Kontextstrukturen fuer
+Agenten erzeugen, pflegen oder bereitstellen helfen.
+
 ## Regel 1 — Trylayer-Pflicht
 
 Jede Wissenseinheit (Idee, Plan, Architekturentscheidung, Programm-,

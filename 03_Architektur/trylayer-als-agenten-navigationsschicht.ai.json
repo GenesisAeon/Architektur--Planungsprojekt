@@ -1,0 +1,26 @@
+{
+  "id": "trylayer-als-agenten-navigationsschicht",
+  "title": "Trylayer + ENTRY.yaml als Agenten-Navigationsschicht",
+  "kategorie": "architektur",
+  "status": "accepted",
+  "epistemic_status": "validated",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 4.6)"
+  },
+  "created": "2026-06-22",
+  "related_adr": ["ADR-001", "ADR-002"],
+  "depends_on": [],
+  "derived_from": ["adr-002-mission-statement-v1"],
+  "blindtest_passed": true,
+  "content": {
+    "entscheidung": "Dieses Repo ist bereits eine lauffaehige, minimale Instanz der Mission fuer sich selbst: ENTRY.yaml ist eine reine Datenstruktur, die ein Agent in einem Parse-Schritt liest, um den vollstaendigen deterministischen Lesepfad zu kennen (Regel 12). Das Trylayer-Format ist eine navigierbare, maschinell auswertbare Kontextstruktur (Status, Reifegrad, derived_from, depends_on). Beides funktioniert ohne LLM-Inferenz und ohne Internet (Regel 7).",
+    "begruendung": "Genesis-Blindtest besteht im engeren Sinn bereits: ein Agent ohne GenesisAeon-Kontext erhaelt per ENTRY.yaml einen vollstaendigen, korrekten Lesepfad und kann direkt danach einen gueltigen Beitrag einreichen, verifizierbar durch scripts/validate_trylayer.py.",
+    "bewusste_grenze": "Behauptet NICHT, dass MCP-spezifische Protokoll-Integration bereits existiert - nur dass die zugrunde liegende, paketunabhaengige Navigationslogik lauffaehig ist. MCP-Integration bleibt offene Frage, siehe 02_Plaene/adr002-begriffszuordnung-verifikationsplan.",
+    "alternativen_betrachtet": [
+      "Warten bis ein externes Paket (z.B. genesis-scope) den Blindtest besteht, bevor irgendein Navigable-Paths-Eintrag accepted wird - verworfen: ignoriert, dass dieses Repo selbst bereits ein gueltiges Beispiel ist."
+    ],
+    "bezug_begriffszuordnung_adr002": "Deckt einen Teilaspekt von Agent-based Systems->MCP-/Agent-Integration und Navigable Paths->Cartography/Pheromones/Drift/Traces ab (generischer, paketunabhaengiger Navigationsmechanismus). Domaenenspezifische Teile bleiben offen."
+  }
+}
