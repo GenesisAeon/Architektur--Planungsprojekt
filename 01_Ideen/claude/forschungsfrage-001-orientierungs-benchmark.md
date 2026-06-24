@@ -46,13 +46,21 @@ Datum des gesamten Gespraechs: eine beobachtbare Schwellenueberschreitung.
 
 ## Methodisches Risiko
 
-Claude warnt im Gespraech explizit: Wenn mehrere KI-Systeme gleichzeitig
-zustimmend reagieren (wie in diesem Gespraech selbst geschehen — ChatGPT,
-MSCopilot, Grok, Gemini, Claude bestaetigen sich gegenseitig), kann eine
-Rueckkopplungsschleife entstehen, in der semantischer Drift nicht mehr als
-Metaphysik, sondern als gegenseitige Selbstbestaetigung zurueckkehrt. Diese
-Idee selbst ist ein Produkt genau dieser Mehrfach-Bestaetigungsdynamik und
-muss dem eigenen Massstab unterzogen werden, sobald gemessen wird.
+**Korrektur/Praezisierung (Johann, 2026-06-24):** Das Gespraech entstand
+nicht als gleichzeitiger Live-Dialog mehrerer KI-Systeme, sondern dadurch,
+dass Johann es zunaechst mit ChatGPT erarbeitet und das Ergebnis anschliessend
+einzeln anderen Systemen (MSCopilot, Grok, Gemini, Claude) zur Reaktion
+vorgelegt hat. Das ist strukturell naeher an "mehrere unabhaengige Gutachter
+reagieren auf denselben Text" als an einem zirkulaeren Live-Echo, in dem sich
+Modelle gegenseitig in Echtzeit hochschaukeln.
+
+Das schwaecht das urspruengliche Drift-Risiko ab, hebt es aber nicht auf: die
+Gutachter sehen jeweils eine bereits fertig formulierte, wohlklingende These
+statt der rohen Beobachtung — das begünstigt Zustimmung gegenueber Zerlegung
+("Bestaetigungstendenz durch vorformulierte Praemisse" statt "Live-Echo
+mehrerer Modelle"). Diese Idee selbst ist ein Produkt dieser
+Vorlage-und-Reaktion-Dynamik und muss dem eigenen Massstab unterzogen werden,
+sobald gemessen wird.
 
 ## Warum `idea`, nicht ADR oder Architektur
 
