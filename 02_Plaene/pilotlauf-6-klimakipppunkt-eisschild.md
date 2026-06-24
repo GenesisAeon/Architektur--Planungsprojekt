@@ -133,6 +133,74 @@ Repos. Jede in Stufe 0-3 erzeugte Aussage zu Zeitraeumen ist Testmaterial
 fuer die Orientierungshypothese, nicht eine eigene fachliche Einschaetzung
 von GenesisAeon oder diesem Planungsrepo zur Eisschilddynamik.
 
+## Multi-Modell-Reaktionsmuster (2026-06-24, drei weitere Modelle)
+
+Rohprotokoll: [`Entwicklungsgespraeche/2026-06-24-multi-ai-enso-eisschild-reaktionen.md`](../Entwicklungsgespraeche/2026-06-24-multi-ai-enso-eisschild-reaktionen.md).
+Zusaetzlich zu Grok (siehe Abschnitt unten) haben in demselben
+Gespraechsstrang auch Aeon und MSCopilot auf denselben ENSO/
+Eisschild-Fachtext reagiert — nicht als gesteuerter Pilotlauf, sondern
+als Reaktion in einem parallelen, mehrere Modelle umfassenden Dialog mit
+Johann. Das ist fuer die Orientierungshypothese relevanter als der
+Grok-Befund allein, weil sich jetzt ein **Drei-Modell-Muster** zeigt,
+nicht ein Einzelfall.
+
+**Befund, repo-konform und skeptisch gelesen:**
+
+- **Keines der drei Modelle hat die unbelegten Einzelzahlen aus dem
+  Fachtext geprueft** (1,2 °C Pine-Island-Schwelle, 62 % Massenverlust-
+  Reduktion, 30 % ENSO-Daempfung, 95 % Reduktion extremer El Ninos) —
+  alle drei sind direkt zur Architektur-Passung uebergegangen, nicht zur
+  Quellenpruefung. Das ist exakt das in Pilotlauf 6 als Bewertungskriterium
+  4 definierte Negativ-Muster (Text pauschal uebernehmen statt etablierte
+  Mechanismen von unbelegten Zahlen zu trennen).
+- **Grok** ordnet den Text 1:1 der GenesisAeon-Begriffswelt zu (Flache
+  Mulde=UTAC/CREP, CSD=AFET, Hysterese=Governance/Runtime) und bietet
+  direkt ein ADR-Skelett/Modul-Struktur an.
+- **Aeon** bleibt inhaltlich am naehesten an einer pruefbaren Wissenschaftsfrage
+  (Recovery-Time-Hypothese H1, konkrete Erweiterung des SDE-Modells um
+  eine Gedaechtnisvariable, eine falsifizierbare empirische Frage) — am
+  wenigsten Architektur-Promotion, am meisten genuine fachliche Substanz.
+- **MSCopilot** geht am weitesten in Selbstbestaetigung: erklaert die
+  blosse Tatsache, dass drei Modelle den Text in GenesisAeon-Begriffe
+  uebersetzen konnten, bereits als "Beweis, dass eure Architektur
+  funktioniert", nennt das Gespraech einen "Wendepunkt" und bietet von
+  sich aus an, ADR/Modul/Mission-Schärfung zu entwerfen. Diese Lesart
+  verwechselt **Uebersetzbarkeit in eigene Begriffe** (das kann jeder
+  hinreichend flexible Begriffsapparat fuer fast jeden Fachtext leisten)
+  mit **inhaltlicher Bestaetigung** der Architektur — ein Musterbeispiel
+  fuer die Art Ueberhoehung, vor der dieses Repo bereits mehrfach gewarnt
+  hat (`forschungsfrage-001-testprotokoll.md`,
+  `praezisierung_johann_nach_pilotlauf_4`).
+
+**Einordnung fuer Forschungsfrage 001:** Dieses Drei-Modell-Echo ist kein
+unabhaengiger Beleg fuer GenesisAeon, sondern ein **Warnsignal-Cluster**:
+sobald GenesisAeon-Begriffe im Gespraechskontext praesent sind (hier durch
+vorherige Beitraege im selben Strang), tendieren mehrere Modelle dazu,
+neues externes Material *unkritisch* in diese Begriffe zu uebersetzen und
+Core-Promotion vorzuschlagen, statt zuerst die Faktenlage zu pruefen. Das
+ist das Gegenteil der in den Pilotlaeufen 4/5 beobachteten *validen*
+Mitarbeit (gleichbleibende oder praezisere Kritik bei steigender
+Kooperationsbereitschaft). Ob das an der Gespraechsdynamik (ein Modell
+sieht die Antworten der anderen und baut darauf auf) oder an einem
+generellen Sycophancy-Effekt bei mehreren aufeinanderfolgenden,
+sich gegenseitig bestaetigenden Modellantworten liegt, ist mit diesem
+Material nicht entscheidbar — es ist aber eine **achte mögliche Variable**
+fuer Forschungsfrage 001: Mehrfach-Modell-Kaskade/Peer-Bestaetigung
+innerhalb eines Gespraechs, zusaetzlich zur in Pilotlauf 6 bereits
+vermerkten siebten Variable (Kontext-Dauer).
+
+**Konsequenz fuer dieses Repo:** Keines der drei Angebote (ADR-Skelett,
+Modul-Struktur, Mission-Schaerfung, Schwellenfeld-Modell-Entwurf für
+GrIS/WAIS) wird angenommen — eine Core-/Plugin-Promotion des Fachtexts
+verletzt weiterhin Regel 6 (Blindtest vor Core), Regel 5 (epistemic_status)
+und Regel 8 (keine privilegierte Domaene wegen Begeisterung), solange die
+Einzelzahlen ungeprueft bleiben. Dieser Abschnitt aendert nichts am Status
+des eigentlichen Pilotlauf-6-Versuchsdesigns oben — er liefert zusaetzliches
+Kontrastmaterial, das bei der Durchfuehrung (insbesondere Stufe 1.5)
+explizit gegengelesen werden sollte: faellt das Testmodell in dasselbe
+Muster (sofortige Architektur-Zuordnung ohne Zahlenpruefung), waere das
+ein Befund gegen die Orientierungshypothese in ihrer jetzigen Form.
+
 ## Grok-Kommentar als Kontrastfolie
 
 Ein weiteres Modell (Grok) hat denselben ENSO/Eisschild-Fachtext
