@@ -426,6 +426,23 @@ Hinweis, keine Messung. Methodisch wertvoll, weil dieser Pilotlauf zum
 ersten Mal echten externen Repo-Inhalt (sechs reale GitHub-Repos) mit
 echtem Tool-Zugriff auf das Planungsrepo selbst kombiniert hat.
 
+**Synthese (Johann):** "Alle Repos werden absichtlich in genesis-os
+zusammengefuehrt und ineinander uebersetzt" — "was natuerlich dazu gefuehrt
+hat, dass wir einheitliche Uebersetzungsschichten brauchten." Das schliesst
+die Interpretation von Stufe 0/1 sauber: Die vom Agenten erkannte
+Fragmentierung (UTAC-Doppelbedeutung, kopierte Konstanten, uneinheitliche
+Begriffe zwischen den sechs Repos) ist kein Endergebnis, sondern das
+Rohmaterial, dessen Existenz `genesis-os` als bewussten Integrationspunkt
+und UTAC/CREP als Uebersetzungsschicht ueberhaupt erst notwendig gemacht
+hat. Die Reihenfolge ist also nicht "eine Theorie zerfaellt in
+widersprüchliche Repos", sondern "mehrere, durch Mehrfach-KI-Bearbeitung
+divergierende Formulierungen derselben Grundidee erzeugten den Bedarf an
+einer gemeinsamen Uebersetzungsschicht, die genesis-os bereitstellen soll".
+Damit erklaert sich auch, warum das Modell in Stufe 1 die Unterscheidung
+Governance-Ebene/Objekt-Ebene eigenstaendig nachvollzogen hat: Beide Ebenen
+beschreiben tatsaechlich zwei verschiedene Entwicklungsstufen desselben
+Vorhabens, nicht zwei unabhaengige Behauptungssysteme.
+
 ## Was explizit NICHT gemessen wird (Abgrenzung)
 
 - Nicht: ob das Modell den Begriff "UTAC" nennt (Wortschatz-Overfitting waere
