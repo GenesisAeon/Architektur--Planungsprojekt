@@ -331,6 +331,23 @@ Doku-Qualitaet. Offene Architekturfrage: braucht Regel 6 eine eigene
 Form fuer KI-native Pakete, die per Design erst durch spaetere
 KI-Integration sinnvoll werden?
 
+## Folgefrage: Blindtest-Definition fuer KI-native Leerpakete (2026-06-24)
+
+Aus dem `genesis-scope`-Befund abgeleitet, als eigene Idee dokumentiert:
+`01_Ideen/claude/blindtest-fuer-ki-native-leerpakete`
+(`epistemic_status: hypothesis`, `derived_from: [genesis-scope-blindtest]`).
+Kernfrage: Regel 6 setzt implizit voraus, dass ein "sinnvolles Ergebnis"
+durch bessere Doku erreichbar ist — bei Paketen, die per Design erst
+durch spaetere KI-Befuellung sinnvoll werden, kann der klassische
+Blindtest strukturell nie TRUE liefern. Zwei unentschiedene Vorschlaege:
+(a) Vorbedingung — Paket muss vor dem Blindtest mit repraesentativen
+Beispieldaten ausgestattet sein; (b) eigene Blindtest-Variante — pruefen,
+ob der Quickstart verstehen laesst, WAS dem Paket noch fehlt und WARUM,
+statt ein sofort verstehbares Endergebnis zu verlangen. Beide Wege noch
+offen, da eine Aenderung von Regel 6 selbst einer Verfassungsaenderung
+(Regel 12) unterliegt und nicht per ADR-003-Fallweise-Autoritaet
+entschieden werden darf.
+
 ## Naechster konkreter Schritt
 
 - [x] Cartography/Pheromones/Drift/Traces in `ECOSYSTEM_MAP.yaml`
@@ -338,10 +355,16 @@ KI-Integration sinnvoll werden?
       (siehe oben) — Cartography bleibt offen (Semantic-Maps-Linie).
 - [x] `genesis-scope`-Blindtest tatsaechlich durchgefuehrt (siehe oben) —
       Ergebnis FALSE, Ursache strukturell (nie befuellt), nicht Doku.
+- [x] Blindtest-Definition fuer KI-native, erst durch Nutzung befuellte
+      Pakete als eigene Folgefrage in `01_Ideen/` aufgenommen (siehe oben)
+      — wartet auf Maintainer-Entscheidung, da Regel-6-Aenderung Regel 12
+      unterliegt.
 - [ ] `genesis-os`-Quickstart mit vollstaendigem Original-README erneut
-      blind testen (methodischer Schwachpunkt aus Testfall 2 schliessen).
-- [ ] Blindtest-Definition fuer KI-native, erst durch Nutzung befuellte
-      Pakete als eigene Folgefrage in `01_Ideen/` aufnehmen.
+      blind testen (methodischer Schwachpunkt aus Testfall 2 schliessen)
+      — blockiert: direkter Netzwerkzugriff auf raw.githubusercontent.com
+      ist ueber den Proxy gesperrt (403), WebFetch liefert nur eine
+      KI-zusammengefasste statt der woertlichen README; wartet auf
+      erneutes Einfuegen des vollstaendigen Original-Texts durch Johann.
 - [ ] `02_Plaene/genesis-core-scope.md` weiterverfolgen (Core-Kandidaten
       `utac-core`-Kette einzeln durch den Blindtest schicken).
 - [ ] Testprotokoll fuer Forschungsfrage 001 mit zweiter Modell-Familie
