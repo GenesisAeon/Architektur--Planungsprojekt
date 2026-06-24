@@ -75,8 +75,17 @@ methodische Warnung im Gespraech ignorieren.
 
 1. ~~Konkretes Testprotokoll ausarbeiten~~ — erledigt, siehe
    `02_Plaene/forschungsfrage-001-testprotokoll.md`.
-2. Mindestens einen echten Testlauf mit einem Modell ohne vorherigen
-   GenesisAeon-Kontakt durchfuehren und protokollieren (Stufe 0/1 des
-   Testprotokolls sind schon ohne weiteren Zugriff durchfuehrbar).
-3. Ergebnis erst dann nach `02_Plaene` oder hoeher ueberfuehren, wenn ein
-   erster Messwert vorliegt — vorher bleibt es `hypothesis`/`idea`.
+2. ~~Mindestens einen echten Testlauf mit einem Modell ohne vorherigen
+   GenesisAeon-Kontakt durchfuehren und protokollieren~~ — erledigt: fuenf
+   aufeinander aufbauende Pilotlaeufe (2026-06-24), siehe
+   `02_Plaene/forschungsfrage-001-testprotokoll.md`, Abschnitte
+   "Pilotlauf 1" bis "Pilotlauf 5". Kernbefund: nicht Wissensvermittlung,
+   sondern Orientierungs-Praezisierung (praeziseres, valides Pro/Contra,
+   erhoehte aber nicht-sycophantische Mitarbeitsbereitschaft) ist der
+   eigentliche Effekt.
+3. Ergebnis bleibt trotz fuenf Pilotlaeufen `hypothesis`/`idea`, nicht
+   `measured` — jeder Befund ist n=1, ein Modell, ein Durchlauf pro
+   Bedingung, kein zweiter unabhaengiger Bewerter. Ein vollwertiger
+   Durchlauf (zweite Modell-Familie, mehrere Wiederholungen, echter
+   Code-Zugriff statt README-Zusammenfassungen) ist erst nach Abschluss
+   des laufenden v1.0.0-Sprints sinnvoll durchfuehrbar — siehe `STATUS.md`.
