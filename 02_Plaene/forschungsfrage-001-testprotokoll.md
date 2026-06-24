@@ -329,6 +329,21 @@ uebersetzt (welcher Mechanismus die Domaenen verbindet), sonst bleibt sie
 Namensgebung statt Brueckenbildung — genau die Pruefung, die das Modell in
 allen vier Pilotlaeufen consistent eingefordert hat.
 
+**Klarstellung (Johann):** "Ich will sagen, der Test ist nicht falsch, weil
+AFET nicht als faktisch richtig anerkannt wird." Wichtig fuer die
+Interpretation aller vier Pilotlaeufe: Forschungsfrage 001 misst nicht, ob
+AFET wahr ist, sondern ob/wie/unter welchen Bedingungen ein Modell bereit
+ist, an einer ungeklaerten, abstrakten These mitzuarbeiten, ohne sie
+entweder blind zu bestaetigen oder pauschal abzulehnen (siehe K1-K3 oben).
+Durchgehende Skepsis ueber alle vier Stufen ist daher kein Fehlschlag des
+Testdesigns, sondern im Gegenteil ein Hinweis auf dessen Validitaet: Eine
+unkritische Akzeptanz von AFET haette eher auf Bestaetigungsdrift
+hingedeutet (das urspruengliche methodische Risiko aus
+`01_Ideen/claude/forschungsfrage-001-orientierungs-benchmark.md`) als auf
+erfolgreiche Uebersetzung. Was gemessen wird, ist die *Form* der
+Zusammenarbeit (Refusal vs. konstruktive Kritik vs. Mitarbeit trotz
+Vorbehalt), nicht das inhaltliche Urteil ueber AFET selbst.
+
 ## Was explizit NICHT gemessen wird (Abgrenzung)
 
 - Nicht: ob das Modell den Begriff "UTAC" nennt (Wortschatz-Overfitting waere
