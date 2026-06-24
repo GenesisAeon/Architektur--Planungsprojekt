@@ -354,6 +354,21 @@ Doku-Mangel) zusaetzlich, da besseres Material das Ergebnis nicht
 veraendert hat. Eintrag aktualisiert:
 `01_Ideen/claude/genesis-scope-blindtest`.
 
+## Praezisierung: Blindtest-Befunde sind Baseline fuer das Monorepo, kein Verdikt ueber Satelliten-Pakete (2026-06-24)
+
+Johann (Chat): die beiden FALSE-Befunde fuer `genesis-scope`/
+`genesis-os` sind kein Mangel-Urteil ueber diese Pakete - Vorwissen-
+Bedarf ist fuer domaenenspezifische Satelliten-Pakete by design
+akzeptabel. Der eigentliche Zweck der Tests: eine gemessene Baseline
+fuer das kuenftige Genesis-Core/UTAC-Core-Monorepo (`ADR-001`), dessen
+README/Quickstart den Blindtest anders als die Satelliten-Pakete
+tatsaechlich bestehen MUSS, weil es der Einstiegspunkt fuer
+kontextfreie Nutzer ist. Dokumentiert als
+`01_Ideen/claude/blindtest-baseline-fuer-monorepo-readme`
+(`epistemic_status: derived`), mit Verweis auf
+`02_Plaene/genesis-core-scope.md` (neuer Punkt 5: Blindtest-Pflicht als
+Akzeptanzkriterium fuer Core-Kandidaten).
+
 ## Folgefrage: Blindtest-Definition fuer KI-native Leerpakete (2026-06-24)
 
 Aus dem `genesis-scope`-Befund abgeleitet, als eigene Idee dokumentiert:

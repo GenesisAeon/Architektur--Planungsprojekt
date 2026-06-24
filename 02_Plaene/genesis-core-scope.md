@@ -83,6 +83,13 @@ erst einzeln pro Paket nach Blindtest + ADR (Regel 3, Regel 6).
    LLM-Laufzeitabhängigkeit wirklich vorliegt — die Einordnung hier
    basiert nur auf der Domänen-Beschreibung aus der Roadmap, nicht auf
    Code-Inspektion.
+5. **Maßstab für Schritt 1 präzisiert (2026-06-24):** die Genesis-
+   Blindtests gegen `genesis-scope`/`genesis-os` (beide FALSE, siehe
+   `01_Ideen/claude/genesis-scope-blindtest`) sind die Baseline, nicht
+   ein Verdikt über diese Satelliten-Pakete — siehe
+   `01_Ideen/claude/blindtest-baseline-fuer-monorepo-readme`. Für den
+   Core selbst gilt anders als für Domänen-Pakete: der Blindtest muss
+   bestehen, bevor ein Core-Kandidat `status: accepted` bekommt.
 
 ## Alternativen betrachtet
 
