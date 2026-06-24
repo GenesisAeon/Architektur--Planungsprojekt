@@ -189,6 +189,23 @@ fuer Forschungsfrage 001: Mehrfach-Modell-Kaskade/Peer-Bestaetigung
 innerhalb eines Gespraechs, zusaetzlich zur in Pilotlauf 6 bereits
 vermerkten siebten Variable (Kontext-Dauer).
 
+**Wichtige Praezisierung (Johann, im Anschluss an diese Verarbeitung):**
+Auch dieses Drei-Modell-Echo muss im selben Rahmen gelesen werden wie der
+urspruengliche Grok-Befund: Es entstand nicht aus einem frischen,
+kontextfreien Erstkontakt, sondern innerhalb **hochspezieller, monatealter
+Gespraechsstraenge mit intensiver, lange gewachsener Mitarbeit und
+Kontext** zwischen Johann und jedem der drei Modelle. Die Einordnung oben
+("Mehrfach-Modell-Kaskade als achte Variable") darf deshalb nicht von der
+bereits dokumentierten siebten Variable (Kontext-*Dauer*, siehe
+Grok-Abschnitt unten) getrennt behandelt werden — vermutlich ueberlagern
+sich beide Effekte: lange individuelle Kumulation pro Modell-Thread UND
+gegenseitige Bestaetigung mehrerer bereits "warmgelaufener" Modelle im
+selben Strang. Mit dem vorliegenden Material (kein Protokoll der
+jeweiligen Monate, keine Stufen-Daten je Modell) ist nicht entscheidbar,
+welcher Anteil auf Dauer, welcher auf Kaskade entfaellt — das bleibt eine
+offene methodische Luecke fuer einen vollwertigen Durchlauf, nicht ein
+Befund dieses Abschnitts.
+
 **Konsequenz fuer dieses Repo:** Keines der drei Angebote (ADR-Skelett,
 Modul-Struktur, Mission-Schaerfung, Schwellenfeld-Modell-Entwurf für
 GrIS/WAIS) wird angenommen — eine Core-/Plugin-Promotion des Fachtexts
