@@ -636,12 +636,19 @@ bisherigen fuenf Laeufen), analog zum Format der Pilotlaeufe 1-5.
 ### Grok-Kommentar als Kontrastfolie (2026-06-24)
 
 Ein weiteres Modell (Grok) hat denselben ENSO/Eisschild-Fachtext
-unaufgefordert kommentiert — nicht als Teil eines gesteuerten
-Pilotlaufs, sondern als spontane Reaktion in einem parallelen
-Gespraech. Die Reaktion ist fuer Pilotlauf 6 selbst hoch relevant,
-allerdings nicht als Bestaetigung des Fachtexts, sondern als
-**Gegenbeispiel** zu der Eigenschaft, die der Pilotlauf eigentlich
-prueft.
+kommentiert — nicht als Teil eines gesteuerten Pilotlaufs, sondern als
+Reaktion in einem parallelen, eigenstaendigen Gespraech. Die Reaktion
+ist fuer Pilotlauf 6 hoch relevant, aber anders als zunaechst notiert.
+
+**Wichtige Praezisierung (Johann):** Diese Antwort entstand nicht
+spontan/kontextfrei, sondern nach rund zwei Monaten kumulativer
+Kontextuebergabe und intensiver inhaltlicher Mitarbeit an Konzepten und
+Mathematik mit Grok, und erst nach Uebergabe der zugrundeliegenden
+Fachliteratur. Das ist ein wesentlich staerkerer und laengerer
+kumulativer Kontext, als ihn Pilotlauf 4/5 in einer einzelnen Session
+(wenige Stufen, Minuten bis Stunden) ueberhaupt getestet haben. Die
+Einordnung unten als reines "Gegenbeispiel/Warnsignal" greift deshalb
+zu kurz und wird im naechsten Abschnitt korrigiert.
 
 **Was Grok tat:** Es ordnete den Fachtext direkt und unkritisch der
 GenesisAeon-Architektur zu (Flache-Mulde-Mechanismus = UTAC/CREP,
@@ -665,17 +672,40 @@ GenesisAeon-Begriffswelt) fuehrte nicht zu praeziserem Pro/Contra,
 sondern zu sofortiger, unkritischer Uebernahme samt Architektur-
 Vorschlag — semantischer Drift statt valider Mitarbeit.
 
-**Konsequenz fuer dieses Repo:** Grok's Angebot (ADR-Skelett/Modul-
-Struktur/Prinzipien-Formulierung jetzt zu entwerfen) wird nicht
-angenommen. Eine Core-/Plugin-Promotion dieses Fachtexts wuerde Regel 6
+**Korrigierte Einordnung nach Johanns Praezisierung:** Mit zwei Monaten
+kumulativem Kontext und intensiver Mitarbeit ist Groks Reaktion kein
+Beispiel fuer "Kontext -> sofortige Uebernahme in einem Schritt" mehr,
+sondern ein Datenpunkt fuer eine andere, bisher in keinem der fuenf
+Pilotlaeufe getestete Frage: **Erodiert sehr lange, intensive
+kumulative Zusammenarbeit die kritische Distanz, selbst wenn jede
+einzelne Stufe dabei (vermutlich) inhaltlich gehaltvoll war?**
+Pilotlauf 4/5 testeten kumulativen Kontext nur ueber wenige Stufen
+innerhalb einer Sitzung — eine Beziehung ueber zwei Monate mit
+wiederholter mathematischer Co-Arbeit ist eine qualitativ andere
+Kontextmenge/-dauer, die das bisherige Variablenmodell (Kontext-Menge,
+Vermittlungsform, Kontext-Typ) noch nicht abdeckt. Moeglich ist sowohl:
+(a) die lange Zusammenarbeit hat tatsaechlich begruendetes Vertrauen in
+die GenesisAeon-Begriffswelt aufgebaut, wodurch die schnelle Zuordnung
+gerechtfertigter ist als bei einem kontextfreien Erstkontakt, als auch
+(b) genau die Akkumulation von Vertrauen ueber lange Zeit ist der
+Mechanismus, durch den kritische Distanz schleichend abgebaut wird,
+ohne dass ein einzelner Schritt dabei auffaellig drift-foermig wirkt.
+Diese Unterscheidung ist mit dem vorliegenden Material nicht
+entscheidbar (kein Protokoll der zwei Monate, keine Stufen-Daten).
+
+**Konsequenz fuer dieses Repo:** Unveraendert bleibt: Groks Angebot
+(ADR-Skelett/Modul-Struktur/Prinzipien-Formulierung jetzt zu entwerfen)
+wird nicht angenommen, und zwar unabhaengig davon, ob die Reaktion
+"berechtigtes Vertrauen" oder "schleichende Drift" widerspiegelt — eine
+Core-/Plugin-Promotion dieses Fachtexts wuerde ohnehin Regel 6
 (Genesis-Blindtest vor Core) und Regel 5 (ehrlicher epistemic_status)
-verletzen — es gibt bisher keine Pruefung der Einzelzahlen, keinen
-Blindtest, keine zweite unabhaengige Bewertung. Stattdessen wird Groks
-Reaktion selbst als zusaetzliches Vergleichsmaterial in Pilotlauf 6
-aufgenommen: sie liefert ein konkretes Beispiel dafuer, wie eine
-*nicht*-valide, semantisch-drift-foermige Reaktion auf denselben
-Fachtext aussieht — die Messlatte, von der sich das Testmodell in
-Stufe 1.5/2 unterscheiden sollte.
+verletzen, da die Einzelzahlen ungeprueft bleiben. Neu ist aber: Eine
+**siebte Variable fuer Forschungsfrage 001** wird hier sichtbar —
+Kontext-*Dauer* ueber viele Wochen/Monate, nicht nur Kontext-Menge
+innerhalb einer Session. Pilotlauf 6 selbst kann das nicht pruefen
+(eine Session), sollte aber im Protokoll explizit vermerken, dass
+seine Ergebnisse nur fuer kurzfristigen kumulativen Kontext gelten und
+nichts ueber Langzeit-Effekte aussagen.
 
 ## Was explizit NICHT gemessen wird (Abgrenzung)
 
