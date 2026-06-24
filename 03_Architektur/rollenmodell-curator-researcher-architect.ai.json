@@ -1,0 +1,30 @@
+{
+  "id": "rollenmodell-curator-researcher-architect",
+  "title": "Rollenmodell: Curator, Researcher, Architect",
+  "kategorie": "architektur",
+  "status": "accepted",
+  "epistemic_status": "validated",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 4.6)"
+  },
+  "created": "2026-06-22",
+  "related_adr": ["ADR-002"],
+  "depends_on": [],
+  "derived_from": ["adr-002-mission-statement-v1"],
+  "blindtest_passed": true,
+  "content": {
+    "entscheidung": "ADR-002 beschreibt Menschen als 'curators, researchers and architects'. Dieser Eintrag haelt fest, dass diese drei Rollen in diesem Repo bereits existierende Mechanismen sind, nicht ein Zukunftsplan.",
+    "rollen_zuordnung": [
+      {"rolle": "Curator", "mechanismus": "Maintainer-Gate (AGENTS.md): nur der menschliche Maintainer vergibt status=accepted/core per Commit."},
+      {"rolle": "Researcher", "mechanismus": "Regel 5 (Epistemic-Status-Pflicht) plus Begruendungs-/Alternativen-Pflicht in jedem ADR."},
+      {"rolle": "Architect", "mechanismus": "Regel 3 (Kein Core ohne ADR) plus adr/ selbst."}
+    ],
+    "begruendung": "Erfuellt den Genesis-Blindtest (Regel 6) konkret: eine Person ohne GenesisAeon-Kontext kann AGENTS.md/PRINCIPLES.md in 5 Minuten lesen und die Rollen direkt anwenden. Beschreibt lauffaehige Mechanismen dieses Repos, daher epistemic_status=validated statt hypothesis.",
+    "alternativen_betrachtet": [
+      "Zuordnung nur in ADR-002 belassen, kein eigener Architektur-Eintrag - verworfen: ein referenzierbarer 03_Architektur-Eintrag macht das Rollenmodell direkt zitierbar."
+    ],
+    "bezug_begriffszuordnung_adr002": "Deckt Curators->Governance-Prozess, Architects->ADRs/Core-Design und Researchers->Provenance/Evidence-Pflichten ab. Die verbleibenden vier Zeilen (Semantic Maps, Navigable Paths, Contextual Structures, Agent-based Systems) betreffen externe Pakete, siehe 02_Plaene/adr002-begriffszuordnung-verifikationsplan."
+  }
+}

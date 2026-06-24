@@ -1,0 +1,49 @@
+{
+  "id": "adr-002-mission-statement-v1",
+  "title": "Mission-Statement v1 fuer GenesisAeon / genesis-os",
+  "kategorie": "adr",
+  "status": "accepted",
+  "epistemic_status": "derived",
+  "adr_number": "ADR-002",
+  "author": {
+    "name": "Johann",
+    "typ": "human"
+  },
+  "created": "2026-06-22",
+  "related_adr": [],
+  "depends_on": [],
+  "derived_from": [],
+  "blindtest_passed": null,
+  "content": {
+    "kontext": "GenesisAeon-Gruppenbeschreibung und genesis-os hatten keine einheitliche, oeffentlich verstaendliche Selbstbeschreibung. Vorherige Versuche (Wissensplattform, Gemeinwohlplattform, Klimaplattform, Zivilisationskomponente, semantisches Betriebssystem fuer Sinn) waren weder testbar noch architekturfaehig. Ein Multi-AI-Gespraech (Claude, ChatGPT, Grok, MSCopilot, Johann; 2026-06-22) hat im Konsens ein Mission-Statement erarbeitet. Vollstaendiges Protokoll: Entwicklungsgespraeche/2026-06-22-mission-statement.md.",
+    "mission_statement": "GenesisAeon generates, maintains and provides semantic maps, navigable paths and contextual structures for LLMs and agent-based systems. Humans act as curators, researchers and architects, shaping these maps through rigorous inquiry.",
+    "entscheidung": "Mission-Statement v1 wird als GenesisAeon-Organisationsbeschreibung und als genesis-os-Beschreibung uebernommen (Maintainer-Entscheidung Johann, 2026-06-22). Gilt als vorlaeufiger, bindender Bezugspunkt fuer dieses Repo, nicht als finale Vision.",
+    "rollenverteilung": {
+      "primaerer_adressat": "LLMs und agentenbasierte Systeme (Konsumenten/Navigatoren)",
+      "primaerer_gestalter": "Menschen als Curators, Researchers, Architects"
+    },
+    "begriffszuordnung_hypothese": [
+      {"mission_begriff": "Semantic Maps", "vermutete_entsprechung": "genesis-scope / Scope-Konzept"},
+      {"mission_begriff": "Navigable Paths", "vermutete_entsprechung": "Cartography, Pheromones, Drift, Traces"},
+      {"mission_begriff": "Contextual Structures", "vermutete_entsprechung": "UTAC/CREP, semantische Graphen"},
+      {"mission_begriff": "Agent-based Systems", "vermutete_entsprechung": "MCP-/Agent-Integration"},
+      {"mission_begriff": "Curators", "vermutete_entsprechung": "Governance-Prozess in diesem Repo"},
+      {"mission_begriff": "Researchers", "vermutete_entsprechung": "Provenance/Evidence-Pflichten"},
+      {"mission_begriff": "Architects", "vermutete_entsprechung": "ADRs, Core-Design"}
+    ],
+    "begruendung": [
+      "Besteht den Genesis-Blindtest informell: ohne Vorwissen verstaendlich, beschreibt testbares Verhalten statt Anspruch.",
+      "Filtert Scope: neue Ideen werden daran gemessen, ob sie semantische Karten/Pfade/Kontextstrukturen fuer Agenten erzeugen, pflegen oder bereitstellen helfen (operationalisiert Regel 8).",
+      "Macht die bisher implizite Rollentrennung Mensch/KI zu einer expliziten, pruefbaren Architekturentscheidung."
+    ],
+    "alternativen_betrachtet": [
+      "Keine eigene ADR, Satz nur als Prosa fuehren - verworfen, Regel 3 verlangt ADR vor Architekturentscheidungen mit Scope-Konsequenzen.",
+      "Auf weitere Wortwahl-Feinschliffe (develops/curates) warten - verworfen (Johann, explizit): Substanz aendert sich nicht; neue Erkenntnisse bekommen ein neues ADR mit supersedes statt stiller Bearbeitung."
+    ],
+    "konsequenzen": [
+      "Begriffszuordnungstabelle ist Ausgangshypothese fuer 02_Plaene/genesis-core-scope.md und anstehende Blindtests, ersetzt keine Einzelpaket-Entscheidung.",
+      "Aenderungen an GitHub-Gruppenbeschreibung, genesis-os-Repo-Beschreibung und Zenodo-Community-Beschreibung sind externe, manuelle Schritte (Johann) - dieses ADR dokumentiert nur Entscheidung und Begruendung.",
+      "Naechster Schritt: aus der Tabelle konkrete 01_Ideen/- bzw. 02_Plaene/-Eintraege ableiten (derived_from auf dieses ADR), bevor eine Zeile als 03_Architektur/-Eintrag mit status=accepted landet."
+    ]
+  }
+}

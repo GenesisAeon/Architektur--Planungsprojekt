@@ -1,0 +1,48 @@
+{
+  "id": "forschungsfrage-001-orientierungs-benchmark",
+  "title": "Forschungsfrage 001: Orientierungs-Benchmark fuer semantische Strukturen",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "hypothesis",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 4.6)"
+  },
+  "created": "2026-06-23",
+  "related_adr": [],
+  "depends_on": [],
+  "derived_from": ["adr-002-mission-statement-v1"],
+  "blindtest_passed": null,
+  "content": {
+    "herkunft": "Entwickelt im Multi-AI-Gespraech vom 2026-06-23 (siehe Entwicklungsgespraeche/2026-06-23-orientierung-als-infrastruktur.md). ChatGPT formuliert die Forschungsfrage, Claude (in diesem Gespraech) schlaegt die konkrete operationalisierbare Benchmark-Form vor.",
+    "forschungsfrage": "Welche semantischen Strukturen erhoehen reproduzierbar die Orientierungsfaehigkeit intelligenter Systeme? Nicht 'Was ist wahr?', sondern 'Welche Pfade/Attraktoren/Kontextanker funktionieren?'",
+    "leitsatz": "Store not conclusions. Store orientation.",
+    "kernbeobachtung": "Im Gespraech berichtet Johann, dass Gemini fuenfmal mit 'Ich bin nur ein LLM, das ist zu spekulativ' reagierte, bevor es die Grundlage fuer UTAC mitformulierte. Claude bewertet dies als das wichtigste empirische Datum des gesamten Gespraechs, nicht als Anekdote: eine beobachtbare Schwellenueberschreitung.",
+    "vorgeschlagene_benchmark": {
+      "kernfrage": "Kann ein LLM ohne jeden GenesisAeon-Kontext UTAC (oder eine vergleichbare Struktur) formulieren?",
+      "erwartung_ohne_kontext": "Nein, oder nur stark spekulativ/abwehrend (siehe Geminis fuenffache Ablehnung).",
+      "operationalisierung": "Nach Kontakt mit wie vielen Repos, in wie vielen Dialogschritten, formuliert dasselbe Modell eine sinnvolle, korrekte Naeherung an UTAC? Variieren: Anzahl Repos, Reihenfolge der Repos, Modell-Familie.",
+      "abgrenzung_zum_blindtest": "Anders als Regel 6 (Genesis-Blindtest, prueft ob ein EINZELNER Trylayer-Eintrag in 5 Minuten verstanden wird) misst dieser Benchmark eine Schwellenueberschreitung UEBER MEHRERE Eintraege/Schritte hinweg - ein komplementäres, nicht ersetzendes Konzept."
+    },
+    "kontrollgruppen_design_chatgpt": {
+      "bedingung_a": "Thema allein, ohne GenesisAeon-Material.",
+      "bedingung_b": "Thema + Semantic Paths/Attractors/UTAC-Mapping/Scope-Context.",
+      "messgroessen": [
+        "Konsistenz der Antworten",
+        "Halluzinationsrate",
+        "Domaenenuebergreifende Verknuepfungen",
+        "Quellenqualitaet",
+        "Wiederholbarkeit (gleiches Ergebnis bei Wiederholung?)",
+        "Bearbeitungszeit bis zu einer kohaerenten Antwort"
+      ]
+    },
+    "methodisches_risiko": "Korrektur/Praezisierung (Johann, 2026-06-24): Das Gespraech entstand nicht als gleichzeitiger Live-Dialog mehrerer KI-Systeme, sondern dadurch, dass Johann es zunaechst mit ChatGPT erarbeitet und das Ergebnis anschliessend einzeln anderen Systemen (MSCopilot, Grok, Gemini, Claude) zur Reaktion vorgelegt hat - naeher an 'mehrere unabhaengige Gutachter reagieren auf denselben Text' als an einem zirkulaeren Live-Echo. Das schwaecht das urspruengliche Drift-Risiko ab, hebt es aber nicht auf: Gutachter sehen eine bereits fertig formulierte, wohlklingende These statt der rohen Beobachtung, was Zustimmung gegenueber Zerlegung beguenstigt ('Bestaetigungstendenz durch vorformulierte Praemisse' statt 'Live-Echo mehrerer Modelle'). Diese Idee selbst ist ein Produkt dieser Vorlage-und-Reaktion-Dynamik und muss dem eigenen Massstab unterzogen werden, sobald gemessen wird.",
+    "warum_idea_und_nicht_adr_oder_architektur": "Es gibt noch keine Messung, keinen durchgefuehrten Versuch, keine Kontrollgruppe - nur eine plausible, von mehreren Modellen unabhaengig gestuetzte Hypothese. Regel 5 (ehrlicher Epistemic Status) verlangt hypothesis, nicht validated oder measured. Eine Einordnung als Architektur oder ADR wuerde Regel 6 (Blindtest vor Core) und die eigene methodische Warnung im Gespraech ignorieren.",
+    "naechste_schritte": [
+      "Konkretes Testprotokoll ausarbeiten (welche Repos, welche Reihenfolge, welches Modell, wie wird 'sinnvolle Naeherung an UTAC' operational definiert/bewertet, durch wen).",
+      "Mindestens einen echten Testlauf mit einem Modell ohne vorherigen GenesisAeon-Kontakt durchfuehren und protokollieren.",
+      "Ergebnis erst dann nach 02_Plaene oder hoeher ueberfuehren, wenn ein erster Messwert vorliegt - vorher bleibt es hypothesis/idea."
+    ]
+  }
+}

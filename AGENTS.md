@@ -37,6 +37,7 @@ danach.
 adr/                Architecture Decision Records
 archive/            Verworfenes / "wertvoll aber nicht Core" (Regel 11)
 Planungsdiskurse/   Archiv des urspruenglichen Multi-AI-Diskurses (read-only)
+Entwicklungsgespraeche/  Rohprotokolle laufender Multi-AI-Gespraeche (Eingabe, kein Trylayer)
 ```
 
 Vollstaendige Regeln: `PRINCIPLES.md`. Kurzfassung: jeder Ordner erlaubt

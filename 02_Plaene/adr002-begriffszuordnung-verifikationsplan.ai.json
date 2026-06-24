@@ -1,0 +1,37 @@
+{
+  "id": "adr002-begriffszuordnung-verifikationsplan",
+  "title": "Verifikationsplan: ADR-002-Begriffszuordnung (externe Pakete)",
+  "kategorie": "plan",
+  "status": "draft",
+  "epistemic_status": "hypothesis",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 4.6)"
+  },
+  "created": "2026-06-22",
+  "related_adr": [],
+  "depends_on": [],
+  "derived_from": ["adr-002-mission-statement-v1", "genesis-core-scope", "genesis-scope-blindtest"],
+  "blindtest_passed": null,
+  "content": {
+    "problem": "ADR-002 enthaelt eine Begriffszuordnungstabelle. Drei Zeilen (Curators, Researchers, Architects) und ein Teilaspekt einer vierten (Agent-based Systems, generischer Teil) sind bereits durch 03_Architektur-Eintraege abgedeckt, weil sie Mechanismen dieses Repos selbst beschreiben. Die verbleibenden Zeilen verweisen auf externen Code (genesis-scope, Cartography/Pheromones/Drift, UTAC/CREP, MCP), der von hier aus nicht verifizierbar ist.",
+    "vorschlag": "Pro offener Zeile ein konkretes Pruefkriterium statt unveraenderter Hypothese oder vorschneller Bestaetigung.",
+    "tabelle": [
+      {"mission_begriff": "Semantic Maps", "vermutete_entsprechung": "genesis-scope", "fehlt_zur_verifikation": "Bereits Blindtest-Kandidat (01_Ideen/claude/genesis-scope-blindtest); braucht echten Quickstart-Zugriff, nicht nur Domaenen-Beschreibung."},
+      {"mission_begriff": "Navigable Paths", "vermutete_entsprechung": "Cartography, Pheromones, Drift, Traces", "fehlt_zur_verifikation": "Nicht als eigene PACKAGE_IDs in ECOSYSTEM_MAP.yaml auffindbar (Stand 2026-06-19) - klaeren ob Teilmodule oder unklassifizierte Diskurs-Konzepte."},
+      {"mission_begriff": "Contextual Structures", "vermutete_entsprechung": "UTAC/CREP, semantische Graphen", "fehlt_zur_verifikation": "utac-core bereits Core-Kandidat in 02_Plaene/genesis-core-scope.md - Verifikation laeuft ueber diesen Plan. UPDATE 2026-06-24 (aus Forschungsfrage-001-Pilotlaeufen, siehe 02_Plaene/forschungsfrage-001-testprotokoll.md): CREP/UTAC sind real als Code in genesis-os vorhanden (Gamma(C,R,E,P)=(C*R*E*P)^(1/4), UTAC-Logistic-ODE, afet/-Modul als 'Thermodynamic consistency layer'/'AFET+Landauer Consistency') - keine reine Diskurs-Terminologie mehr. Aber: UTAC wird in Feldtheorie ('Universal Threshold Activation-Coupling') und sa-sv-duality ('Universal Trajectory of Action-Coherence') unterschiedlich ausgeschrieben - noch ungeklaerte Cross-Repo-Inkonsistenz, die vor jeder Einstufung als validated/accepted aufgeloest werden muss. Weiterhin nur README-Ebene (WebFetch), kein direkter Quellcode-Zugriff - vollwertige Code-Verifikation steht noch aus (blockiert durch laufenden v1.0.0-Sprint)."},
+      {"mission_begriff": "Agent-based Systems (MCP-Teil)", "vermutete_entsprechung": "MCP-/Agent-Integration", "fehlt_zur_verifikation": "Kein MCP-Server-/Client-Code identifiziert - offen ob Bestandscode oder zukuenftige Anforderung."}
+    ],
+    "erwartetes_ergebnis": "Pro Zeile entweder ein 01_Ideen-Eintrag mit konkretem Pruefschritt, oder Verschiebung nach archive/ mit Begruendung, falls reine Diskurs-Terminologie ohne externe Entsprechung (Regel 9).",
+    "naechster_schritt": [
+      "Cartography/Pheromones/Drift/Traces in ECOSYSTEM_MAP.yaml suchen bzw. Maintainer fragen, ob Synonyme bestehender PACKAGE_IDs.",
+      "genesis-scope-Blindtest tatsaechlich durchfuehren, sobald Quickstart-Zugriff besteht (Maintainer-Aufgabe).",
+      "MCP-Frage als eigene Idee in 01_Ideen/ einreichen, sobald klar ist ob Bestandscode oder neue Anforderung."
+    ],
+    "alternativen_betrachtet": [
+      "Alle vier Zeilen sofort als 03_Architektur mit status=accepted anlegen, basierend auf Roadmap-Beschreibung - verworfen: verletzt Regel 6 (Blindtest) und Regel 5 (ehrlicher Epistemic Status).",
+      "Die vier Zeilen ignorieren bis externe Pakete migriert werden - verworfen: erhoeht Eventualitaeten beim spaeteren Monorepo-Aufbau statt sie zu verringern."
+    ]
+  }
+}
