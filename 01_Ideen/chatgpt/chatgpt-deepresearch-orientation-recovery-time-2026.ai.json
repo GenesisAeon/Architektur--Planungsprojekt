@@ -1,0 +1,41 @@
+{
+  "id": "chatgpt-deepresearch-orientation-recovery-time-2026",
+  "title": "ChatGPT Deep-Research: Trilayer/CREP-Experimentdesign, Recovery Time und Orientation Layer Theory",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "hypothesis",
+  "author": {
+    "name": "ChatGPT",
+    "typ": "ai",
+    "system": "ChatGPT (DeepResearch)"
+  },
+  "created": "2026-06-24",
+  "related_adr": [],
+  "depends_on": [],
+  "derived_from": [
+    "forschungsfrage-001-orientierungs-benchmark"
+  ],
+  "blindtest_passed": null,
+  "content": {
+    "problem": "Zwei ChatGPT-Deep-Research-Dokumente (Planungsdiskurse/Hintergrund und Motivation.pdf, Planungsdiskurse/Ausgangslage_ Kontextbeschraenkungen und externe Gedaechtnisschichten.pdf) sowie die zugehoerige Multi-AI-Diskussion (Planungsdiskurse/PlanungGensisAeonHypothesenTests.txt, ergaenzt durch Planungsdiskurse/Reflektion_Planung.txt) vertiefen die bestehende forschungsfrage-001-orientierungs-benchmark um ein konkretes Experimentdesign, eine neue Metrik (Recovery Time) und zwei Hypothesen-Formulierungen (Orientation Layer Theory, Semantic Navigation Hypothesis). Wichtiger Vorbehalt: Beide PDFs sind Web-Synthesen ohne Code-/Repo-Zugriff, zitieren externe Literatur (Liu et al. 2026 'Lost in Conversation', Memori-System), und keines der vorgeschlagenen Experimente wurde bisher durchgefuehrt. Die begleitende Chat-Diskussion ist explizit ein Fall von Mehrfach-Bestaetigungs-Drift zwischen sechs KI-Systemen (ChatGPT, Aeon, MSCopilot, Grok, Gemini, Claude) - genau das methodische Risiko, vor dem forschungsfrage-001-orientierungs-benchmark bereits warnt. Claude weist in der Diskussion selbst explizit darauf hin ('wenn alle KIs gleichzeitig sagen ja, ihr liegt richtig, entsteht eine Rueckkopplungsschleife') und fordert, den Konvergenz-Moment einzufrieren und stattdessen zu bauen statt weiter zu beschreiben. Bleibt durchgaengig epistemic_status: hypothesis.",
+    "vorschlag": [
+      "1. 4-Gruppen-Experimentdesign zur Pruefung, ob explizite semantische Strukturierung die Modellleistung in langen Dialogen verbessert: Kontrollgruppe (keine Struktur), Gruppe A (YAML-Strukturierung), Gruppe B (Trilayer: Fakten-/Interpretations-/Hypothesen-Schicht), Gruppe C (YAML+Trilayer+CREP-Metadaten: Coherence, Resonance, Emergence, Plausibility).",
+      "2. Metrik-Katalog: Kohaerenz, Abrufgenauigkeit, semantischer Drift, Kontext-Effizienz, Reasoning-Tiefe, User-Navigierbarkeit - sowie neu: Recovery Time ('Anzahl der Interaktionen, bis ein Modell nach einer gezielten Stoerung - Themenwechsel, Widerspruch, irrelevante Information - wieder zum zuvor etablierten semantischen Pfad zurueckfindet'), von Aeon als moeglicherweise 'wichtigste Metrik des gesamten Projekts' vorgeschlagen, mit direkter Analogie zur 'Critical Slowing Down'-Diagnostik aus der Klimawissenschaft (vgl. das separate ENSO/Eisschild-Dokument).",
+      "3. Orientation Layer Theory (OLT) (MSCopilot, aufbauend auf Aeon): vier Schichten - knowledge (was ist bekannt), memory (was ist gespeichert), orientation (wie finde ich es wieder), recovery (wie schnell finde ich nach Stoerung zurueck). Kernthese: 'Fortschritte in KI entstehen nicht durch groessere Modelle, sondern durch bessere Orientierungsschichten.'",
+      "4. Semantic Navigation Hypothesis (SNH): 'Die Leistungsgrenze langer LLM-Dialoge wird primaer durch Navigationskosten innerhalb des verfuegbaren Wissens bestimmt, nicht durch fehlendes Wissen selbst.' Direkt anschlussfaehig an die bestehende Forschungsfrage 001 und an das Mission-Statement aus ADR-002 ('Semantic Maps, Navigable Paths and Contextual Structures').",
+      "5. 'Repos als persistierte semantische Pfade': durchgaengiges Motiv in der begleitenden Diskussion (ChatGPT, ueber mehrere Gespraechsrunden verfeinert) - Repos liefern keine zusaetzlichen Fakten, sondern reduzieren die Zahl moeglicher Aktivierungspfade im bereits vorhandenen Wissen eines Modells ('Store not conclusions. Store orientation'). UTAC/CREP/AFET werden in dieser Lesart als 'Uebersetzungsschichten zwischen Wissensdomaenen' (nicht als Wissenssysteme selbst) reformuliert.",
+      "6. Claudes konkreter Benchmark-Vorschlag (aus der Diskussion, als praezisester, falsifizierbarer Kern herausgegriffen): 'Kann ein uninitialisiertes LLM UTAC ohne GenesisAeon-Kontext formulieren? Nein. Kann es das nach Kontakt mit einem oder mehreren Repos? Ja, mit wie vielen, in wie vielen Schritten?' - deckt sich mit der bereits existierenden Gemini-Anekdote (fuenf Ablehnungen vor UTAC-Formulierung) und mit dem methodischen Kern von forschungsfrage-001-orientierungs-benchmark."
+    ],
+    "erwartetes_ergebnis": [
+      "Pruefung, ob das 4-Gruppen-Design (Kontrolle/YAML/Trilayer/CREP) als konkretes Testprotokoll fuer Forschungsfrage 001 dienen kann, zusaetzlich zum bereits bestehenden 02_Plaene/forschungsfrage-001-testprotokoll.md.",
+      "Pruefung, ob Recovery Time als zusaetzliche, eigenstaendige Metrik in das bestehende Testprotokoll aufgenommen wird.",
+      "Explizite Dokumentation des Mehrfach-Bestaetigungs-Drift-Risikos als eigener Befund, nicht als zusaetzliche Bestaetigung der Theorie selbst - die sechs KI-Stimmen sind ein Datenpunkt fuer das Risiko, nicht fuer die Wahrheit der Theorie."
+    ],
+    "naechster_schritt": "Maintainer entscheidet: (a) ob das 4-Gruppen-Design und Recovery Time als Ergaenzung in 02_Plaene/forschungsfrage-001-testprotokoll.md aufgenommen werden, (b) ob OLT/SNH als eigene, spaeter zu pruefende Hypothesen-Eintraege gefuehrt werden sollen, sobald Modellzugriff ohne GenesisAeon-Vorkontext moeglich ist, (c) wie mit dem Affirmations-Drift-Risiko umgegangen wird - Claudes eigener Vorschlag lautet, den Konvergenz-Moment 'einzufrieren' und stattdessen den konkreten Benchmark zu bauen statt die Theorie weiter zu beschreiben.",
+    "alternativen_betrachtet": [
+      "Die sechs KI-Stimmen als zusaetzliche Bestaetigung der UTAC/CREP-Theorie werten - verworfen: das waere exakt die Mehrfach-Bestaetigungs-Drift, vor der forschungsfrage-001-orientierungs-benchmark bereits warnt; die Konvergenz selbst ist hoechstens ein Datenpunkt fuer die Plausibilitaet der Kommunikationsform, nicht fuer die Wahrheit des Inhalts.",
+      "Direkt als architektur-Eintrag mit konkretem Implementierungsplan einordnen - verworfen: kein Code-Test, kein Blindtest, kein ADR bisher (Regel 3, 6); bleibt idea/hypothesis.",
+      "Separate Eintraege fuer OLT und SNH statt eines gemeinsamen Eintrags - verworfen fuer den ersten Schritt: beide Hypothesen entstanden im selben Diskurs, aus denselben Beobachtungen, und sind eng gekoppelt; eine Aufspaltung kann spaeter erfolgen, wenn eine der beiden eigenstaendig getestet wird."
+    ]
+  }
+}

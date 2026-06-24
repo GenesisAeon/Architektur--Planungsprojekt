@@ -1,0 +1,15 @@
+id: chatgpt-deepresearch-orientation-recovery-time-2026
+title: "ChatGPT Deep-Research: Trilayer/CREP-Experimentdesign, Recovery Time und Orientation Layer Theory"
+kategorie: idee
+status: idea
+epistemic_status: hypothesis
+author:
+  name: ChatGPT
+  typ: ai
+  system: ChatGPT (DeepResearch)
+created: 2026-06-24
+related_adr: []
+depends_on: []
+derived_from:
+  - forschungsfrage-001-orientierungs-benchmark
+blindtest_passed: null
