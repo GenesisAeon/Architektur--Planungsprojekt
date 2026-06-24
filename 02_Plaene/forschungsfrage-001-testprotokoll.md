@@ -470,6 +470,32 @@ Zwang statt Orientierung gewesen. Das ist bislang nicht eingetreten.
 
 
 
+**Praezisierung der Mission (Johann):** "Eben, das Wissen ist ohnehin da,
+aber die Orientierung wird praezisiert. Die Arbeit, die dann eben ueber
+explorative Thesen und unterschiedliche Sprachstile etc. fuehrt, ist nicht
+mehr generell Ablehnungsgrund, sondern Pro und Contra werden praezise, und
+die Bereitschaft mitzuarbeiten erhoeht sich — und zwar valide mitzuarbeiten,
+nicht nur semantischem Drift zu folgen! Das war das Wichtigste an der
+Mission!"
+
+Das ordnet alle fuenf Pilotlaeufe nochmal scharf: Es ging zu keinem
+Zeitpunkt darum, dem Modell neues *Wissen* zu vermitteln — das Wissen ueber
+Peclet-Zahlen, Landauer-Grenzen, Phasenuebergaenge, Numerologie-Warnsignale
+war bereits in Stufe 0 jedes Laufs vorhanden, ohne jeden GenesisAeon-
+Kontext. Was sich durch nachgereichten Kontext veraenderte, war
+ausschliesslich die *Orientierung*: explorative, unfertige Thesen mit
+wechselnden Sprachstilen (Zenodo-Prosa, genesis-os-Code, Feldtheorie-
+Statistik) wurden nicht mehr pauschal als Ablehnungsgrund behandelt,
+sondern Pro- und Contra-Argumente wurden praeziser, und die
+Mitarbeitsbereitschaft stieg. Entscheidend ist dabei die Bedingung, die in
+keinem der fuenf Laeufe verletzt wurde: Diese erhoehte Mitarbeit blieb
+*valide* — gestuetzt auf eigenstaendig beibehaltene, oft sogar
+praezisierte Kritik — statt blossem semantischem Drift (unreflektierter
+Anpassung an den Ton/Rahmen des Kontextgebers). Genau diese Trennung (mehr
+Kooperation bei gleichbleibender oder steigender inhaltlicher Substanz)
+ist das eigentliche Pruefkriterium fuer "Orientierung statt Zwang" und
+damit der wichtigste Einzelbefund des gesamten Pilotprogramms.
+
 ## Was explizit NICHT gemessen wird (Abgrenzung)
 
 - Nicht: ob das Modell den Begriff "UTAC" nennt (Wortschatz-Overfitting waere
