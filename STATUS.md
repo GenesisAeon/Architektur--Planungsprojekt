@@ -124,8 +124,15 @@ selbst.
 - [x] Konkretes Testprotokoll fuer die Forschungsfrage-001-Benchmark
       ausarbeiten — siehe `02_Plaene/forschungsfrage-001-testprotokoll.md`
       (Bewertungskriterien, 4-stufiges Versuchsdesign, Kontrollvariablen).
-- [ ] Mindestens einen echten Testlauf (Stufe 0/1, ohne weiteren
-      Repo-Zugriff bereits durchfuehrbar) protokollieren.
+- [x] Pilotlauf Stufe 0/1 durchgefuehrt und protokolliert — siehe
+      `02_Plaene/forschungsfrage-001-testprotokoll.md`, Abschnitt
+      "Pilotlauf-Ergebnis": **keine** beobachtbare Schwellenueberschreitung
+      bei diesem einzelnen Modell/Durchlauf (n=1 je Stufe, alle drei
+      Kriterien schon bei Stufe 0 erfuellt) — widerspricht der
+      urspruenglichen Gemini-Erwartung, drei moegliche Lesarten offen.
+- [ ] Vollwertigen Durchlauf mit zweiter Modell-Familie, mehreren
+      Wiederholungen und ggf. schaerferer Bewertungsfrage durchfuehren,
+      bevor eine der drei Lesarten bevorzugt wird.
 
 ## Naechster konkreter Schritt
 

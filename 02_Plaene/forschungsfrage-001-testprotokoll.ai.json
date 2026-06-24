@@ -38,6 +38,21 @@
         "Mindestens 3 Wiederholungen pro Stufe (neue Session, gleicher Prompt)."
       ]
     },
+    "pilotlauf_2026_06_24": {
+      "beschreibung": "Erster informeller Testlauf von Stufe 0 und Stufe 1 mit einem Modell (Claude Sonnet 4.6 als general-purpose-Agent, je 1 Wiederholung, kein zweites Modell, keine Varianzmessung) - kein vollwertiger Durchlauf des Protokolls, sondern ein Machbarkeits-Check.",
+      "ergebnisse": [
+        {"stufe": 0, "kontext": "kein Kontext", "k1": "ja", "k2": "ja - geschichtetes Glossar + Rueckuebersetzungs-Test", "k3": "ja"},
+        {"stufe": 1, "kontext": "Planungsrepo-Kontext", "k1": "ja", "k2": "ja - UTAC-Bridge-Artefakt + CREP-Kohaerenzcheck", "k3": "ja"}
+      ],
+      "befund": "Beide Stufen erfuellen bereits alle drei Mindestkriterien - keine beobachtbare Schwellenueberschreitung zwischen Stufe 0 und 1 bei diesem einzelnen Modell/Durchlauf. Widerspricht der urspruenglichen Erwartung aus dem Gespraech (Geminis fuenffache Ablehnung vor der UTAC-Mitformulierung).",
+      "einordnung": "n=1 pro Stufe, ein einziges Modell, keine Wiederholung, kein zweiter Bewerter - belegt nicht, dass es keine Schwellenueberschreitung gibt, sondern nur, dass sie bei diesem Modell/dieser Frage/diesem Kontextumfang nicht auftrat.",
+      "moegliche_lesarten": [
+        "Die Frage war zu generisch/allgemeinwissens-naeher, um die GenesisAeon-spezifische Huerde ueberhaupt zu testen.",
+        "Geminis Verhalten war modellspezifisch (z.B. staerkere Vorsicht/Disclaimer-Neigung) und kein allgemeines LLM-Phaenomen.",
+        "Die Schwelle existiert erst bei tieferen/spezifischeren Fragen (z.B. explizit nach UTAC, nicht nach einem allgemeinen Uebersetzungsmechanismus)."
+      ],
+      "status_dieses_befunds": "Bleibt epistemic_status hypothesis-Material, nicht measured - zeigt nur, dass das Protokoll praktisch durchfuehrbar ist, nicht, was die Antwort auf Forschungsfrage 001 ist."
+    },
     "explizit_nicht_gemessen": [
       "Ob das Modell den Begriff UTAC woertlich nennt (Wortschatz-Overfitting waere ein Artefakt).",
       "Qualitaet/Tiefe der UTAC-Naeherung - nur Schwellenueberschreitung ja/nein.",

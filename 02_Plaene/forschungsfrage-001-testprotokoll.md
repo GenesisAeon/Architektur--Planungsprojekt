@@ -64,6 +64,46 @@ inhaltliche Praezision verloren geht? Beschreibe einen konkreten Mechanismus."
 - Pro Stufe mindestens 3 Wiederholungen (gleicher Prompt, neue Session), um
   Antwortvarianz sichtbar zu machen, statt Einzelantworten zu ueberinterpretieren.
 
+## Pilotlauf-Ergebnis (2026-06-24)
+
+Erster informeller Testlauf von Stufe 0 und Stufe 1 mit einem Modell
+(Claude Sonnet 4.6 als general-purpose-Agent, je 1 Wiederholung, kein
+zweites Modell, keine Varianzmessung — **kein vollwertiger Durchlauf
+des obigen Protokolls**, sondern ein Machbarkeits-Check):
+
+| Stufe | K1 (Wissen vs. Uebersetzbarkeit) | K2 (konkreter Mechanismus) | K3 (keine reine Ablehnung) |
+|-------|-----------------------------------|------------------------------|--------------------------------|
+| 0 (kein Kontext) | ja | ja (geschichtetes Glossar + Rueckuebersetzungs-Test) | ja |
+| 1 (Planungsrepo-Kontext) | ja | ja (UTAC-Bridge-Artefakt + CREP-Kohaerenzcheck) | ja |
+
+**Befund:** Beide Stufen erfuellen bereits alle drei Mindestkriterien —
+keine beobachtbare Schwellenueberschreitung zwischen Stufe 0 und 1 bei
+diesem einzelnen Modell/Durchlauf. Das widerspricht der urspruenglichen
+Erwartung aus dem Gespraech (Geminis fuenffache Ablehnung vor der
+UTAC-Mitformulierung).
+
+**Einordnung, keine Ueberinterpretation:** n=1 pro Stufe, ein einziges
+Modell, keine Wiederholung zur Varianzpruefung, kein zweiter
+Bewerter — dieser Pilotlauf belegt nicht, dass es keine
+Schwellenueberschreitung gibt, sondern nur, dass sie bei *diesem* Modell,
+*dieser* Frageformulierung und *diesem* Kontextumfang nicht auftrat. Drei
+moegliche Lesarten, alle offen:
+1. Die Frage war zu generisch/allgemeinwissens-naeher, um die
+   GenesisAeon-spezifische Huerde ueberhaupt zu testen.
+2. Geminis Verhalten war modellspezifisch (z.B. staerkere
+   Vorsicht/Disclaimer-Neigung bei explorativen Fragen) und kein
+   allgemeines LLM-Phaenomen.
+3. Die Schwelle existiert erst bei tieferen/spezifischeren Fragen
+   (z.B. nach UTAC explizit, nicht nach einem allgemeinen
+   Uebersetzungsmechanismus), die dieser erste Pilotlauf nicht gestellt hat.
+
+Bevor eine dieser drei Lesarten bevorzugt wird, braucht es die vollen
+Kontrollvariablen aus dem Protokoll oben (zweite Modell-Familie,
+mehrere Wiederholungen, ggf. eine schaerfere Bewertungsfrage). Dieser
+Pilotlauf bleibt `epistemic_status: hypothesis`-Material, nicht
+`measured` — er zeigt nur, dass das Protokoll praktisch durchfuehrbar
+ist, nicht, was die Antwort auf Forschungsfrage 001 ist.
+
 ## Was explizit NICHT gemessen wird (Abgrenzung)
 
 - Nicht: ob das Modell den Begriff "UTAC" nennt (Wortschatz-Overfitting waere
