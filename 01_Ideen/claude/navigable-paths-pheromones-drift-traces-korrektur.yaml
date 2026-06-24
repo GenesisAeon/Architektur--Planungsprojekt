@@ -1,0 +1,14 @@
+id: navigable-paths-pheromones-drift-traces-korrektur
+title: "Korrektur: Cartography/Drift/Traces durch genesis-scope-README bestaetigt; Pheromones offene Designidee statt Diskursbegriff"
+kategorie: idee
+status: idea
+epistemic_status: derived
+author:
+  name: Claude
+  typ: ai
+  system: Claude (Sonnet 4.6)
+created: 2026-06-24
+related_adr: [ADR-003]
+depends_on: []
+derived_from: [cartography-pheromones-drift-ecosystem-map-befund]
+blindtest_passed: null

@@ -285,6 +285,25 @@ nach `archive/navigable-paths-pheromones-drift-traces-diskursbegriffe`
 verschoben (Cartography bleibt unberuehrt, offene Semantic-Maps-Linie).
 Begruendung im Eintrag selbst dokumentiert, vollstaendig revidierbar.
 
+## Korrektur: Cartography/Drift/Traces durch genesis-scope-README bestaetigt (2026-06-24)
+
+Die Archivierungsentscheidung oben war voreilig. Johann hat das
+tatsaechliche `genesis-scope`-README (github.com/GenesisAeon/genesis-scope,
+Package P39) eingebracht — die `ECOSYSTEM_MAP.yaml`-Domaenentexte allein
+waren eine zu schwache Quelle fuer eine Archivierungsentscheidung.
+Korrigierter Befund (`01_Ideen/claude/navigable-paths-pheromones-drift-traces-korrektur`,
+zurueck von `archive/` nach `01_Ideen/` verschoben): Cartography, Drift
+und Traces sind tatsaechlich benannte Module/CLI-Kommandos in
+`genesis-scope` (`cartography.py`, `drift_model.py`/`scope drift`,
+`DEFAULT_MAP.trace()`/`scope trace`). Pheromones ist dagegen weder im
+README noch in `ECOSYSTEM_MAP.yaml` zu finden — laut Johanns Praezisierung
+eine geplante, noch unimplementierte Technik (Pfad-Markierung/-Bewertung
+in latenten semantischen Raeumen, Ameisenpheromon-Analogie), naechstliegend
+verwandt mit den bestehenden Sigillin/Semantic-Anchors (Anti-Drift), aber
+nicht identisch damit. Bleibt offene Idee fuer `genesis-scope`/Genesis
+Core. Zeigt das ADR-003-Revisionsprinzip ("Begruendungspflicht statt
+Vorab-Freigabe, jederzeit per Diff revidierbar") direkt in Aktion.
+
 ## Naechster konkreter Schritt
 
 - [x] Cartography/Pheromones/Drift/Traces in `ECOSYSTEM_MAP.yaml`

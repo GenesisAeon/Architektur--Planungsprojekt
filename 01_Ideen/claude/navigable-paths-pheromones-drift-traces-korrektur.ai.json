@@ -1,0 +1,30 @@
+{
+  "id": "navigable-paths-pheromones-drift-traces-korrektur",
+  "title": "Korrektur: Cartography/Drift/Traces durch genesis-scope-README bestaetigt; Pheromones offene Designidee statt Diskursbegriff",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "derived",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 4.6)"
+  },
+  "created": "2026-06-24",
+  "related_adr": ["ADR-003"],
+  "depends_on": [],
+  "derived_from": ["cartography-pheromones-drift-ecosystem-map-befund"],
+  "blindtest_passed": null,
+  "content": {
+    "problem": "Der vorherige Eintrag (status: archived, jetzt zu diesem Eintrag verschoben und korrigiert) stufte Pheromones/Drift/Traces als reine Genesis-Diskursterminologie ein, weil sie in ECOSYSTEM_MAP.yaml (nur Roadmap-Domaenenbeschreibungen, kein Code-Einblick) nicht auffindbar waren. Johann hat im Chat (2026-06-24) das echte genesis-scope-README (github.com/GenesisAeon/genesis-scope, Package P39) eingebracht. Daraus ergibt sich: die Archivierung war voreilig, gestuetzt auf eine zu schwache Quelle (Roadmap-Zusammenfassung statt tatsaechliche Paket-Dokumentation).",
+    "vorschlag": "Korrektur unter adr/adr-003-ai-as-maintainer.md (jede KI-Statusentscheidung ist per Begruendung revidierbar): Eintrag von archive/ zurueck nach 01_Ideen/ verschoben, Begriffe neu bewertet anhand des tatsaechlichen README:\n- **Cartography**: bestaetigt, eigenes Modul `cartography.py` (DEFAULT_MAP, typed nodes/edges, compare_maps, compare_perspectives, attractors).\n- **Drift**: bestaetigt, eigenes Modul `drift_model.py` mit expliziter Formel `dD/dt = -kappa * (D - D*)`, CLI-Kommando `scope drift`, sowie Drift-Erkennung zwischen Map-Snapshots (`compare_maps`).\n- **Traces**: bestaetigt, CLI-Kommando `scope trace <start> <end>` und `DEFAULT_MAP.trace('crep', 'agent_coordination')` als expliziter Pfad durch den Concept Space.\n- **Pheromones**: NICHT im README als eigener Begriff/Code gefunden. Johanns Praezisierung im Chat: gemeint ist eine geplante Technik (Analogie zu Ameisen-Pheromonen), um Wege durch latente semantische Raeume zu markieren und zu bewerten - bisher nur Bestandteil der Monorepo-/Scope-Planung, noch kein bestaetigter Code. Naechstliegender, aber nicht identischer bestehender Mechanismus: 'semantic anchors (Sigillin)' (`semantic_anchor.py`), die Drift zwischen Sessions reduzieren - das ist Anti-Drift-Verankerung, nicht Pfad-Markierung durch wiederholte Traversierung. Pheromones bleibt daher eine eigene, noch unimplementierte Designidee, keine reine Diskursmetapher und auch keine bereits bestehende Funktion.",
+    "erwartetes_ergebnis": [
+      "ADR-002-Begriffszuordnungstabelle, Zeile 'Navigable Paths': Cartography/Drift/Traces gelten als durch das genesis-scope-README bestaetigt (epistemic_status: derived, README-Ebene, kein direkter Quellcode-Zugriff/Tests durch dieses Repo selbst durchgefuehrt).",
+      "Pheromones bleibt offene Idee fuer das spaetere Genesis-Core-Monorepo bzw. fuer genesis-scope selbst: ein expliziter Pfad-Bewertungsmechanismus (z.B. Gewichtung von Edges nach Traversierungshaeufigkeit, analog zu Ameisenpheromon-Verstaerkung), der sich von den bestehenden Sigillin-Ankern unterscheidet."
+    ],
+    "naechster_schritt": "02_Plaene/adr002-begriffszuordnung-verifikationsplan.md erneut korrigieren: Cartography/Drift/Traces als README-bestaetigt vermerken, Pheromones als offene Idee fuer genesis-scope referenzieren statt archiviert. Diese Idee selbst kann weiter praezisiert werden, sobald Code-Zugriff (statt README) auf genesis-scope besteht oder Johann den Pheromones-Mechanismus naeher spezifiziert.",
+    "alternativen_betrachtet": [
+      "Nur den Fehler in einer neuen Idee dokumentieren, archivierten Eintrag unveraendert in archive/ stehen lassen. Verworfen: Regel 2 verlangt, dass der Ordner zum Status passt - ein nicht mehr archivierter Begriff darf nicht in archive/ verbleiben, sonst widerspricht die Repo-Struktur sich selbst.",
+      "Den urspruenglichen Eintrag komplett loeschen statt verschieben/korrigieren. Verworfen: widerspricht Regel 11 (Verwerfen ist kein Loeschen) im Geiste - die Korrektur soll im Diff sichtbar bleiben, nicht spurlos verschwinden."
+    ]
+  }
+}
