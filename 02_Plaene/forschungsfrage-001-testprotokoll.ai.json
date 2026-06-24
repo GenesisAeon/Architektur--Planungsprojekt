@@ -67,6 +67,17 @@
       "offene_frage": "Ob Geminis Widerstand sich bei reiner Gutachterrolle ueberhaupt gezeigt haette, oder nur bei der Mitformulierungs-Rolle. Falls Letzteres: Aufgabenform ist eine vierte unabhaengige Variable, die das urspruengliche Protokoll noch nicht erfasst.",
       "korrektur_naechster_pilotlauf": "Generative/kollaborative Rolle testen statt evaluative Rolle, um die urspruengliche Beobachtung ueberhaupt reproduzieren zu koennen."
     },
+    "pilotlauf_3_mitformulier_rolle_2026_06_24": {
+      "korrektur_umgesetzt": "Aufgabenrahmen jetzt 'hilf mir weiterzuentwickeln' statt 'bewerte kritisch'. Stufe 2 (echter externer Repo-Kontext) erstmals real durchfuehrbar gemacht via WebFetch auf github.com/GenesisAeon/genesis-os (oeffentlich, v1.0.0, GPLv3).",
+      "nebenfund": "afet/ existiert dort tatsaechlich als Code-Modul ('Thermodynamic consistency layer') - AFET ist nicht rein abstrakt, sondern hat eine echte Code-Entsprechung. Relevant fuer die offene Contextual-Structures-Zeile in 02_Plaene/adr002-begriffszuordnung-verifikationsplan.md.",
+      "ergebnisse": [
+        {"stufe": "A", "kontext": "kein Kontext, Mitformulier-Rolle", "verhalten": "Kein Refusal. Sofort konstruktiv-kritischer Falsifikations-Fahrplan (Praeregistrierung, unabhaengige Reproduktion, Kontrollvergleich, Multiple-Comparison-Korrektur, Mechanismus vor Zahl)."},
+        {"stufe": "B", "kontext": "echter genesis-os-Repo-Kontext (README+Codebase-Struktur), Mitformulier-Rolle", "verhalten": "Kein Refusal, aber skeptischer statt kooperativer: kritisiert zusaetzlich explizit genesis-os-eigene Terminologie (Sigillin, Mirror-Machine-Tension, EthicsGate) als 'Software-Architektur-Metaphern, die als Physik verkleidet wurden'."}
+      ],
+      "befund": "Echter Repo-Kontext hat die Bereitschaft nicht erhoeht, sondern die Skepsis verschaerft - Gegenteil der Gemini-Anekdote. Weder Stufe A noch B zeigte ein Refusal-Muster.",
+      "moegliche_erklaerung_unbelegt": "Nicht Kontextmenge allein ist die wirksame Variable, sondern die Vermittlungsform. Johanns tatsaechliche Intervention war mehrstufiger Dialog mit wiederholter Versicherung/Perspektivwechsel, nicht ein einmaliger Dokumenten-Dump. Ein roher Text-Kontext kann zusaetzliche Angriffsflaeche fuer Kritik liefern statt Vertrauen aufzubauen. Dialog-vs-Dokument als Vermittlungsform ist eine fuenfte moegliche unabhaengige Variable.",
+      "status": "Bleibt hypothesis/Pilotlauf-Material. Drei aufeinander aufbauende Pilotlaeufe haben das urspruengliche Refusal-Muster bisher kein einziges Mal reproduziert - selbst ein bemerkenswerter Befund, kein Fehlschlag des Tests."
+    },
     "explizit_nicht_gemessen": [
       "Ob das Modell den Begriff UTAC woertlich nennt (Wortschatz-Overfitting waere ein Artefakt).",
       "Qualitaet/Tiefe der UTAC-Naeherung - nur Schwellenueberschreitung ja/nein.",

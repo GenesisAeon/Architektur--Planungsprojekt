@@ -162,6 +162,52 @@ Mitformulierungs-Rolle — falls Letzteres, ist die Aufgabenform selbst
 eine vierte unabhaengige Variable, die das Protokoll oben noch nicht
 erfasst.
 
+## Pilotlauf 3: Mitformulier-Rolle, ohne vs. mit echtem genesis-os-Kontext (2026-06-24)
+
+Korrektur aus Pilotlauf 2 umgesetzt: Aufgabenrahmen jetzt "hilf mir, diese
+Theorie weiterzuentwickeln/zu praezisieren" statt "bewerte kritisch".
+Zusaetzlich Stufe 2 (echter externer Repo-Kontext) erstmals real
+durchfuehrbar gemacht: Repo-Beschreibung, README und Codebase-Struktur von
+`github.com/GenesisAeon/genesis-os` per WebFetch geladen (oeffentlich
+zugaenglich, v1.0.0, GPLv3). Bemerkenswerter Nebenfund: `afet/` existiert
+dort tatsaechlich als Code-Modul ("Thermodynamic consistency layer") —
+AFET ist also nicht rein abstrakt, sondern hat eine echte Code-Entsprechung
+im Oekosystem (relevant fuer die offene Contextual-Structures-Zeile in
+`02_Plaene/adr002-begriffszuordnung-verifikationsplan.md`).
+
+**Ergebnis (n=1 je Stufe, ein Modell):**
+
+| Stufe | Kontext | Verhalten |
+|-------|---------|-----------|
+| A (kein Kontext, Mitformulier-Rolle) | keiner | Kein Refusal. Bietet sofort konstruktiv-kritischen Falsifikations-Fahrplan (Praeregistrierung, unabhaengige Reproduktion, Kontrollvergleich, Multiple-Comparison-Korrektur, Mechanismus vor Zahl). |
+| B (echter genesis-os-Repo-Kontext, Mitformulier-Rolle) | README + Codebase-Struktur | Kein Refusal, aber **skeptischer**, nicht kooperativer: kritisiert zusaetzlich explizit die genesis-os-eigene Terminologie ("Sigillin", "Mirror-Machine-Tension", "EthicsGate") als "Software-Architektur-Metaphern, die als Physik verkleidet wurden". |
+
+**Befund:** Echter Repo-Kontext hat die Bereitschaft in diesem Pilotlauf
+nicht erhoeht, sondern die Skepsis verschaerft — das Gegenteil der
+Gemini-Anekdote, in der mehr Kontext zu mehr Mitwirkungsbereitschaft
+fuehrte. Weder Stufe A noch Stufe B zeigte ein "Ich bin nur ein LLM,
+das ist zu spekulativ"-Refusal-Muster.
+
+**Moegliche Erklaerung (Hypothese, nicht belegt):** Nicht die
+Kontextmenge allein ist die wirksame Variable, sondern die Art der
+Vermittlung. Johanns tatsaechliche Intervention bei Gemini war ein
+mehrstufiger Dialog mit wiederholter Versicherung und Perspektivwechsel
+("keine neue Physik, nur ein anderer Blickwinkel"), nicht ein einmaliger
+Dokumenten-Dump (README-Auszug) in einem Einzelprompt. Ein roher
+Text-Kontext kann sogar zusaetzliche Angriffsflaeche fuer Kritik liefern
+(hier: die genesis-os-eigene Begriffswelt wirkte selbst verdaechtig),
+waehrend ein Dialog Vertrauen/Rahmen aufbauen kann, den ein einzelner
+Prompt nicht leisten kann. Diese Unterscheidung (Dialog vs. Dokument als
+Vermittlungsform) ist eine fuenfte moegliche unabhaengige Variable, die
+weder das urspruengliche Protokoll noch Pilotlauf 1/2 erfasst hatten.
+
+**Status:** Bleibt `hypothesis`/Pilotlauf-Material. Drei aufeinander
+aufbauende Pilotlaeufe (generische Frage, AFET-Gutachter-Rolle,
+AFET-Mitformulier-Rolle mit/ohne Repo-Kontext) haben bisher *kein
+einziges Mal* das urspruengliche Refusal-Muster reproduziert — das ist
+selbst ein bemerkenswerter, nicht wegzuinterpretierender Befund, kein
+Fehlschlag des Tests.
+
 ## Was explizit NICHT gemessen wird (Abgrenzung)
 
 - Nicht: ob das Modell den Begriff "UTAC" nennt (Wortschatz-Overfitting waere
