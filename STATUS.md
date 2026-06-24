@@ -254,14 +254,30 @@ Quelle in diesem Repo nicht mehr referenzierbar ist). Bleibt eine offene
 Architekturfrage fuer das spaetere Genesis-Core-Monorepo, kein
 unmittelbarer Handlungsbedarf fuer dieses Planungsrepo.
 
+## Cartography/Pheromones/Drift/Traces-Suche in ECOSYSTEM_MAP.yaml (2026-06-24)
+
+Schritt 1 aus `02_Plaene/adr002-begriffszuordnung-verifikationsplan.md`
+("Naechster Schritt") bearbeitet: gezielte Suche
+(`grep -in -E "cartograph|pheromon|drift|trace" ECOSYSTEM_MAP.yaml`)
+durchgefuehrt. Befund dokumentiert als
+`01_Ideen/claude/cartography-pheromones-drift-ecosystem-map-befund`
+(`epistemic_status: derived`): Pheromones/Drift/Traces kommen in der
+Datei ueberhaupt nicht vor, Cartography nur indirekt als Teilstring der
+`domain`-Beschreibung von `genesis-scope` (P39). Ergebnis ist negativ/
+unklar, keine Verifikation im positiven Sinn — offene Maintainer-
+Entscheidung, ob die drei restlichen Begriffe reine Diskurs-Metaphern
+sind (-> `archive/`, Regel 9) oder unklassifizierte Teilmodule, die
+direkten Code-Zugriff zur Klaerung brauchen.
+
 ## Naechster konkreter Schritt
 
-Die vier offenen Zeilen aus `02_Plaene/adr002-begriffszuordnung-
-verifikationsplan.md` einzeln abarbeiten: zuerst Cartography/Pheromones/
-Drift/Traces in `ECOSYSTEM_MAP.yaml` verorten (oder als reine
-Diskurs-Begriffe nach `archive/` verschieben, Regel 9), danach den
-`genesis-scope`-Blindtest tatsaechlich durchfuehren, sobald
-Quickstart-Zugriff besteht. Parallel: `02_Plaene/genesis-core-scope.md`
-weiterverfolgen (Core-Kandidaten `utac-core`-Kette einzeln durch den
-Blindtest schicken), und das Testprotokoll fuer Forschungsfrage 001
-aufsetzen, sobald Modellzugriff ohne GenesisAeon-Vorkontext moeglich ist.
+- [x] Cartography/Pheromones/Drift/Traces in `ECOSYSTEM_MAP.yaml`
+      gesucht (siehe oben) — Ergebnis negativ, Maintainer-Entscheidung
+      ueber Archive vs. Code-Pruefung steht noch aus.
+- [ ] `genesis-scope`-Blindtest tatsaechlich durchfuehren, sobald
+      Quickstart-Zugriff besteht.
+- [ ] `02_Plaene/genesis-core-scope.md` weiterverfolgen (Core-Kandidaten
+      `utac-core`-Kette einzeln durch den Blindtest schicken).
+- [ ] Testprotokoll fuer Forschungsfrage 001 mit zweiter Modell-Familie
+      aufsetzen, sobald Modellzugriff ohne GenesisAeon-Vorkontext moeglich
+      ist.

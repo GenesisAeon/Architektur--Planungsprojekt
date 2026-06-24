@@ -1,0 +1,30 @@
+{
+  "id": "cartography-pheromones-drift-ecosystem-map-befund",
+  "title": "Cartography/Pheromones/Drift/Traces nicht als eigene Pakete in ECOSYSTEM_MAP.yaml auffindbar",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "derived",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 4.6)"
+  },
+  "created": "2026-06-24",
+  "related_adr": [],
+  "depends_on": [],
+  "derived_from": ["adr002-begriffszuordnung-verifikationsplan"],
+  "blindtest_passed": null,
+  "content": {
+    "problem": "Der Verifikationsplan zu ADR-002 (02_Plaene/adr002-begriffszuordnung-verifikationsplan.md) fordert als ersten Schritt, die Begriffe Cartography, Pheromones, Drift und Traces (Mission-Begriff 'Navigable Paths') in ECOSYSTEM_MAP.yaml zu suchen, um zu klaeren, ob es sich um eigene Pakete, Teilmodule bestehender Pakete oder reine Genesis-Diskurs-Terminologie handelt.",
+    "vorschlag": "Durchsuchung von ECOSYSTEM_MAP.yaml (48 Pakete) durchgefuehrt (grep -in 'cartograph|pheromon|drift|trace'). Befund: 'Pheromones', 'Drift' und 'Traces' kommen als Begriffe in der Datei ueberhaupt nicht vor — kein PACKAGE_ID, kein domain-Text, kein hinweis-Feld erwaehnt sie. 'Cartography' taucht genau einmal auf, nicht als eigenes Paket, sondern als Teil der domain-Beschreibung von genesis-scope (P39): 'semantic cartography / human-AI navigation layer'. Das deckt sich mit dem bereits identifizierten Zusammenhang zu 'Semantic Maps' (genesis-scope-blindtest), ist aber kein eigenstaendiger Beleg fuer 'Navigable Paths' als Cartography/Pheromones/Drift/Traces.",
+    "erwartetes_ergebnis": [
+      "Klarheit, dass die Recherche in ECOSYSTEM_MAP.yaml allein die vier Begriffe nicht eigenstaendig verifizieren kann — Cartography ist nur indirekt (als Teil von genesis-scope) belegt, die anderen drei gar nicht.",
+      "Explizite Entscheidungsgrundlage fuer den Maintainer: entweder (a) Pheromones/Drift/Traces sind unklassifizierte Konzepte aus dem urspruenglichen Genesis-Diskurs ohne aktuelle Code-Entsprechung in den 48 Paketen und sollten gemaess Regel 9 nach archive/ verschoben werden (kategorie idee/architektur bleibt erhalten, status: archived), oder (b) sie sind Teilmodule innerhalb eines bestehenden Pakets, das aus der Roadmap-Domaenenbeschreibung allein nicht erkennbar ist und einen direkten Code-Zugriff zur Klaerung braucht."
+    ],
+    "naechster_schritt": "Maintainer (Johann) entscheidet anhand der Quellgenese (Unified-Mandala-Diskurs), ob Pheromones/Drift/Traces echte, noch unklassifizierte Code-Konzepte sind oder reine Diskurs-Metaphern. Falls Letzteres: eigener archive/-Eintrag mit Begruendung gemaess Regel 9/11. Falls Ersteres: welches Paket sie enthaelt, damit ECOSYSTEM_MAP.yaml entsprechend ergaenzt werden kann.",
+    "alternativen_betrachtet": [
+      "Die Begriffe stillschweigend als durch 'semantic cartography' (genesis-scope) abgedeckt betrachten und die Zeile in adr002-begriffszuordnung-verifikationsplan.md als erledigt markieren. Verworfen: Pheromones/Drift/Traces sind in der Domaenen-Beschreibung von genesis-scope nicht enthalten, das waere eine unbelegte Verallgemeinerung (verstoesst gegen Regel 5, epistemic_status validated waere unehrlich).",
+      "Ohne weitere Pruefung direkt nach archive/ verschieben. Verworfen: das ist eine inhaltliche Einordnungsentscheidung (Regel 9), die laut AGENTS.md dem Maintainer vorbehalten ist, nicht einer KI im Vorschlagsstatus."
+    ]
+  }
+}

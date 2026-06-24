@@ -27,7 +27,7 @@ die Hypothese unveraendert stehen zu lassen oder vorschnell zu bestaetigen:
 | Mission-Begriff | Vermutete Entsprechung | Was fehlt zur Verifikation |
 |-------------------|--------------------------|-------------------------------|
 | Semantic Maps | `genesis-scope` | Bereits als Blindtest-Kandidat markiert (`01_Ideen/claude/genesis-scope-blindtest`). Braucht echten Zugriff auf das Quickstart/README von `genesis-scope`, nicht nur die Domaenen-Beschreibung aus der Roadmap. |
-| Navigable Paths | Cartography, Pheromones, Drift, Traces | Diese vier Begriffe sind in `ECOSYSTEM_MAP.yaml` nicht als eigene PACKAGE_IDs auffindbar (Stand 2026-06-19) — zuerst klaeren, ob es sich um Teilmodule innerhalb bestehender Pakete handelt oder um noch unklassifizierte Konzepte aus dem Genesis-Diskurs. |
+| Navigable Paths | Cartography, Pheromones, Drift, Traces | Diese vier Begriffe sind in `ECOSYSTEM_MAP.yaml` nicht als eigene PACKAGE_IDs auffindbar (Stand 2026-06-19) — zuerst klaeren, ob es sich um Teilmodule innerhalb bestehender Pakete handelt oder um noch unklassifizierte Konzepte aus dem Genesis-Diskurs. **Update 2026-06-24** (siehe `01_Ideen/claude/cartography-pheromones-drift-ecosystem-map-befund`): gezielte Suche bestaetigt den Befund praezise — Pheromones/Drift/Traces kommen in `ECOSYSTEM_MAP.yaml` ueberhaupt nicht vor, Cartography nur indirekt als Teilstring der `domain`-Beschreibung von `genesis-scope` (P39). Damit ist Schritt 1 des Naechsten-Schritt-Plans unten abgeschlossen, das Ergebnis ist aber negativ/unklar, nicht positiv verifizierend — Maintainer-Entscheidung (Archive vs. unklassifiziertes Code-Konzept) bleibt offen. |
 | Contextual Structures | UTAC/CREP, semantische Graphen | `utac-core` ist bereits Core-Kandidat in `02_Plaene/genesis-core-scope.md` (Fundament-Kette). Verifikation laeuft ueber denselben Plan, nicht separat hier. **Update 2026-06-24** (aus den Forschungsfrage-001-Pilotlaeufen, siehe `02_Plaene/forschungsfrage-001-testprotokoll.md`): CREP/UTAC sind real als Code in `genesis-os` vorhanden (Gamma(C,R,E,P)=(C\*R\*E\*P)^(1/4), UTAC-Logistic-ODE, `afet/`-Modul als "Thermodynamic consistency layer"/"AFET + Landauer Consistency") — keine reine Diskurs-Terminologie mehr. Aber: UTAC wird in `Feldtheorie` ("Universal Threshold Activation-Coupling") und `sa-sv-duality` ("Universal Trajectory of Action-Coherence") unterschiedlich ausgeschrieben — eine noch ungeklaerte Cross-Repo-Inkonsistenz, die vor jeder Einstufung als `validated`/`accepted` aufgeloest werden muss. Bisher nur README-Ebene (WebFetch), kein direkter Quellcode-Zugriff — vollwertige Verifikation steht aus, blockiert durch den laufenden v1.0.0-Sprint. |
 | Agent-based Systems (MCP-Teil) | MCP-/Agent-Integration | Kein MCP-Server-/Client-Code in diesem Oekosystem identifiziert. Offene Frage: existiert eine MCP-Implementierung bereits in einem der 48 Pakete, oder ist das eine zukuenftige Anforderung? |
 
@@ -41,9 +41,13 @@ herausstellt (Regel 9).
 
 ## Naechster Schritt
 
-1. Cartography/Pheromones/Drift/Traces in `ECOSYSTEM_MAP.yaml` suchen
-   lassen bzw. den Maintainer fragen, ob es sich um Synonyme bestehender
-   PACKAGE_IDs handelt.
+1. ~~Cartography/Pheromones/Drift/Traces in `ECOSYSTEM_MAP.yaml` suchen
+   lassen~~ — erledigt am 2026-06-24, siehe
+   `01_Ideen/claude/cartography-pheromones-drift-ecosystem-map-befund`.
+   Befund negativ/unklar: kein eigenes Paket gefunden. Offen bleibt die
+   Maintainer-Entscheidung, ob es sich um reine Diskurs-Metaphern
+   (-> `archive/`) oder unklassifizierte Teilmodule (-> Code-Pruefung
+   noetig) handelt.
 2. `genesis-scope`-Blindtest tatsaechlich durchfuehren, sobald
    Quickstart-Zugriff besteht (Maintainer-Aufgabe, siehe
    `01_Ideen/claude/genesis-scope-blindtest.md`).
