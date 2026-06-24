@@ -331,6 +331,29 @@ Doku-Qualitaet. Offene Architekturfrage: braucht Regel 6 eine eigene
 Form fuer KI-native Pakete, die per Design erst durch spaetere
 KI-Integration sinnvoll werden?
 
+## Retest genesis-os mit vollstaendigem Original-README (2026-06-24)
+
+Den zuvor dokumentierten methodischen Schwachpunkt geschlossen: Johann
+hat das vollstaendige, woertliche `genesis-os`-README erneut eingefuegt
+(direkter Proxy-Zugriff auf raw.githubusercontent.com schlug mit 403
+fehl, WebFetch lieferte nur eine KI-Zusammenfassung). Ein dritter,
+wiederum frischer kontextfreier Subagent hat damit Install + Quickstart
++ CLI real ausgefuehrt. Ergebnis bleibt FALSE — aber robuster und mit
+neuem technischen Detail: Quickstart liefert `Phase='Initiation'`,
+`Entropy=0.9986`, `Transitions=0`, `Emergence Events=15`; zwei weitere
+CLI-Laeufe (50 und 100 Zyklen, Entropie oberhalb des dokumentierten
+Schwellenwerts) enden ebenfalls bei `Transitions=0` — die Phase
+verlaesst "Initiation" in keinem der drei Laeufe. Der Subagent flaggt
+das selbst als Widerspruch zum dokumentierten "phase-transitioning
+system"-Anspruch, ungeklaert ob Beispiel-Konfiguration, Logikfehler
+oder Absicht. Das volle README (Architektur-Tabelle, Lagrangian-
+Formalismus, Zenodo-Zitation) aenderte nichts an der grundsaetzlichen
+Interpretierbarkeitsluecke (Entropy/Phi/Lagrangian ohne Werteskala) —
+staerkt damit Johanns Erklaerung (struktureller Leerzustand statt
+Doku-Mangel) zusaetzlich, da besseres Material das Ergebnis nicht
+veraendert hat. Eintrag aktualisiert:
+`01_Ideen/claude/genesis-scope-blindtest`.
+
 ## Folgefrage: Blindtest-Definition fuer KI-native Leerpakete (2026-06-24)
 
 Aus dem `genesis-scope`-Befund abgeleitet, als eigene Idee dokumentiert:
@@ -359,12 +382,16 @@ entschieden werden darf.
       Pakete als eigene Folgefrage in `01_Ideen/` aufgenommen (siehe oben)
       — wartet auf Maintainer-Entscheidung, da Regel-6-Aenderung Regel 12
       unterliegt.
-- [ ] `genesis-os`-Quickstart mit vollstaendigem Original-README erneut
-      blind testen (methodischer Schwachpunkt aus Testfall 2 schliessen)
-      — blockiert: direkter Netzwerkzugriff auf raw.githubusercontent.com
-      ist ueber den Proxy gesperrt (403), WebFetch liefert nur eine
-      KI-zusammengefasste statt der woertlichen README; wartet auf
-      erneutes Einfuegen des vollstaendigen Original-Texts durch Johann.
+- [x] `genesis-os`-Quickstart mit vollstaendigem Original-README erneut
+      blind getestet (Johann hat den Text nach dem 403-Bug erneut
+      eingefuegt) — siehe unten, Ergebnis bleibt FALSE, methodischer
+      Schwachpunkt geschlossen.
+- [ ] Neu offen aus dem Retest: Phase bleibt in drei unabhaengigen Laeufen
+      (Quickstart + zwei CLI-Varianten, 50-100 Zyklen) durchgehend bei
+      'Initiation', `Transitions=0`, trotz Entropie oberhalb des
+      dokumentierten Schwellenwerts — technische Frage (Beispiel-Konfig
+      vs. Logikfehler vs. Absicht), unabhaengig von der Blindtest-Frage,
+      braucht Sourcecode-Zugriff zur Klaerung.
 - [ ] `02_Plaene/genesis-core-scope.md` weiterverfolgen (Core-Kandidaten
       `utac-core`-Kette einzeln durch den Blindtest schicken).
 - [ ] Testprotokoll fuer Forschungsfrage 001 mit zweiter Modell-Familie

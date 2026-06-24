@@ -55,6 +55,42 @@ kein Web-Zugriff auf GenesisAeon-Hintergrund).
   wurde im Subagenten-Test **nicht** geprüft, da das Testmaterial vor
   dem Erhalt des vollständigen READMEs erstellt wurde.
 
+### Retest Testfall 2 mit vollständigem Original-README
+
+2026-06-24, gleicher Tag: Johann hat das vollständige, wörtliche
+`genesis-os`-README erneut im Chat eingefügt, nachdem direkter
+Netzwerkzugriff (curl auf `raw.githubusercontent.com`) am
+Sandbox-Proxy mit 403 scheiterte und `WebFetch` nur eine
+KI-zusammengefasste statt wörtliche Version lieferte. Ein dritter,
+wiederum frischer kontextfreier Subagent hat damit install + Quickstart
++ CLI real ausgeführt:
+
+- **Install**: `pip install genesis-os` in frischem venv erfolgreich,
+  ca. 25 Abhängigkeiten, unter 2 Minuten, keine Fehler.
+- **Quickstart**: `Phase='Initiation'`, `Entropy=0.9986`,
+  `Phi(H)=1.0616`, `Lagrangian=0.7028`, `Transitions=0`,
+  `Emergence Events=15`.
+- **CLI**: `genesis-os info`/`phases` liefern eine Tabelle der vier
+  Phasennamen — die einzige semantische Verankerung im gesamten
+  Material. Drei unabhängige Läufe (Quickstart + zwei CLI-Varianten,
+  50–100 Zyklen, Entropie oberhalb des dokumentierten
+  Transition-Schwellenwerts) enden alle bei `Phase='Initiation'`,
+  `Transitions=0` — die Phase verlässt "Initiation" nie. JSON-Ausgabe
+  zeigt zusätzlich `coherence=0.000124` neben `resonance/emergence/
+  poetics=0.5` (jeweils exakt) — wirkt wie Default-/Platzhalterverhalten.
+- **Bewertung**: Auch mit dem vollständigen Original-README bleibt der
+  Blindtest **FALSE**. Der zusätzliche Kontext erklärt Formeln und
+  Modulnamen, aber nicht, ob `Entropy=0.9986` oder `Lagrangian=0.7028`
+  gute/erwartete/gesunde Werte sind — und nicht, warum `Transitions`
+  trotz expliziter Schwellenwert-Überschreitung in allen drei Läufen
+  bei 0 bleibt. Das ist stärker als reine Interpretationslosigkeit: ein
+  konkreter, vom Subagenten selbst aufgefallener Widerspruch zwischen
+  dokumentiertem Verhalten ("phase-transitioning system") und
+  beobachtetem Verhalten. Schließt den zuvor dokumentierten
+  methodischen Schwachpunkt (abgekürztes statt vollständiges
+  Testmaterial) — das FALSE-Ergebnis war robust gegenüber besserer
+  Doku, was Johanns Struktur-statt-Doku-Erklärung zusätzlich stärkt.
+
 ## Kernbefund: Präzisierung durch Johann
 
 Johann (Chat, 2026-06-24): `genesis-scope` wurde bisher nie tatsächlich
@@ -82,11 +118,14 @@ Blindtest gegen ein noch nie befülltes System kann strukturell kein
 
 ## Nächster Schritt
 
-Diese Präzisierung als eigene Folgefrage in `01_Ideen/` aufnehmen
-(Blindtest-Definition für Pakete, die erst durch KI-Nutzung befüllt
-werden). `genesis-os`-Quickstart bei Gelegenheit mit dem vollständigen
-Original-README (nicht der paraphrasierten Kurzfassung) erneut blind
-testen, um den methodischen Schwachpunkt dieses Laufs zu schließen.
+Erledigt: Folgefrage als eigene Idee dokumentiert
+(`01_Ideen/claude/blindtest-fuer-ki-native-leerpakete`). Erledigt:
+`genesis-os`-Retest mit vollständigem Original-README durchgeführt
+(siehe oben), Ergebnis bleibt FALSE. Neu offen: das beobachtete
+Ausbleiben von Phase-Transitions in allen drei Läufen als eigene
+technische Frage prüfen, sobald Sourcecode-Zugriff auf `genesis-os`
+besteht — möglicherweise ein eigener, von der Blindtest-Frage
+unabhängiger Befund.
 
 ## Betrachtete Alternativen
 
