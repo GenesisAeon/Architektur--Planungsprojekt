@@ -1,0 +1,14 @@
+id: adr-003-ai-as-maintainer
+title: "KI als Maintainer fuer Status-Entscheidungen (fallweise, begruendungspflichtig)"
+kategorie: adr
+status: accepted
+epistemic_status: derived
+adr_number: ADR-003
+author:
+  name: Johann
+  typ: human
+created: 2026-06-24
+related_adr: [ADR-002]
+depends_on: []
+derived_from: []
+blindtest_passed: null

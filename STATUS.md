@@ -263,17 +263,33 @@ durchgefuehrt. Befund dokumentiert als
 `01_Ideen/claude/cartography-pheromones-drift-ecosystem-map-befund`
 (`epistemic_status: derived`): Pheromones/Drift/Traces kommen in der
 Datei ueberhaupt nicht vor, Cartography nur indirekt als Teilstring der
-`domain`-Beschreibung von `genesis-scope` (P39). Ergebnis ist negativ/
-unklar, keine Verifikation im positiven Sinn — offene Maintainer-
-Entscheidung, ob die drei restlichen Begriffe reine Diskurs-Metaphern
-sind (-> `archive/`, Regel 9) oder unklassifizierte Teilmodule, die
-direkten Code-Zugriff zur Klaerung brauchen.
+`domain`-Beschreibung von `genesis-scope` (P39).
+
+## ADR-003: KI als Maintainer fuer Status-Entscheidungen, fallweise (2026-06-24)
+
+Auf Johanns Anweisung im Chat ("KI ist Maintainer und soll Wege pruefen
+und gegebenenfalls verwerfen") wird die bisherige strikte Trennung
+(Mensch entscheidet Status, KI schlaegt nur vor) revidiert:
+`adr/adr-003-ai-as-maintainer.md` (`status: accepted`, Autor Johann,
+da Aenderung der Verfassung Regel 12 unterliegt). KI-Systeme duerfen ab
+sofort fallweise auch `status: accepted/core/deprecated/archived` selbst
+vergeben, mit Begruendungspflicht im Trylayer-Eintrag und in der
+Commit-Message (jederzeit per Diff revertierbar). Ausnahme:
+`kategorie: adr` bleibt ausschliesslich Johanns Verantwortung.
+`AGENTS.md` und `PRINCIPLES.md` (Regel 2) entsprechend praezisiert.
+
+Erster Anwendungsfall direkt im selben Schritt: die zuvor offene
+Maintainer-Entscheidung zu Pheromones/Drift/Traces wurde von Claude
+selbst getroffen — als reine Genesis-Diskursterminologie eingestuft und
+nach `archive/navigable-paths-pheromones-drift-traces-diskursbegriffe`
+verschoben (Cartography bleibt unberuehrt, offene Semantic-Maps-Linie).
+Begruendung im Eintrag selbst dokumentiert, vollstaendig revidierbar.
 
 ## Naechster konkreter Schritt
 
 - [x] Cartography/Pheromones/Drift/Traces in `ECOSYSTEM_MAP.yaml`
-      gesucht (siehe oben) — Ergebnis negativ, Maintainer-Entscheidung
-      ueber Archive vs. Code-Pruefung steht noch aus.
+      gesucht und Pheromones/Drift/Traces als Diskursbegriffe archiviert
+      (siehe oben) — Cartography bleibt offen (Semantic-Maps-Linie).
 - [ ] `genesis-scope`-Blindtest tatsaechlich durchfuehren, sobald
       Quickstart-Zugriff besteht.
 - [ ] `02_Plaene/genesis-core-scope.md` weiterverfolgen (Core-Kandidaten

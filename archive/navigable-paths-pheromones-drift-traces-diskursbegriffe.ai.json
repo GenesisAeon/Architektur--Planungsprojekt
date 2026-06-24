@@ -1,0 +1,30 @@
+{
+  "id": "navigable-paths-pheromones-drift-traces-diskursbegriffe",
+  "title": "Pheromones/Drift/Traces als Entsprechung fuer 'Navigable Paths' (ADR-002) archiviert",
+  "kategorie": "idee",
+  "status": "archived",
+  "epistemic_status": "hypothesis",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 4.6)"
+  },
+  "created": "2026-06-24",
+  "related_adr": ["ADR-003"],
+  "depends_on": [],
+  "derived_from": ["cartography-pheromones-drift-ecosystem-map-befund"],
+  "blindtest_passed": null,
+  "content": {
+    "problem": "ADR-002s Begriffszuordnungstabelle vermutet 'Pheromones, Drift, Traces' (zusammen mit Cartography) als Entsprechung fuer den Mission-Begriff 'Navigable Paths'. Der Befund in cartography-pheromones-drift-ecosystem-map-befund zeigt: Pheromones/Drift/Traces kommen in ECOSYSTEM_MAP.yaml (48 Pakete, aus der v1.0.0-Sprint-Roadmap abgeleitet) ueberhaupt nicht vor - kein package_id, kein domain-Text, kein hinweis-Feld.",
+    "vorschlag": "Entscheidung unter adr/adr-003-ai-as-maintainer.md: diese drei Begriffe als reine Genesis-/Unified-Mandala-Diskursterminologie ohne aktuelle Code-Entsprechung einstufen und nach archive/ verschieben (Regel 9, Regel 11). Begruendung fuer diesen Schritt statt weiterem Liegenlassen als offene Idee: (1) Die Roadmap deckt explizit alle 48 Pakete des Oekosystems ab - eine vollstaendige Abwesenheit in dieser Quelle ist ein staerkeres Signal als eine einzelne fehlende Datei. (2) 'Cartography' selbst ist NICHT betroffen, da es als Teilstring der domain-Beschreibung von genesis-scope (P39) tatsaechlich eine Entsprechung hat - nur Pheromones/Drift/Traces werden hier archiviert, Cartography bleibt Teil der offenen Semantic-Maps/genesis-scope-Linie (siehe genesis-scope-blindtest).",
+    "erwartetes_ergebnis": [
+      "ADR-002-Begriffszuordnungstabelle, Zeile 'Navigable Paths', kann von 'noch zu klaeren' auf 'Cartography bestaetigt (via genesis-scope), Pheromones/Drift/Traces als Diskursbegriffe archiviert' praezisiert werden, sobald der naechste 02_Plaene/adr002-begriffszuordnung-verifikationsplan.md-Durchlauf erfolgt.",
+      "Falls spaeter doch Code in einem der 48 Pakete auftaucht, der Pheromones/Drift/Traces tatsaechlich implementiert (z.B. ein bisher unklar benanntes Submodul), ist diese Entscheidung per Git-Revert oder neuem Trylayer-Eintrag mit supersedes_archived-Verweis vollstaendig revidierbar - archive/ loescht nichts (Regel 11)."
+    ],
+    "naechster_schritt": "02_Plaene/adr002-begriffszuordnung-verifikationsplan.md, Tabellenzeile 'Navigable Paths', auf diesen Archiv-Eintrag verweisen lassen. Falls Johann anderer Einschaetzung ist (z.B. weil ihm aus der Unified-Mandala-Historie eine konkrete Code-Entsprechung bekannt ist, die in der Roadmap-Zusammenfassung nur nicht auftaucht), Revert per Git und Korrektur als neuer Trylayer-Eintrag.",
+    "alternativen_betrachtet": [
+      "Status idea/hypothesis unveraendert belassen, bis Code-Zugriff auf die 48 Pakete besteht - verworfen unter ADR-003: die vorhandene Evidenz (vollstaendige Abwesenheit in einer Quelle, die alle 48 Pakete abdeckt) reicht fuer eine begruendete, jederzeit revidierbare Einordnung; staendiges Offenlassen ohne neue Evidenz in Aussicht waere kein Fortschritt.",
+      "Auch Cartography mitarchivieren - verworfen: Cartography hat im Unterschied zu den anderen drei Begriffen einen konkreten, wenn auch indirekten Beleg (genesis-scope-Domain-Text) und gehoert weiter zur offenen Semantic-Maps-Linie."
+    ]
+  }
+}
