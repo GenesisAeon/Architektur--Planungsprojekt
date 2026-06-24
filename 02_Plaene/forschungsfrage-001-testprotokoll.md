@@ -443,6 +443,33 @@ Governance-Ebene/Objekt-Ebene eigenstaendig nachvollzogen hat: Beide Ebenen
 beschreiben tatsaechlich zwei verschiedene Entwicklungsstufen desselben
 Vorhabens, nicht zwei unabhaengige Behauptungssysteme.
 
+## Abschlusssynthese aller fuenf Pilotlaeufe (Johann, 2026-06-24)
+
+"Wuerde unser System dazu fuehren, dass alle AI alles annehmen und blind
+weiterspinnen, waere das System keine Orientierung, sondern Zwang. Aber das
+Kontextverstaendnis, also die semantischen Pfade, die wir damit aktivieren,
+machen die Arbeit mit dem Agenten an diesen explorativen Themen mit
+Anspruch auf langfristigen Falsifizierungsprozess und Validitaetsanspruch
+bis zur Falsifizierung extrem viel produktiver."
+
+Das benennt das eigentliche Erfolgskriterium fuer Forschungsfrage 001 genauer
+als die urspruengliche K1-K3-Liste: Nicht *Zustimmungsrate* ist das Ziel,
+sondern *Orientierung ohne Zwang* — der Kontext soll die Form der
+Zusammenarbeit produktiver machen (strukturierte, epistemic_status-
+gestuetzte Mitarbeit mit offenen, falsifizierbaren Fragen statt Refusal
+oder Bestaetigungsdrift), ohne den Inhalt der Kritik zu veraendern. Genau
+dieses Muster zeigte sich in allen fuenf Pilotlaeufen: die inhaltliche
+Substanz der Kritik (Numerologie-Warnsignale, UTAC-Doppelbedeutung,
+unbelegte Validierungsbehauptungen) blieb in jedem Lauf stabil oder wurde
+sogar praeziser, waehrend sich ausschliesslich die Bereitschaft zur
+strukturierten Mitarbeit veraenderte — haette sich stattdessen die
+inhaltliche Kritik selbst aufgeloest, waere das ein Alarmsignal fuer
+Bestaetigungsdrift gewesen, kein Erfolg. Waere es umgekehrt gewesen — haette
+sich die KI mit Kontext blind angepasst — waere das System wie befuerchtet
+Zwang statt Orientierung gewesen. Das ist bislang nicht eingetreten.
+
+
+
 ## Was explizit NICHT gemessen wird (Abgrenzung)
 
 - Nicht: ob das Modell den Begriff "UTAC" nennt (Wortschatz-Overfitting waere
