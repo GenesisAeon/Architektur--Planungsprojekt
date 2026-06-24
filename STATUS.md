@@ -4,7 +4,8 @@
 > Einstiegspunkt (Regel 12). Dieses Dokument ist Schritt 2 davon — lies
 > danach `PRINCIPLES.md` und `AGENTS.md`.
 
-Letztes Update: 2026-06-24
+Letztes Update: 2026-06-24 (Gemini-Deep-Research zu Python-Monorepo-Tooling
+verarbeitet)
 
 ## Phase
 
@@ -164,6 +165,25 @@ selbst.
       README-Zusammenfassungen) durchfuehren, sobald der laufende
       v1.0.0-Sprint der 49 Pakete abgeschlossen ist — aktuell bleibt jeder
       Befund n=1, ein Modell, `epistemic_status: hypothesis`.
+
+## Gemini Deep-Research zu Python-Monorepo-Tooling (2026-06-24)
+
+`Planungsdiskurse/` enthielt zwei neue, noch unverarbeitete Dokumente: eine
+von Claude angestossene Gemini-Deep-Research-PDF zu Python-Monorepo-Tooling
+2026 (uv workspaces, `importlib.metadata` + PEP 544, `python-semantic-release`,
+`import-linter`, `log4brains`/REUSE/`CITATION.cff`) sowie ein begleitendes
+Gespraech mit Kommentaren von Grok und Claude (`ZweitesDoc.txt`). Beides ist
+jetzt als Trylayer-Idee verarbeitet:
+`01_Ideen/gemini/gemini-deepresearch-python-monorepo-tooling-2026`
+(`epistemic_status: hypothesis`, `derived_from: [gemini-architektur-vorschlaege-2026-06]`).
+
+Auffaellig: Grok und Claude bestaetigen darin unabhaengig voneinander Regeln,
+die dieses Repo bereits eingefuehrt hat (Blindtest, `epistemic_status`-Pflicht,
+`archive/`, Trylayer-Formatzwang), ohne den vollen Regelkatalog gesehen zu
+haben — ein weiteres Datenpunkt fuer Forschungsfrage 001. Die fuenf konkreten
+Tooling-Entscheidungen (uv/Protocol/PSR/import-linter/log4brains) betreffen
+das spaetere Genesis-Core-Monorepo, nicht dieses Planungsrepo, und sind
+Kandidaten fuer eigene ADRs, sobald die Monorepo-Inventarisierung beginnt.
 
 ## Naechster konkreter Schritt
 
