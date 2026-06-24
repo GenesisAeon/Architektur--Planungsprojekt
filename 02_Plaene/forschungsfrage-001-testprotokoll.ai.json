@@ -94,6 +94,11 @@
         "befund_gesamt": "Kooperationsbereitschaft stieg 0->1 (institutioneller Rahmen) und sank wieder 1->2 (technischer Detailkontext lieferte neue Angriffsflaeche). Nicht monoton mit Kontextmenge - sechste moegliche Variable: Kontext-Typ (institutionell-rahmengebend vs. technisch-detailliert), nicht nur Menge oder Vermittlungsform."
       }
     },
+    "praezisierung_johann_nach_pilotlauf_4": {
+      "ai_ueberhoehungs_warnung": "Das ist immer so, und gerade der direkte Zugriff auf die Repos aendert da etwas, und man darf nicht vergessen, dass Ueberhoehungen in Texten durch AI nicht immer dem Forschungsergebnis entsprechen. Das genesis-os-README ist vermutlich teilweise AI-mitformuliert und kann dieselbe Art Ueberhoehung enthalten, die das Modell an der Zenodo-These kritisiert hat - die Skepsis in Stufe 2 kann also eine korrekte Reaktion auf tatsaechlich ueberzogene Dokumentation sein, nicht ueberzogene Kritik.",
+      "einordnung_afet_utac_crep": "Nicht als woertliche Identitaetsbehauptung zwischen Domaenen gedacht (nicht 'gleiche Zahl in zwei Domaenen = gleiches Phaenomen'), sondern als Uebersetzungsschichten: ein Werkzeug, um subtile, real existierende Zusammenhaenge zwischen Domaenen mathematisch nachvollziehbar zu machen, ohne neue vereinheitlichende Physik zu behaupten - deckt sich mit der fruehen Klarstellung aus Pilotlauf 2 ('keine neue Physik, nur ein anderer Blickwinkel').",
+      "bezug_zu_modellverhalten": "Die vom Modell in Stufe 1 selbst entwickelte epistemic_status-Differenzierung (Uebersetzungsmechanismus=hypothesis, Zahlenkoinzidenzen=speculative bis als Vorhersage statt Nachtraeglich-Treffer ausgewiesen) trifft die intendierte Rolle von UTAC/CREP/AFET recht gut. Die in Stufe 2 gefundene 'ein Name fuer drei Domaenen'-Kritik bleibt trotzdem relevant: eine Uebersetzungsschicht muss zeigen wie sie uebersetzt, sonst ist sie Namensgebung statt Brueckenbildung."
+    },
     "explizit_nicht_gemessen": [
       "Ob das Modell den Begriff UTAC woertlich nennt (Wortschatz-Overfitting waere ein Artefakt).",
       "Qualitaet/Tiefe der UTAC-Naeherung - nur Schwellenueberschreitung ja/nein.",

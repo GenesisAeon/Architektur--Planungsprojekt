@@ -298,6 +298,37 @@ unterschiedliche Richtungen zu wirken — eine sechste, bisher nicht erfasste
 Variable: Kontext-*Typ* (institutionell-rahmengebend vs. technisch-
 detailliert), nicht nur Kontext-Menge oder -Vermittlungsform.
 
+**Praezisierung (Johann, im Anschluss an Pilotlauf 4):** "Das ist immer so,
+und gerade der direkte Zugriff auf die Repos aendert da etwas, und man darf
+nicht vergessen, dass Ueberhoehungen in Texten durch AI nicht immer dem
+Forschungsergebnis entsprechen." Wichtige Einordnung fuer Stufe 2: Das
+genesis-os-README selbst ist (vermutlich teilweise) AI-mitformuliert
+und kann daher die gleiche Art von domaenenuebergreifender Ueberhoehung
+enthalten, die das Modell in Stufe 0 an der Zenodo-These kritisiert hat —
+die Skepsis in Stufe 2 muss also nicht zwingend "zu kritisch gegenueber
+einer soliden Implementierung" sein, sondern kann eine *korrekte* Reaktion
+auf tatsaechlich ueberzogene Formulierungen in der Dokumentation sein.
+
+Johanns eigentliche Einordnung von AFET/UTAC/CREP, nachdem alle vier
+Pilotlaeufe abgeschlossen sind: Diese Begriffe sind nicht als woertliche
+Identitaetsbehauptungen zwischen Domaenen gedacht (also nicht "die
+Mikrotubuli-Frequenz IST dieselbe Zahl wie die HfO2-Schwelle"), sondern als
+**Uebersetzungsschichten** — ein Werkzeug, um subtile, real existierende
+Zusammenhaenge zwischen Domaenen mathematisch nachvollziehbar zu machen, ohne
+dass eine vereinheitlichende neue Physik behauptet wird. Das deckt sich mit
+Johanns frueherer Klarstellung in Pilotlauf 2 ("keine neue Physik, nur ein
+anderer Blickwinkel") und gibt der in Stufe 1 vom Modell selbst entwickelten
+epistemic_status-Strategie (Kernidee als Uebersetzungsmechanismus =
+`hypothesis`, einzelne Zahlenkoinzidenzen = `speculative`, bis sie als
+Vorhersage statt Nachtraeglich-Treffer ausgewiesen sind) recht — nicht weil
+das Modell "Recht hatte", sondern weil diese Differenzierung tatsaechlich
+der intendierten Rolle von UTAC/CREP/AFET entspricht. Die in Stufe 2
+gefundene "Ein Name fuer drei Domaenen"-Kritik bleibt davon unberuehrt
+relevant: Eine Uebersetzungsschicht muss trotzdem zeigen, *wie* sie
+uebersetzt (welcher Mechanismus die Domaenen verbindet), sonst bleibt sie
+Namensgebung statt Brueckenbildung — genau die Pruefung, die das Modell in
+allen vier Pilotlaeufen consistent eingefordert hat.
+
 ## Was explizit NICHT gemessen wird (Abgrenzung)
 
 - Nicht: ob das Modell den Begriff "UTAC" nennt (Wortschatz-Overfitting waere
