@@ -102,13 +102,28 @@ eine Dokumentationsfrage.
   — möglich, dass dieser Pfad funktioniert und die README dort korrekt
   wäre; das muss separat verifiziert werden, sobald Zugriff besteht.
 
+## Einordnung durch Johann
+
+Johann (Chat, 2026-06-24): nicht sicher, aber vermutet, dass es nach
+dem v1.0.0-Sprint noch offene CI-Fehler gab, die erst behoben werden
+sollten, sobald alle 48/49 Pakete auf PyPI verfügbar sind — die
+gefundenen Bugs könnten also bereits bekannte, in Arbeit befindliche
+Probleme sein, kein neuer Befund für die Maintainer. Unabhängig davon
+räumt er ein: die README-Behauptung "v1.0.0" ist nicht konform mit dem
+tatsächlich installierten v2.0.0 — dieser Punkt bleibt ein echter
+Befund, kein Sandbox-Artefakt.
+
 ## Nächster Schritt
 
-Diesen Befund an Johann/Maintainer melden, da es sich um konkrete,
-vermutlich schnell behebbare Bugs im echten `entropy-table`-Repo
-handelt (nicht nur eine Repo-interne Trylayer-Frage). Sobald möglich:
-git-clone-Pfad real testen, um zu prüfen, ob dort die README korrekt
-funktioniert und nur der PyPI-Build/die PyPI-Metadaten kaputt sind.
+Nicht mehr als ungemeldeten Bugreport behandeln, da die gefundenen
+Probleme vermutlich Teil einer bereits bekannten, laufenden
+Post-Sprint-CI-Bereinigung sind (unbestätigt). Stattdessen offen
+lassen, bis der Sprint/die CI-Bereinigung abgeschlossen ist, und den
+Blindtest dann erneut durchführen — der jetzige FALSE-Befund bleibt als
+Messwert zum jetzigen Zeitpunkt stehen (Regel 11, kein Löschen), gilt
+aber nicht als finales Urteil über das fertige Paket. Die
+README/PyPI-Versionsdiskrepanz (v1.0.0 behauptet, v2.0.0 installiert)
+bleibt als eigenständiger, unabhängig vom CI-Stand bestehender Befund.
 
 ## Betrachtete Alternativen
 

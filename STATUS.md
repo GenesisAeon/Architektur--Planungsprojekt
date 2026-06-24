@@ -391,6 +391,19 @@ bestaetigt, ist die vorgeschlagene Core-Kette bereits am ersten Glied
 technisch blockiert, unabhaengig von der architektonischen Kettenfrage.
 `02_Plaene/genesis-core-scope.md` entsprechend ergaenzt (Punkt 6).
 
+**Einordnung durch Johann (gleicher Tag):** nicht sicher, aber vermutet,
+dass die gefundenen Bugs bereits bekannte, offene CI-Fehler aus dem
+Post-v1.0.0-Sprint sein koennten, die erst behoben werden sollten, sobald
+alle 48/49 Pakete auf PyPI verfuegbar sind — dann waere dies kein neuer
+Befund fuer die Maintainer, sondern Teil einer laufenden Bereinigung
+(unbestaetigt). Davon unabhaengig bestaetigt er einen Befund als
+eigenstaendig gueltig: die README-Behauptung "v1.0.0" ist nicht konform
+mit dem tatsaechlich installierten v2.0.0. Konsequenz: der FALSE-Befund
+bleibt als Messwert stehen (Regel 11), gilt aber nicht als finales Urteil
+ueber das fertige Paket — Re-Test nach Abschluss der CI-Bereinigung
+vorgesehen (siehe `01_Ideen/claude/entropy-table-blindtest`, Abschnitt
+"Einordnung durch Johann").
+
 ## Folgefrage: Blindtest-Definition fuer KI-native Leerpakete (2026-06-24)
 
 Aus dem `genesis-scope`-Befund abgeleitet, als eigene Idee dokumentiert:
