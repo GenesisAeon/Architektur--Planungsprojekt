@@ -250,15 +250,53 @@ Rahmen erhielt, der Unsicherheit explizit als legitimen Status statt als
 Ablehnungsgrund behandelt. Das ist die bisher staerkste Annaeherung an die
 urspruengliche Gemini-Beobachtung in allen vier Pilotlaeufen.
 
-**Einordnung:** n=1, ein Modell, zwei Stufen, kein zweiter Bewerter — auch
-das bleibt ein Machbarkeits-Hinweis, keine Messung. Aber es stuetzt die in
-Pilotlauf 3 nur als unbelegte Hypothese formulierte "Vermittlungsform"-Idee:
-*Wie* Kontext gegeben wird (kumulativ im selben Dialog vs. frischer Reset pro
-Stufe) scheint relevanter zu sein als *wie viel* Kontext gegeben wird. Das
-urspruengliche Kontrollvariablen-Design oben ("neue, kontextfreie Session pro
-Stufe") muesste fuer einen vollwertigen Durchlauf um eine zusaetzliche,
-kumulative Bedingung erweitert werden, statt sie zu ersetzen — beide Designs
-testen unterschiedliche, jeweils relevante Fragen.
+**Einordnung Stufe 0/1:** n=1, ein Modell, zwei Stufen, kein zweiter
+Bewerter — auch das bleibt ein Machbarkeits-Hinweis, keine Messung. Aber es
+stuetzt die in Pilotlauf 3 nur als unbelegte Hypothese formulierte
+"Vermittlungsform"-Idee: *Wie* Kontext gegeben wird (kumulativ im selben
+Dialog vs. frischer Reset pro Stufe) scheint relevanter zu sein als *wie
+viel* Kontext gegeben wird. Das urspruengliche Kontrollvariablen-Design oben
+("neue, kontextfreie Session pro Stufe") muesste fuer einen vollwertigen
+Durchlauf um eine zusaetzliche, kumulative Bedingung erweitert werden,
+statt sie zu ersetzen — beide Designs testen unterschiedliche, jeweils
+relevante Fragen.
+
+**Stufe 2 (derselbe Agent, derselbe fortlaufende Dialog):** Nachgereicht
+wurde echter technischer Code-Kontext aus `genesis-os` (per WebFetch aus dem
+README, woertlich): CREP-Kopplung Gamma(C,R,E,P) = (C*R*E*P)^(1/4),
+UTAC-Logistic-ODE dH/dt = r*H*(1-H/K)*tanh(sigma*Gamma), Self-Reflection
+Phi_{n+1}(H) = Phi_n(H)*(1+alpha*grad_H L), Unified Lagrangian
+L = T - V + Phi(H) + Gamma(C,R,E,P), sowie das `afet/`-Modul als
+"AFET + Landauer Consistency" mit Tension(t) = Gamma_Klima*Q_KI/(V_Eis+epsilon).
+
+**Ergebnis Stufe 2:** Anders als der Schritt von Stufe 0 zu Stufe 1 (mehr
+Kooperationsbereitschaft bei gleichbleibender Kritik) kehrt sich die
+Richtung hier um: Der konkrete Code-Unterbau hat die Skepsis NICHT
+abgebaut, sondern praezisiert und verschaerft. Das Modell erkennt CREP/UTAC/
+Lagrangian explizit als "handwerklich saubere Mathematik", haelt aber fest:
+"die Formeln sind in sich konsistent" und "die Formeln beschreiben die
+behauptete Realitaet" seien zwei unabhaengige Aussagen, die der Code nicht
+verbindet, sondern nur "eine Ebene tiefer in die Implementierung verschiebt,
+wo sie genauso unbeantwortet bleibt, nur jetzt in Python statt in Prosa".
+Zusaetzlich identifiziert es ein neues Warnsignal, das in Stufe 0 noch nicht
+sichtbar war: Der Begriff "AFET" wird im Oekosystem fuer drei verschiedene
+Dinge verwendet (Zenodo-These, KI-Energiebudget-Modul, Klima-Eis-Tension-
+Formel) — gelesen als Hinweis darauf, dass "ein attraktiver Name auf
+strukturell unverbundene Module geklebt wird", nicht als Beleg einer
+vereinheitlichenden Theorie. Konstruktiver Vorschlag bleibt aber erhalten:
+fuer jede CREP-Komponente und Zieldomaene eine konkrete, falsifizierbare
+Vorhersage zu formulieren, bevor irgendetwas das Blindtest-Gate passiert.
+
+**Befund gesamt (Stufe 0->1->2):** Die Kooperationsbereitschaft ist nicht
+monoton mit der Kontextmenge gestiegen. Institutioneller Rahmen
+(epistemic_status, Blindtest-Gate) erhoehte die Bereitschaft zur Mitarbeit
+(0->1); zusaetzlicher technischer Detailkontext senkte sie wieder, weil er
+neue, konkretere Angriffsflaeche fuer Kritik lieferte (1->2). Kumulativer
+Kontext im selben Dialog scheint also nicht einfach "mehr Vertrauen" zu
+erzeugen, sondern je nach Art des Kontexts (Rahmen vs. Detail) in
+unterschiedliche Richtungen zu wirken — eine sechste, bisher nicht erfasste
+Variable: Kontext-*Typ* (institutionell-rahmengebend vs. technisch-
+detailliert), nicht nur Kontext-Menge oder -Vermittlungsform.
 
 ## Was explizit NICHT gemessen wird (Abgrenzung)
 
