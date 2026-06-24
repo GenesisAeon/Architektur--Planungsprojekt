@@ -1,0 +1,15 @@
+id: forschungsfrage-001-testprotokoll
+title: "Testprotokoll fuer Forschungsfrage 001 (Orientierungs-Benchmark)"
+kategorie: plan
+status: draft
+epistemic_status: hypothesis
+author:
+  name: Claude
+  typ: ai
+  system: Claude (Sonnet 4.6)
+created: 2026-06-24
+related_adr: []
+depends_on: []
+derived_from:
+  - forschungsfrage-001-orientierungs-benchmark
+blindtest_passed: null

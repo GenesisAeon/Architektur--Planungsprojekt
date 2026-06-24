@@ -121,8 +121,11 @@ formulieren kann. Enthaelt explizite Warnung vor Mehrfach-Bestaetigungs-
 Drift zwischen KI-Systemen als methodisches Risiko fuer das Forschungsdesign
 selbst.
 
-- [ ] Konkretes Testprotokoll fuer die Forschungsfrage-001-Benchmark
-      ausarbeiten und mindestens einen echten Testlauf durchfuehren.
+- [x] Konkretes Testprotokoll fuer die Forschungsfrage-001-Benchmark
+      ausarbeiten — siehe `02_Plaene/forschungsfrage-001-testprotokoll.md`
+      (Bewertungskriterien, 4-stufiges Versuchsdesign, Kontrollvariablen).
+- [ ] Mindestens einen echten Testlauf (Stufe 0/1, ohne weiteren
+      Repo-Zugriff bereits durchfuehrbar) protokollieren.
 
 ## Naechster konkreter Schritt
 

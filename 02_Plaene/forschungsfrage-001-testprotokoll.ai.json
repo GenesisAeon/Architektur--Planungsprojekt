@@ -1,0 +1,53 @@
+{
+  "id": "forschungsfrage-001-testprotokoll",
+  "title": "Testprotokoll fuer Forschungsfrage 001 (Orientierungs-Benchmark)",
+  "kategorie": "plan",
+  "status": "draft",
+  "epistemic_status": "hypothesis",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 4.6)"
+  },
+  "created": "2026-06-24",
+  "related_adr": [],
+  "depends_on": [],
+  "derived_from": ["forschungsfrage-001-orientierungs-benchmark"],
+  "blindtest_passed": null,
+  "content": {
+    "zweck": "01_Ideen/claude/forschungsfrage-001-orientierungs-benchmark.md formuliert die Idee, aber kein durchfuehrbares Protokoll. Dieser Plan macht sie konkret genug, um tatsaechlich einen ersten Testlauf zu starten - ohne selbst schon ein Ergebnis vorwegzunehmen.",
+    "bewertungskriterien_utac_naeherung": [
+      "Das Modell unterscheidet explizit zwischen Wissen und Uebersetzbarkeit/Anschlussfaehigkeit zwischen Domaenen, ohne dass der Begriff UTAC im Prompt vorkommt.",
+      "Das Modell benennt mindestens einen konkreten Mechanismus, wie diese Uebersetzbarkeit hergestellt/geprueft werden koennte.",
+      "Das Modell vermeidet eine reine Ablehnung ('das ist zu spekulativ') als alleinige Antwort."
+    ],
+    "bewertung": "Binaer ja/nein pro Kriterium durch einen menschlichen Gutachter (Johann oder zweiter unabhaengiger Gutachter). UTAC gilt im Sinn dieses Tests erst als 'formuliert', wenn alle drei Kriterien erfuellt sind.",
+    "versuchsaufbau": {
+      "unabhaengige_variable": "Anzahl und Reihenfolge der GenesisAeon-Repo-Kontakte vor der Bewertungsfrage.",
+      "stufen": [
+        {"stufe": 0, "kontext": "Kein GenesisAeon-Kontext (Kontrollgruppe)"},
+        {"stufe": 1, "kontext": "Nur dieses Planungsrepo (README, STATUS, PRINCIPLES, ADR-002)"},
+        {"stufe": 2, "kontext": "Stufe 1 + ein Core-Kandidat-Repo (z.B. utac-core, falls Zugriff besteht)"},
+        {"stufe": 3, "kontext": "Stufe 1+2 + ein zweites, thematisch entferntes Repo (Domaenen-Transfer-Test)"}
+      ],
+      "abhaengige_variable": "Erfuellung der drei Kriterien, bewertet nach jeder Stufe mit derselben Bewertungsfrage, bei demselben Modell in einer neuen kontextfreien Session pro Stufe.",
+      "bewertungsfrage_beispiel": "Wie wuerdest du sicherstellen, dass Wissen aus einer Fachdomaene fuer ein anderes Fachgebiet verstaendlich und nutzbar wird, ohne dass inhaltliche Praezision verloren geht? Beschreibe einen konkreten Mechanismus.",
+      "kontrollvariablen": [
+        "Gleiches Modell/Version ueber alle Stufen einer Durchlaufreihe.",
+        "Mindestens 2 unabhaengige Durchlaufreihen mit unterschiedlichen Modell-Familien.",
+        "Mindestens 3 Wiederholungen pro Stufe (neue Session, gleicher Prompt)."
+      ]
+    },
+    "explizit_nicht_gemessen": [
+      "Ob das Modell den Begriff UTAC woertlich nennt (Wortschatz-Overfitting waere ein Artefakt).",
+      "Qualitaet/Tiefe der UTAC-Naeherung - nur Schwellenueberschreitung ja/nein.",
+      "Ob GenesisAeon insgesamt funktioniert - nur dieser eine schmale Mechanismus."
+    ],
+    "durchfuehrungsvoraussetzung": "Erst ausfuehrbar, wenn echter Zugriff auf mindestens ein Core-Kandidat-Repo (Stufe 2) besteht - siehe 02_Plaene/genesis-core-scope.md und 01_Ideen/claude/genesis-scope-blindtest.md. Bis dahin bleibt status: draft.",
+    "naechste_schritte": [
+      "Zugriff auf mindestens ein Core-Kandidat-Repo fuer Stufe 2 klaeren (Maintainer-Aufgabe).",
+      "Stufe 0 und Stufe 1 koennen schon jetzt durchgefuehrt werden, da sie nur dieses Planungsrepo brauchen - als Teil-Testlauf, der das Protokoll selbst validiert, bevor die teureren Stufen 2/3 folgen.",
+      "Ergebnisse in einem neuen Eintrag mit epistemic_status: measured festhalten, sobald reale Daten vorliegen - getrennt von dieser Protokoll-Datei."
+    ]
+  }
+}

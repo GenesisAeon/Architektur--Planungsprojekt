@@ -73,10 +73,10 @@ methodische Warnung im Gespraech ignorieren.
 
 ## Naechste Schritte
 
-1. Konkretes Testprotokoll ausarbeiten (welche Repos, welche Reihenfolge,
-   welches Modell, wie wird "sinnvolle Naeherung an UTAC" operational
-   definiert/bewertet, durch wen).
+1. ~~Konkretes Testprotokoll ausarbeiten~~ — erledigt, siehe
+   `02_Plaene/forschungsfrage-001-testprotokoll.md`.
 2. Mindestens einen echten Testlauf mit einem Modell ohne vorherigen
-   GenesisAeon-Kontakt durchfuehren und protokollieren.
+   GenesisAeon-Kontakt durchfuehren und protokollieren (Stufe 0/1 des
+   Testprotokolls sind schon ohne weiteren Zugriff durchfuehrbar).
 3. Ergebnis erst dann nach `02_Plaene` oder hoeher ueberfuehren, wenn ein
    erster Messwert vorliegt — vorher bleibt es `hypothesis`/`idea`.
