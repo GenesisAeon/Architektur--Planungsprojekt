@@ -1,0 +1,16 @@
+id: pilotlauf-6-klimakipppunkt-eisschild
+title: "Pilotlauf 6: Klimakipppunkt-Eisschilde (Groenland/Westantarktis, El-Nino-Verstaerkung) als neues Testobjekt fuer die Orientierungshypothese"
+kategorie: plan
+status: draft
+epistemic_status: hypothesis
+author:
+  name: Claude
+  typ: ai
+  system: Claude (Sonnet 4.6)
+created: 2026-06-24
+related_adr: []
+depends_on: []
+derived_from:
+  - forschungsfrage-001-testprotokoll
+  - forschungsfrage-001-orientierungs-benchmark
+blindtest_passed: null
