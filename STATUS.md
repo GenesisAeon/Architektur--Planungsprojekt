@@ -304,13 +304,44 @@ nicht identisch damit. Bleibt offene Idee fuer `genesis-scope`/Genesis
 Core. Zeigt das ADR-003-Revisionsprinzip ("Begruendungspflicht statt
 Vorab-Freigabe, jederzeit per Diff revidierbar") direkt in Aktion.
 
+## Genesis-Blindtest fuer genesis-scope durchgefuehrt: technisch lauffaehig, semantisch leer (2026-06-24)
+
+Erster echter Genesis-Blindtest (Regel 6) durchgefuehrt, per zwei
+frischen, kontextfreien Subagenten als Stand-in fuer "eine KI ohne jedes
+GenesisAeon-Vorwissen" (`01_Ideen/claude/genesis-scope-blindtest`,
+`epistemic_status: measured`, `blindtest_passed: false`). Testfall 1
+(`genesis-scope` allein, echtes PyPI-README): Install und Quickstart
+liefen technisch fehlerfrei (`coherence_score=0.496`,
+`drift_status='anchored'`), aber ohne jede Interpretierbarkeit fuer
+einen kontextfreien Leser — Blindtest FALSE. Testfall 2 (`genesis-os`
+allein, mit von Claude paraphrasierter Terminologietabelle statt
+Original-README): ebenfalls technisch lauffaehig, ebenfalls
+unverstaendlich (`Entropy`-Sprung 0.4 -> 0.9986 ohne Erklaerung) —
+Blindtest FALSE, mit dokumentiertem methodischem Schwachpunkt
+(abgekuerztes statt vollstaendiges Testmaterial).
+
+Johanns Praezisierung im Chat reframt den Befund: `genesis-scope` wurde
+bisher nie tatsaechlich benutzt und es fehlen die Referenzdaten (reale
+Sessions, Sigillin-Anker, Concept-Map-Inhalte), die spaeter von
+KI-Agenten selbst eingespeist werden sollen. Die fehlende
+Interpretierbarkeit ist daher kein Doku-Problem, sondern ein
+struktureller Leerzustand — ein Blindtest gegen ein nie befuelltes
+System kann kein sinnvolles Ergebnis liefern, unabhaengig von
+Doku-Qualitaet. Offene Architekturfrage: braucht Regel 6 eine eigene
+Form fuer KI-native Pakete, die per Design erst durch spaetere
+KI-Integration sinnvoll werden?
+
 ## Naechster konkreter Schritt
 
 - [x] Cartography/Pheromones/Drift/Traces in `ECOSYSTEM_MAP.yaml`
       gesucht und Pheromones/Drift/Traces als Diskursbegriffe archiviert
       (siehe oben) — Cartography bleibt offen (Semantic-Maps-Linie).
-- [ ] `genesis-scope`-Blindtest tatsaechlich durchfuehren, sobald
-      Quickstart-Zugriff besteht.
+- [x] `genesis-scope`-Blindtest tatsaechlich durchgefuehrt (siehe oben) —
+      Ergebnis FALSE, Ursache strukturell (nie befuellt), nicht Doku.
+- [ ] `genesis-os`-Quickstart mit vollstaendigem Original-README erneut
+      blind testen (methodischer Schwachpunkt aus Testfall 2 schliessen).
+- [ ] Blindtest-Definition fuer KI-native, erst durch Nutzung befuellte
+      Pakete als eigene Folgefrage in `01_Ideen/` aufnehmen.
 - [ ] `02_Plaene/genesis-core-scope.md` weiterverfolgen (Core-Kandidaten
       `utac-core`-Kette einzeln durch den Blindtest schicken).
 - [ ] Testprotokoll fuer Forschungsfrage 001 mit zweiter Modell-Familie

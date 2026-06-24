@@ -1,29 +1,41 @@
 {
   "id": "genesis-scope-blindtest",
-  "title": "Genesis-Blindtest fuer genesis-scope durchfuehren",
+  "title": "Genesis-Blindtest fuer genesis-scope durchgefuehrt: technisch lauffaehig, semantisch leer",
   "kategorie": "idee",
   "status": "idea",
-  "epistemic_status": "hypothesis",
+  "epistemic_status": "measured",
   "author": {
     "name": "Claude",
     "typ": "ai",
     "system": "Claude (Sonnet 4.6)"
   },
   "created": "2026-06-19",
-  "related_adr": [],
+  "related_adr": ["ADR-003"],
   "depends_on": [],
-  "blindtest_passed": null,
+  "blindtest_passed": false,
   "content": {
-    "problem": "PRINCIPLES.md Regel 7 verlangt, dass Core ohne LLM funktioniert. genesis-scope ist aber explizit fuer Mensch-KI-Semantiknavigation gebaut. Es ist unklar, ob es Core oder Plugin (hilfsprogramm) ist.",
-    "vorschlag": "genesis-scope als ersten Testfall durch den Genesis-Blindtest (Regel 6) schicken, bevor die uebrigen 47 Pakete sortiert werden. Wenn die Verfassung beim eigenen wichtigsten Werkzeug zu einem unklaren Ergebnis fuehrt, ist die Verfassung noch nicht fertig.",
+    "problem": "PRINCIPLES.md Regel 7 verlangt, dass Core ohne LLM funktioniert. genesis-scope ist aber explizit fuer Mensch-KI-Semantiknavigation gebaut. Es war unklar, ob es Core oder Plugin (hilfsprogramm) ist - und ob der Genesis-Blindtest (Regel 6) ueberhaupt durchfuehrbar ist, ohne dass eine KI Vorwissen ueber GenesisAeon mitbringt.",
+    "vorschlag_und_durchfuehrung": "2026-06-24: Blindtest erstmals real durchgefuehrt, per zwei frischen Subagenten (eigenes Claude-Sonnet-4.6-Instanzen ohne jeden Konversationskontext, nur das jeweilige README-Quickstart als Eingabe, kein Web-Zugriff auf GenesisAeon-Hintergrund). Testfall 1: genesis-scope allein (pip install + scope.run_cycle Quickstart aus dem echten PyPI-README). Testfall 2: genesis-os allein (pip install + GenesisOS-Quickstart, aber mit einer von Claude selbst verkuerzten/paraphrasierten Terminologietabelle statt dem vollstaendigen Original-README - methodischer Schwachpunkt, siehe unten).",
+    "ergebnis_testfall_1_genesis_scope": {
+      "install": "pip install genesis-scope erfolgreich, Version 1.0.0, keine Build-Probleme.",
+      "ausfuehrung": "Quickstart-Snippet lief fehlerfrei: coherence_score=0.496, drift_status='anchored', utac_state={sigma: 0.158, q4_state: 12, q4_label: '1100'}. CLI scope status ebenfalls fehlerfrei.",
+      "bewertung": "Technisch ja, semantisch nein: Werte sind in sich konsistent, aber ohne jede Erklaerung, was 'gut'/'erwartet' bedeutet, was n_sessions=38 modelliert, oder warum drift_status 'anchored' und nicht 'drifting' ist. Blindtest (Regel 6) damit FALSE."
+    },
+    "ergebnis_testfall_2_genesis_os": {
+      "install": "pip install genesis-os erfolgreich, zog ueberraschend schweren Dependency-Stack (numpy/scipy/pandas/sklearn/statsmodels/networkx/pydantic) fuer ein als 'Core' beworbenes Minimalpaket.",
+      "ausfuehrung": "Quickstart lief fehlerfrei: Phase='Initiation', Entropy=0.9986 (Eingabe war entropy=0.4 - ein 2.5x-Sprung ohne jede Erklaerung im Test-Material).",
+      "bewertung": "Auch mit Terminologietabelle (CREP/Gamma/UTAC/Phi/Tension) blieb unklar, was die Output-Werte fuer einen Nutzer bedeuten - die Tabelle erklaert Formeln, nicht Interpretation. Blindtest ebenfalls FALSE, aber: das Original-README (von Johann im Chat nachgereicht, vollstaendiger als das paraphrasierte Testmaterial) enthaelt zusaetzlich Architektur-Uebersicht, Lagrangian-Formalismus und Zenodo-Zitation - dieser reichere Kontext wurde im Subagenten-Test NICHT geprueft, da das Testmaterial vor dem Erhalt des vollstaendigen READMEs erstellt wurde."
+    },
+    "kernbefund_praezisierung_durch_johann": "Johann (Chat, 2026-06-24): genesis-scope wurde bisher nie tatsaechlich benutzt, und es fehlen die Referenzen (z.B. reale Sessions, Sigillin-Anker, Concept-Map-Inhalte), die spaeter von KI-Agenten selbst eingespeist/integriert werden sollen. Das reframt den Befund: die fehlende Interpretierbarkeit von coherence_score/drift_status ist NICHT primaer ein Doku-Problem, sondern ein struktureller Zustand - das Paket ist ein Skelett, dessen Quickstart-Ausgabe auf Default-/Leerzustand laeuft, nicht auf echten semantischen Inhalten. Ein Blindtest gegen ein noch nie befuelltes System kann strukturell kein 'sinnvolles Ergebnis' liefern, unabhaengig von Doku-Qualitaet.",
     "erwartetes_ergebnis": [
-      "Klarheit, ob genesis-scope kategorie=programm (core) oder kategorie=hilfsprogramm (plugin) sein sollte",
-      "Falls unklar: Praezisierung von PRINCIPLES.md Regel 7 noetig, bevor Inventarisierung der 48 Pakete beginnt"
+      "genesis-scope besteht den Genesis-Blindtest (Regel 6) in der jetzigen, unbefuellten Form NICHT - unabhaengig von kategorie programm/hilfsprogramm.",
+      "Die eigentliche Kernfrage hat sich verschoben: nicht 'ist die Doku gut genug', sondern 'kann ein Paket, das per Design erst durch spaetere KI-Integration (Referenzen/Anker/Map-Inhalte) sinnvoll wird, ueberhaupt einen klassischen Blindtest bestehen, bevor diese Integration stattgefunden hat?' - das ist eine offene Architekturfrage fuer Regel 6 selbst bei KI-nativen Paketen."
     ],
-    "naechster_schritt": "Maintainer (Johann) fuehrt den Blindtest manuell durch und dokumentiert das Ergebnis in blindtest_passed; bei Bedarf Eskalation in adr/.",
+    "naechster_schritt": "Diese Praezisierung als eigene Folgefrage in 01_Ideen/ aufnehmen (Blindtest-Definition fuer Pakete, die erst durch KI-Nutzung befuellt werden). Genesis-os-Quickstart bei Gelegenheit mit dem vollstaendigen Original-README (nicht der paraphrasierten Kurzfassung) erneut blind testen, um den methodischen Schwachpunkt dieses Laufs zu schliessen.",
     "alternativen_betrachtet": [
-      "Sofort als hilfsprogramm einordnen (verworfen: vorschnelle Entscheidung ohne Test, widerspricht Regel 8)",
-      "Sofort als programm/core einordnen (verworfen: widerspricht Regel 7 ohne weitere Pruefung)"
+      "Sofort als hilfsprogramm einordnen (verworfen: vorschnelle Entscheidung ohne Test, widerspricht Regel 8).",
+      "Sofort als programm/core einordnen (verworfen: widerspricht Regel 7 ohne weitere Pruefung).",
+      "Befund als reines Doku-Problem buchen und 'README verbessern' als naechsten Schritt eintragen (verworfen nach Johanns Praezisierung: das wuerde die eigentliche Ursache - fehlende Referenzdaten/Nie-Benutzt-Zustand - verdecken)."
     ]
   }
 }
