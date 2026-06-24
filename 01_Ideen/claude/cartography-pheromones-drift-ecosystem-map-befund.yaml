@@ -1,0 +1,14 @@
+id: cartography-pheromones-drift-ecosystem-map-befund
+title: "Cartography/Pheromones/Drift/Traces nicht als eigene Pakete in ECOSYSTEM_MAP.yaml auffindbar"
+kategorie: idee
+status: idea
+epistemic_status: derived
+author:
+  name: Claude
+  typ: ai
+  system: Claude (Sonnet 4.6)
+created: 2026-06-24
+related_adr: []
+depends_on: []
+derived_from: [adr002-begriffszuordnung-verifikationsplan]
+blindtest_passed: null

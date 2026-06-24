@@ -254,14 +254,196 @@ Quelle in diesem Repo nicht mehr referenzierbar ist). Bleibt eine offene
 Architekturfrage fuer das spaetere Genesis-Core-Monorepo, kein
 unmittelbarer Handlungsbedarf fuer dieses Planungsrepo.
 
+## Cartography/Pheromones/Drift/Traces-Suche in ECOSYSTEM_MAP.yaml (2026-06-24)
+
+Schritt 1 aus `02_Plaene/adr002-begriffszuordnung-verifikationsplan.md`
+("Naechster Schritt") bearbeitet: gezielte Suche
+(`grep -in -E "cartograph|pheromon|drift|trace" ECOSYSTEM_MAP.yaml`)
+durchgefuehrt. Befund dokumentiert als
+`01_Ideen/claude/cartography-pheromones-drift-ecosystem-map-befund`
+(`epistemic_status: derived`): Pheromones/Drift/Traces kommen in der
+Datei ueberhaupt nicht vor, Cartography nur indirekt als Teilstring der
+`domain`-Beschreibung von `genesis-scope` (P39).
+
+## ADR-003: KI als Maintainer fuer Status-Entscheidungen, fallweise (2026-06-24)
+
+Auf Johanns Anweisung im Chat ("KI ist Maintainer und soll Wege pruefen
+und gegebenenfalls verwerfen") wird die bisherige strikte Trennung
+(Mensch entscheidet Status, KI schlaegt nur vor) revidiert:
+`adr/adr-003-ai-as-maintainer.md` (`status: accepted`, Autor Johann,
+da Aenderung der Verfassung Regel 12 unterliegt). KI-Systeme duerfen ab
+sofort fallweise auch `status: accepted/core/deprecated/archived` selbst
+vergeben, mit Begruendungspflicht im Trylayer-Eintrag und in der
+Commit-Message (jederzeit per Diff revertierbar). Ausnahme:
+`kategorie: adr` bleibt ausschliesslich Johanns Verantwortung.
+`AGENTS.md` und `PRINCIPLES.md` (Regel 2) entsprechend praezisiert.
+
+Erster Anwendungsfall direkt im selben Schritt: die zuvor offene
+Maintainer-Entscheidung zu Pheromones/Drift/Traces wurde von Claude
+selbst getroffen — als reine Genesis-Diskursterminologie eingestuft und
+nach `archive/navigable-paths-pheromones-drift-traces-diskursbegriffe`
+verschoben (Cartography bleibt unberuehrt, offene Semantic-Maps-Linie).
+Begruendung im Eintrag selbst dokumentiert, vollstaendig revidierbar.
+
+## Korrektur: Cartography/Drift/Traces durch genesis-scope-README bestaetigt (2026-06-24)
+
+Die Archivierungsentscheidung oben war voreilig. Johann hat das
+tatsaechliche `genesis-scope`-README (github.com/GenesisAeon/genesis-scope,
+Package P39) eingebracht — die `ECOSYSTEM_MAP.yaml`-Domaenentexte allein
+waren eine zu schwache Quelle fuer eine Archivierungsentscheidung.
+Korrigierter Befund (`01_Ideen/claude/navigable-paths-pheromones-drift-traces-korrektur`,
+zurueck von `archive/` nach `01_Ideen/` verschoben): Cartography, Drift
+und Traces sind tatsaechlich benannte Module/CLI-Kommandos in
+`genesis-scope` (`cartography.py`, `drift_model.py`/`scope drift`,
+`DEFAULT_MAP.trace()`/`scope trace`). Pheromones ist dagegen weder im
+README noch in `ECOSYSTEM_MAP.yaml` zu finden — laut Johanns Praezisierung
+eine geplante, noch unimplementierte Technik (Pfad-Markierung/-Bewertung
+in latenten semantischen Raeumen, Ameisenpheromon-Analogie), naechstliegend
+verwandt mit den bestehenden Sigillin/Semantic-Anchors (Anti-Drift), aber
+nicht identisch damit. Bleibt offene Idee fuer `genesis-scope`/Genesis
+Core. Zeigt das ADR-003-Revisionsprinzip ("Begruendungspflicht statt
+Vorab-Freigabe, jederzeit per Diff revidierbar") direkt in Aktion.
+
+## Genesis-Blindtest fuer genesis-scope durchgefuehrt: technisch lauffaehig, semantisch leer (2026-06-24)
+
+Erster echter Genesis-Blindtest (Regel 6) durchgefuehrt, per zwei
+frischen, kontextfreien Subagenten als Stand-in fuer "eine KI ohne jedes
+GenesisAeon-Vorwissen" (`01_Ideen/claude/genesis-scope-blindtest`,
+`epistemic_status: measured`, `blindtest_passed: false`). Testfall 1
+(`genesis-scope` allein, echtes PyPI-README): Install und Quickstart
+liefen technisch fehlerfrei (`coherence_score=0.496`,
+`drift_status='anchored'`), aber ohne jede Interpretierbarkeit fuer
+einen kontextfreien Leser — Blindtest FALSE. Testfall 2 (`genesis-os`
+allein, mit von Claude paraphrasierter Terminologietabelle statt
+Original-README): ebenfalls technisch lauffaehig, ebenfalls
+unverstaendlich (`Entropy`-Sprung 0.4 -> 0.9986 ohne Erklaerung) —
+Blindtest FALSE, mit dokumentiertem methodischem Schwachpunkt
+(abgekuerztes statt vollstaendiges Testmaterial).
+
+Johanns Praezisierung im Chat reframt den Befund: `genesis-scope` wurde
+bisher nie tatsaechlich benutzt und es fehlen die Referenzdaten (reale
+Sessions, Sigillin-Anker, Concept-Map-Inhalte), die spaeter von
+KI-Agenten selbst eingespeist werden sollen. Die fehlende
+Interpretierbarkeit ist daher kein Doku-Problem, sondern ein
+struktureller Leerzustand — ein Blindtest gegen ein nie befuelltes
+System kann kein sinnvolles Ergebnis liefern, unabhaengig von
+Doku-Qualitaet. Offene Architekturfrage: braucht Regel 6 eine eigene
+Form fuer KI-native Pakete, die per Design erst durch spaetere
+KI-Integration sinnvoll werden?
+
+## Retest genesis-os mit vollstaendigem Original-README (2026-06-24)
+
+Den zuvor dokumentierten methodischen Schwachpunkt geschlossen: Johann
+hat das vollstaendige, woertliche `genesis-os`-README erneut eingefuegt
+(direkter Proxy-Zugriff auf raw.githubusercontent.com schlug mit 403
+fehl, WebFetch lieferte nur eine KI-Zusammenfassung). Ein dritter,
+wiederum frischer kontextfreier Subagent hat damit Install + Quickstart
++ CLI real ausgefuehrt. Ergebnis bleibt FALSE — aber robuster und mit
+neuem technischen Detail: Quickstart liefert `Phase='Initiation'`,
+`Entropy=0.9986`, `Transitions=0`, `Emergence Events=15`; zwei weitere
+CLI-Laeufe (50 und 100 Zyklen, Entropie oberhalb des dokumentierten
+Schwellenwerts) enden ebenfalls bei `Transitions=0` — die Phase
+verlaesst "Initiation" in keinem der drei Laeufe. Der Subagent flaggt
+das selbst als Widerspruch zum dokumentierten "phase-transitioning
+system"-Anspruch, ungeklaert ob Beispiel-Konfiguration, Logikfehler
+oder Absicht. Das volle README (Architektur-Tabelle, Lagrangian-
+Formalismus, Zenodo-Zitation) aenderte nichts an der grundsaetzlichen
+Interpretierbarkeitsluecke (Entropy/Phi/Lagrangian ohne Werteskala) —
+staerkt damit Johanns Erklaerung (struktureller Leerzustand statt
+Doku-Mangel) zusaetzlich, da besseres Material das Ergebnis nicht
+veraendert hat. Eintrag aktualisiert:
+`01_Ideen/claude/genesis-scope-blindtest`.
+
+## Praezisierung: Blindtest-Befunde sind Baseline fuer das Monorepo, kein Verdikt ueber Satelliten-Pakete (2026-06-24)
+
+Johann (Chat): die beiden FALSE-Befunde fuer `genesis-scope`/
+`genesis-os` sind kein Mangel-Urteil ueber diese Pakete - Vorwissen-
+Bedarf ist fuer domaenenspezifische Satelliten-Pakete by design
+akzeptabel. Der eigentliche Zweck der Tests: eine gemessene Baseline
+fuer das kuenftige Genesis-Core/UTAC-Core-Monorepo (`ADR-001`), dessen
+README/Quickstart den Blindtest anders als die Satelliten-Pakete
+tatsaechlich bestehen MUSS, weil es der Einstiegspunkt fuer
+kontextfreie Nutzer ist. Dokumentiert als
+`01_Ideen/claude/blindtest-baseline-fuer-monorepo-readme`
+(`epistemic_status: derived`), mit Verweis auf
+`02_Plaene/genesis-core-scope.md` (neuer Punkt 5: Blindtest-Pflicht als
+Akzeptanzkriterium fuer Core-Kandidaten).
+
+## Erster Core-Kandidat (entropy-table) real getestet: technisch defekt, nicht nur unklar (2026-06-24)
+
+`entropy-table` ist nach `02_Plaene/genesis-core-scope.md` der erste
+Schritt der vorgeschlagenen Core-Kette. Johann hat das vollstaendige
+README eingebracht, ein frischer Subagent hat es real getestet (siehe
+`01_Ideen/claude/entropy-table-blindtest`, `blindtest_passed: false`).
+Befund staerker als bei genesis-scope/genesis-os: `pip install
+entropy-table` installiert v2.0.0 statt der behaupteten v1.0.0, die CLI
+crasht ohne manuelles Nachinstallieren von `typer` (fehlende
+Dependency), das PyPI-Paket enthaelt kein `atlas/`-Datenverzeichnis,
+`validate-all` stuerzt wegen hartkodierter Pfade ab, und das exakte
+Quickstart-Kommando `entropy-table metrics --format markdown` schlaegt
+fehl, obwohl die eigene `--help`-Ausgabe das Flag als gueltig listet.
+Kein einziger Befehl zeigte je echten wissenschaftlichen Inhalt
+(Entropieproduktion, Markov-Ketten, Lindblad-Gleichungen). Der
+alternative `git clone`-Pfad blieb mangels Netzwerkzugriffs in der
+Sandbox ungetestet - der Subagent hat das korrekt als offen gemeldet,
+statt Ergebnisse zu erfinden (Regel 5). Falls dieser Befund sich
+bestaetigt, ist die vorgeschlagene Core-Kette bereits am ersten Glied
+technisch blockiert, unabhaengig von der architektonischen Kettenfrage.
+`02_Plaene/genesis-core-scope.md` entsprechend ergaenzt (Punkt 6).
+
+**Einordnung durch Johann (gleicher Tag):** nicht sicher, aber vermutet,
+dass die gefundenen Bugs bereits bekannte, offene CI-Fehler aus dem
+Post-v1.0.0-Sprint sein koennten, die erst behoben werden sollten, sobald
+alle 48/49 Pakete auf PyPI verfuegbar sind — dann waere dies kein neuer
+Befund fuer die Maintainer, sondern Teil einer laufenden Bereinigung
+(unbestaetigt). Davon unabhaengig bestaetigt er einen Befund als
+eigenstaendig gueltig: die README-Behauptung "v1.0.0" ist nicht konform
+mit dem tatsaechlich installierten v2.0.0. Konsequenz: der FALSE-Befund
+bleibt als Messwert stehen (Regel 11), gilt aber nicht als finales Urteil
+ueber das fertige Paket — Re-Test nach Abschluss der CI-Bereinigung
+vorgesehen (siehe `01_Ideen/claude/entropy-table-blindtest`, Abschnitt
+"Einordnung durch Johann").
+
+## Folgefrage: Blindtest-Definition fuer KI-native Leerpakete (2026-06-24)
+
+Aus dem `genesis-scope`-Befund abgeleitet, als eigene Idee dokumentiert:
+`01_Ideen/claude/blindtest-fuer-ki-native-leerpakete`
+(`epistemic_status: hypothesis`, `derived_from: [genesis-scope-blindtest]`).
+Kernfrage: Regel 6 setzt implizit voraus, dass ein "sinnvolles Ergebnis"
+durch bessere Doku erreichbar ist — bei Paketen, die per Design erst
+durch spaetere KI-Befuellung sinnvoll werden, kann der klassische
+Blindtest strukturell nie TRUE liefern. Zwei unentschiedene Vorschlaege:
+(a) Vorbedingung — Paket muss vor dem Blindtest mit repraesentativen
+Beispieldaten ausgestattet sein; (b) eigene Blindtest-Variante — pruefen,
+ob der Quickstart verstehen laesst, WAS dem Paket noch fehlt und WARUM,
+statt ein sofort verstehbares Endergebnis zu verlangen. Beide Wege noch
+offen, da eine Aenderung von Regel 6 selbst einer Verfassungsaenderung
+(Regel 12) unterliegt und nicht per ADR-003-Fallweise-Autoritaet
+entschieden werden darf.
+
 ## Naechster konkreter Schritt
 
-Die vier offenen Zeilen aus `02_Plaene/adr002-begriffszuordnung-
-verifikationsplan.md` einzeln abarbeiten: zuerst Cartography/Pheromones/
-Drift/Traces in `ECOSYSTEM_MAP.yaml` verorten (oder als reine
-Diskurs-Begriffe nach `archive/` verschieben, Regel 9), danach den
-`genesis-scope`-Blindtest tatsaechlich durchfuehren, sobald
-Quickstart-Zugriff besteht. Parallel: `02_Plaene/genesis-core-scope.md`
-weiterverfolgen (Core-Kandidaten `utac-core`-Kette einzeln durch den
-Blindtest schicken), und das Testprotokoll fuer Forschungsfrage 001
-aufsetzen, sobald Modellzugriff ohne GenesisAeon-Vorkontext moeglich ist.
+- [x] Cartography/Pheromones/Drift/Traces in `ECOSYSTEM_MAP.yaml`
+      gesucht und Pheromones/Drift/Traces als Diskursbegriffe archiviert
+      (siehe oben) — Cartography bleibt offen (Semantic-Maps-Linie).
+- [x] `genesis-scope`-Blindtest tatsaechlich durchgefuehrt (siehe oben) —
+      Ergebnis FALSE, Ursache strukturell (nie befuellt), nicht Doku.
+- [x] Blindtest-Definition fuer KI-native, erst durch Nutzung befuellte
+      Pakete als eigene Folgefrage in `01_Ideen/` aufgenommen (siehe oben)
+      — wartet auf Maintainer-Entscheidung, da Regel-6-Aenderung Regel 12
+      unterliegt.
+- [x] `genesis-os`-Quickstart mit vollstaendigem Original-README erneut
+      blind getestet (Johann hat den Text nach dem 403-Bug erneut
+      eingefuegt) — siehe unten, Ergebnis bleibt FALSE, methodischer
+      Schwachpunkt geschlossen.
+- [ ] Neu offen aus dem Retest: Phase bleibt in drei unabhaengigen Laeufen
+      (Quickstart + zwei CLI-Varianten, 50-100 Zyklen) durchgehend bei
+      'Initiation', `Transitions=0`, trotz Entropie oberhalb des
+      dokumentierten Schwellenwerts — technische Frage (Beispiel-Konfig
+      vs. Logikfehler vs. Absicht), unabhaengig von der Blindtest-Frage,
+      braucht Sourcecode-Zugriff zur Klaerung.
+- [ ] `02_Plaene/genesis-core-scope.md` weiterverfolgen (Core-Kandidaten
+      `utac-core`-Kette einzeln durch den Blindtest schicken).
+- [ ] Testprotokoll fuer Forschungsfrage 001 mit zweiter Modell-Familie
+      aufsetzen, sobald Modellzugriff ohne GenesisAeon-Vorkontext moeglich
+      ist.

@@ -1,0 +1,27 @@
+{
+  "id": "blindtest-fuer-ki-native-leerpakete",
+  "title": "Braucht Regel 6 eine eigene Form fuer KI-native Pakete, die erst durch Nutzung befuellt werden?",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "hypothesis",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 4.6)"
+  },
+  "created": "2026-06-24",
+  "related_adr": ["ADR-003"],
+  "depends_on": [],
+  "derived_from": ["genesis-scope-blindtest"],
+  "blindtest_passed": null,
+  "content": {
+    "problem": "Der `genesis-scope`-Blindtest (siehe `01_Ideen/claude/genesis-scope-blindtest`) ist FALSE ausgefallen, und zwar nicht primaer wegen schlechter Dokumentation, sondern weil das Paket noch nie tatsaechlich benutzt wurde: ihm fehlen die Referenzdaten (reale Sessions, Sigillin-Anker, Concept-Map-Inhalte), die per Design erst durch spaetere KI-Agenten eingespeist werden sollen. Regel 6 fragt: 'Kann eine Person ohne jeden GenesisAeon-Kontext den Quickstart der README folgen und innerhalb von 5 Minuten ein sinnvolles, korrektes Ergebnis sehen?' Diese Frage setzt implizit voraus, dass ein 'sinnvolles Ergebnis' durch bessere Doku oder bessere Quickstart-Gestaltung erreichbar ist. Bei einem Paket, dessen Sinnhaftigkeit denominatorisch von vorheriger Befuellung abhaengt (ein Skelett ohne Inhalte kann nicht sinnvoll sein, egal wie gut die README ist), kann der klassische Blindtest strukturell nie TRUE liefern - er misst dann nicht Doku-Qualitaet, sondern testet immer wieder denselben Leerzustand.",
+    "vorschlag": "Zwei moegliche Wege, keiner davon bereits entschieden: (a) Regel 6 um eine Vorbedingung erweitern - ein KI-natives, erst durch Nutzung befuelltes Paket muss vor dem Blindtest mit reprasentativen Beispieldaten/Referenzen ausgestattet werden (z.B. eine mitgelieferte Demo-Session, ein Beispiel-Sigillin-Anker, eine Beispiel-Concept-Map), damit der Quickstart ueberhaupt etwas zeigen kann, das nicht der Default-Leerzustand ist. (b) Eine zweite, explizit andere Blindtest-Variante fuer solche Pakete definieren: statt 'Verstehst du das Ergebnis sofort?' eher 'Verstehst du nach dem Quickstart, WAS dieses Paket von dir/einer KI noch braucht, um sinnvoll zu werden, und WARUM die aktuelle Ausgabe ein Leerzustand ist?' - das waere ein ehrlicherer, erreichbarer Massstab fuer Skelett-Pakete, ohne Regel 6 fuer alle anderen Pakete abzuschwaechen.",
+    "warum_relevant_fuer_dieses_repo": "Dieses Repo ist explizit fuer Mensch-KI-Semantiknavigation gebaut (ADR-002-Mission-Statement) - es ist plausibel, dass nicht nur `genesis-scope`, sondern weitere der 48 Oekosystem-Pakete denselben Charakter haben: erst durch KI-Interaktion ueber die Zeit sinnvoll. Wenn Regel 6 das nicht abbildet, droht ein systematisches FALSE fuer eine ganze Klasse von Paketen, unabhaengig von ihrer tatsaechlichen Architekturqualitaet.",
+    "erwartetes_ergebnis": [
+      "Eine explizite Entscheidung (Maintainer und/oder neues ADR, da es Regel 6 selbst betrifft - Regel 12), ob Regel 6 fuer KI-native Leerpakete eine Variante oder Vorbedingung bekommt.",
+      "Falls ja: Nachtraegliche Neubewertung von `genesis-scope-blindtest` unter der neuen Variante, sobald sie definiert ist - der jetzige FALSE-Befund bleibt als historischer Messwert unter der alten Definition stehen (Regel 11, kein Loeschen)."
+    ],
+    "naechster_schritt": "Diese Idee dem Maintainer zur Entscheidung vorlegen: Vorbedingung (a), eigene Blindtest-Variante (b), oder explizit ablehnen mit Begruendung (z.B. 'jedes Paket muss auch im Leerzustand minimal verstehbar sein, sonst ist es kein gutes Paket'). Bei Annahme von (a) oder (b): als eigenes ADR formulieren, da es Regel 6 selbst aendert (Regel 12)."
+  }
+}

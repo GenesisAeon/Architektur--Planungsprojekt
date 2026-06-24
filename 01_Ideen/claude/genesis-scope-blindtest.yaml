@@ -1,13 +1,13 @@
 id: genesis-scope-blindtest
-title: "Genesis-Blindtest fuer genesis-scope durchfuehren"
+title: "Genesis-Blindtest fuer genesis-scope durchgefuehrt: technisch lauffaehig, semantisch leer"
 kategorie: idee
 status: idea
-epistemic_status: hypothesis
+epistemic_status: measured
 author:
   name: Claude
   typ: ai
   system: Claude (Sonnet 4.6)
 created: 2026-06-19
-related_adr: []
+related_adr: [ADR-003]
 depends_on: []
-blindtest_passed: null
+blindtest_passed: false

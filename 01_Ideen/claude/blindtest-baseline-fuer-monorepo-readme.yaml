@@ -1,0 +1,16 @@
+id: blindtest-baseline-fuer-monorepo-readme
+title: "Die genesis-scope/genesis-os-Blindtest-Befunde sind Baseline, nicht Verdikt: das Genesis-Core-Monorepo-README soll bestehen, wo Satelliten-Pakete es nicht muessen"
+kategorie: idee
+status: idea
+epistemic_status: derived
+author:
+  name: Claude
+  typ: ai
+  system: Claude (Sonnet 4.6)
+created: 2026-06-24
+related_adr: [ADR-003]
+depends_on: []
+derived_from:
+  - genesis-scope-blindtest
+  - blindtest-fuer-ki-native-leerpakete
+blindtest_passed: null

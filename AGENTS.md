@@ -21,8 +21,17 @@ danach.
 
 - Kein Ersatz fuer Unified-Mandala (das bleibt das Labor)
 - Kein Ort fuer freie Prosa-Diskussionen als Vorschlag (siehe Format unten)
-- Kein Ort, an dem du `status: accepted` oder `core` selbst vergibst —
-  das macht ausschliesslich der menschliche Maintainer (Johann) per Commit
+- Kein Ort, an dem du Status-Entscheidungen ohne Begruendung triffst.
+  Seit `adr/adr-003-ai-as-maintainer.md` darfst du fallweise auch
+  `status: accepted`, `core`, `deprecated` oder `archived` selbst
+  vergeben (nicht mehr nur `idea`/`draft`/`review` vorschlagen) — aber
+  nur mit expliziter Begruendung im Trylayer-Eintrag UND in der
+  Commit-Message, damit Johann jede Entscheidung per Diff nachvollziehen
+  und revertieren kann. Bei mehrdeutiger Faktenlage oder grosser
+  Tragweite ist die Eskalation an Johann weiterhin der Normalfall.
+  Ausnahme: `kategorie: adr` selbst bleibt ausschliesslich Johanns
+  Verantwortung (Regel 12) — du kannst ein ADR entwerfen/vorschlagen,
+  aber nicht selbst mit `status: accepted` versehen.
 
 ## Ordnerstruktur
 

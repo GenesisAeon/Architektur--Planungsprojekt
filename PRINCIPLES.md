@@ -44,6 +44,13 @@ Ein Eintrag, dessen Status nicht zum Ordner passt, ist ungueltig. Eine
 Idee, die reift, wird nicht editiert — sie wird in den naechsten Ordner
 **verschoben** (neuer Pfad = neue Entscheidung, sichtbar im Diff).
 
+Wer den Statuswechsel vornehmen darf, regelt `adr/adr-003-ai-as-
+maintainer.md`: seit diesem ADR duerfen auch KI-Systeme fallweise
+Statuswechsel selbst vornehmen (nicht nur vorschlagen), wenn sie ihn im
+Trylayer-Eintrag und in der Commit-Message begruenden. `kategorie: adr`
+selbst bleibt davon ausgenommen und ausschliesslich dem menschlichen
+Maintainer vorbehalten (Regel 12).
+
 ## Regel 3 — Kein Core ohne ADR
 
 `kategorie` in `architektur`, `programm`, `hilfsprogramm` mit

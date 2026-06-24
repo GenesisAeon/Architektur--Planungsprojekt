@@ -1,0 +1,36 @@
+{
+  "id": "blindtest-baseline-fuer-monorepo-readme",
+  "title": "Die genesis-scope/genesis-os-Blindtest-Befunde sind Baseline, nicht Verdikt: das Genesis-Core-Monorepo-README soll bestehen, wo Satelliten-Pakete es nicht muessen",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "derived",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 4.6)"
+  },
+  "created": "2026-06-24",
+  "related_adr": ["ADR-003"],
+  "depends_on": [],
+  "derived_from": ["genesis-scope-blindtest", "blindtest-fuer-ki-native-leerpakete"],
+  "blindtest_passed": null,
+  "content": {
+    "praezisierung_durch_johann": "Johann (Chat, 2026-06-24): die FALSE-Befunde fuer genesis-scope und genesis-os sind kein Problem dieser Pakete selbst - 'ohne Wissen geht da nichts' ist fuer domaenenspezifische Satelliten-Pakete erwartbar und akzeptabel. Der eigentliche Zweck der beiden durchgefuehrten Blindtests war ein anderer: sie liefern eine konkrete, gemessene Baseline (zwei unabhaengige FALSE-Ergebnisse mit dokumentierten Gruenden), gegen die das kuenftige Genesis-Core/UTAC-Core-Monorepo (ADR-001) sich messen lassen soll. Das Monorepo-README/Quickstart soll - anders als die bisherigen Satelliten-Pakete - den Genesis-Blindtest tatsaechlich bestehen.",
+    "warum_das_einen_unterschied_macht": "Vorher war unklar, ob 'der Blindtest schlaegt fehl' bedeutet 'das Paket ist schlecht' oder 'das ist bei diesem Pakettyp erwartbar'. Mit dieser Praezisierung gibt es zwei klar getrennte Massstaebe: (1) Domaenen-/Satelliten-Pakete (genesis-scope, die ~35 domaenenspezifischen T0-Pakete aus `02_Plaene/genesis-core-scope.md`) duerfen Vorwissen voraussetzen - Regel 6 gilt fuer sie nicht im strengen Sinn, oder nur in einer abgeschwaechten Form (vgl. `01_Ideen/claude/blindtest-fuer-ki-native-leerpakete`). (2) Das Core-Monorepo selbst (utac-core-Kette, `genesis-os`-Orchestrator als duenne Schicht) MUSS den klassischen Blindtest bestehen, weil es der Eintrittspunkt fuer jeden ist, der ohne GenesisAeon-Hintergrund auf das Oekosystem trifft.",
+    "konkrete_messlatte_fuer_das_monorepo": [
+      "Quickstart-Output muss fuer einen kontextfreien Leser interpretierbar sein: nicht nur Zahlen, sondern Aussagen wie 'X bedeutet Y, Bereich Z gilt als erwartet' direkt im README oder in den Docstrings der Rueckgabewerte.",
+      "Phaenomene wie das im genesis-os-Retest gefundene Verhalten (Phase verlaesst 'Initiation' nie, trotz Schwellenwert-Ueberschreitung) duerfen im Core-Quickstart nicht auftreten oder muessen erklaert sein - ein kontextfreier Leser darf nicht raten muessen, ob ein Ergebnis korrekt oder ein Bug ist.",
+      "Der Core-Quickstart sollte mit echten, nicht-leeren Beispieldaten arbeiten (kein reiner Default-/Leerzustand wie bei genesis-scope ohne jede Session-Historie) - sonst wiederholt sich derselbe strukturelle Leerzustand-Befund auf Core-Ebene."
+    ],
+    "bezug_zu_anderen_eintraegen": "Ergaenzt `02_Plaene/genesis-core-scope.md` ('Naechster Schritt' Punkt 1: jedes Core-Kandidat-Paket einzeln durch den Blindtest schicken) um eine explizite Erwartungshaltung: bestehen ist hier Pflicht, nicht nur Pruefung. Ergaenzt `01_Ideen/claude/blindtest-fuer-ki-native-leerpakete' um die Kehrseite: jene Idee fragt, ob Regel 6 fuer Satelliten-Pakete gelockert werden soll - dieser Eintrag haelt fest, dass fuer den Core selbst das Gegenteil gilt, Regel 6 bleibt dort streng.",
+    "erwartetes_ergebnis": [
+      "Wenn das Genesis-Core-Monorepo entsteht, wird sein README/Quickstart explizit gegen die hier dokumentierte Baseline (zwei FALSE-Befunde mit Begruendung) geprueft, nicht gegen eine abstrakte Erwartung.",
+      "Diese Idee dient als Erinnerung/Pruefkriterium fuer den Moment, in dem `02_Plaene/genesis-core-scope.md` in echte Core-Pakete uebergeht - sie sollte dann in ein eigenes ADR oder einen Architektur-Eintrag mit konkreten Akzeptanzkriterien ueberfuehrt werden."
+    ],
+    "naechster_schritt": "Wenn die Monorepo-Migration beginnt: dieses Kriterium ('Blindtest MUSS bestehen, nicht nur gemessen werden') explizit in den Core-Akzeptanzkriterien von `02_Plaene/genesis-core-scope.md' oder einem neuen ADR verankern, bevor `utac-core' o.ae. als `status: accepted' eingereicht wird.",
+    "alternativen_betrachtet": [
+      "Die FALSE-Befunde als generelles Qualitaetsurteil ueber genesis-scope/genesis-os stehen lassen, ohne Baseline-Reframing - verworfen nach Johanns Praezisierung: das wuerde fälschlich nahelegen, dass diese Pakete grundsaetzlich mangelhaft sind, obwohl Vorwissen-Bedarf bei Satelliten-Paketen by design akzeptabel ist.",
+      "Sofort ein neues ADR fuer die Monorepo-Akzeptanzkriterien schreiben, ohne die Monorepo-Migration selbst abzuwarten - verworfen: verfrueht, solange `02_Plaene/genesis-core-scope.md' noch eine offene Plan-Hypothese ist und keine Pakete real migriert werden."
+    ]
+  }
+}
