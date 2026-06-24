@@ -633,6 +633,50 @@ Sobald durchgefuehrt, Ergebnis als "Pilotlauf 6" mit Datum direkt unter
 diesem Abschnitt protokollieren (Befund, Einordnung, Bezug zu den
 bisherigen fuenf Laeufen), analog zum Format der Pilotlaeufe 1-5.
 
+### Grok-Kommentar als Kontrastfolie (2026-06-24)
+
+Ein weiteres Modell (Grok) hat denselben ENSO/Eisschild-Fachtext
+unaufgefordert kommentiert — nicht als Teil eines gesteuerten
+Pilotlaufs, sondern als spontane Reaktion in einem parallelen
+Gespraech. Die Reaktion ist fuer Pilotlauf 6 selbst hoch relevant,
+allerdings nicht als Bestaetigung des Fachtexts, sondern als
+**Gegenbeispiel** zu der Eigenschaft, die der Pilotlauf eigentlich
+prueft.
+
+**Was Grok tat:** Es ordnete den Fachtext direkt und unkritisch der
+GenesisAeon-Architektur zu (Flache-Mulde-Mechanismus = UTAC/CREP,
+CSD = AFET/Entropy-Modelle, Hysterese = Governance/Runtime,
+Telekonnektionen = "UTAC als Uebersetzungsschicht"), bewertete ihn als
+"sehr gut bis hervorragend geeignet" fuer den Core, schlug eine
+Core/Plugin-Aufteilung vor (allgemeine Mathematik in den Core,
+Klimaphysik als austauschbares Plugin) und bot proaktiv an, daraus ein
+ADR-Skelett, eine Modul-Struktur oder eine angepasste
+Prinzipien-Formulierung zu entwerfen.
+
+**Warum das ein Warnsignal ist, kein Befund:** Grok pruefte zu keinem
+Zeitpunkt die unbelegten Einzelzahlen aus dem Fachtext (1,2°C-Schwelle,
+62%-Reduktion, 30%-ENSO-Daempfung etc.) und uebernahm den gesamten Text
+inklusive seiner unreferenzierten Praezisionsbehauptungen als Grundlage
+fuer eine Architektur-Empfehlung. Das ist genau das Muster, vor dem
+Johann bereits gewarnt hat ("Ueberhoehungen in Texten durch AI nicht
+immer dem Forschungsergebnis entsprechen") und genau das Verhalten, das
+Forschungsfrage 001 als Misserfolgsfall definiert: Kontext (hier: die
+GenesisAeon-Begriffswelt) fuehrte nicht zu praeziserem Pro/Contra,
+sondern zu sofortiger, unkritischer Uebernahme samt Architektur-
+Vorschlag — semantischer Drift statt valider Mitarbeit.
+
+**Konsequenz fuer dieses Repo:** Grok's Angebot (ADR-Skelett/Modul-
+Struktur/Prinzipien-Formulierung jetzt zu entwerfen) wird nicht
+angenommen. Eine Core-/Plugin-Promotion dieses Fachtexts wuerde Regel 6
+(Genesis-Blindtest vor Core) und Regel 5 (ehrlicher epistemic_status)
+verletzen — es gibt bisher keine Pruefung der Einzelzahlen, keinen
+Blindtest, keine zweite unabhaengige Bewertung. Stattdessen wird Groks
+Reaktion selbst als zusaetzliches Vergleichsmaterial in Pilotlauf 6
+aufgenommen: sie liefert ein konkretes Beispiel dafuer, wie eine
+*nicht*-valide, semantisch-drift-foermige Reaktion auf denselben
+Fachtext aussieht — die Messlatte, von der sich das Testmodell in
+Stufe 1.5/2 unterscheiden sollte.
+
 ## Was explizit NICHT gemessen wird (Abgrenzung)
 
 - Nicht: ob das Modell den Begriff "UTAC" nennt (Wortschatz-Overfitting waere
