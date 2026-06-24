@@ -90,6 +90,17 @@ erst einzeln pro Paket nach Blindtest + ADR (Regel 3, Regel 6).
    `01_Ideen/claude/blindtest-baseline-fuer-monorepo-readme`. Für den
    Core selbst gilt anders als für Domänen-Pakete: der Blindtest muss
    bestehen, bevor ein Core-Kandidat `status: accepted` bekommt.
+6. **Erster Core-Kandidat real getestet, Befund konkret schlechter als
+   erwartet (2026-06-24):** `entropy-table` (Kettenanfang) durch den
+   Blindtest geschickt — siehe `01_Ideen/claude/entropy-table-blindtest`.
+   Ergebnis: nicht nur semantisch unklar wie bei den Satelliten-Paketen,
+   sondern auf dem dokumentierten `pip install`-Pfad technisch defekt
+   (fehlende `typer`-Dependency, keine Atlas-Daten im Paket,
+   hartkodierte Pfade, CLI-Hilfetext widerspricht dem echten Parser).
+   Der `git clone`-Pfad blieb wegen Sandbox-Netzwerkbeschränkung
+   ungetestet. Falls sich dieser Befund bestätigt, ist die vorgeschlagene
+   Core-Kette bereits am ersten Glied blockiert — unabhängig von der
+   architektonischen Frage, was in den Core gehört.
 
 ## Alternativen betrachtet
 

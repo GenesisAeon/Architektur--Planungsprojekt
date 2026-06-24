@@ -369,6 +369,28 @@ kontextfreie Nutzer ist. Dokumentiert als
 `02_Plaene/genesis-core-scope.md` (neuer Punkt 5: Blindtest-Pflicht als
 Akzeptanzkriterium fuer Core-Kandidaten).
 
+## Erster Core-Kandidat (entropy-table) real getestet: technisch defekt, nicht nur unklar (2026-06-24)
+
+`entropy-table` ist nach `02_Plaene/genesis-core-scope.md` der erste
+Schritt der vorgeschlagenen Core-Kette. Johann hat das vollstaendige
+README eingebracht, ein frischer Subagent hat es real getestet (siehe
+`01_Ideen/claude/entropy-table-blindtest`, `blindtest_passed: false`).
+Befund staerker als bei genesis-scope/genesis-os: `pip install
+entropy-table` installiert v2.0.0 statt der behaupteten v1.0.0, die CLI
+crasht ohne manuelles Nachinstallieren von `typer` (fehlende
+Dependency), das PyPI-Paket enthaelt kein `atlas/`-Datenverzeichnis,
+`validate-all` stuerzt wegen hartkodierter Pfade ab, und das exakte
+Quickstart-Kommando `entropy-table metrics --format markdown` schlaegt
+fehl, obwohl die eigene `--help`-Ausgabe das Flag als gueltig listet.
+Kein einziger Befehl zeigte je echten wissenschaftlichen Inhalt
+(Entropieproduktion, Markov-Ketten, Lindblad-Gleichungen). Der
+alternative `git clone`-Pfad blieb mangels Netzwerkzugriffs in der
+Sandbox ungetestet - der Subagent hat das korrekt als offen gemeldet,
+statt Ergebnisse zu erfinden (Regel 5). Falls dieser Befund sich
+bestaetigt, ist die vorgeschlagene Core-Kette bereits am ersten Glied
+technisch blockiert, unabhaengig von der architektonischen Kettenfrage.
+`02_Plaene/genesis-core-scope.md` entsprechend ergaenzt (Punkt 6).
+
 ## Folgefrage: Blindtest-Definition fuer KI-native Leerpakete (2026-06-24)
 
 Aus dem `genesis-scope`-Befund abgeleitet, als eigene Idee dokumentiert:

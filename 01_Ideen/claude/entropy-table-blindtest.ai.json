@@ -1,0 +1,42 @@
+{
+  "id": "entropy-table-blindtest",
+  "title": "Genesis-Blindtest fuer entropy-table (Core-Kandidat): technisch defekt, nicht nur semantisch unklar",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "measured",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 4.6)"
+  },
+  "created": "2026-06-24",
+  "related_adr": ["ADR-003"],
+  "depends_on": [],
+  "derived_from": ["genesis-scope-blindtest", "blindtest-baseline-fuer-monorepo-readme"],
+  "blindtest_passed": false,
+  "content": {
+    "warum_dieses_paket": "`entropy-table` ist nach `02_Plaene/genesis-core-scope.md` der erste Schritt der vorgeschlagenen Core-Kette (entropy-table -> implosive-genesis -> ... -> utac-core). Nach der Praezisierung in `01_Ideen/claude/blindtest-baseline-fuer-monorepo-readme` MUSS ein Core-Kandidat den Blindtest bestehen, anders als Satelliten-Pakete. Johann hat das vollstaendige, woertliche README (github.com/GenesisAeon/entropy-table) im Chat eingebracht; ein frischer kontextfreier Subagent hat es real getestet.",
+    "durchfuehrung": "2026-06-24, ein frischer Subagent ohne GenesisAeon-Vorwissen, kein Web-Zugriff auf Hintergrund. Versuch von zwei Pfaden: (1) pip install entropy-table + CLI-Exploration, (2) git clone + uv sync + Quickstart-Kommandos aus der README. Pfad 2 konnte technisch nicht ausgefuehrt werden (siehe befund_pfad_2).",
+    "befund_pfad_1_pip_install": {
+      "install": "pip install entropy-table installiert v2.0.0, nicht das in der README behauptete 'v1.0.0 stable' - Versionsdiskrepanz zwischen README und PyPI.",
+      "bug_fehlende_dependency": "entropy-table --help wirft sofort ModuleNotFoundError: No module named 'typer' - typer wird von cli.py verwendet, ist aber nicht als Dependency deklariert. Erst nach manuellem pip install typer startet die CLI ueberhaupt.",
+      "bug_keine_daten_im_paket": "Das PyPI-Paket enthaelt kein atlas/-Verzeichnis (Domains/Relations/Claims) - nur cli.py, compute/, core/, commands/. Es gibt schlicht keine Beispieldaten, gegen die irgendein Befehl etwas zeigen koennte.",
+      "bug_validate_all_crash": "entropy-table validate-all stuerzt ab: FileNotFoundError fuer einen hartkodierten relativen Pfad (z.B. .../site-packages/.../atlas/schema/domain.schema.json), der voraussetzt, dass man aus dem Quellrepo heraus arbeitet, nicht aus einem installierten Paket.",
+      "bug_health_schreibt_falschen_ort": "entropy-table health --ci-check 'gelingt' technisch, schreibt aber outputs/atlas_health.md an einen offensichtlich falschen Ort (z.B. unter dem Python-site-packages-Pfad) - Pfadaufloesung auch hier fehlerhaft, nur nicht fatal. Inhalt: Total Domains: 0, Total Relations: 0, Total Claims: 0, alle Checks vakuos 'erfolgreich' (',None.' ueberall).",
+      "bug_cli_help_luegt": "Das genaue Quickstart-Kommando 'entropy-table metrics --format markdown' aus der README schlaegt fehl: error: unrecognized arguments: --format markdown - obwohl 'entropy-table metrics --help' --format als gueltige Option auflistet. Hilfetext und tatsaechlicher Argument-Parser widersprechen sich."
+    },
+    "befund_pfad_2_git_clone": "Konnte in der Sandbox nicht ausgefuehrt werden: git clone auf github.com sowie WebFetch auf raw.githubusercontent.com scheiterten am Netzwerk-Proxy (403), und das GitHub-MCP-Tool hat genesisaeon/entropy-table nicht im erlaubten Repo-Scope dieser Session. Der Subagent hat dies explizit als ungetesteten, nicht fabrizierten Pfad gemeldet, statt Ergebnisse zu erfinden - selbst ein relevanter Befund: die README setzt uneingeschraenkten GitHub-Zugriff voraus und bietet keinen funktionierenden Fallback (z.B. Beispieldaten im PyPI-Paket) fuer Umgebungen mit eingeschraenktem Netzwerk.",
+    "bewertung": "Anders als bei genesis-scope/genesis-os (technisch lauffaehig, aber semantisch nicht interpretierbar) ist der Befund hier staerker: entropy-table ist auf dem per README dokumentierten Pip-Install-Pfad schlicht DEFEKT - fehlende Dependency, fehlende Daten, hartkodierte Pfade, ein Hilfetext, der nicht zum tatsaechlichen Parser passt. Kein einziger Befehl hat jemals echten wissenschaftlichen Inhalt (Entropieproduktionsraten, Markov-Ketten, Lindblad-Gleichungen) gezeigt - alle Kommandos enden in Crashes oder vakuosen Nullresultaten. Blindtest (Regel 6) damit klar FALSE, mit einer staerkeren Implikation als bei den vorherigen Tests: hier ist nicht nur die Interpretierbarkeit unklar, sondern die Grundfunktion selbst nicht demonstrierbar.",
+    "einordnung_als_core_kandidat": "Nach `blindtest-baseline-fuer-monorepo-readme` MUSS ein Core-Kandidat den Blindtest bestehen, bevor er status: accepted erhaelt. entropy-table als erster Schritt der vorgeschlagenen Core-Kette scheitert nicht nur am Massstab, sondern bereits an grundlegender Funktionsfaehigkeit des Pip-Install-Pfads - das ist ein konkretes technisches Risiko fuer `02_Plaene/genesis-core-scope.md`, nicht nur eine Dokumentationsfrage.",
+    "erwartetes_ergebnis": [
+      "entropy-table besteht den Genesis-Blindtest (Regel 6) in der jetzigen pip-install-Form NICHT.",
+      "Die gefundenen Bugs (fehlende typer-Dependency, fehlende Atlas-Daten im Paket, hartkodierte Pfade, CLI-Hilfetext-Diskrepanz) sind konkrete, behebbare technische Probleme - kein architektonisches Problem wie bei genesis-scope. Das unterscheidet diesen Befund von den vorherigen.",
+      "Der git-clone-Pfad bleibt ungetestet (Sandbox-Netzwerkbeschraenkung) - moeglich, dass dieser Pfad funktioniert und die README dort korrekt waere; das muss separat verifiziert werden, sobald Zugriff besteht."
+    ],
+    "naechster_schritt": "Diesen Befund an Johann/Maintainer melden, da es sich um konkrete, vermutlich schnell behebbare Bugs im echten entropy-table-Repo handelt (nicht nur eine Repo-interne Trylayer-Frage). Sobald moeglich: git-clone-Pfad real testen, um zu pruefen, ob dort die README korrekt funktioniert und nur der PyPI-Build/die PyPI-Metadaten kaputt sind.",
+    "alternativen_betrachtet": [
+      "Den Befund als reine Interpretierbarkeitsfrage wie bei genesis-scope behandeln - verworfen: die gefundenen Probleme sind echte Crashes/fehlende Dependencies, kein Interpretationsproblem.",
+      "Ergebnisse fuer den ungetesteten git-clone-Pfad spekulativ ausfuellen, um eine vollstaendigere Bewertung zu liefern - verworfen: widerspricht Regel 5 (ehrlicher epistemic_status), der Subagent hat zurecht keine erfundenen Ergebnisse gemeldet."
+    ]
+  }
+}
