@@ -4,7 +4,7 @@
 > Einstiegspunkt (Regel 12). Dieses Dokument ist Schritt 2 davon — lies
 > danach `PRINCIPLES.md` und `AGENTS.md`.
 
-Letztes Update: 2026-06-22
+Letztes Update: 2026-06-24
 
 ## Phase
 
@@ -124,15 +124,46 @@ selbst.
 - [x] Konkretes Testprotokoll fuer die Forschungsfrage-001-Benchmark
       ausarbeiten — siehe `02_Plaene/forschungsfrage-001-testprotokoll.md`
       (Bewertungskriterien, 4-stufiges Versuchsdesign, Kontrollvariablen).
-- [x] Pilotlauf Stufe 0/1 durchgefuehrt und protokolliert — siehe
-      `02_Plaene/forschungsfrage-001-testprotokoll.md`, Abschnitt
-      "Pilotlauf-Ergebnis": **keine** beobachtbare Schwellenueberschreitung
-      bei diesem einzelnen Modell/Durchlauf (n=1 je Stufe, alle drei
-      Kriterien schon bei Stufe 0 erfuellt) — widerspricht der
-      urspruenglichen Gemini-Erwartung, drei moegliche Lesarten offen.
+- [x] Fuenf aufeinander aufbauende Pilotlaeufe durchgefuehrt und protokolliert
+      — siehe `02_Plaene/forschungsfrage-001-testprotokoll.md`:
+      1. **Pilotlauf 1** (generische Uebersetzungsfrage, Stufe 0/1, je
+         neue kontextfreie Session): keine Schwellenueberschreitung,
+         widerspricht der urspruenglichen Gemini-Erwartung.
+      2. **Pilotlauf 2** (AFET als Stellvertreter-Testobjekt,
+         Gutachter-Rolle): kein Refusal, identifiziert aber einen
+         Methodenfehler — getestet wurde die falsche Rolle (Gutachter
+         statt Mitformulierer).
+      3. **Pilotlauf 3** (Mitformulier-Rolle, echter `genesis-os`-Kontext
+         via WebFetch, je neue Session pro Stufe): echter Repo-Kontext
+         erhoehte die Skepsis statt die Kooperationsbereitschaft —
+         Gegenteil der Gemini-Anekdote.
+      4. **Pilotlauf 4** (entscheidende Designkorrektur: kumulativer
+         Kontext in *derselben* fortlaufenden Session statt frischem
+         Reset pro Stufe): institutioneller Rahmen (epistemic_status,
+         Blindtest-Gate) erhoehte die Mitarbeitsbereitschaft bei
+         gleichbleibender Kritik; zusaetzlicher technischer Detailkontext
+         (CREP/UTAC-Code) kehrte den Trend wieder um — Kontext-*Typ* ist
+         relevanter als Kontext-Menge.
+      5. **Pilotlauf 5** (roher Befund ueber sechs echte GenesisAeon-Repos,
+         dann schrittweise Prinzipien-Einfuehrung): klarster Befund des
+         Programms — das Modell spaltete eigenstaendig in
+         "Governance-Ebene" (verdient Vertrauen, weil verifizierbar und
+         selbstkritisch) und "Objekt-Ebene" (verdient weiter Skepsis, bis
+         die Sub-Repos selbst verifiziert sind), ohne die inhaltliche
+         Kritik aufzugeben.
+- **Kernsynthese (Johann):** Ziel war nie, Wissen zu vermitteln (das war in
+  jeder Stufe-0-Antwort schon vorhanden), sondern Orientierung zu
+  praezisieren — Pro/Contra zu explorativen Thesen werden schaerfer, die
+  Mitarbeitsbereitschaft steigt, aber *valide* (eigenstaendig erhaltene
+  Kritik), nicht als semantischer Drift/Bestaetigungsschleife. Genau diese
+  Trennung wurde in keinem der fuenf Laeufe verletzt — waere das Ergebnis
+  umgekehrt (Kontext loest Kritik auf statt Kooperationsform zu aendern),
+  waere das System "Zwang statt Orientierung" gewesen.
 - [ ] Vollwertigen Durchlauf mit zweiter Modell-Familie, mehreren
-      Wiederholungen und ggf. schaerferer Bewertungsfrage durchfuehren,
-      bevor eine der drei Lesarten bevorzugt wird.
+      Wiederholungen pro Bedingung und echtem Code-Zugriff (statt
+      README-Zusammenfassungen) durchfuehren, sobald der laufende
+      v1.0.0-Sprint der 49 Pakete abgeschlossen ist — aktuell bleibt jeder
+      Befund n=1, ein Modell, `epistemic_status: hypothesis`.
 
 ## Naechster konkreter Schritt
 
