@@ -226,6 +226,34 @@ weiterer Bestaetigung jetzt konkret zu testen. Beide neuen Eintraege
 behandeln die Konvergenz daher als Datenpunkt fuer das Drift-Risiko, nicht
 als Bestaetigung der zugrundeliegenden Theorie.
 
+## Branch-Audit: verworfener Architektur-Strang (2026-06-24)
+
+Auf Maintainer-Anfrage geprueft, ob aeltere, nie gemergte Remote-Branches
+verlorene Arbeit enthalten. Befund: `claude/upbeat-einstein-xvxowt`
+(2026-06-19) zweigt von einem Punkt **vor** der gesamten jetzt gueltigen
+Linie ab (vor ADR-002-Mission-Statement, vor Forschungsfrage 001, vor den
+Gemini/ChatGPT-Trylayer-Ideen) und wurde nie gemergt. Er enthaelt eine
+eigene, damit kollidierende ADR-Nummerierung (`ADR-000`:
+Wissensobjekt/Concept Node als primaere Entitaet; `ADR-002-drei-schichten-
+architektur` statt des jetzt akzeptierten Mission-Statement-`ADR-002`).
+Kein Datenverlust, aber zwei Ideen darin waren inhaltlich nicht trivial:
+
+- Ein Gegeneinwand (Claude, 2026-06-19): primaere Entitaet sollte
+  Event/Transition statt statischer Concept Node sein, begruendet ueber
+  das Diamond-Interface-Methodenmuster (`run_cycle`, `get_phase_events`
+  u.a.) und etablierte Muster (Event Sourcing/CQRS, Actor Model).
+- Eine Copilot-Synthese ("semantisches Betriebssystem", Drei-Schichten
+  Kernel/Agenten/Anwendungen) — staerker an die verworfene Nummerierung
+  gebunden, daher vorerst nicht eigenstaendig uebernommen.
+
+Der Event/Concept-Node-Einwand wurde als neuer, eigenstaendiger Eintrag
+ohne Bezug auf die kollidierende alte Nummerierung neu aufgesetzt:
+`01_Ideen/claude/claude-event-transition-vs-concept-node`
+(`epistemic_status: hypothesis`, `derived_from: []`, da die urspruengliche
+Quelle in diesem Repo nicht mehr referenzierbar ist). Bleibt eine offene
+Architekturfrage fuer das spaetere Genesis-Core-Monorepo, kein
+unmittelbarer Handlungsbedarf fuer dieses Planungsrepo.
+
 ## Naechster konkreter Schritt
 
 Die vier offenen Zeilen aus `02_Plaene/adr002-begriffszuordnung-
