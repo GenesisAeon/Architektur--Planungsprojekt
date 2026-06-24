@@ -107,6 +107,23 @@ Structures -> UTAC/CREP, ...) als Ausgangshypothese fuer
       zur Verifikation — Pruefkriterien je Zeile in
       `02_Plaene/adr002-begriffszuordnung-verifikationsplan.md`
 
+## Forschungsfrage 001 (2026-06-23)
+
+Zweites Multi-AI-Gespraech (`Entwicklungsgespraeche/2026-06-23-
+orientierung-als-infrastruktur.md`) vertieft ADR-002 um die Frage, *warum*
+semantische Karten/Pfade die Orientierung von LLMs verbessern sollen.
+Ergebnis ist bewusst keine weitere Architektur-Entscheidung, sondern eine
+offene, falsifizierbare Forschungsfrage samt konkretem Benchmark-Vorschlag:
+`01_Ideen/claude/forschungsfrage-001-orientierungs-benchmark.md`
+(`epistemic_status: hypothesis`, `status: idea`) — Kernidee: pruefen, ob und
+nach wie vielen Repo-Kontakten ein LLM ohne GenesisAeon-Vorwissen UTAC
+formulieren kann. Enthaelt explizite Warnung vor Mehrfach-Bestaetigungs-
+Drift zwischen KI-Systemen als methodisches Risiko fuer das Forschungsdesign
+selbst.
+
+- [ ] Konkretes Testprotokoll fuer die Forschungsfrage-001-Benchmark
+      ausarbeiten und mindestens einen echten Testlauf durchfuehren.
+
 ## Naechster konkreter Schritt
 
 Die vier offenen Zeilen aus `02_Plaene/adr002-begriffszuordnung-
@@ -116,4 +133,5 @@ Diskurs-Begriffe nach `archive/` verschieben, Regel 9), danach den
 `genesis-scope`-Blindtest tatsaechlich durchfuehren, sobald
 Quickstart-Zugriff besteht. Parallel: `02_Plaene/genesis-core-scope.md`
 weiterverfolgen (Core-Kandidaten `utac-core`-Kette einzeln durch den
-Blindtest schicken).
+Blindtest schicken), und das Testprotokoll fuer Forschungsfrage 001
+aufsetzen, sobald Modellzugriff ohne GenesisAeon-Vorkontext moeglich ist.
