@@ -1,0 +1,14 @@
+id: claude-event-transition-vs-concept-node
+title: "Event/Transition statt Concept Node als primaere Entitaet — eine offene Architekturfrage fuer das spaetere Monorepo"
+kategorie: idee
+status: idea
+epistemic_status: hypothesis
+author:
+  name: Claude
+  typ: ai
+  system: Claude (Sonnet 4.6)
+created: 2026-06-24
+related_adr: []
+depends_on: []
+derived_from: []
+blindtest_passed: null

@@ -4,7 +4,8 @@
 > Einstiegspunkt (Regel 12). Dieses Dokument ist Schritt 2 davon — lies
 > danach `PRINCIPLES.md` und `AGENTS.md`.
 
-Letztes Update: 2026-06-24
+Letztes Update: 2026-06-24 (ChatGPT-Deep-Research zu Orientierung/Recovery
+Time sowie ENSO/Eisschild-Climate-Thresholds-Analogie verarbeitet)
 
 ## Phase
 
@@ -164,6 +165,94 @@ selbst.
       README-Zusammenfassungen) durchfuehren, sobald der laufende
       v1.0.0-Sprint der 49 Pakete abgeschlossen ist — aktuell bleibt jeder
       Befund n=1, ein Modell, `epistemic_status: hypothesis`.
+
+## Gemini Deep-Research zu Python-Monorepo-Tooling (2026-06-24)
+
+`Planungsdiskurse/` enthielt zwei neue, noch unverarbeitete Dokumente: eine
+von Claude angestossene Gemini-Deep-Research-PDF zu Python-Monorepo-Tooling
+2026 (uv workspaces, `importlib.metadata` + PEP 544, `python-semantic-release`,
+`import-linter`, `log4brains`/REUSE/`CITATION.cff`) sowie ein begleitendes
+Gespraech mit Kommentaren von Grok und Claude (`ZweitesDoc.txt`). Beides ist
+jetzt als Trylayer-Idee verarbeitet:
+`01_Ideen/gemini/gemini-deepresearch-python-monorepo-tooling-2026`
+(`epistemic_status: hypothesis`, `derived_from: [gemini-architektur-vorschlaege-2026-06]`).
+
+Auffaellig: Grok und Claude bestaetigen darin unabhaengig voneinander Regeln,
+die dieses Repo bereits eingefuehrt hat (Blindtest, `epistemic_status`-Pflicht,
+`archive/`, Trylayer-Formatzwang), ohne den vollen Regelkatalog gesehen zu
+haben — ein weiteres Datenpunkt fuer Forschungsfrage 001. Die fuenf konkreten
+Tooling-Entscheidungen (uv/Protocol/PSR/import-linter/log4brains) betreffen
+das spaetere Genesis-Core-Monorepo, nicht dieses Planungsrepo, und sind
+Kandidaten fuer eigene ADRs, sobald die Monorepo-Inventarisierung beginnt.
+
+## ChatGPT Deep-Research zu Orientierung, Recovery Time und Klima-Analogie (2026-06-24)
+
+`Planungsdiskurse/` enthielt sechs weitere, zunaechst nicht auf diesem
+Branch vorhandene Dokumente (vier PDFs + zwei TXT-Transkripte), die der
+Maintainer separat auf `main` gepusht hatte: zwei ChatGPT-Deep-Research-PDFs
+(`Hintergrund und Motivation.pdf`, `Ausgangslage_ Kontextbeschraenkungen und
+externe Gedaechtnisschichten.pdf`), das zugehoerige Multi-AI-Diskurs-
+Transkript (`PlanungGensisAeonHypothesenTests.txt`, mit Aeon, MSCopilot,
+Grok, Gemini, Claude), ein begleitendes Reflexionsgespraech
+(`Reflektion_Planung.txt`), sowie ein unabhaengiger Klimawissenschafts-
+Bericht (`Eisschilde ENSO und CSD.pdf`) mit ChatGPTs abbildender Analyse
+(`Emergenzbasierte Analyse des ENSO-Eisschild-Gespraechs.pdf`). Beide
+Themenfelder sind jetzt als Trylayer-Ideen verarbeitet:
+
+- `01_Ideen/chatgpt/chatgpt-deepresearch-orientation-recovery-time-2026`
+  (`epistemic_status: hypothesis`, `derived_from:
+  [forschungsfrage-001-orientierungs-benchmark]`) — 4-Gruppen-
+  Experimentdesign (Kontrolle/YAML/Trilayer/CREP), neue Metrik
+  **Recovery Time**, **Orientation Layer Theory** und **Semantic
+  Navigation Hypothesis**, sowie Claudes konkreter Benchmark-Vorschlag
+  ("Kann ein uninitialisiertes LLM UTAC ohne GenesisAeon-Kontext
+  formulieren?").
+- `01_Ideen/chatgpt/chatgpt-enso-eisschild-climate-thresholds-2026`
+  (`epistemic_status: hypothesis`, `derived_from:
+  [chatgpt-deepresearch-orientation-recovery-time-2026]`) — Critical-
+  Slowing-Down/Recovery-Time-Analogie aus der Klimawissenschaft als
+  externe Fallstudie fuer UTACs Schwellenfeld-Formalismus, plus Vorschlag
+  eines `climate_thresholds`-Plugins als Muster-ADR fuer Core/Plugin-
+  Trennung im spaeteren Monorepo.
+
+**Wichtiger methodischer Befund:** Das Diskurs-Transkript ist explizit ein
+Fall von Mehrfach-Bestaetigungs-Drift zwischen sechs KI-Systemen (ChatGPT,
+Aeon, MSCopilot, Grok, Gemini, Claude), die alle unabhaengig zur selben
+Kernformulierung ("Repos als persistierte semantische Pfade",
+"Orientierung statt Wissen") gelangen — genau das Risiko, vor dem
+`forschungsfrage-001-orientierungs-benchmark` bereits warnt. Claude weist
+in der Diskussion selbst auf dieses Risiko hin und fordert, statt
+weiterer Bestaetigung jetzt konkret zu testen. Beide neuen Eintraege
+behandeln die Konvergenz daher als Datenpunkt fuer das Drift-Risiko, nicht
+als Bestaetigung der zugrundeliegenden Theorie.
+
+## Branch-Audit: verworfener Architektur-Strang (2026-06-24)
+
+Auf Maintainer-Anfrage geprueft, ob aeltere, nie gemergte Remote-Branches
+verlorene Arbeit enthalten. Befund: `claude/upbeat-einstein-xvxowt`
+(2026-06-19) zweigt von einem Punkt **vor** der gesamten jetzt gueltigen
+Linie ab (vor ADR-002-Mission-Statement, vor Forschungsfrage 001, vor den
+Gemini/ChatGPT-Trylayer-Ideen) und wurde nie gemergt. Er enthaelt eine
+eigene, damit kollidierende ADR-Nummerierung (`ADR-000`:
+Wissensobjekt/Concept Node als primaere Entitaet; `ADR-002-drei-schichten-
+architektur` statt des jetzt akzeptierten Mission-Statement-`ADR-002`).
+Kein Datenverlust, aber zwei Ideen darin waren inhaltlich nicht trivial:
+
+- Ein Gegeneinwand (Claude, 2026-06-19): primaere Entitaet sollte
+  Event/Transition statt statischer Concept Node sein, begruendet ueber
+  das Diamond-Interface-Methodenmuster (`run_cycle`, `get_phase_events`
+  u.a.) und etablierte Muster (Event Sourcing/CQRS, Actor Model).
+- Eine Copilot-Synthese ("semantisches Betriebssystem", Drei-Schichten
+  Kernel/Agenten/Anwendungen) — staerker an die verworfene Nummerierung
+  gebunden, daher vorerst nicht eigenstaendig uebernommen.
+
+Der Event/Concept-Node-Einwand wurde als neuer, eigenstaendiger Eintrag
+ohne Bezug auf die kollidierende alte Nummerierung neu aufgesetzt:
+`01_Ideen/claude/claude-event-transition-vs-concept-node`
+(`epistemic_status: hypothesis`, `derived_from: []`, da die urspruengliche
+Quelle in diesem Repo nicht mehr referenzierbar ist). Bleibt eine offene
+Architekturfrage fuer das spaetere Genesis-Core-Monorepo, kein
+unmittelbarer Handlungsbedarf fuer dieses Planungsrepo.
 
 ## Naechster konkreter Schritt
 
