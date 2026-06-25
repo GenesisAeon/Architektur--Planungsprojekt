@@ -1,6 +1,6 @@
 {
   "id": "entropy-table-blindtest",
-  "title": "Genesis-Blindtest fuer entropy-table (Core-Kandidat): technisch defekt, nicht nur semantisch unklar",
+  "title": "Genesis-Blindtest fuer entropy-table (Core-Kandidat): v2.0.0 defekt, v2.0.1 behoben (TRUE)",
   "kategorie": "idee",
   "status": "idea",
   "epistemic_status": "measured",
@@ -10,10 +10,11 @@
     "system": "Claude (Sonnet 4.6)"
   },
   "created": "2026-06-24",
+  "updated": "2026-06-25",
   "related_adr": ["ADR-003"],
   "depends_on": [],
   "derived_from": ["genesis-scope-blindtest", "blindtest-baseline-fuer-monorepo-readme"],
-  "blindtest_passed": false,
+  "blindtest_passed": true,
   "content": {
     "warum_dieses_paket": "`entropy-table` ist nach `02_Plaene/genesis-core-scope.md` der erste Schritt der vorgeschlagenen Core-Kette (entropy-table -> implosive-genesis -> ... -> utac-core). Nach der Praezisierung in `01_Ideen/claude/blindtest-baseline-fuer-monorepo-readme` MUSS ein Core-Kandidat den Blindtest bestehen, anders als Satelliten-Pakete. Johann hat das vollstaendige, woertliche README (github.com/GenesisAeon/entropy-table) im Chat eingebracht; ein frischer kontextfreier Subagent hat es real getestet.",
     "durchfuehrung": "2026-06-24, ein frischer Subagent ohne GenesisAeon-Vorwissen, kein Web-Zugriff auf Hintergrund. Versuch von zwei Pfaden: (1) pip install entropy-table + CLI-Exploration, (2) git clone + uv sync + Quickstart-Kommandos aus der README. Pfad 2 konnte technisch nicht ausgefuehrt werden (siehe befund_pfad_2).",
@@ -38,6 +39,19 @@
     "alternativen_betrachtet": [
       "Den Befund als reine Interpretierbarkeitsfrage wie bei genesis-scope behandeln - verworfen: die gefundenen Probleme sind echte Crashes/fehlende Dependencies, kein Interpretationsproblem.",
       "Ergebnisse fuer den ungetesteten git-clone-Pfad spekulativ ausfuellen, um eine vollstaendigere Bewertung zu liefern - verworfen: widerspricht Regel 5 (ehrlicher epistemic_status), der Subagent hat zurecht keine erfundenen Ergebnisse gemeldet."
-    ]
+    ],
+    "retest_2026_06_25_v2_0_1": {
+      "kontext": "Johann hat den Fix umgesetzt (typer als Runtime-Dependency, atlas-Daten als Paketdaten gebuendelt, hartkodierte Pfade auf cwd-relative Aufloesung umgestellt, compute-Subcommands im CLI registriert, --format-Parser repariert, Version auf 2.0.1 angehoben) und auf PyPI veroeffentlicht. Ein erster Re-Test-Versuch noch am selben Tag fand 2.0.1 noch nicht live (PyPI loeste weiterhin auf v2.0.0 auf, alle 6 Bugs weiterhin reproduzierbar) - dieser Zwischenstand wurde nicht gesondert dokumentiert, da Johann den Upload kurz danach abschloss. Nach Bestaetigung des erfolgreichen Uploads ein zweiter, wiederum frischer kontextfreier Subagent angesetzt.",
+      "install": "pip install entropy-table installiert jetzt tatsaechlich v2.0.1 (pip show + pip index versions bestaetigen 2.0.1 als neueste Version auf PyPI, neben 2.0.0/1.0.1/0.3.1/0.3.0).",
+      "bug_fehlende_dependency": "FIXED: typer wird automatisch mitinstalliert (Requires: jsonschema, pyyaml, typer), entropy-table --help laeuft ohne ModuleNotFoundError.",
+      "bug_keine_daten_im_paket": "FIXED: 31 echte YAML/JSON-Dateien unter site-packages/entropy_table/atlas/ gefunden (10 Domains, 9 Relations, 4 Claims, Schemas, Bibliographie refs.yaml) - keine leeren Templates, sondern reale Beispieldaten.",
+      "bug_validate_all_crash": "FIXED: entropy-table validate-all laeuft von beliebigem cwd fehlerfrei durch, validiert 10 Domains/9 Relations/4 Claims/23 Bibliographie-Einträge, Math-Validator meldet 0 Fehler/14 Warnungen - kein FileNotFoundError mehr.",
+      "bug_health_schreibt_falschen_ort": "FIXED: entropy-table health --ci-check schreibt outputs/atlas_health.md jetzt relativ zum cwd (verifiziert per ls vor/nach Lauf aus leerem Verzeichnis), Inhalt mit echten Zahlen (Total Domains: 10, Total Relations: 9, Total Claims: 4, 2 verwaiste Domains namentlich benannt) statt vakuoser Nullen.",
+      "bug_cli_help_luegt": "FIXED: entropy-table metrics --format markdown und --format json liefern beide korrekt strukturierte, unterschiedliche Ausgaben - kein Parser-Fehler mehr, Hilfetext und tatsaechliches Verhalten stimmen ueberein.",
+      "bug_compute_nicht_registriert": "FIXED (zusaetzlich gepruefter Punkt): entropy-table compute --help listet ctmc-ep und diffusion-ep-1d, beide liefern mit korrekt geformtem --in JSON echte, physikalisch plausible Entropieproduktionswerte (z.B. sigma=0 bei symmetrischer Ratenmatrix mit detailed_balance=true, sigma=2.79 bei asymmetrischer Matrix mit detailed_balance=false).",
+      "version_string": "FIXED: README-Behauptung und tatsaechlich installierte Version stimmen jetzt ueberein (v2.0.1).",
+      "neuer_nebenbefund_nicht_blockierend": "diffusion-ep-1d wirft eine unklare TypeError (object of type 'float' has no len()) statt einer sauberen Validierungsfehlermeldung, wenn J als Skalar statt als Array uebergeben wird - kein urspruenglich gemeldeter Bug, aber ein kleiner, nicht blockierender Rough-Edge-Befund fuer eine zukuenftige Iteration.",
+      "bewertung": "Alle 6 urspruenglich gefundenen Bugs sind in v2.0.1 tatsaechlich behoben, verifiziert durch echte Kommandoausfuehrung in einer frischen, kontextfreien venv. Der dokumentierte pip-install-Quickstart liefert jetzt innerhalb von 5 Minuten ein echtes, interpretierbares wissenschaftliches Ergebnis (reale Domain-/Relation-/Claims-Validierung gegen gebuendelte Atlas-Daten, echte Entropieproduktionsraten aus compute-Subcommands). Genesis-Blindtest (Regel 6) damit fuer entropy-table TRUE - der erste Core-Kandidat, der den Blindtest tatsaechlich besteht."
+    }
   }
 }

@@ -404,6 +404,32 @@ ueber das fertige Paket — Re-Test nach Abschluss der CI-Bereinigung
 vorgesehen (siehe `01_Ideen/claude/entropy-table-blindtest`, Abschnitt
 "Einordnung durch Johann").
 
+## Re-Test entropy-table v2.0.1: erster Core-Kandidat besteht den Blindtest (2026-06-25)
+
+Johann hat alle sechs gefundenen Bugs behoben (`typer` als
+Runtime-Dependency, Atlas-Daten als Paketdaten gebuendelt, hartkodierte
+Pfade auf cwd-relative Aufloesung umgestellt, `compute`-Subcommands im
+CLI registriert, `--format`-Parser reparert, Version auf 2.0.1
+angehoben) und auf PyPI veroeffentlicht. Ein erster Re-Test-Versuch noch
+am selben Tag fand 2.0.1 noch nicht live (PyPI loeste weiterhin auf
+v2.0.0 auf). Nach Bestaetigung des erfolgreichen Uploads hat ein zweiter,
+wiederum frischer kontextfreier Subagent real getestet — `pip install
+entropy-table` installiert jetzt tatsaechlich v2.0.1, und alle sechs
+Bugs sind verifiziert FIXED: CLI startet ohne fehlende Dependency, 31
+echte Atlas-Datendateien (10 Domains/9 Relations/4 Claims) sind im
+Paket, `validate-all` und `health --ci-check` laufen fehlerfrei mit
+echten Inhalten statt Nullresultaten, `--format` funktioniert wie
+dokumentiert, `compute ctmc-ep`/`diffusion-ep-1d` liefern echte,
+physikalisch plausible Entropieproduktionswerte. Siehe
+`01_Ideen/claude/entropy-table-blindtest`, Abschnitt "Re-Test
+2026-06-25 mit v2.0.1" — `blindtest_passed` jetzt **true**. Damit
+besteht der erste Core-Kandidat der vorgeschlagenen Kette den
+Genesis-Blindtest tatsaechlich, wie es `02_Plaene/genesis-core-scope.md`
+fuer Core-Kandidaten verlangt (im Gegensatz zu den Satelliten-Paketen
+genesis-scope/genesis-os). Kleiner, nicht blockierender Nebenbefund:
+`diffusion-ep-1d` wirft eine unklare `TypeError` bei skalarem statt
+arrayfoermigem `J`-Argument.
+
 ## Folgefrage: Blindtest-Definition fuer KI-native Leerpakete (2026-06-24)
 
 Aus dem `genesis-scope`-Befund abgeleitet, als eigene Idee dokumentiert:

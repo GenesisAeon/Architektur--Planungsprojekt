@@ -101,6 +101,18 @@ erst einzeln pro Paket nach Blindtest + ADR (Regel 3, Regel 6).
    ungetestet. Falls sich dieser Befund bestätigt, ist die vorgeschlagene
    Core-Kette bereits am ersten Glied blockiert — unabhängig von der
    architektonischen Frage, was in den Core gehört.
+7. **Re-Test nach Fix: erster Core-Kandidat besteht den Blindtest
+   (2026-06-25):** Johann hat alle sechs Bugs aus Schritt 6 behoben und
+   als v2.0.1 auf PyPI veröffentlicht. Ein erneuter, frischer Subagent
+   hat verifiziert: alle sechs Bugs FIXED, `pip install entropy-table`
+   liefert jetzt ein funktionierendes CLI mit echten Atlas-Daten und
+   echten Entropieproduktions-Berechnungen — siehe
+   `01_Ideen/claude/entropy-table-blindtest`, `blindtest_passed: true`.
+   `entropy-table` ist damit der erste Baustein der vorgeschlagenen
+   Core-Kette, der den verschärften Maßstab für Core-Kandidaten
+   tatsächlich erfüllt. Die übrigen Kettenglieder
+   (`implosive-genesis` → ... → `utac-core`) sind weiterhin einzeln zu
+   testen.
 
 ## Alternativen betrachtet
 

@@ -1,5 +1,5 @@
 id: entropy-table-blindtest
-title: "Genesis-Blindtest fuer entropy-table (Core-Kandidat): technisch defekt, nicht nur semantisch unklar"
+title: "Genesis-Blindtest fuer entropy-table (Core-Kandidat): v2.0.0 defekt, v2.0.1 behoben (TRUE)"
 kategorie: idee
 status: idea
 epistemic_status: measured
@@ -8,9 +8,10 @@ author:
   typ: ai
   system: Claude (Sonnet 4.6)
 created: 2026-06-24
+updated: 2026-06-25
 related_adr: [ADR-003]
 depends_on: []
 derived_from:
   - genesis-scope-blindtest
   - blindtest-baseline-fuer-monorepo-readme
-blindtest_passed: false
+blindtest_passed: true
