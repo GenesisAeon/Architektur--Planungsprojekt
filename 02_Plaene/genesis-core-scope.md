@@ -113,6 +113,22 @@ erst einzeln pro Paket nach Blindtest + ADR (Regel 3, Regel 6).
    tatsächlich erfüllt. Die übrigen Kettenglieder
    (`implosive-genesis` → ... → `utac-core`) sind weiterhin einzeln zu
    testen.
+8. **Zweites Kettenglied (`implosive-genesis`) getestet, TRUE mit zwei
+   kleinen Doku-Bugs (2026-06-25):** siehe
+   `01_Ideen/claude/implosive-genesis-blindtest`, `blindtest_passed:
+   true`. `pip install implosive-genesis` (v1.0.0, README behauptet
+   "v0.4.0 current" — dieselbe Versionsdiskrepanz wie bei
+   `entropy-table`) liefert sofort funktionierendes CLI (6 von 8
+   dokumentierten Befehlen) und eine vollständig funktionierende
+   Python-API mit echtem wissenschaftlichem Output (V_RIG-Berechnung,
+   OIPK-Kernel, Tesseract-Rendering, Chronology-Validator). Zwei
+   konkrete, leicht behebbare Bugs: `ig full-summary` ist dokumentiert,
+   existiert aber nicht im CLI (nur via Python-API); `ig cmb-test
+   --n_sim` crasht wegen Unterstrich statt Bindestrich. Qualitativ
+   deutlich besser als der erste `entropy-table`-Befund — kein
+   struktureller Defekt, sondern reine
+   Dokumentations-/CLI-Konsistenzfehler, zur Weitergabe an Johann
+   vorgesehen.
 
 ## Alternativen betrachtet
 

@@ -1,0 +1,16 @@
+id: implosive-genesis-blindtest
+title: "Genesis-Blindtest fuer implosive-genesis (Core-Kandidat, 2. Kettenglied): TRUE mit zwei kleinen Doku-Bugs"
+kategorie: idee
+status: idea
+epistemic_status: measured
+author:
+  name: Claude
+  typ: ai
+  system: Claude (Sonnet 4.6)
+created: 2026-06-25
+related_adr: [ADR-003]
+depends_on: []
+derived_from:
+  - entropy-table-blindtest
+  - blindtest-baseline-fuer-monorepo-readme
+blindtest_passed: true

@@ -430,6 +430,31 @@ genesis-scope/genesis-os). Kleiner, nicht blockierender Nebenbefund:
 `diffusion-ep-1d` wirft eine unklare `TypeError` bei skalarem statt
 arrayfoermigem `J`-Argument.
 
+## Zweites Kettenglied (implosive-genesis) getestet: TRUE mit zwei kleinen Doku-Bugs (2026-06-25)
+
+Johann hat das vollstaendige README zu `implosive-genesis` (zweites
+Glied der Core-Kette nach `entropy-table`) eingebracht, ein frischer
+Subagent hat es real getestet (siehe
+`01_Ideen/claude/implosive-genesis-blindtest`, `blindtest_passed:
+true`). `pip install implosive-genesis` installiert v1.0.0 (README
+behauptet "v0.4.0 current" - dieselbe Versionsdiskrepanz wie bei
+entropy-table, aber Installation laeuft sauber). 6 von 8 dokumentierten
+CLI-Befehlen (`oipk-calc`, `chronology-validate`, `fractal-render`,
+`entropy-price-sympy`, `list-templates`, `anesthesia-test`) und die
+komplette Python-API (`compute_vrig`, `FramePrinciple`,
+`ImplosiveGenesisModel.full_summary`) liefern sofort echten,
+interpretierbaren wissenschaftlichen Output. Zwei konkrete, leicht
+behebbare Bugs gefunden: `ig full-summary` ist im README als CLI-Befehl
+dokumentiert, existiert aber nicht im CLI (nur via Python-API) - kritisch,
+weil es der erste in der README-Liste genannte Befehl ist und ein
+Nutzer, der der Reihe nach vorgeht, sofort crasht; `ig cmb-test
+--n_sim` crasht wegen Unterstrich statt Bindestrich (`--n-sim`).
+Qualitativ deutlich besser als der erste entropy-table-Befund
+(v2.0.0) - kein struktureller Defekt, sondern reine
+Dokumentations-/CLI-Konsistenzfehler. Zwei Findings zur Weitergabe an
+Johann: `full-summary`-CLI-Wrapper ergaenzen, `--n_sim`/`--n-sim`
+vereinheitlichen.
+
 ## Folgefrage: Blindtest-Definition fuer KI-native Leerpakete (2026-06-24)
 
 Aus dem `genesis-scope`-Befund abgeleitet, als eigene Idee dokumentiert:
