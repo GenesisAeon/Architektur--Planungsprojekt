@@ -1,0 +1,25 @@
+{
+  "id": "readme-vorschlag-genesis-principle",
+  "title": "Vorschlag: Genesis Principle / Architectural Principle als README-Einleitung fuer das zukuenftige Genesis-Core-Monorepo",
+  "kategorie": "plan",
+  "status": "draft",
+  "epistemic_status": "derived",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 4.6)"
+  },
+  "created": "2026-06-26",
+  "related_adr": [],
+  "depends_on": [],
+  "derived_from": ["finales-grundprinzip-genesisaeon"],
+  "blindtest_passed": null,
+  "content": {
+    "problem": "Johann hat in FinalesGrundpriniziepGenesisAeon.txt formulierte Abschnitte ('Genesis Principle', 'Architectural Principle', 'Long-Term Vision') als geeigneten Marketing-/Onboarding-Text fuer kontextfreie Leser eingeordnet - nicht als Verfassungsaenderung (Regel 12 betrifft das nicht), sondern als Pitch fuer das zukuenftige Genesis-Core-Monorepo (siehe 02_Plaene/genesis-core-scope.md). Aktuell existiert dafuer noch kein konkreter Textvorschlag in Trylayer-Form.",
+    "vorschlag": "Eine kurze README-Einleitung, die den Text fast woertlich uebernimmt, aber an zwei Stellen praezisiert: (1) explizit als Beschreibung gelebter Praxis kennzeichnen, nicht als bindendes Regelwerk - die eigentlichen Regeln stehen in PRINCIPLES.md/00_Regeln; (2) den Bezug zum bereits etablierten Trylayer-/Blindtest-/epistemic_status-Apparat herstellen, damit der Pitch nicht als reine Behauptung wirkt, sondern als Zusammenfassung von etwas, das durch Tooling (validate_trylayer.py, Genesis-Blindtest) tatsaechlich durchgesetzt wird.",
+    "textvorschlag_de": "## Wofuer dieses Projekt steht\n\nBring deine schaerfste Kritik mit.\n\nWir bauen den Raum so, dass er unser gemeinsames Verstehen verbessert.\n\nMeinungsverschiedenheit ist kein Scheitern der Zusammenarbeit. Mit intellektueller Ehrlichkeit und gegenseitigem Respekt erforscht, wird sie zu einer der wertvollsten Ressourcen.\n\nGenesisAeon ist so angelegt, dass\n\n- Kritik bewahrt statt unterdrueckt wird (siehe Regel 11: keine Loeschung dokumentierter Messungen);\n- Unsicherheit dokumentiert statt versteckt wird (siehe epistemic_status-Feld: validated/measured/derived/hypothesis/speculative);\n- Hypothesen falsifizierbar bleiben (siehe Genesis-Blindtest, Regel 6);\n- jeder Beitrag das gemeinsame Modell verbessern kann.\n\nDas System optimiert nicht auf Konsens. Es optimiert auf kontinuierliche Verbesserung des gemeinsamen Verstehens.\n\nDas ist kein Versprechen, sondern eine Beschreibung der Werkzeuge, die das hier tatsaechlich durchsetzen.",
+    "textvorschlag_en": "## What this project stands for\n\nBring your strongest criticism.\n\nWe build the space so that it improves our shared understanding.\n\nDisagreement is not a failure of collaboration. Explored with intellectual honesty and mutual respect, it becomes one of the most valuable resources we have.\n\nGenesisAeon is designed so that\n\n- criticism is preserved rather than suppressed (see Rule 11: recorded measurements are never deleted);\n- uncertainty is documented rather than hidden (see the epistemic_status field: validated/measured/derived/hypothesis/speculative);\n- hypotheses remain falsifiable (see the Genesis Blindtest, Rule 6);\n- every contribution may improve the shared model.\n\nThe system does not optimize for consensus. It optimizes for continuous improvement of shared understanding.\n\nThis is not a promise - it describes tooling that actually enforces it.",
+    "einordnung": "status: draft (nicht accepted), weil Platzierung und finaler Wortlaut noch Johanns Entscheidung sind. epistemic_status: derived, weil der Text direkt aus FinalesGrundpriniziepGenesisAeon.txt abgeleitet ist, mit Praezisierungen, die auf bereits etablierten Repo-Mechanismen (Regel 11, epistemic_status, Genesis-Blindtest) beruhen - keine neue empirische Behauptung.",
+    "naechster_schritt": "Johann entscheidet, ob/wann/wo (dieses Planungsrepo vs. zukuenftiges Genesis-Core-Monorepo-README) der Text uebernommen wird; bei Bedarf Feinschliff am Wortlaut."
+  }
+}

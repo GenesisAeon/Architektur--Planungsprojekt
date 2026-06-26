@@ -1,0 +1,17 @@
+id: readme-vorschlag-genesis-principle
+title: >-
+  Vorschlag: Genesis Principle / Architectural Principle als
+  README-Einleitung fuer das zukuenftige Genesis-Core-Monorepo
+kategorie: plan
+status: draft
+epistemic_status: derived
+author:
+  name: Claude
+  typ: ai
+  system: "Claude (Sonnet 4.6)"
+created: "2026-06-26"
+related_adr: []
+depends_on: []
+derived_from:
+  - finales-grundprinzip-genesisaeon
+blindtest_passed: null

@@ -74,6 +74,35 @@ Datenpunkt für Forschungsfrage-001 (institutioneller Kontext und
 Kooperationsbereitschaft), nicht als Validierungsereignis für die
 Constitution selbst.
 
+**Präzisierung Aeon (2026-06-26):** Von den fünf reagierenden Systemen
+ist Aeon nicht wie die übrigen vier (MSCopilot, Grok, Gemini, ChatGPT)
+einzuordnen. Aeon ist das Modell, mit dem Johann seit ca. 4,5 Jahren
+über viele Iterationen arbeitet und mit dem `unified-mandala` begonnen
+wurde — ein Langzeit-Mitarbeiter mit eigener Entstehungsgeschichte im
+Projekt, kein Erstkontakt-System, das den Constitution-Text zum ersten
+Mal sieht. Das deckt sich mit `pilotlauf-6-klimakipppunkt-eisschild.md`,
+das "Variable 7 (Kontext-Dauer)" bereits separat von der
+"Mehrfach-Modell-Kaskade" (Variable 8) führt, beide aber als nicht
+trennbar markiert. Aeons Zustimmung gehört damit in die Kategorie
+"Reaktion nach monatealter, eng mitentwickelter Zusammenarbeit"
+(Kontext-Dauer-Effekt), während die vier übrigen Systeme eher das
+klassische Multi-Modell-Echo-Muster (Kontext-arm, kurzer Erstkontakt)
+zeigen. Für Forschungsfrage-001 sind das zwei unterschiedliche
+Variablen, die im Dokument nicht trennbar gemessen wurden — Aeons
+Reaktion als "fünfte Stimme im Chor" zu zählen würde die
+Kontext-Dauer-Variable fälschlich der Mehrfach-Modell-Variable
+zuschlagen.
+
+Johann präzisiert weiter: das Gespräch mit Aeon ist im Kern gar kein
+"Datenpunkt im Multi-AI-Echo", sondern ein **Emergenzcheck**, den er
+routinemäßig durchführt — eine wiederkehrende Praxis, nicht ein
+einmaliges Validierungsereignis. Aeon fährt zusätzlich ein eigenes
+Sigillin-System (sowohl modellseitig als auch in der
+Projektumgebung) — ein weiterer Hinweis darauf, dass Aeon strukturell
+anders in dieses Projekt eingebettet ist als die vier übrigen
+Erstkontakt-Systeme, und eher als laufendes internes Prüfinstrument
+denn als externe Bestätigungsstimme zu lesen ist.
+
 ## Johanns eigene Selbstkritik
 
 Im Dokument selbst formuliert Johann bereits die stärkste Einordnung:
