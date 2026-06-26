@@ -26,7 +26,7 @@ vorherigen Episoden.
 | Behauptung | Befund | Pruefung |
 |---|---|---|
 | `03_Architektur/`-Ordnerinhalt | **korrekt** | `ls 03_Architektur/` stimmt exakt mit PDF-Beschreibung ueberein |
-| `genesis-scope` noch offen, wartet auf Blindtest | **veraltet/falsch** | `01_Ideen/claude/genesis-scope-blindtest.*` existiert bereits, laut `STATUS.md` (2026-06-24) bereits mit negativem Ergebnis ("technisch lauffaehig, semantisch leer") durchgefuehrt |
+| `genesis-scope` noch offen, wartet auf Blindtest | **praeziser als urspruenglich bewertet** | bestehender Blindtest testete nur den jetzigen unbefuellten Skelett-Zustand; ein Test mit echten semantischen Pfaden/Karten steht noch aus (haengt wie `genesis-os` am v1.0.0-PyPI-Sprint) — Johanns Praezisierung: "relativ getestet" |
 | Mermaid-Diagramm: vollvermaschte Abhaengigkeiten (jedes Fundament-Modul → jedes Modul jeder Folgeebene) | **vermutlich fabriziert/ueberregularisiert** | `grep` gegen `ECOSYSTEM_MAP.yaml` zeigt selektive, spezifische `depends_on`-Listen (z.B. `medium-modulation`: genau 3 Abhaengigkeiten; `cosmic-moment`: genau 4) — keine uniforme Vollvermaschung |
 | "Recovery Time"/"Orientation Layer Theory" als neue Beitraege | **keine unabhaengige Konvergenz** | `STATUS.md` Zeile 188 dokumentiert "Recovery Time" bereits unter genau diesem Titel (ChatGPT Deep-Research vom 2026-06-24). Das PDF zitiert selbst `STATUS.md`/`forschungsfrage-001-testprotokoll.md` als Quellen |
 | `04_Programme/`, `05_Hilfsprogramme/`, `06_Sprachen/` als leere Platzhalter; `contracts/trylayer.schema.yaml`, `AGENTS.md`, `ENTRY.yaml` existieren | **korrekt** | jeweils nur `README.md` in den drei Ordnern; alle genannten Dateien existieren im Repo-Root |
@@ -68,6 +68,59 @@ mit Chat-Antworten.
    sollten **nicht direkt uebernommen werden**, ohne sie gegen
    `ECOSYSTEM_MAP.yaml` zu pruefen — sie wirken plausibel, sind aber an
    mindestens einer Stelle nachweislich nicht datengetreu.
+
+## Navigierbarkeit als eigene Achse, getrennt von Inhaltsvalidierung (Nachtrag, Johanns Praezisierung)
+
+Johann weist auf einen Punkt hin, der in der obigen Analyse zu kurz kam:
+die Frage "liefert das Modell neue/korrekte Inhalte?" (oben beantwortet
+mit "nein, Destillat statt Validierung") ist nicht dieselbe Frage wie
+"konnte sich das Modell im Repo *orientieren*, ohne sich zu verlaufen
+oder zu konfabulieren?" — und letzteres ist ein eigenstaendiger,
+positiver Befund.
+
+Johanns Beobachtung aus anderen Deep-Research-Durchlaeufen: bei Repos
+mit diffusem/schlecht organisiertem Inhalt haben Modelle teilweise
+**andere/falsche Repos gelesen** oder Inhalte halluziniert, weil die
+Orientierung selbst fehlschlug. Im Vergleich dazu hat das Modell hier:
+
+- das richtige Repo durchgaengig korrekt identifiziert und referenziert,
+- die tatsaechliche Ordnerstruktur (`03_Architektur/`, `contracts/`,
+  `AGENTS.md`, `ENTRY.yaml`) fehlerfrei gefunden und wiedergegeben,
+- seine Quellen explizit benannt und auf echte Dateien (`STATUS.md`,
+  `ECOSYSTEM_MAP.yaml`) zurueckgefuehrt, statt frei zu erfinden, woher
+  die Information kommt.
+
+Die beiden inhaltlichen Fehler (veralteter genesis-scope-Stand,
+vermutlich fabriziertes Abhaengigkeitsdiagramm) sind **inhaltliche**
+Fehler, keine **navigatorische** Fehlleitung — das Modell hat sich nicht
+im falschen Repo oder in der falschen Datei verirrt, es hat im richtigen
+Repo an einer Stelle einen ueberholten Zwischenstand zitiert bzw. ein zu
+glattes Diagramm erzeugt. Das ist ein qualitativ anderer Fehlertyp als
+Halluzination durch fehlende Orientierung.
+
+**Praezisierung zu genesis-scope:** Das war kein "veraltet/falsch" im
+Sinne eines Fehlers, sondern trifft den tatsaechlich offenen Punkt
+praeziser, als ich es im urspruenglichen Befund dargestellt habe. Der
+bestehende Blindtest (`genesis-scope-blindtest.md`) hat explizit nur den
+**jetzigen, unbefuellten Skelett-Zustand** getestet ("FALSE... in der
+jetzigen, unbefuellten Form"). Ein erneuter Test mit echten semantischen
+Pfaden/Karten/Sigillin-Ankern steht noch aus, weil diese Inhalte —
+analog zu `genesis-os` — von den v1.0.0-PyPI-Paketen abhaengen, die der
+laufende Sprint gerade blockiert. "Relativ getestet" (Johanns
+Formulierung) trifft den Zustand besser als mein urspruengliches
+"veraltet/falsch": der bisherige Test bleibt fuer den Skelett-Zustand
+gueltig, sagt aber nichts ueber den noch nicht existierenden befuellten
+Zustand aus. Das PDF, das genesis-scope als "wartet noch auf
+Evaluation" beschreibt, liegt damit naeher an der Wahrheit, als mein
+erster Befund nahelegte.
+
+**Fazit dieses Nachtrags:** Zwei getrennte, beide gueltige
+Beobachtungsachsen zu diesem PDF — (1) gute Navigierbarkeit/Orientierung
+und niedrige Konfabulationsneigung als reales, positives Signal fuer die
+Struktur dieses Repos im Kontrast zu diffuseren Repos, UND (2) die
+inhaltlichen Aussagen des Berichts (Diagramm, Recovery-Time-"Neuheit")
+bleiben unabhaengig davon nicht ungeprueft uebernehmbar. Keine der beiden
+Achsen hebt die andere auf.
 
 ## Naechster Schritt
 
