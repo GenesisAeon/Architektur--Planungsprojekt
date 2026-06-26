@@ -1,0 +1,18 @@
+id: regel-vorschlag-review-vor-infrastruktur-merge
+title: >-
+  Regel-Vorschlag (Aeon): unabhaengiger Review vor jedem
+  Infrastruktur-Merge
+kategorie: idee
+status: idea
+epistemic_status: derived
+author:
+  name: Claude
+  typ: ai
+  system: "Claude (Sonnet 4.6)"
+created: "2026-06-26"
+related_adr: []
+depends_on: []
+derived_from:
+  - destillierbarkeit-testprotokoll
+  - finales-grundprinzip-genesisaeon
+blindtest_passed: null
