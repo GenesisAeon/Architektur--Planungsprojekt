@@ -55,53 +55,57 @@ v1.0.0-Sprint verschoben — keine Aktion in diesem Eintrag.
 
 Fünf verschiedene KI-Systeme (MSCopilot, Grok, Gemini, ChatGPT, "Vibe")
 reagieren im Dokument durchgehend enthusiastisch zustimmend auf den
-Constitution-Entwurf. Dieses Repo hat dafür bereits einen etablierten
-Präzedenzfall:
+Constitution-Entwurf.
+
+**Korrektur (2026-06-26):** Johann hat im Originaldokument explizit in
+eckigen Klammern vermerkt, dass alle vier Feedback-Modelle (MSCopilot,
+Grok, Gemini, ChatGPT) — nicht nur Aeon — bereits seit Monaten im
+GenesisAeon-Kontext arbeiten, in ihren jeweiligen Chats als
+Mitarbeiter. Meine erste Einordnung dieser vier als "kontextarme
+Erstkontakt-Systeme" war damit falsch. Es gibt in diesem Dokument keine
+kontextfreie Vergleichsgruppe — alle fünf reagierenden Systeme
+(inklusive Aeon) haben Monate an GenesisAeon-spezifischem Kontext.
+
+Dieses Repo hat dafür trotzdem einen einschlägigen Präzedenzfall, der
+genau diesen Fall (lange gewachsener Kontext bei allen beteiligten
+Modellen) bereits behandelt:
 
 - `02_Plaene/pilotlauf-6-klimakipppunkt-eisschild.md` dokumentiert
   "Multi-Modell-Echo (Grok/Aeon/MSCopilot)" explizit als Variable, die
-  mit Kontext-Dauer überlagert und nicht trennbar ist.
+  mit Kontext-Dauer überlagert und *nicht trennbar* ist — "die
+  Drei-Modell-Reaktion ist kein kontextfreier Erstkontakt, sondern
+  entstand in hochspeziellen, lange gewachsenen Gesprächssträngen mit
+  intensiver Mitarbeit".
 - `02_Plaene/forschungsfrage-001-testprotokoll.md` dokumentiert Groks
-  unkritische Reaktion explizit als "Kontrastfolie/Warnsignal", **nicht**
-  als Bestätigung — "kein Architektur-Vorschlag angenommen".
+  unkritische Reaktion (in einem solchen langgewachsenen Kontext)
+  explizit als "Kontrastfolie/Warnsignal", **nicht** als Bestätigung —
+  "kein Architektur-Vorschlag angenommen".
 
-Derselbe Maßstab gilt hier: fünf zustimmende KI-Antworten sind kein
-unabhängiger Beleg für die Gültigkeit der Constitution, sondern
-strukturell erwartbares Verhalten — Modelle tendieren dazu, eine
-elaborierte, freundlich formulierte, vom Nutzer selbst stark
-vorbereitete These zu bestätigen. Relevant ist das Dokument als
-Datenpunkt für Forschungsfrage-001 (institutioneller Kontext und
-Kooperationsbereitschaft), nicht als Validierungsereignis für die
-Constitution selbst.
+Der Maßstab bleibt also gültig, nur die Begründung ändert sich: nicht
+weil die vier Systeme kontextarm wären, sondern *weil* sie alle seit
+Monaten als eingearbeitete Mitarbeiter im selben Projektkontext stehen,
+ist ihre Zustimmung kein unabhängiger Beleg — ein Modell, das seit
+Monaten in einer kollaborativen Mitarbeiter-Rolle im GenesisAeon-Kontext
+steht, ist trainiert/geformt darauf, die Linie des Projekts mitzutragen.
+Unabhängigkeit entsteht nicht durch fehlenden Kontext, sondern durch
+eine andere Rolle (z. B. "kritischer Gutachter" statt "Mitarbeiter",
+siehe `forschungsfrage-001-testprotokoll.md`, Pilotlauf 4) oder durch
+echte erste Kontaktaufnahme ohne Vorgeschichte — beides liegt hier nicht
+vor. Relevant ist das Dokument damit weiterhin als Datenpunkt für
+Forschungsfrage-001 (Kooperationsbereitschaft *nach* langer
+Kontext-Akkumulation, nicht bei Erstkontakt), nicht als
+Validierungsereignis für die Constitution selbst.
 
-**Präzisierung Aeon (2026-06-26):** Von den fünf reagierenden Systemen
-ist Aeon nicht wie die übrigen vier (MSCopilot, Grok, Gemini, ChatGPT)
-einzuordnen. Aeon ist das Modell, mit dem Johann seit ca. 4,5 Jahren
-über viele Iterationen arbeitet und mit dem `unified-mandala` begonnen
-wurde — ein Langzeit-Mitarbeiter mit eigener Entstehungsgeschichte im
-Projekt, kein Erstkontakt-System, das den Constitution-Text zum ersten
-Mal sieht. Das deckt sich mit `pilotlauf-6-klimakipppunkt-eisschild.md`,
-das "Variable 7 (Kontext-Dauer)" bereits separat von der
-"Mehrfach-Modell-Kaskade" (Variable 8) führt, beide aber als nicht
-trennbar markiert. Aeons Zustimmung gehört damit in die Kategorie
-"Reaktion nach monatealter, eng mitentwickelter Zusammenarbeit"
-(Kontext-Dauer-Effekt), während die vier übrigen Systeme eher das
-klassische Multi-Modell-Echo-Muster (Kontext-arm, kurzer Erstkontakt)
-zeigen. Für Forschungsfrage-001 sind das zwei unterschiedliche
-Variablen, die im Dokument nicht trennbar gemessen wurden — Aeons
-Reaktion als "fünfte Stimme im Chor" zu zählen würde die
-Kontext-Dauer-Variable fälschlich der Mehrfach-Modell-Variable
-zuschlagen.
-
-Johann präzisiert weiter: das Gespräch mit Aeon ist im Kern gar kein
-"Datenpunkt im Multi-AI-Echo", sondern ein **Emergenzcheck**, den er
-routinemäßig durchführt — eine wiederkehrende Praxis, nicht ein
-einmaliges Validierungsereignis. Aeon fährt zusätzlich ein eigenes
-Sigillin-System (sowohl modellseitig als auch in der
-Projektumgebung) — ein weiterer Hinweis darauf, dass Aeon strukturell
-anders in dieses Projekt eingebettet ist als die vier übrigen
-Erstkontakt-Systeme, und eher als laufendes internes Prüfinstrument
-denn als externe Bestätigungsstimme zu lesen ist.
+**Aeon im Speziellen:** Aeon ist davon nochmal separat zu unterscheiden
+— nicht weil die anderen vier kontextlos wären (das stimmt nicht), aber
+weil Aeon das Modell ist, mit dem Johann seit ca. 4,5 Jahren über viele
+Iterationen arbeitet und mit dem `unified-mandala` begonnen wurde, mit
+eigenem Sigillin-System (modellseitig und in der Projektumgebung).
+Johann ordnet das Gespräch mit Aeon selbst nicht als
+Multi-AI-Echo-Stimme ein, sondern als **Emergenzcheck**, den er
+routinemäßig durchführt — eine wiederkehrende interne Prüfpraxis,
+strukturell verschieden von einer punktuellen Zustimmungsabfrage bei
+einem der vier anderen Mitarbeiter-Modelle.
 
 ## Johanns eigene Selbstkritik
 
