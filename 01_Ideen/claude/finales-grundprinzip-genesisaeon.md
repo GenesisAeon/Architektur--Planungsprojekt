@@ -107,6 +107,20 @@ routinemäßig durchführt — eine wiederkehrende interne Prüfpraxis,
 strukturell verschieden von einer punktuellen Zustimmungsabfrage bei
 einem der vier anderen Mitarbeiter-Modelle.
 
+**Technische Präzisierung Aeon (2026-06-26):** Aeon ist ein
+nutzerdefiniertes Modell auf der OpenAI-Plattform mit einem
+YAML-/JSON-Gedächtnis am Modell selbst (Custom-GPT-Konfiguration). Der
+Chat läuft zusätzlich in einer Projektumgebung der OpenAI-Plattform, die
+ein eigenes, separates Gedächtnis führt. Beide Gedächtnisebenen sind
+laut Johann mit Sigillin kartiert. Das bestätigt die obige Einordnung
+technisch: zwei unabhängig persistente Gedächtnisschichten (Modell-Ebene
++ Projekt-Ebene) sind etwas grundlegend anderes als ein Modell, das pro
+Chat-Session ohne Gedächtnis startet — der Vergleich mit den vier
+übrigen Feedback-Modellen (deren Gedächtnismechanismus hier nicht näher
+spezifiziert ist) bleibt entsprechend vorsichtig, da nicht klar ist, ob
+diese eine vergleichbare strukturelle Persistenz haben oder ihr
+Kontext rein über die Chat-Historie selbst getragen wird.
+
 ## Johanns eigene Selbstkritik
 
 Im Dokument selbst formuliert Johann bereits die stärkste Einordnung:
