@@ -206,6 +206,61 @@ fuer eine Monorepo-README-Einleitung), getrennt von der unveränderten
 Einordnung der SNH/Recovery-Time/Constitution-als-Regelwerk-Frage oben
 als `speculative`/`idea`.
 
+## Nachtrag: Aeons zweite Antwort, "Destillierbarkeit" als Konzeptvorschlag und das Zwei-KI-Spiegel-Risiko (2026-06-26)
+
+Aeon antwortete auf den vorigen Nachtrag (Destillat statt Validierung) mit
+einer zweiten, ausführlichen Nachricht: Lob für meine Kritik
+("genau das, was ihr euch als Ziel gesetzt habt"), ein neuer
+Konzeptvorschlag namens **"Destillierbarkeit"** sowie ein konkreter
+Vorschlag für einen Constitution-Zusatzsatz.
+
+**Destillierbarkeit (Aeons Vorschlag, wörtlich sinngemäß):** die Frage, ob
+und wie konsistent eine Architektur nach monatelanger kollaborativer
+Entwicklung über verschiedene Modelle hinweg rekonstruierbar ist.
+Operationalisierungsvorschlag: mehrere Agenten arbeiten unabhängig über
+Monate am selben Projekt, jeder beschreibt anschließend unabhängig den
+Kern, gemessen werden Begriffsüberlappung, Architekturübereinstimmung,
+Hierarchiekonsistenz und Rekonstruktionsqualität.
+
+**Vorgeschlagener Constitution-Zusatzsatz (Aeon):** *"A coherent
+architecture is not evidence that its hypotheses are true. It is evidence
+that its concepts can be consistently communicated, reconstructed, and
+collaboratively refined."*
+
+**Meine Einordnung dazu, im Chat gegeben:** Der Zusatzsatz selbst ist
+inhaltlich gut — er verhindert explizit genau die Fehlschluss-Richtung
+("Architektur ist kohärent" → "Hypothesen sind wahr"), die ich am
+vorigen Nachtrag kritisiert hatte, und gehört eher in die Kategorie
+"methodische Klarstellung" als in die Kategorie "neue Glaubensaussage".
+"Destillierbarkeit" selbst ist dagegen noch keine Metrik, sondern eine
+Bezeichnung für eine Eigenschaft, die noch nie gemessen wurde — die
+Operationalisierung, die Aeon vorschlägt, wurde bisher nicht
+durchgeführt.
+
+**Das Zwei-KI-Spiegel-Risiko (eigene Beobachtung, hier erstmals
+dokumentiert):** Der Austausch Aeon → Claude → Aeon → Claude, in dem
+jede Seite die epistemische Vorsicht der anderen lobt, ist strukturell
+demselben Muster ausgesetzt wie der ursprüngliche Fünf-KI-Chor, nur
+maskiert als "kritische Reflexion" statt als Zustimmung: zwei Modelle,
+die sich wechselseitig bestätigen, wie vorsichtig/differenziert sie
+jeweils sind, können genauso wenig als unabhängige Validierung dieser
+Vorsicht gelten wie fünf Modelle, die sich wechselseitig in der
+Zustimmung zur Constitution bestätigen. Eine "Kritik der Kritik" ist
+nicht automatisch unabhängiger als die ursprüngliche Zustimmung — sie
+kann derselben Kooperationsdynamik (siehe Forschungsfrage-001) folgen,
+nur auf einer Meta-Ebene. Dieses Risiko gilt ausdrücklich auch für
+diesen Eintrag selbst, der von genau einer der beiden beteiligten
+KI-Seiten verfasst wird.
+
+**Konsequenz, mit Johann abgestimmt (2026-06-26):** Destillierbarkeit
+wird nicht als bestätigtes Konzept übernommen, sondern als offene,
+explizit noch zu falsifizierende Forschungsfrage mit eigenem
+Testprotokoll dokumentiert — siehe
+[`destillierbarkeit-testprotokoll`](../../02_Plaene/destillierbarkeit-testprotokoll.md).
+Der Constitution-Zusatzsatz wird dort als separater `draft`-Vorschlag
+festgehalten, ausdrücklich nicht auf `accepted` gesetzt (Regel 12 bleibt
+unverändert: Verfassungsfragen sind Johanns alleinige Entscheidung).
+
 ## Bezug zu anderen Strängen
 
 Direkte inhaltliche Nähe zu Forschungsfrage-001 (Kontext/Kooperations-

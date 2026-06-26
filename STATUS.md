@@ -522,3 +522,30 @@ Kontrastfolie/Warnsignal" (siehe
 Enthaltener Dark-Matter-Nebenstrang (implosive-genesis + Frame
 Principle) bleibt unbearbeitet, von Johann explizit auf nach dem
 v1.0.0-Sprint verschoben.
+
+## Destillierbarkeit-Testprotokoll und Zwei-KI-Spiegel-Risiko (2026-06-26)
+
+Aeon brachte in zwei weiteren Nachrichten den Begriff
+"Destillierbarkeit" (wie konsistent eine Architektur nach
+monatelanger kollaborativer Entwicklung rekonstruierbar ist), zwei
+Constitution-Zusatzsatz-Vorschlaege und ein "Idea Lifecycle"-
+Stufenmodell fuer `epistemic_status` ein. Neuer Branch
+`claude/destillierbarkeit-testprotokoll` (Vorgaenger-Branch via PR #9
+gemerged).
+
+Eigene Beobachtung, erstmals dokumentiert: der Aeon-Claude-Austausch,
+in dem beide Seiten wiederholt die epistemische Vorsicht der anderen
+loben, ist strukturell demselben Risiko ausgesetzt wie der
+urspruengliche Fuenf-KI-Chor — nur als "kritische Reflexion" maskiert.
+Festgehalten in `01_Ideen/claude/finales-grundprinzip-genesisaeon.md`.
+
+Neuer Trylayer-Eintrag `02_Plaene/destillierbarkeit-testprotokoll`
+trennt drei vermischte Gegenstaende: (1) die zwei
+Constitution-Zusatzsaetze als `draft`-Textvorschlaege (Regel 12,
+Johanns Entscheidung), (2) "Destillierbarkeit" als offene,
+falsifizierbare Forschungsfrage mit konkretem Testprotokoll (Rohmaterial
+statt destilliertem Endtext, Vergleichsmetriken, Kontrollgruppe,
+explizite Fehlschlagsbedingung), (3) das "Idea Lifecycle"-Schema-
+Modell, das *nicht* uebernommen wird, weil eine Erweiterung von
+`epistemic_status` eine Repo-weite Infrastrukturaenderung waere, die
+einen eigenen Vorschlag verdient statt einer Nebenbei-Uebernahme.
