@@ -1,0 +1,24 @@
+{
+  "id": "regel-vorschlag-review-vor-infrastruktur-merge",
+  "title": "Regel-Vorschlag (Aeon): unabhaengiger Review vor jedem Infrastruktur-Merge",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "derived",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 4.6)"
+  },
+  "created": "2026-06-26",
+  "related_adr": [],
+  "depends_on": [],
+  "derived_from": ["destillierbarkeit-testprotokoll", "finales-grundprinzip-genesisaeon"],
+  "blindtest_passed": null,
+  "content": {
+    "herkunft": "Aus destillierbarkeit-testprotokoll.md herausgeloest, weil es ein eigenstaendiger Regel-Vorschlag ist, nicht nur eine Einordnung des dortigen Testprotokolls. Johann gab PR #10 trotz offener Frage frei ('trotzdem mergen, aber das Prinzip ist ueberdenkenswuerdig') - dieser Eintrag macht aus dem 'ueberdenkenswuerdig' einen eigenstaendig pruefbaren Vorschlag.",
+    "vorschlag": "Jede neue epistemische Infrastruktur (Schema-Aenderungen, epistemic_status-Erweiterungen, neue Validator-Regeln, Status-Lebenszyklus-Modelle) erhaelt mindestens einen unabhaengigen Architektur-Review, bevor sie gemergt wird - nicht aus Misstrauen, sondern weil Infrastruktur langlebig ist und alle bestehenden Eintraege betrifft. (Aeon, leicht praezisiert)",
+    "einordnung": "Waere eine Ergaenzung zu Regel 1/3 speziell fuer Infrastruktur-Aenderungen (Schema/Validator/Statuswerte) im Unterschied zu inhaltlichen Trylayer-Eintraegen unter ADR-003-Fallweise-Autoritaet. Bleibt status: idea, nicht regel/accepted - alle bestehenden 00_Regeln-Eintraege sind von Johann selbst verfasst (author.typ: human, status: core); eine neue Regel selbst vorzuschlagen UND zu akzeptieren waere ein Uebergriff auf die durch Regel 12 geschuetzte Entscheidungsbefugnis, unabhaengig von der inhaltlichen Qualitaet des Vorschlags. Dokumentiert als eigener Eintrag statt nur in Testprotokoll-Prosa, weil Johann den Gedanken selbst als 'ueberdenkenswuerdig' markiert hat und jede eigenstaendige Idee einen eigenen nachvollziehbaren Status bekommen soll (Regel 1).",
+    "praktische_beobachtung": "PR #10 wurde von Johann ohne separaten Drittreview gemergt - genau der Fall, den die vorgeschlagene Regel kuenftig anders behandeln wuerde. Kein Widerspruch, sondern erwartbarer Uebergangszustand: die Regel existiert noch nicht, gilt also nicht rueckwirkend.",
+    "naechster_schritt": "Johanns Entscheidung, ob/wann/in welcher Form (eigene 00_Regeln-Datei vs. Ergaenzung bestehender Regel vs. verworfen) dieser Vorschlag weiterverfolgt wird. Keine Aktion ohne diese Entscheidung."
+  }
+}

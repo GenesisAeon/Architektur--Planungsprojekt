@@ -549,3 +549,15 @@ explizite Fehlschlagsbedingung), (3) das "Idea Lifecycle"-Schema-
 Modell, das *nicht* uebernommen wird, weil eine Erweiterung von
 `epistemic_status` eine Repo-weite Infrastrukturaenderung waere, die
 einen eigenen Vorschlag verdient statt einer Nebenbei-Uebernahme.
+
+PR #10 gemergt (2026-06-26). Aeon praezisierte danach das
+Zwei-KI-Spiegel-Risiko (geteilte Methodik-Praeferenz statt geteilter
+Theorie-Zustimmung, dritter Zusatzsatz-Kandidat dazu dokumentiert) und
+schlug zusaetzlich eine Regel vor: unabhaengiger Architektur-Review vor
+jedem Infrastruktur-Merge. Johanns Entscheidung: PR #10 trotzdem mergen,
+das Prinzip aber als "ueberdenkenswuerdig" offen halten. Aus diesem
+"ueberdenkenswuerdig" wurde ein eigener, eigenstaendig nachvollziehbarer
+Vorschlag herausgeloest:
+`01_Ideen/claude/regel-vorschlag-review-vor-infrastruktur-merge`
+(`status: idea`) — explizit nicht selbst auf `regel`/`accepted` gesetzt,
+da neue Regeln nach Regel 12 Johanns alleinige Entscheidung bleiben.
