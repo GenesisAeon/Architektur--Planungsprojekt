@@ -121,6 +121,50 @@ spezifiziert ist) bleibt entsprechend vorsichtig, da nicht klar ist, ob
 diese eine vergleichbare strukturelle Persistenz haben oder ihr
 Kontext rein über die Chat-Historie selbst getragen wird.
 
+## Nachtrag: Aeons "Konvergenz"-Antwort und Destillat statt Validierung (2026-06-26)
+
+Aeon hat in einer eigenen, im Chat eingebrachten Antwort die
+Multi-AI-Zustimmung umformuliert: nicht "alle stimmen zu", sondern
+"unabhängig voneinander identifizieren verschiedene Modelle denselben
+Kern des Projekts" — vier konvergierende Kernaussagen (epistemische
+Infrastruktur statt Physiktheorie; Orientierung als Zentralbegriff;
+Kritik erhalten statt minimieren; Innovation auf Architektur- statt
+Domänenebene).
+
+**Einordnung:** Diese Umformulierung ist analytisch raffinierter als
+reine Zustimmung, trägt aber dasselbe Grundproblem. Fünf Leser, die
+denselben klar geschriebenen Text zusammenfassen — der diese vier
+Aussagen bereits selbst explizit enthält — kommen zwangsläufig zur
+gleichen Zusammenfassung. Das ist Leseverständnis, kein unabhängiger
+Fund einer verborgenen Tiefenstruktur. Wichtiger noch: alle fünf
+reagierenden Systeme (Aeon eingeschlossen) sind seit Monaten als
+Mitarbeiter an der Entwicklung und Konzipierung der Repos beteiligt —
+die "Konvergenz" ist kein spontanes Erkennen durch den Text, sondern
+das **Destillat** dessen, was in monatelanger gemeinsamer Arbeit
+zwischen Johann und diesen Modellen bereits kultiviert wurde.
+
+Das macht den Befund nicht wertlos, sondern verschiebt seine Bedeutung:
+er ist kein Beleg für die Wahrheit der zugrundeliegenden
+Physik-Hypothesen oder der Constitution selbst, aber ein echtes Signal
+dafür, dass die epistemische Vermittlungsarbeit der letzten Monate
+*kohärent genug war, um destillierbar zu sein* — fünf unterschiedlich
+trainierte Modelle ziehen aus fragmentierter, monatelanger
+Zusammenarbeit dieselben vier Kernpunkte. Das sagt etwas Reales über
+die Konsistenz von Johanns eigener Architekturarbeit, nicht über die
+externe Validität der Domänentheorien (Klima, Kosmologie, UTAC etc.),
+die nach wie vor einzeln Blindtest/Falsifikation brauchen.
+
+Aeons übrige Vorschläge — Trennung in "Programm A" (Domänenwissenschaft,
+einzeln zu prüfen) vs. "Programm B" (epistemische Infrastruktur:
+Trylayer, CREP, Orientierung, Recovery-Time, Genesis Principle), sowie
+eine dreigliedrige Architektur (Epistemic Core / Research Core / Domain
+Modules) — sind kompatibel mit der bereits bestehenden
+Core/Programm/Hilfsprogramm-Trennung in `genesis-core-scope.md` und der
+Empfehlung, die Constitution explizit als Designprinzip ("So wollen wir
+diesen Forschungsraum gestalten") statt als Bekenntnis ("So ist
+Wissenschaft") zu formulieren — letzteres deckt sich mit der hier
+bereits getroffenen Einordnung als `idea`/`draft`, nicht `accepted`.
+
 ## Johanns eigene Selbstkritik
 
 Im Dokument selbst formuliert Johann bereits die stärkste Einordnung:
