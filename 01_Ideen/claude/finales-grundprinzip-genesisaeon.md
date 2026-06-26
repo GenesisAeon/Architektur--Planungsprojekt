@@ -93,6 +93,28 @@ und fällt damit unter Regel 12 (volles ADR-Verfahren,
 menschen-/Johann-exklusiv), nicht unter die fallweise KI-Autorität aus
 ADR-003. Dieser Eintrag hebt den Entwurf nicht auf `accepted`.
 
+## Nachtrag (2026-06-26): Genesis Principle / Architectural Principle / Long-Term Vision als Marketing-/Onboarding-Text-Kandidat
+
+Johann hat den Abschnitt "Genesis Principle" ("Bring your strongest
+criticism...", "Disagreement is not a failure of collaboration..."),
+"Architectural Principle" und "Long-Term Vision" explizit als eigene
+Kategorie markiert: nicht als Regel-12-Verfassungsänderung gedacht,
+sondern als **Außendarstellung/Marketing-Text** — geeignet, um
+kontextfreien Lesern (potenziellen Mitwirkenden ohne GenesisAeon-
+Vorwissen) den Einstieg attraktiv zu machen, weil der Text die real
+gelebte Praxis (Trylayer, epistemic_status, Blindtest-Gate,
+Multi-Modell-Echo-als-Warnsignal statt Bestätigung) bereits korrekt
+beschreibt, ohne ihn als bindendes Regelwerk einzuführen.
+
+Das ist eine andere und deutlich niedrigere Hürde als eine
+Verfassungsänderung: ein Pitch-Text für `README.md`/`ENTRY.yaml`
+unterliegt nicht Regel 12, weil er keine Regel ändert, sondern eine
+bereits gültige Praxis zusammenfasst. Empfehlung: bei Bedarf als
+separater Vorschlag in `02_Plaene/` ausarbeiten (z. B. als Kandidat-Text
+fuer eine Monorepo-README-Einleitung), getrennt von der unveränderten
+Einordnung der SNH/Recovery-Time/Constitution-als-Regelwerk-Frage oben
+als `speculative`/`idea`.
+
 ## Bezug zu anderen Strängen
 
 Direkte inhaltliche Nähe zu Forschungsfrage-001 (Kontext/Kooperations-
