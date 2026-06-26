@@ -561,3 +561,27 @@ Vorschlag herausgeloest:
 `01_Ideen/claude/regel-vorschlag-review-vor-infrastruktur-merge`
 (`status: idea`) — explizit nicht selbst auf `regel`/`accepted` gesetzt,
 da neue Regeln nach Regel 12 Johanns alleinige Entscheidung bleiben.
+
+## Analyse von ChatGPT-Zusammenfassung.pdf via Live-Repo-Browsing (2026-06-26)
+
+Johann legte `Planungsdiskurse/Zusammenfassung.pdf` direkt auf `main`
+ab: ein ChatGPT-Deep-Research-Bericht mit echtem Tool-Zugriff auf das
+oeffentliche GitHub-Repo (nicht vorgefertigte Prosa) — strukturell
+vergleichbar mit Pilotlauf 5 aus
+`02_Plaene/forschungsfrage-001-testprotokoll.md`. Verifikation gegen das
+echte Repo ergab ein gemischtes Bild, dokumentiert in
+`01_Ideen/claude/chatgpt-zusammenfassung-pdf-analyse`: Repo-Struktur
+(`03_Architektur/`, `contracts/`, `AGENTS.md`, `ENTRY.yaml`) korrekt
+wiedergegeben; `genesis-scope` faelschlich als noch offene
+Blindtest-Idee beschrieben (tatsaechlich bereits mit negativem Ergebnis
+abgeschlossen); das Mermaid-Abhaengigkeitsdiagramm zeigt eine uniforme
+Vollvermaschung, die den selektiven `depends_on`-Listen in
+`ECOSYSTEM_MAP.yaml` widerspricht (vermutlich fabriziert); die zentrale
+"Recovery Time"-Metrik ist keine neue Erkenntnis, sondern eine direkte
+Wiedergabe von bereits am 2026-06-24 dokumentiertem eigenem Material
+(STATUS.md zitiert selbst als Quelle im PDF). Fazit: kein Beispiel fuer
+ein "leeres Modell", das eigenstaendig auf das Konzept reagiert, sondern
+dasselbe "Destillat statt Validierung"-Muster wie bei vorherigen
+Multi-KI-Episoden — nur mit Tool-Zugriff statt Chat-Antwort. PDF-Inhalte
+(Diagramm, ADR-Skizze) werden nicht ungeprueft in Architekturdokumente
+uebernommen.
