@@ -31,6 +31,7 @@
           {"repo": "utac-core", "rolle": "UTAC-Basis-Engine (logistische ODE, CREP-Tensor-Kern), T6 — strukturelles Zentrum der gesamten Kette"}
         ]
       },
+      "hinweis_reihenfolge_2026_06_26": "Diese Kette bildet die technische Abhaengigkeitsordnung aus ECOSYSTEM_MAP.yaml ab (echte Code-Imports), nicht die historische Erfindungsreihenfolge. Johann hat klargestellt: die tatsaechliche Entstehungsgeschichte verlief umgekehrt - zuerst sigillin, dann CREP als Metrik dafuer, dann unified-mandala, dann fieldtheory und UTAC. Die beiden Reihen fallen nicht zusammen; fuer Blindtest und Core/Programm/Hilfsprogramm-Klassifikation bleibt die technische Kette massgeblich (Regel 8: keine Bevorzugung nach Entstehungsdatum).",
       "programm_kandidaten": {
         "begruendung": "Bauen direkt auf dem Core auf, sind aber Anwendungs-/Visualisierungsschicht, nicht das mathematische Fundament selbst. Kein erkennbarer LLM-Bedarf, daher potenziell 'programm' statt 'hilfsprogramm' — muss pro Paket im Blindtest geprueft werden.",
         "pakete": ["mandala-visualize", "implosive-origin-utac", "sonification", "climate-dashboard", "mirror-machine", "cosmic-web", "unified-mandala"]

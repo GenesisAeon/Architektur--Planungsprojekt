@@ -25,6 +25,21 @@ alle mathematisch/deterministisch, kein "AI core", kein reines UI:
 `medium-modulation` → `cosmic-moment` → `fieldtheory` → `sigillin` →
 **`utac-core`** (strukturelles Zentrum der Kette).
 
+**Hinweis zur Reihenfolge (2026-06-26):** Diese Kette bildet die
+*technische Abhängigkeitsordnung* aus `ECOSYSTEM_MAP.yaml` ab (echte
+Code-Imports), nicht die *historische Erfindungsreihenfolge*. Johann hat
+klargestellt, dass die tatsächliche Entstehungsgeschichte umgekehrt
+verlief: zuerst `sigillin`, dann `CREP` als Metrik dafür, dann
+`unified-mandala`, dann `fieldtheory` und `UTAC`. Die beiden Reihen
+fallen nicht zusammen — eine Idee kann zuerst entstehen und trotzdem
+technisch erst spät in der Abhängigkeitskette stehen (weil andere Module
+erst nachträglich als Fundament darunter gebaut wurden). Für den
+Blindtest und die Core/Programm/Hilfsprogramm-Klassifikation ist die
+technische Kette weiterhin maßgeblich (Regel 8: keine privilegierte
+Domäne, keine Bevorzugung nach Entstehungsdatum) — der historische
+Hinweis dient nur dem Verständnis, warum die Pakete so benannt/verknüpft
+sind, wie sie es sind.
+
 ### Programm-Kandidaten
 
 Bauen direkt auf dem Core auf, sind Anwendungs-/Visualisierungsschicht,
