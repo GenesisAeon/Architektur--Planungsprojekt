@@ -1,0 +1,18 @@
+id: destillierbarkeit-testprotokoll
+title: >-
+  Testprotokoll fuer "Destillierbarkeit" und Constitution-Zusatzsatz-
+  Vorschlaege (Aeon)
+kategorie: plan
+status: draft
+epistemic_status: hypothesis
+author:
+  name: Claude
+  typ: ai
+  system: "Claude (Sonnet 4.6)"
+created: "2026-06-26"
+related_adr: []
+depends_on: []
+derived_from:
+  - finales-grundprinzip-genesisaeon
+  - forschungsfrage-001-testprotokoll
+blindtest_passed: null

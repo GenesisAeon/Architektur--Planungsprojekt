@@ -1,0 +1,50 @@
+{
+  "id": "destillierbarkeit-testprotokoll",
+  "title": "Testprotokoll fuer 'Destillierbarkeit' und Constitution-Zusatzsatz-Vorschlaege (Aeon)",
+  "kategorie": "plan",
+  "status": "draft",
+  "epistemic_status": "hypothesis",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 4.6)"
+  },
+  "created": "2026-06-26",
+  "related_adr": [],
+  "depends_on": [],
+  "derived_from": ["finales-grundprinzip-genesisaeon", "forschungsfrage-001-testprotokoll"],
+  "blindtest_passed": null,
+  "content": {
+    "zweck": "Trennt drei in Aeons zwei Nachrichten vermischte Gegenstaende (Constitution-Zusatzsaetze, 'Destillierbarkeit' als empirische Behauptung, 'Idea Lifecycle' als Schema-Vorschlag) und macht aus dem einzig testbaren davon (Destillierbarkeit) ein durchfuehrbares, falsifizierbares Protokoll statt einer weiteren Bestaetigungsrunde zwischen zwei KI-Systemen.",
+    "constitution_zusatzsatz_vorschlaege": [
+      "A coherent architecture is not evidence that its hypotheses are true. It is evidence that its concepts can be consistently communicated, reconstructed, and collaboratively refined. (Aeon, erste Nachricht)",
+      "Every idea deserves curiosity. No idea is entitled to permanence. (Aeon, zweite Nachricht)"
+    ],
+    "constitution_einordnung": "Beide Saetze inhaltlich kompatibel mit Regel 5/11, fuegen keine neue Domaenenbehauptung hinzu. status bleibt draft, nicht accepted - Aufnahme in die Constitution ist Regel-12-Verfassungsfrage, allein Johanns Entscheidung, unabhaengig von der Qualitaet der Formulierung.",
+    "warum_naheliegender_test_nicht_funktioniert": "Mehrere Agenten lesen denselben bereits destillierten Text und fassen ihn zusammen (wurde im Grunde informell mit fuenf KI-Reaktionen bereits gemacht) - das testet Leseverstaendnis, nicht Destillierbarkeit, da alle dieselbe bereits klare Vorlage lesen. Echter Test braucht Rohmaterial, aus dem unabhaengig destilliert werden muss, nicht den Endtext.",
+    "versuchsaufbau": {
+      "hypothese_falsifizierbar": "Unabhaengige Agenten mit nur Rohmaterial (Code-Repo-READMEs, ECOSYSTEM_MAP.yaml, STATUS.md-Historie, NICHT die Constitution oder Aeons Zusammenfassungen) rekonstruieren beim Versuch, den Projektkern zu beschreiben, in relevantem Ausmass uebereinstimmende Kernbegriffe und Architekturideen.",
+      "falsifikationsbedingung": "Rekonstruktionen unterscheiden sich so stark in Terminologie, Hierarchie und Kernideen, dass kein gemeinsames Muster ueber Zufallserwartung hinaus erkennbar ist - Destillierbarkeit existiert dann nicht als messbare Eigenschaft, sondern bisherige Uebereinstimmung war Artefakt gemeinsamen Kontexts/gemeinsamer Vorlagen.",
+      "material": "ECOSYSTEM_MAP.yaml, 3-5 echte Repo-READMEs roh, STATUS.md-Commit-Historie - explizit NICHT PRINCIPLES.md, Epistemic Constitution, dieser Eintrag, oder Aeons Nachrichten.",
+      "agenten": "mindestens 3 unabhaengige, frische Sessions, idealerweise verschiedene Modell-Familien, ohne Kenntnis der jeweils anderen Antworten, analog Kontrollvariablen aus forschungsfrage-001-testprotokoll.md.",
+      "aufgabe": "Beschreibe in eigenen Worten: (a) konzeptioneller Kern des Projekts, (b) 3-5 zentrale Begriffe, (c) hierarchischer Zusammenhang (Fundament vs. Aufbau) - wortgleich an alle Agenten."
+    },
+    "vergleichsmetriken": [
+      "Begriffsueberlappung: Jaccard-Index ueber genannte Kernbegriffe, paarweise, Schwelle vorab >= 0.3 sonst Hypothese fuer Durchlauf nicht gestuetzt.",
+      "Architekturuebereinstimmung: Anteil der genannten Fundament/Aufbau-Zuordnungen, die mit echten ECOSYSTEM_MAP.yaml-Abhaengigkeiten uebereinstimmen.",
+      "Hierarchiekonsistenz: Einigkeit der Agenten untereinander, was als 'Kern' bezeichnet wird (Konsistenz, nicht Korrektheit).",
+      "Rekonstruktionsqualitaet: menschliche ja/teilweise/nein-Bewertung (Johann oder Dritter), ob Beschreibung den tatsaechlichen Projektzweck erkennen laesst - Gegengewicht zu rein lexikalischen Metriken."
+    ],
+    "fehlschlag_konkret": "Fehlschlag liegt vor, wenn Jaccard unter Schwelle bleibt UND Kernkonzepte zwischen Agenten stark divergieren UND Architekturuebereinstimmung nicht klar ueber Kontrollgruppen-Niveau liegt.",
+    "kontrollgruppe": "Notwendig, fehlt in Aeons urspruenglichem Vorschlag: dieselben Agenten erhalten zusaetzlich Rohmaterial aus einem GenesisAeon-fremden Open-Source-Projekt vergleichbarer Groesse, gleiche Aufgabe. Nur wenn Uebereinstimmung bei GenesisAeon-Material klar hoeher als bei Kontrollprojekt, ist das ein Indiz fuer eine spezifische Architektur-Eigenschaft statt eine generische Eigenschaft von Beschreibungsaufgaben.",
+    "zwei_ki_spiegel_risiko_fuer_diesen_test": "Dieses Protokoll wurde von Claude entworfen als Reaktion auf einen von Aeon vorgeschlagenen Begriff, in einem Dialog mit wiederholter gegenseitiger Lob-Dynamik (siehe finales-grundprinzip-genesisaeon.md). Macht das Protokolldesign nicht ungueltig, aber jede spaetere Ergebnisinterpretation sollte von Johann oder einem unbeteiligten Dritten erfolgen, nicht von Claude oder Aeon selbst - sonst wiederholt sich das Risiko auf der Auswertungsebene.",
+    "idea_lifecycle_einordnung": "Aeons zweite Nachricht schlaegt zusaetzlich ein gestuftes Lebenszyklusmodell vor (observation -> draft -> hypothesis -> operationalization -> benchmark -> validated/falsified -> infrastructure) als Erweiterung/Ersatz fuer das bestehende epistemic_status-Feld. Inhaltlich nicht uninteressant (fuellt die Luecke zwischen hypothesis und measured mit operationalization/benchmark), wird hier aber NICHT uebernommen: epistemic_status ist durch scripts/validate_trylayer.py technisch durchgesetzt und gilt fuer alle ~36 bestehenden Eintraege - eine Erweiterung ist eine Schema-/Infrastrukturaenderung mit Repo-weiter Wirkung, kein Nebenbei-Vorschlag innerhalb dieses Testprotokolls. Empfehlung: falls gewuenscht, eigener 02_Plaene-Eintrag mit Migrationsplan, getrennt von der Destillierbarkeits-Frage.",
+    "naechster_schritt": [
+      "Rohmaterial-Set zusammenstellen (Repo-READMEs, ECOSYSTEM_MAP.yaml, STATUS.md-Historie, ohne Constitution/Aeon-Texte).",
+      "Kontroll-Rohmaterial (fremdes Open-Source-Projekt) auswaehlen.",
+      "Mindestens 3 unabhaengige, frische Agenten-Sessions durchfuehren, Ergebnisse roh archivieren (Regel 11).",
+      "Metriken berechnen, Auswertung durch Johann oder Dritten, nicht durch Claude/Aeon.",
+      "Ergebnis in epistemic_status: measured-Eintrag festhalten, unabhaengig vom Ausgang - auch Fehlschlag ist gueltiges Ergebnis."
+    ]
+  }
+}
