@@ -498,3 +498,27 @@ entschieden werden darf.
 - [ ] Testprotokoll fuer Forschungsfrage 001 mit zweiter Modell-Familie
       aufsetzen, sobald Modellzugriff ohne GenesisAeon-Vorkontext moeglich
       ist.
+
+## `FinalesGrundpriniziepGenesisAeon.txt` verarbeitet (2026-06-26)
+
+Johann hat `Planungsdiskurse/FinalesGrundpriniziepGenesisAeon.txt`
+(2485 Zeilen, direkt auf `main` committet) eingebracht — ein
+Multi-AI-Dialogdokument, das in einer "Epistemic Constitution (Draft
+v1.0)" kulminiert, begleitet von durchweg zustimmenden Reaktionen
+fuenf verschiedener KI-Systeme (MSCopilot, Grok, Gemini, ChatGPT,
+"Vibe"). Als Trylayer-Eintrag dokumentiert:
+`01_Ideen/claude/finales-grundprinzip-genesisaeon`.
+
+Einordnung: `status: idea`, `epistemic_status: speculative` — die
+Constitution selbst ist eine Verfassungsaenderung und faellt unter
+Regel 12 (volles ADR-Verfahren, ausschliesslich Johanns
+Entscheidung), nicht unter ADR-003-Fallweise-Autoritaet. Die
+Fuenf-KI-Zustimmung wird nicht als Validierung gewertet, sondern als
+weiterer Datenpunkt fuer Forschungsfrage-001 eingeordnet — konsistent
+mit dem bereits etablierten Praezedenzfall "Multi-Modell-Echo als
+Kontrastfolie/Warnsignal" (siehe
+`02_Plaene/pilotlauf-6-klimakipppunkt-eisschild.md` und
+`02_Plaene/forschungsfrage-001-testprotokoll.md`, Pilotlauf 6).
+Enthaltener Dark-Matter-Nebenstrang (implosive-genesis + Frame
+Principle) bleibt unbearbeitet, von Johann explizit auf nach dem
+v1.0.0-Sprint verschoben.

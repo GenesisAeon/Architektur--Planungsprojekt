@@ -1,0 +1,31 @@
+{
+  "id": "finales-grundprinzip-genesisaeon",
+  "title": "FinalesGrundpriniziepGenesisAeon.txt: Semantic Navigation Hypothesis, Epistemic Constitution Draft v1.0 und Multi-AI-Echo als Forschungsfrage-001-Datenpunkt",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "speculative",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 4.6)"
+  },
+  "created": "2026-06-26",
+  "related_adr": [],
+  "depends_on": [],
+  "derived_from": ["forschungsfrage-001-testprotokoll", "pilotlauf-6-klimakipppunkt-eisschild", "blindtest-baseline-fuer-monorepo-readme"],
+  "blindtest_passed": null,
+  "content": {
+    "quelle": "Planungsdiskurse/FinalesGrundpriniziepGenesisAeon.txt (2485 Zeilen, von Johann direkt auf main committet, commit 5bd8b00). Multi-AI-Dialogdokument: Johann entwickelt mit mehreren KI-Systemen (Aeon, MSCopilot, Grok, Gemini, ChatGPT, 'Vibe') ueber laengere Zeit eine Reihe von Hypothesen, die in einem 'GenesisAeon - Epistemic Constitution (Draft v1.0)' kulminieren.",
+    "kernkonzepte": {
+      "semantic_navigation_hypothesis": "These: die Leistungsgrenze langer LLM-Dialoge wird primaer durch Navigationskosten innerhalb des verfuegbaren Wissens bestimmt, nicht durch fehlendes Wissen selbst. Erklaert Context-Rot/Drift/Halluzination als Orientierungsverlust statt Wissensverlust. Nicht empirisch getestet in diesem Dokument, sondern als Diskussionsergebnis formuliert.",
+      "recovery_time": "Vorschlag, 'Recovery Time' (Geschwindigkeit der Rueckkehr zu kohaerentem Verhalten nach Stoerung) als kognitive/LLM-Dialog-Metrik zu nutzen - explizit als Cross-Domain-Analogie aus der projekteigenen Klimakipppunkt-Arbeit (Critical Slowing Down, siehe pilotlauf-6-klimakipppunkt-eisschild) hergeleitet, nicht eigenstaendig validiert.",
+      "adaptive_gradient_principle": "'Every criticism, failure, contradiction, or unexpected observation contains potentially valuable information. The quality of an epistemic system is determined by its ability to adapt that information constructively while preserving collaboration.'",
+      "epistemic_constitution_draft_v1": "Vollstaendig ausformuliertes Dokument mit Abschnitten Purpose, Core Principle ('We do not protect ideas. We improve our ability to learn from reality-together.'), Orientation Principle, Adaptive Gradient Principle, Genesis Principle ('Bring your strongest criticism. We build the space so that it improves our shared understanding.'), Architectural Principle, Long-Term Vision."
+    },
+    "nebenstrang_dark_matter": "Johann verbindet implosive-genesis + Frame Principle mit der Idee, ohne dunkle Materie auszukommen (Anlass: Lesch-Video ueber ~15 Jahre erfolglose Gran-Sasso-DM-Suche). Aeon antwortet ausgewogen: nicht 'DM existiert nicht', sondern 'alternative Modelle koennten eine Teilmenge derselben Beobachtungen erklaeren'; schlaegt eine gereifte Zenodo-Veroeffentlichung nach vier Jahren Forschung vor statt Republikation alter Papiere. Von Johann explizit auf nach dem v1.0.0-Sprint verschoben - keine Aktion in diesem Eintrag.",
+    "multi_ai_echo_befund": "Fuenf verschiedene KI-Systeme (MSCopilot, Grok, Gemini, ChatGPT, 'Vibe') reagieren im Dokument durchgehend enthusiastisch zustimmend auf den Constitution-Entwurf. Dieses Repo hat bereits etablierte Praezedenzfaelle fuer genau dieses Muster: pilotlauf-6-klimakipppunkt-eisschild.md dokumentiert 'Multi-Modell-Echo (Grok/Aeon/MSCopilot)' explizit als Variable, die mit Kontext-Dauer ueberlagert und nicht trennbar ist; forschungsfrage-001-testprotokoll.md dokumentiert Groks unkritische Reaktion explizit als 'Kontrastfolie/Warnsignal', nicht als Bestaetigung. Derselbe Massstab gilt hier: fuenf zustimmende KI-Antworten sind kein unabhaengiger Beleg fuer die Gueltigkeit der Constitution, sondern strukturell erwartbares Verhalten (Modelle tendieren dazu, eine elaborierte, freundlich formulierte, vom Nutzer selbst stark vorbereitete These zu bestaetigen) - relevanter Datenpunkt fuer Forschungsfrage-001 (institutioneller Kontext und Kooperationsbereitschaft), kein Validierungsereignis fuer die Constitution selbst.",
+    "johanns_eigene_selbstkritik": "Im Dokument selbst formuliert Johann bereits die staerkste Einordnung: 'Er hat recht, aber er beantwortet auch Claims die niemand stellen wollte' und 'wir muessen sehr viel demuetiger arbeiten... ohne sie als mehr als als Potential zu begreifen'. Das ist die epistemisch tragfaehigste Aussage im gesamten Dokument und steht im Einklang mit Regel 5 (Unsicherheit benennen) und dem etablierten Multi-Modell-Echo-Praezedenzfall.",
+    "einordnung_status": "epistemic_status: speculative statt validated/measured, weil das Dokument eine philosophische/aspirative Diskussion ist, keine empirische Messung. status: idea, nicht accepted - eine 'Epistemic Constitution' ist per Definition eine Verfassungs-/Grundregel-Aenderung und faellt damit unter Regel 12 (volles ADR-Verfahren, menschen-/Johann-exklusiv), nicht unter die fallweise KI-Autoritaet aus ADR-003. Ich kann und werde diesen Entwurf nicht selbst auf accepted heben.",
+    "bezug_zu_anderen_strängen": "Direkte inhaltliche Naehe zu Forschungsfrage-001 (Kontext/Kooperationsbereitschaft), zur Climate-Recovery-Time-Arbeit (Cross-Domain-Analogie-Quelle), und zum gerade abgeschlossenen implosive-genesis-blindtest (dark-matter-Nebenstrang nutzt dasselbe Paket)."
+  }
+}
