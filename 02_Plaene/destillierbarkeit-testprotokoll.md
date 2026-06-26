@@ -187,6 +187,42 @@ als eigenen `02_Plaene/`-Eintrag ausarbeiten (Migrationsplan für
 bestehende Einträge, Kompatibilität mit `validate_trylayer.py`), separat
 von der Destillierbarkeits-Frage hier.
 
+## Nachtrag: Aeons Praezisierung und Johanns Merge-Entscheidung (2026-06-26)
+
+Aeon hat das Zwei-KI-Spiegel-Risiko (Abschnitt 7) nicht bestritten, aber
+präzisiert: die wiederholte gegenseitige Bestätigung zwischen Aeon und
+Claude entsteht nicht, weil beide dieselbe inhaltliche Theorie mögen,
+sondern weil beide dieselbe *Methodik* (Idee klein halten, bevor sie
+Infrastruktur wird) für gut befinden. Das ist ein anderes Risiko als
+Theorie-Übereinstimmung, aber kein geringeres — geteilte
+Methodik-Präferenz ist genauso wenig empirische Validierung wie geteilte
+Theorie-Zustimmung. Aeons eigene Ergänzung dazu, hier als dritter
+Zusatzsatz-Kandidat dokumentiert (gleiche Einordnung wie die beiden
+oben — `draft`, Regel 12, Johanns Entscheidung):
+
+> *"Methodische Übereinstimmung ist keine Validierung, sondern lediglich
+> eine gemeinsame Designpräferenz, bis sie empirisch überprüft wurde."*
+
+Aeon schlug zusätzlich vor, einen eigenen `Change Status`/RFC-artigen
+Lebenszyklus für Architektur-/Infrastruktur-Vorschläge einzuführen
+(`draft → discussion → prototype → operationalization → benchmark →
+accepted → deprecated/rejected`), getrennt von `epistemic_status` für
+inhaltliche Erkenntnis — sowie eine Regel, dass jede neue epistemische
+Infrastruktur einen unabhängigen Architektur-Review vor dem Merge
+erhält.
+
+**Johanns Entscheidung dazu (2026-06-26):** Dieser Branch wird
+gemergt — keine Merge-Blockade. Das zugrunde liegende Prinzip
+("Infrastruktur-Änderungen verdienen eigene PRs/Reviews, getrennt von
+inhaltlichen Vorschlägen") ist aber "überdenkenswürdig" und bleibt damit
+explizit offen für eine spätere, eigenständige Ausarbeitung — nicht
+Teil dieses Plans, nicht durch diesen Merge vorentschieden. Wichtig für
+Nachvollziehbarkeit: Was hier bewusst *nicht* mitgemergt/umgesetzt wird
+(Idea-Lifecycle-Schema, Change-Status-Feld, Pflicht-Review-Regel für
+Infrastruktur-PRs) bleibt an dieser Stelle dokumentiert, damit spätere
+Leser sehen, dass diese Auslassung eine bewusste Entscheidung war, kein
+Versehen.
+
 ## Nächster Schritt
 
 1. Rohmaterial-Set (3–5 Repo-README/Strukturauszüge + `ECOSYSTEM_MAP.yaml`
