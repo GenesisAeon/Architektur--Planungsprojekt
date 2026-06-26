@@ -1,6 +1,6 @@
-# Genesis-Blindtest für `entropy-table` (Core-Kandidat): technisch defekt, nicht nur semantisch unklar
+# Genesis-Blindtest für `entropy-table` (Core-Kandidat): v2.0.0 defekt, v2.0.1 behoben (TRUE)
 
-**Status:** idea · **Epistemic Status:** measured · **Autor:** Claude
+**Status:** idea · **Epistemic Status:** measured · **Autor:** Claude · **Aktualisiert:** 2026-06-25
 
 ## Warum dieses Paket
 
@@ -134,3 +134,52 @@ bleibt als eigenständiger, unabhängig vom CI-Stand bestehender Befund.
   um eine vollständigere Bewertung zu liefern — verworfen: widerspricht
   Regel 5 (ehrlicher `epistemic_status`); der Subagent hat zurecht
   keine erfundenen Ergebnisse gemeldet.
+
+## Re-Test 2026-06-25 mit v2.0.1: alle 6 Bugs behoben (TRUE)
+
+Johann hat den Fix umgesetzt (`typer` als Runtime-Dependency, Atlas-Daten
+als Paketdaten gebündelt, hartkodierte Pfade auf cwd-relative Auflösung
+umgestellt, `compute`-Subcommands im CLI registriert, `--format`-Parser
+reparert, Version auf 2.0.1 angehoben) und auf PyPI veröffentlicht. Ein
+erster Re-Test-Versuch noch am selben Tag fand 2.0.1 noch nicht live
+(PyPI löste weiterhin auf v2.0.0 auf, alle 6 Bugs weiterhin
+reproduzierbar). Nach Bestätigung des erfolgreichen Uploads ein zweiter,
+wiederum frischer kontextfreier Subagent angesetzt — mit folgendem
+Ergebnis:
+
+- **Install**: `pip install entropy-table` installiert jetzt
+  tatsächlich **v2.0.1** (`pip show` + `pip index versions` bestätigen
+  2.0.1 als neueste Version auf PyPI).
+- **fehlende Dependency**: FIXED — `typer` wird automatisch
+  mitinstalliert, `entropy-table --help` läuft ohne
+  `ModuleNotFoundError`.
+- **keine Daten im Paket**: FIXED — 31 echte YAML/JSON-Dateien unter
+  `site-packages/entropy_table/atlas/` (10 Domains, 9 Relations, 4
+  Claims, Schemas, Bibliographie).
+- **`validate-all` Crash**: FIXED — läuft von beliebigem cwd
+  fehlerfrei durch (10 Domains/9 Relations/4 Claims validiert, 0
+  Fehler/14 Warnungen).
+- **`health` falscher Schreibort**: FIXED — schreibt
+  `outputs/atlas_health.md` jetzt relativ zum cwd, mit echten Zahlen
+  (Total Domains: 10, Total Relations: 9, Total Claims: 4) statt
+  vakuoser Nullen.
+- **CLI-Hilfetext lügt**: FIXED — `--format markdown`/`--format json`
+  funktionieren beide wie dokumentiert.
+- **`compute`-Subcommands**: FIXED (zusätzlich geprüfter Punkt) —
+  `ctmc-ep`/`diffusion-ep-1d` sind im CLI registriert und liefern echte,
+  physikalisch plausible Entropieproduktionswerte.
+- **Versionsstring**: FIXED — README und installierte Version stimmen
+  jetzt überein (v2.0.1).
+- **Neuer, nicht blockierender Nebenbefund**: `diffusion-ep-1d` wirft
+  eine unklare `TypeError` statt einer sauberen Validierungsfehlermeldung,
+  wenn `J` als Skalar statt Array übergeben wird — kein ursprünglich
+  gemeldeter Bug, aber ein kleiner Rough-Edge-Befund für eine künftige
+  Iteration.
+
+**Bewertung**: Alle 6 ursprünglich gefundenen Bugs sind in v2.0.1
+tatsächlich behoben, verifiziert durch echte Kommandoausführung in
+einer frischen, kontextfreien venv. Der dokumentierte
+pip-install-Quickstart liefert jetzt innerhalb von 5 Minuten ein
+echtes, interpretierbares wissenschaftliches Ergebnis. Genesis-Blindtest
+(Regel 6) damit für `entropy-table` **TRUE** — der erste Core-Kandidat,
+der den Blindtest tatsächlich besteht.

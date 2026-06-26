@@ -25,6 +25,21 @@ alle mathematisch/deterministisch, kein "AI core", kein reines UI:
 `medium-modulation` → `cosmic-moment` → `fieldtheory` → `sigillin` →
 **`utac-core`** (strukturelles Zentrum der Kette).
 
+**Hinweis zur Reihenfolge (2026-06-26):** Diese Kette bildet die
+*technische Abhängigkeitsordnung* aus `ECOSYSTEM_MAP.yaml` ab (echte
+Code-Imports), nicht die *historische Erfindungsreihenfolge*. Johann hat
+klargestellt, dass die tatsächliche Entstehungsgeschichte umgekehrt
+verlief: zuerst `sigillin`, dann `CREP` als Metrik dafür, dann
+`unified-mandala`, dann `fieldtheory` und `UTAC`. Die beiden Reihen
+fallen nicht zusammen — eine Idee kann zuerst entstehen und trotzdem
+technisch erst spät in der Abhängigkeitskette stehen (weil andere Module
+erst nachträglich als Fundament darunter gebaut wurden). Für den
+Blindtest und die Core/Programm/Hilfsprogramm-Klassifikation ist die
+technische Kette weiterhin maßgeblich (Regel 8: keine privilegierte
+Domäne, keine Bevorzugung nach Entstehungsdatum) — der historische
+Hinweis dient nur dem Verständnis, warum die Pakete so benannt/verknüpft
+sind, wie sie es sind.
+
 ### Programm-Kandidaten
 
 Bauen direkt auf dem Core auf, sind Anwendungs-/Visualisierungsschicht,
@@ -101,6 +116,34 @@ erst einzeln pro Paket nach Blindtest + ADR (Regel 3, Regel 6).
    ungetestet. Falls sich dieser Befund bestätigt, ist die vorgeschlagene
    Core-Kette bereits am ersten Glied blockiert — unabhängig von der
    architektonischen Frage, was in den Core gehört.
+7. **Re-Test nach Fix: erster Core-Kandidat besteht den Blindtest
+   (2026-06-25):** Johann hat alle sechs Bugs aus Schritt 6 behoben und
+   als v2.0.1 auf PyPI veröffentlicht. Ein erneuter, frischer Subagent
+   hat verifiziert: alle sechs Bugs FIXED, `pip install entropy-table`
+   liefert jetzt ein funktionierendes CLI mit echten Atlas-Daten und
+   echten Entropieproduktions-Berechnungen — siehe
+   `01_Ideen/claude/entropy-table-blindtest`, `blindtest_passed: true`.
+   `entropy-table` ist damit der erste Baustein der vorgeschlagenen
+   Core-Kette, der den verschärften Maßstab für Core-Kandidaten
+   tatsächlich erfüllt. Die übrigen Kettenglieder
+   (`implosive-genesis` → ... → `utac-core`) sind weiterhin einzeln zu
+   testen.
+8. **Zweites Kettenglied (`implosive-genesis`) getestet, TRUE mit zwei
+   kleinen Doku-Bugs (2026-06-25):** siehe
+   `01_Ideen/claude/implosive-genesis-blindtest`, `blindtest_passed:
+   true`. `pip install implosive-genesis` (v1.0.0, README behauptet
+   "v0.4.0 current" — dieselbe Versionsdiskrepanz wie bei
+   `entropy-table`) liefert sofort funktionierendes CLI (6 von 8
+   dokumentierten Befehlen) und eine vollständig funktionierende
+   Python-API mit echtem wissenschaftlichem Output (V_RIG-Berechnung,
+   OIPK-Kernel, Tesseract-Rendering, Chronology-Validator). Zwei
+   konkrete, leicht behebbare Bugs: `ig full-summary` ist dokumentiert,
+   existiert aber nicht im CLI (nur via Python-API); `ig cmb-test
+   --n_sim` crasht wegen Unterstrich statt Bindestrich. Qualitativ
+   deutlich besser als der erste `entropy-table`-Befund — kein
+   struktureller Defekt, sondern reine
+   Dokumentations-/CLI-Konsistenzfehler, zur Weitergabe an Johann
+   vorgesehen.
 
 ## Alternativen betrachtet
 

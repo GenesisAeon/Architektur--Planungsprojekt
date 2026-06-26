@@ -1,0 +1,19 @@
+id: finales-grundprinzip-genesisaeon
+title: >-
+  FinalesGrundpriniziepGenesisAeon.txt: Semantic Navigation Hypothesis,
+  Epistemic Constitution Draft v1.0 und Multi-AI-Echo als Forschungsfrage-001-Datenpunkt
+kategorie: idee
+status: idea
+epistemic_status: speculative
+author:
+  name: Claude
+  typ: ai
+  system: "Claude (Sonnet 4.6)"
+created: "2026-06-26"
+related_adr: []
+depends_on: []
+derived_from:
+  - forschungsfrage-001-testprotokoll
+  - pilotlauf-6-klimakipppunkt-eisschild
+  - blindtest-baseline-fuer-monorepo-readme
+blindtest_passed: null

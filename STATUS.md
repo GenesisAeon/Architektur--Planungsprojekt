@@ -404,6 +404,57 @@ ueber das fertige Paket — Re-Test nach Abschluss der CI-Bereinigung
 vorgesehen (siehe `01_Ideen/claude/entropy-table-blindtest`, Abschnitt
 "Einordnung durch Johann").
 
+## Re-Test entropy-table v2.0.1: erster Core-Kandidat besteht den Blindtest (2026-06-25)
+
+Johann hat alle sechs gefundenen Bugs behoben (`typer` als
+Runtime-Dependency, Atlas-Daten als Paketdaten gebuendelt, hartkodierte
+Pfade auf cwd-relative Aufloesung umgestellt, `compute`-Subcommands im
+CLI registriert, `--format`-Parser reparert, Version auf 2.0.1
+angehoben) und auf PyPI veroeffentlicht. Ein erster Re-Test-Versuch noch
+am selben Tag fand 2.0.1 noch nicht live (PyPI loeste weiterhin auf
+v2.0.0 auf). Nach Bestaetigung des erfolgreichen Uploads hat ein zweiter,
+wiederum frischer kontextfreier Subagent real getestet — `pip install
+entropy-table` installiert jetzt tatsaechlich v2.0.1, und alle sechs
+Bugs sind verifiziert FIXED: CLI startet ohne fehlende Dependency, 31
+echte Atlas-Datendateien (10 Domains/9 Relations/4 Claims) sind im
+Paket, `validate-all` und `health --ci-check` laufen fehlerfrei mit
+echten Inhalten statt Nullresultaten, `--format` funktioniert wie
+dokumentiert, `compute ctmc-ep`/`diffusion-ep-1d` liefern echte,
+physikalisch plausible Entropieproduktionswerte. Siehe
+`01_Ideen/claude/entropy-table-blindtest`, Abschnitt "Re-Test
+2026-06-25 mit v2.0.1" — `blindtest_passed` jetzt **true**. Damit
+besteht der erste Core-Kandidat der vorgeschlagenen Kette den
+Genesis-Blindtest tatsaechlich, wie es `02_Plaene/genesis-core-scope.md`
+fuer Core-Kandidaten verlangt (im Gegensatz zu den Satelliten-Paketen
+genesis-scope/genesis-os). Kleiner, nicht blockierender Nebenbefund:
+`diffusion-ep-1d` wirft eine unklare `TypeError` bei skalarem statt
+arrayfoermigem `J`-Argument.
+
+## Zweites Kettenglied (implosive-genesis) getestet: TRUE mit zwei kleinen Doku-Bugs (2026-06-25)
+
+Johann hat das vollstaendige README zu `implosive-genesis` (zweites
+Glied der Core-Kette nach `entropy-table`) eingebracht, ein frischer
+Subagent hat es real getestet (siehe
+`01_Ideen/claude/implosive-genesis-blindtest`, `blindtest_passed:
+true`). `pip install implosive-genesis` installiert v1.0.0 (README
+behauptet "v0.4.0 current" - dieselbe Versionsdiskrepanz wie bei
+entropy-table, aber Installation laeuft sauber). 6 von 8 dokumentierten
+CLI-Befehlen (`oipk-calc`, `chronology-validate`, `fractal-render`,
+`entropy-price-sympy`, `list-templates`, `anesthesia-test`) und die
+komplette Python-API (`compute_vrig`, `FramePrinciple`,
+`ImplosiveGenesisModel.full_summary`) liefern sofort echten,
+interpretierbaren wissenschaftlichen Output. Zwei konkrete, leicht
+behebbare Bugs gefunden: `ig full-summary` ist im README als CLI-Befehl
+dokumentiert, existiert aber nicht im CLI (nur via Python-API) - kritisch,
+weil es der erste in der README-Liste genannte Befehl ist und ein
+Nutzer, der der Reihe nach vorgeht, sofort crasht; `ig cmb-test
+--n_sim` crasht wegen Unterstrich statt Bindestrich (`--n-sim`).
+Qualitativ deutlich besser als der erste entropy-table-Befund
+(v2.0.0) - kein struktureller Defekt, sondern reine
+Dokumentations-/CLI-Konsistenzfehler. Zwei Findings zur Weitergabe an
+Johann: `full-summary`-CLI-Wrapper ergaenzen, `--n_sim`/`--n-sim`
+vereinheitlichen.
+
 ## Folgefrage: Blindtest-Definition fuer KI-native Leerpakete (2026-06-24)
 
 Aus dem `genesis-scope`-Befund abgeleitet, als eigene Idee dokumentiert:
@@ -447,3 +498,27 @@ entschieden werden darf.
 - [ ] Testprotokoll fuer Forschungsfrage 001 mit zweiter Modell-Familie
       aufsetzen, sobald Modellzugriff ohne GenesisAeon-Vorkontext moeglich
       ist.
+
+## `FinalesGrundpriniziepGenesisAeon.txt` verarbeitet (2026-06-26)
+
+Johann hat `Planungsdiskurse/FinalesGrundpriniziepGenesisAeon.txt`
+(2485 Zeilen, direkt auf `main` committet) eingebracht — ein
+Multi-AI-Dialogdokument, das in einer "Epistemic Constitution (Draft
+v1.0)" kulminiert, begleitet von durchweg zustimmenden Reaktionen
+fuenf verschiedener KI-Systeme (MSCopilot, Grok, Gemini, ChatGPT,
+"Vibe"). Als Trylayer-Eintrag dokumentiert:
+`01_Ideen/claude/finales-grundprinzip-genesisaeon`.
+
+Einordnung: `status: idea`, `epistemic_status: speculative` — die
+Constitution selbst ist eine Verfassungsaenderung und faellt unter
+Regel 12 (volles ADR-Verfahren, ausschliesslich Johanns
+Entscheidung), nicht unter ADR-003-Fallweise-Autoritaet. Die
+Fuenf-KI-Zustimmung wird nicht als Validierung gewertet, sondern als
+weiterer Datenpunkt fuer Forschungsfrage-001 eingeordnet — konsistent
+mit dem bereits etablierten Praezedenzfall "Multi-Modell-Echo als
+Kontrastfolie/Warnsignal" (siehe
+`02_Plaene/pilotlauf-6-klimakipppunkt-eisschild.md` und
+`02_Plaene/forschungsfrage-001-testprotokoll.md`, Pilotlauf 6).
+Enthaltener Dark-Matter-Nebenstrang (implosive-genesis + Frame
+Principle) bleibt unbearbeitet, von Johann explizit auf nach dem
+v1.0.0-Sprint verschoben.
