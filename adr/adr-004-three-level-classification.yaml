@@ -1,0 +1,14 @@
+id: adr-004-three-level-classification
+title: "Three-Level Package Classification (Core / Scientific / Experimental)"
+kategorie: adr
+status: accepted
+epistemic_status: derived
+adr_number: ADR-004
+author:
+  name: Johann
+  typ: human
+created: 2026-07-18
+related_adr: [ADR-002, ADR-003]
+depends_on: []
+derived_from: []
+blindtest_passed: null

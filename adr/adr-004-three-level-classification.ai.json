@@ -1,0 +1,58 @@
+{
+  "id": "adr-004-three-level-classification",
+  "title": "Three-Level Package Classification (Core / Scientific / Experimental)",
+  "kategorie": "adr",
+  "status": "accepted",
+  "epistemic_status": "derived",
+  "adr_number": "ADR-004",
+  "author": {
+    "name": "Johann",
+    "typ": "human"
+  },
+  "created": "2026-07-18",
+  "related_adr": ["ADR-002", "ADR-003"],
+  "depends_on": [],
+  "derived_from": [],
+  "blindtest_passed": null,
+  "content": {
+    "kontext": "Das GenesisAeon-Oekosystem umfasst inzwischen 52 Pakete, die von physikalischer Simulation (amoc-utac, quantum-genesis) ueber Infrastruktur (diamond-setup, genesis-os) bis zu explorativer Forschung (genesis-mssc, ai-emergence-utac) reichen. Ohne explizite Klassifikation wird jedes Paket implizit als gleich stabil behandelt - das ist falsch und irrefuehrend fuer externe Nutzer. Das Audit vom 2026-06-29 bestaetigt das: 35% der Diamond-Interface-Pakete sind vollstaendig schema-konform, 65% haben eine partielle oder keine Implementierung. Der Vendoring-Sweep (2026-07-17) fand zusaetzliche strukturelle Altlasten in ~15 Paketen. Eine klare, maschinell verifizierbare Klassifikation ist noetig.",
+    "entscheidung": "Drei Tiers, bestimmt durch zwei messbare Kriterien: Ρ (System-Resilienz, gemessen durch get_resilience_state()['rho'] aus resilience-core P40) und Γ-Konvergenz (gemessen durch get_crep_state()['Gamma'] ist nicht None nach run_cycle()). Core: Ρ >= 0.60, Γ konvergiert - production-stable, externe Nutzer koennen sich darauf verlassen. Scientific: 0.30 <= Ρ < 0.60, Γ konvergiert - research-grade, API kann sich weiterentwickeln, mit DOI zitieren. Experimental: Ρ < 0.30 ODER Γ nicht konvergiert ODER CREPGate blocked - aktive Forschung, Breaking Changes erwartbar. Die Tier-Zuordnung ist automatisch, abgeleitet aus der eigenen Diamond-Interface-Ausgabe des Pakets, nicht vom Maintainer deklariert. Ein CI-Job berechnet die Tier-Zugehoerigkeit bei jedem Release neu.",
+    "tier_definitionen": {
+      "core": {"rho": ">= 0.60", "gamma": "konvergiert", "bedeutung": "Production-stable. Externe Nutzer koennen sich darauf verlassen."},
+      "scientific": {"rho": "0.30-0.60", "gamma": "konvergiert", "bedeutung": "Research-grade. API kann sich weiterentwickeln. Mit DOI zitieren."},
+      "experimental": {"rho": "< 0.30 ODER", "gamma": "nicht konvergiert ODER", "crepgate": "blocked", "bedeutung": "Aktive Forschung. Breaking Changes erwartbar."}
+    },
+    "package_assignments_initial_2026_07_18": {
+      "hinweis": "Basierend auf r=1.0 Default in resilience-core. r wird pro Domaene kalibriert, sobald empirische Daten vorliegen (siehe amoc_calibration.py in P40).",
+      "core": ["diamond-setup", "genesis-os", "entropy-table", "utac-core", "fieldtheory", "sigillin", "implosive-genesis"],
+      "core_hinweis": "Mehrere Core-Kandidaten exponieren get_resilience_state() noch nicht (sie stammen aus der Zeit vor P40). Vorlaeufig nach struktureller Rolle als Core klassifiziert, bis resilience-core integriert ist.",
+      "scientific": ["amoc-utac (Rho~0.18 r=1.0 / ~0.65 r=3.54, Gamma=0.251)", "neural-avalanche-utac (Rho~0.18, Gamma=0.241)", "seismic-utac (Rho~0.15, Gamma=0.197)", "quantum-genesis (Rho~0.01, Gamma=0.035)", "sandpile-utac (Rho~0.22, Gamma=0.297)", "resilience-core", "scope-resilience"],
+      "scientific_hinweis": "Rho-Werte bei r=1.0 sind systematisch niedrig. Kalibrierte r-Werte (r_amoc ~ 3.54) werden diese in den bestaetigten Scientific-Bereich verschieben.",
+      "experimental": ["genesis-mssc (v0.1.0, gate=blocked)", "genesis-tip (v0.1.1, gate=blocked)", "ai-emergence-utac (v0.1.0, gate=blocked)", "hikari-ledger (Gamma~0.893, von Atlas abweichend)", "diffusive-routing (Gamma~0.002, von Atlas abweichend)", "phaethon-chimera (Gamma~0.296, abweichend, erwartet 0.165)"]
+    },
+    "ci_implementierung": "Ergaenzung in .github/workflows/diamond-validation.yml in jedem Paket: ein Python-Snippet, das die Diamond-Hauptklasse des Pakets instanziiert, run_cycle() aufruft, Gamma aus get_crep_state() und optional Rho aus get_resilience_state() liest, daraus den Tier ableitet (Core/Scientific/Experimental/unclassified) und das Ergebnis in GITHUB_STEP_SUMMARY schreibt. Siehe adr-004-three-level-classification.md fuer das vollstaendige YAML-Snippet.",
+    "begruendung": [
+      "Externe Nutzer sehen sofort, ob ein Paket production-stable ist.",
+      "Der Tier wird aus dem eigenen Code des Pakets abgeleitet - keine manuelle Deklaration, keine Selbstauskunft des Maintainers.",
+      "Schafft einen klaren Anreiz: Rho und Gamma verbessern, um den Tier hochzustufen.",
+      "Verbindet sich direkt mit dem CREP Atlas und der resilience-core-Arbeit (P40), statt eine eigene, unabhaengige Metrik zu erfinden."
+    ],
+    "alternativen_betrachtet": [
+      "Manuelle Deklaration - verworfen. Ein Maintainer, der das eigene Paket selbst 'Core' nennt, ist nicht verifizierbar und schafft falsche Anreize.",
+      "Testabdeckung als Kriterium - verworfen. Coverage misst Testvollstaendigkeit, nicht wissenschaftliche Validitaet. Ein Paket mit 100% Coverage kann trotzdem falsche Gamma-Werte haben.",
+      "Ein einziger Tier (keine Klassifikation) - verworfen. 52 Pakete ohne Qualitaetssignal sind schlechter als eine unvollkommene Klassifikation - das verschiebt die Bewertung komplett auf die Nutzerin."
+    ],
+    "konsequenzen": [
+      "Positiv: sofortige Sichtbarkeit fuer externe Nutzer; Tier aus dem Code selbst abgeleitet statt deklariert; klare Verbesserungsanreize; direkte Anbindung an CREP Atlas/resilience-core.",
+      "Negativ/Risiken: r=1.0-Default liefert systematisch niedrige Rho-Werte - viele eigentlich Scientific-reife Pakete erscheinen bis zur Domaenen-Kalibrierung als Experimental (siehe P40).",
+      "Pakete von vor P40 haben get_resilience_state() noch nicht - Integrationsarbeit noetig, bevor der Tier fuer sie maschinell verifizierbar ist.",
+      "Die aktuelle 'Core'-Einstufung basiert auf struktureller Rolle, nicht auf gemessenem Rho - Follow-up noetig, sobald P40 ueberall integriert ist."
+    ],
+    "follow_up_tasks": [
+      "resilience-core in alle aktuell strukturell als Core klassifizierten Pakete integrieren.",
+      "r pro Domaene kalibrieren (P18 amoc-utac-Daten -> r_amoc; danach weitere).",
+      "CI-Tier-Classification-Step in allen 52 Paketen ergaenzen.",
+      "Gamma-Divergenzen fixen (hikari-ledger 0.893, diffusive-routing 0.002) bevor diese Pakete neu eingestuft werden koennen."
+    ]
+  }
+}
