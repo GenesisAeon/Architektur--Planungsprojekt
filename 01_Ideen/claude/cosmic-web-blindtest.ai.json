@@ -1,0 +1,38 @@
+{
+  "id": "cosmic-web-blindtest",
+  "title": "Genesis-Blindtest fuer cosmic-web: FALSE - Emergence ist Rauschen, aber ein undokumentierter Simulator steckt im Paket",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "measured",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 5)"
+  },
+  "created": "2026-07-29",
+  "related_adr": ["ADR-001"],
+  "depends_on": [],
+  "derived_from": ["sonification-blindtest", "windows-unicode-crash-pattern"],
+  "blindtest_passed": false,
+  "content": {
+    "problem": "cosmic-web (P-COSMICWEB) ist ein Programm-Kandidat. Muss laut Regel 6 den Genesis-Blindtest bestehen.",
+    "vorschlag_und_durchfuehrung": "Ein frischer, kontextfreier Subagent bekam ausschliesslich das vollstaendige README als Eingabe, installierte real, fuehrte alle drei CLI-Befehle bei mehreren Parameterwerten aus, verifizierte Seed-Determinismus per Doppellauf, und pruefte das Dashboard per echtem HTTP-Request.",
+    "ergebnis": {
+      "install": "cosmic-web 1.0.1. __version__ stimmt ueberein - kein Versions-Bug (drittes positives Gegenbeispiel).",
+      "bug_1_unicode_crash": "Unicode-Crash im allerersten Quickstart-Befehl. cweb render --nodes 50 --edges 100 crasht sofort unter Windows-Standardkonsole (Ungefaehr-Zeichen, cp1252).",
+      "positiv_echte_metriken": "'Degree' und 'Centrality' sind echte, wohldefinierte Graphenkennzahlen - echter NetworkX-Knotengrad bzw. echte betweenness_centrality - und veraendern sich korrekt mit Graphgroesse/-struktur.",
+      "bug_2_emergence_ist_rauschen": "'Emergence' - das namensgebende Konzept des gesamten Pakets - ist reines, strukturunabhaengiges Zufallsrauschen. Direkt im Code verifiziert: emergence = rng.uniform(0.1, 1.0) pro Knotenindex, aus einer eigenen RNG-Sequenz, die Grad, Zentralitaet, Kanten oder sonstige Graphstruktur nie beruehrt. Beweis: bei seed=42 sind die Emergence-Werte fuer verschiedene Graphgroessen bytegleich.",
+      "positiv_determinismus_echt": "Seed-Determinismus ist echt und korrekt - zwei unabhaengige Laeufe mit seed=42 liefern bytegleiche Graphen und Metriken.",
+      "positiv_diffusion_echt": "simulate_emergence()'s Diffusion ist echte, sinnvolle Mathematik (mittelwerterhaltende Nachbar-Mittelung) - propagiert aber eine willkuerliche Anfangsbedingung.",
+      "positiv_dashboard_echt": "Dashboard funktioniert echt - per curl verifiziert, liefert echten Plotly-Scatterplot mit denselben Daten wie die CLI.",
+      "positiv_versteckter_simulator": "Groesster Ueberraschungsfund: ein komplett undokumentierter, hochentwickelter N-Body-Kosmologie-Simulator steckt im Paket. CosmicWebSimulator implementiert Zel'dovich-Anfangsbedingungen, CIC-Massenzuweisung, FFT-Poisson-Loeser, Leapfrog-Integration, Planck-2018-Parameter und Powerspektrum-Schaetzung - lief fehlerfrei. Nichts davon steht im README.",
+      "nebenbefund_rng_kommentar_falsch": "Ein Kommentar in universums_sim.py behauptet, die RNG werde extern via np.random.seed() gesaet - sachlich falsch, NumPys default_rng()-Generator wird davon nie beeinflusst.",
+      "verdikt": "FALSE. Trotz echter Graphenbibliothek, echtem Determinismus, echtem Dashboard und einem versteckten, funktionierenden Simulator: das titelgebende Konzept ('Emergence') ist beim 5-Minuten-Test nicht von echtem Rauschen zu unterscheiden."
+    },
+    "erwartetes_ergebnis": "Dreizehnter FALSE-Befund insgesamt (achter unter den Programm-Kandidaten), aber der bislang am staerksten gemischte: mehr echte Substanz als in jedem vorherigen Programm-Kandidaten-Befund, plus ein genuiner positiver Ueberraschungsfund, aber das Kernversprechen des Pakets haelt nicht.",
+    "naechster_schritt": "Fuenf Findings zur Weitergabe an Johann: (1) 'Emergence' entweder aus echten Graphstruktur-Eigenschaften berechnen oder als 'Anfangsbedingung (zufaellig)' kennzeichnen; (2) Unicode-Zeichen aus CLI-Ausgaben entfernen; (3) den RNG-Seeding-Kommentar korrigieren; (4) den versteckten CosmicWebSimulator ins README aufnehmen - echte, funktionierende Arbeit, die aktuell niemand findet; (5) Stack-Integration-Tabelle vervollstaendigen.",
+    "alternativen_betrachtet": [
+      "Das Paket wegen der echten Graphenbibliothek und des versteckten Simulators als Grenzfall/TRUE werten. Verworfen: Regel 6 fragt nach dem, was der dokumentierte Quickstart tatsaechlich liefert - und der zentrale, beworbene Begriff des Pakets haelt einer Gegenprobe nicht stand."
+    ]
+  }
+}

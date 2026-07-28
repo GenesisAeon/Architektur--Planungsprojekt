@@ -1,0 +1,16 @@
+id: mandala-visualizer-blindtest
+title: "Genesis-Blindtest fuer mandala-visualizer: FALSE - Crash nach erfolgreichem Speichern taeuscht Totalausfall vor"
+kategorie: idee
+status: idea
+epistemic_status: measured
+author:
+  name: Claude
+  typ: ai
+  system: Claude (Sonnet 5)
+created: 2026-07-29
+related_adr: [ADR-001]
+depends_on: []
+derived_from:
+  - climate-dashboard-blindtest
+  - windows-unicode-crash-pattern
+blindtest_passed: false

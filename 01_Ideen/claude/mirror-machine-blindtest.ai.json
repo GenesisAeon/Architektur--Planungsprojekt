@@ -1,0 +1,36 @@
+{
+  "id": "mirror-machine-blindtest",
+  "title": "Genesis-Blindtest fuer mirror-machine: FALSE - Reflexion ist ein reines Echo, Phase Transition ist echt",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "measured",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 5)"
+  },
+  "created": "2026-07-29",
+  "related_adr": ["ADR-001"],
+  "depends_on": [],
+  "derived_from": ["windows-unicode-crash-pattern", "version-string-drift-audit"],
+  "blindtest_passed": false,
+  "content": {
+    "problem": "mirror-machine (P-MIRROR) ist ein Programm-Kandidat (Anwendungsschicht auf dem Core). Muss laut Regel 6 den Genesis-Blindtest bestehen.",
+    "vorschlag_und_durchfuehrung": "Ein frischer, kontextfreier Subagent bekam ausschliesslich das vollstaendige README als Eingabe (inkl. Hinweis, die fehlende Beispiel-Sigil-Datei selbst nachzubauen), installierte real und fuehrte jeden dokumentierten Befehl/API-Aufruf aus - inklusive gezielter Gegenproben, ob beta/steps echten Einfluss haben.",
+    "ergebnis": {
+      "install": "mirror-machine 1.0.0. __version__ in __init__.py wieder auf '0.1.0' - erneut derselbe Scaffold-Rest-Bug.",
+      "bug_1_reflect_ist_echo": "reflect() ist ein reines Echo, keine Berechnung. Verifiziert: mm.state['reflection'] ist programmatisch exakt gleich einer flachen Kopie der Eingabe-YAML - die Funktion tut nichts ausser dict(data). Der Docstring behauptet, dies 'verkoerpere das Mirror Principle' und verarbeite ein 'trilayer YAML' - beides nirgends im Code wiederzufinden.",
+      "positiv_phase_transition_ist_echt": "phase_transition() ist dagegen echte, parametersensitive Mathematik. Gegenprobe mit 8 verschiedenen beta/steps-Kombinationen zeigt reale, unterschiedliche Kurven. Formel: sigmoid(beta*(t-5)) * (1 + 0.618*sin(2*pi*t)) ueber t=linspace(0,10,steps) - kein hartkodierter Blindgaenger wie bei mehreren Geschwisterpaketen.",
+      "bug_2_entkoppelt": "phase_transition() ignoriert die Sigil-Daten komplett. Das README suggeriert Zusammenhang zwischen Reflexion und Phasenuebergang - tatsaechlich ist phase_transition() eine von mm.state komplett unabhaengige Methode ohne Sigil-Argument.",
+      "bug_3_unbegrenzt": "'Peak emergence' ist nicht auf [0,1] begrenzt (1.613 bei beta=5.0), trotz Namensgebung, die eine begrenzte Kennzahl suggeriert.",
+      "bug_4_rohe_tracebacks": "Rohe, unbehandelte Python-Tracebacks bei Fehleingaben - fehlende Datei oder nicht-Dict-YAML werfen ungefangene FileNotFoundError/ValueError mit vollstaendigem internen Stacktrace.",
+      "bug_5_stille_korruption": "Neue Variante des Unicode-Musters: stille Textkorruption statt Crash. mirror --help enthaelt einen Gedankenstrich, der unter erzwungener cp1252-Konsole nicht crasht, sondern still durch ein Ersatzzeichen ersetzt wird - rich's Legacy-Windows-Fallback schluckt den Kodierungsfehler. Anders als bei den bisherigen Crash-Faellen - hier stille Verstuemmelung, potenziell tueckischer.",
+      "verdikt": "FALSE, aber differenzierter als bisherige Befunde: phase_transition() ist tatsaechlich interpretierbar-nah dran (reproduzierbare, parametersensitive Kurve), scheitert aber an fehlender Referenzskala und Entkopplung von der beworbenen Sigil-Verbindung. reflect() scheitert fundamentaler - es berechnet schlicht nichts."
+    },
+    "erwartetes_ergebnis": "Neunter FALSE-Befund insgesamt (vierter unter den Programm-Kandidaten), aber der bisher differenzierteste: eine echte, eine unechte Funktion nebeneinander, plus eine neue Unicode-Fehlervariante (stille Korruption statt Absturz).",
+    "naechster_schritt": "Vier Findings zur Weitergabe an Johann: (1) reflect() entweder mit echter Verarbeitung hinterlegen oder als reinen Pass-Through kennzeichnen; (2) phase_transition() tatsaechlich mit den Sigil-Daten verknuepfen; (3) Fehlerbehandlung fuer fehlende/fehlerhafte Sigil-Dateien ergaenzen; (4) windows-unicode-crash-pattern um diese stille-Korruption-Variante ergaenzen.",
+    "alternativen_betrachtet": [
+      "phase_transition() als vollwertig TRUE werten, weil die Mathematik echt ist. Verworfen: echte Parametersensitivitaet allein reicht nicht fuer Regel 6 - es fehlt weiterhin jede Referenzskala, und die beworbene Verbindung zur Sigil-Reflexion existiert nicht."
+    ]
+  }
+}

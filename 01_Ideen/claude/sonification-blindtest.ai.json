@@ -1,0 +1,35 @@
+{
+  "id": "sonification-blindtest",
+  "title": "Genesis-Blindtest fuer sonification: FALSE - Flaggschiff-Demo erzeugt einen unhoerbaren Ton",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "measured",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 5)"
+  },
+  "created": "2026-07-29",
+  "related_adr": ["ADR-001"],
+  "depends_on": [],
+  "derived_from": ["windows-unicode-crash-pattern", "version-string-drift-audit"],
+  "blindtest_passed": false,
+  "content": {
+    "problem": "sonification (P-SONIC) ist ein Programm-Kandidat. Muss laut Regel 6 den Genesis-Blindtest bestehen.",
+    "vorschlag_und_durchfuehrung": "Ein frischer, kontextfreier Subagent bekam ausschliesslich das vollstaendige README als Eingabe, installierte real, fuehrte alle drei CLI-Befehle und die Python-API aus und verifizierte die erzeugten WAV-/MIDI-Dateien tatsaechlich mit wave/FFT-Analyse bzw. MIDI-Byte-Inspektion.",
+    "ergebnis": {
+      "install": "genesisaeon-sonification 1.0.0. Distributionsname-Mismatch funktioniert wie dokumentiert.",
+      "bug_1_unhoerbarer_ton": "soni wave --freq 1.618 --duration 5 erzeugt einen fuer Menschen unhoerbaren Ton. Per FFT-Analyse verifiziert: die WAV-Datei kodiert tatsaechlich buchstaeblich 1,618 Hz - weit unter der menschlichen Hoerschwelle (~20 Hz). Der Code skaliert freq nirgends auf einen hoerbaren Basiston. Ein Nutzer kann innerhalb von 5 Minuten nicht unterscheiden, ob 'keinen Ton hoeren' korrekt oder ein Bug ist.",
+      "bug_2_unicode_crash": "soni entropy-gate --beta 0.0625 crasht - MIDI-Datei wird korrekt geschrieben, aber die Erfolgsmeldung mit griechischem Beta-Zeichen crasht mit UnicodeEncodeError auf cp1252. Interessanter Kontrast: der Gedankenstrich in soni --help crasht nicht (cp1252 bildet ihn zufaellig ab, als Mojibake).",
+      "bug_3_keine_datei": "soni mandala --bpm 120 schreibt gar keine Datei. Trotz README-Suggestion eines 'rhythm pattern'-Outputs gibt der Befehl nur Text aus (nur die ersten 8 von 36 berechneten Beats, ohne das zu kennzeichnen). Die zugrundeliegende Resonanzkurve ist im Code selbst als Kommentar markiert: 'Placeholder resonance - integrate with mandala-visualizer via [stack] extra'.",
+      "positiv_entropy_gate_mapping_echt": "entropy-gate's MIDI-Tonhoehen-Mapping ist echt und reproduzierbar - pitch = 60 + 24*beta*i, per Hand nachgerechnet und exakt gegen die echten MIDI-Note-Events bestaetigt. Aber diese Formel taucht nirgends im README oder in der CLI-Hilfe auf.",
+      "bug_4_version_mismatch": "__version__ = '0.1.0' vs. installiert 1.0.0 - wieder bestaetigt, sichtbar auch ueber soni version.",
+      "verdikt": "FALSE. Besonders bemerkenswert: hier scheitert nicht primaer Code-Qualitaet oder Absturzfreiheit, sondern die Wahrnehmbarkeit selbst - ein Audio-Tool, dessen Flaggschiff-Beispiel ein Ergebnis erzeugt, das sich wie Stille anhoert, kann per Definition kein sinnvolles, in 5 Minuten nachvollziehbares Ergebnis liefern."
+    },
+    "erwartetes_ergebnis": "Zwoelfter FALSE-Befund insgesamt (siebter unter den Programm-Kandidaten). Erster Fall, bei dem das Kernproblem die menschliche Wahrnehmbarkeit des Outputs selbst ist, nicht (nur) Code-Korrektheit.",
+    "naechster_schritt": "Fuenf Findings zur Weitergabe an Johann: (1) freq-Parameter auf einen hoerbaren Basiston skalieren oder klarstellen, dass 1,618 Hz absichtlich unhoerbar ist; (2) griechische Buchstaben aus Erfolgsmeldungen entfernen; (3) soni mandala entweder eine echte Datei erzeugen lassen oder als reine Text-Vorschau kennzeichnen; (4) das Beta-zu-Pitch-Mapping in README/CLI-Hilfe dokumentieren; (5) __version__-Sync.",
+    "alternativen_betrachtet": [
+      "Den 1,618-Hz-Befund als Nutzerfehler werten. Verworfen: Regel 6 verlangt ein innerhalb von 5 Minuten nachvollziehbares Ergebnis fuer jemanden ohne Vorwissen - dass ein Audio-Tool sein eigenes Paradebeispiel als unhoerbaren Ton ausliefert, ohne das zu erklaeren, ist genau die Interpretierbarkeitsluecke, die der Blindtest aufdecken soll."
+    ]
+  }
+}

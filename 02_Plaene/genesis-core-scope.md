@@ -232,6 +232,53 @@ Vorlagen-Ursprung aus (`diamond-setup`) und verdient einen einzigen,
 Trylayer-Eintrag
 `windows-unicode-crash-pattern`.
 
+15. **Alle sechs kleineren Programm-Kandidaten getestet, alle sechs
+    FALSE (2026-07-29):** `mandala-visualizer`, `climate-dashboard`,
+    `mirror-machine`, `sonification`, `cosmic-web`, `implosive-origin-
+    utac` — siehe die jeweiligen `01_Ideen/claude/*-blindtest`-Einträge.
+    Kein einziger besteht den Blindtest unverändert, aber die Befunde
+    sind qualitativ vielfältiger als in der Core-Kette:
+    - `mandala-visualizer`: CLI crasht erst *nach* erfolgreichem
+      PNG-Export (irreführend statt blockierend); "cosmic-web"-Render
+      ist ein simpler `networkx.star_graph(20)`;
+      `mermaid_grafana_bridge()` ignoriert sein `data`-Argument
+      vollständig (`# noqa: ARG001`); `__version__` sauber (Gegenbeispiel).
+    - `climate-dashboard`: sauberster Beleg für rein dekorative
+      "Stack Integration" — keines der 10 gelisteten Pakete wird in
+      `cli.py`/`app.py` tatsächlich importiert; `mandala_peaks` ist ein
+      einzelner Skalar, der auf jede Zeile gebroadcastet wird, keine
+      echte Peak-Erkennung; `__version__`-Leck sogar im Footer des
+      Live-Dashboards; `--steps` funktioniert dagegen echt (positiv);
+      erster Fall von stiller Mojibake-Korruption statt Absturz.
+    - `mirror-machine`: `reflect()` ist ein reines Echo (programmatisch
+      verifiziert); `phase_transition()` ist echte, parametersensitive
+      Mathematik, aber vollständig vom Sigil-Zustand entkoppelt; zweiter
+      Fall stiller Unicode-Mojibake statt Absturz.
+    - `sonification`: bemerkenswertester Einzelfund der ganzen Charge —
+      `soni wave --freq 1.618` erzeugt einen für Menschen *unhörbaren*
+      Ton (1,618 Hz, per FFT verifiziert); `soni mandala` schreibt gar
+      keine Datei; `entropy-gate`'s Pitch-Mapping ist real, aber
+      undokumentiert.
+    - `cosmic-web`: bislang am stärksten gemischter Befund — echte
+      NetworkX-Metriken, echter Determinismus, echtes Dashboard, *und*
+      ein komplett undokumentierter, funktionierender N-Body-Kosmologie-
+      Simulator (`CosmicWebSimulator`) — aber das titelgebende Konzept
+      "Emergence" ist nachweislich reines, strukturunabhängiges Rauschen.
+    - `implosive-origin-utac`: als `SPECULATIVE` gekennzeichnet und mit
+      ungewöhnlich ehrlichen Docstrings ("status: SPECULATIVE" direkt im
+      Code); zwei der drei Kernbehauptungen (`r`, `crep_gamma`) stimmen
+      exakt; aber `k_RIG` ist intern widersprüchlich (Code sagt 0,304,
+      ein Docstring sagt 0,097) und `n_efolds` hat nachweislich null
+      Effekt auf jede Vorhersage trotz einer echt laufenden ODE.
+
+    Ergänzung zum Unicode-Crash-Muster: zwei neue Fälle bestätigt
+    (`sonification`, `cosmic-web`) sowie ein neuer Sub-Typ — stille
+    Mojibake-Korruption statt Absturz (`mirror-machine`,
+    `climate-dashboard`) — noch nicht in
+    `windows-unicode-crash-pattern` nachgetragen. `__version__`-Drift:
+    weiterhin bestätigt bei `sonification`; `mandala-visualizer` und
+    `cosmic-web` sind saubere Gegenbeispiele (jetzt insgesamt vier).
+
 ## Alternativen betrachtet
 
 **genesis-os selbst als alleinigen Core definieren, alles andere als

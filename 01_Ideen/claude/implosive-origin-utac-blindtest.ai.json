@@ -1,0 +1,37 @@
+{
+  "id": "implosive-origin-utac-blindtest",
+  "title": "Genesis-Blindtest fuer implosive-origin-utac: FALSE - echte Selbstkritik im Code, aber k_RIG stimmt nicht",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "measured",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 5)"
+  },
+  "created": "2026-07-29",
+  "related_adr": ["ADR-001"],
+  "depends_on": [],
+  "derived_from": ["cosmic-web-blindtest"],
+  "blindtest_passed": false,
+  "content": {
+    "problem": "implosive-origin-utac (P33) ist ein Programm-Kandidat, explizit als 'SPECULATIVE' gekennzeichnet. Muss laut Regel 6 den Genesis-Blindtest bestehen - die Selbstkennzeichnung als spekulativ befreit nicht vom Test, aendert aber moeglicherweise die Bewertung der Ehrlichkeit.",
+    "vorschlag_und_durchfuehrung": "Ein frischer, kontextfreier Subagent bekam ausschliesslich das vollstaendige README als Eingabe (mit dem Hinweis, die SPECULATIVE-Kennzeichnung sei Teil des echten Materials, kein Grund zur Abwertung), installierte real, fuehrte das Quickstart aus und rechnete alle drei Kernbehauptungen von Hand nach.",
+    "ergebnis": {
+      "install": "implosive-origin-utac 1.1.0. __version__ stimmt ueberein - kein Versions-Bug (viertes positives Gegenbeispiel).",
+      "check_1_r_stimmt": "r ~ 0,004 stimmt exakt - SIGMA_PHI^2 = (1/16)^2 = 0,00390625.",
+      "check_2_gamma_stimmt": "crep_gamma ~ 0,57 stimmt exakt - von Hand nachgerechnet (0,8*0,7*0,5*0,4)^0,25 = 0,5785015217038155, bit-identisch zum Code-Output.",
+      "bug_1_k_rig_falsch": "k_RIG ~ 0,097 Mpc^-1 stimmt NICHT. Der Code liefert tatsaechlich 0,304 Mpc^-1 - Faktor 3,13 daneben. Kein reines README-Drift: der Code widerspricht sich intern selbst - ein Kommentar in constants.py sagt '~0,304', ein Docstring in dm_power_spectrum.py fuer dieselbe Groesse sagt '~0,097'.",
+      "bug_2_n_efolds_wirkungslos": "n_efolds hat exakt null Effekt auf alle drei Kernvorhersagen. Getestet mit n_efolds in {1,10,60,200,1000} - alle drei Werte bitidentisch. Grund: alle drei sind hartkodierte Konstanten - die ODE-Integration laeuft tatsaechlich, ihr Ergebnis fliesst aber nie in die berichteten Vorhersagen ein. run_cycle(n_efolds=60) ist Theater um statische Arithmetik. n_efolds_actual meldet zudem immer 8,55 unabhaengig vom angeforderten Wert.",
+      "bug_3_disclaimer_fehlt": "DISCLAIMER.md, auf die das README explizit verweist, wird nicht mit dem Wheel ausgeliefert.",
+      "bug_4_unicode_nuanciert": "Das woertliche Quickstart-Snippet crasht nicht (Gedankenstrich zufaellig cp1252-kodierbar) - aber eine echte Abhaengigkeit (diamond_setup.protocol) enthaelt denselben Fehlertyp, der bei tieferer Erkundung denselben Crash ausloest.",
+      "positiv_echte_selbstkritik": "Bemerkenswert: mehrere Docstrings geben offen zu, dass Konstanten willkuerlich gewaehlt sind. Jeder summary()/euclid_testable()-Rueckgabewert traegt selbst 'status: SPECULATIVE' - nicht nur README-Marketing, sondern im Code verankert. Deutlich ehrlichere epistemische Haltung als bei den meisten bisher getesteten Paketen.",
+      "verdikt": "FALSE. Die 'spekulativ'-Kennzeichnung deckt die wissenschaftliche Unsicherheit der Hypothese ehrlich ab - sie deckt aber nicht den separaten Befund, dass k_RIG intern widerspruechlich ist und dass run_cycle() als Simulation praesentiert wird, deren Eingabe nachweislich nichts bewirkt."
+    },
+    "erwartetes_ergebnis": "Vierzehnter FALSE-Befund insgesamt (neunter unter den Programm-Kandidaten), aber der bislang am staerksten differenzierte: echte Selbstkritik im Code selbst verdient ausdrueckliche Anerkennung, aendert aber nichts an zwei eigenstaendigen, ueberpruefbaren Fehlern.",
+    "naechster_schritt": "Vier Findings zur Weitergabe an Johann: (1) k_RIG-Wert klaeren - welcher der beiden widerspruechlichen internen Werte ist beabsichtigt; (2) entweder run_cycle(n_efolds=...) tatsaechlich einfliessen lassen oder ehrlich kennzeichnen, dass die Kernvorhersagen feste Konstanten sind; (3) DISCLAIMER.md ins Wheel aufnehmen; (4) diamond-setup-Abhaengigkeit auf denselben Unicode-Fehlertyp pruefen.",
+    "alternativen_betrachtet": [
+      "Das Paket wegen seiner ungewoehnlichen Ehrlichkeit milder werten als die uebrigen FALSE-Befunde, evtl. sogar TRUE. Teilweise beruecksichtigt (ausdrueckliche Anerkennung), aber nicht als Verdikt-Aenderung: die speculative-Kennzeichnung behandelt die wissenschaftliche Unsicherheit der Hypothese, nicht die separate Frage, ob der Code intern konsistent ist und tut, was er zu tun behauptet."
+    ]
+  }
+}

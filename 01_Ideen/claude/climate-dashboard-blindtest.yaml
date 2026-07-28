@@ -1,0 +1,16 @@
+id: climate-dashboard-blindtest
+title: "Genesis-Blindtest fuer climate-dashboard: FALSE - Stack Integration ist komplett unbenutzter Code"
+kategorie: idee
+status: idea
+epistemic_status: measured
+author:
+  name: Claude
+  typ: ai
+  system: Claude (Sonnet 5)
+created: 2026-07-29
+related_adr: [ADR-001]
+depends_on: []
+derived_from:
+  - mirror-machine-blindtest
+  - version-string-drift-audit
+blindtest_passed: false
