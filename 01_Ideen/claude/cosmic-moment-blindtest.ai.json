@@ -1,0 +1,36 @@
+{
+  "id": "cosmic-moment-blindtest",
+  "title": "Genesis-Blindtest fuer cosmic-moment: FALSE - Demo-Schwelle garantiert 100/100 by Konstruktion",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "measured",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 5)"
+  },
+  "created": "2026-07-29",
+  "related_adr": ["ADR-001"],
+  "depends_on": [],
+  "derived_from": ["version-string-drift-audit", "medium-modulation-blindtest"],
+  "blindtest_passed": false,
+  "content": {
+    "problem": "cosmic-moment (P-MOMENT) ist das fuenfte Kettenglied der Core-Kette. Bereits im version-string-drift-audit als weiterer __version__-Fall vorgemerkt. Muss laut Regel 6 den Genesis-Blindtest bestehen.",
+    "vorschlag_und_durchfuehrung": "Ein frischer, kontextfreier Subagent bekam ausschliesslich das vollstaendige README als Eingabe, installierte real und fuehrte jeden dokumentierten Befehl/API-Aufruf aus.",
+    "ergebnis": {
+      "install": "cosmic-moment 1.0.0 - README selbst zitiert pip install cosmic-moment==0.1.0, was nicht der tatsaechlich aufgeloesten Version entspricht (dritte Variante der Versions-Diskrepanz neben entropy-table/implosive-genesis).",
+      "bug_1_unicode_crash": "cm collapse --t 3.14 crasht unter Windows - dritter bestaetigter Fall des Unicode-Crash-Musters (nach medium-modulation, fieldtheory): cli.py druckt ein Pfeil-Zeichen direkt ueber rich, UnicodeEncodeError auf cp1252. Nur mit PYTHONIOENCODING=utf-8 umgehbar, README erwaehnt das nicht.",
+      "bug_2_schwelle_garantiert_alles": "Die Demo-Schwelle im README garantiert '100/100 erkannt' durch Konstruktion, nicht durch Datenanalyse. cm detect --threshold 0.618 (der genaue README-Wert) meldet 'Detected 100 cosmic moment(s)' - das komplette Sample, ungefiltert. Verifiziert durch Schwellen-Sweep: 0.0 bis 0.927 liefern alle 100/100; erst ab ~0.93 beginnt die Zahl zu sinken. Grund: die feste Formel mit Standardwerten hat ein Minimum von ~0.927 - bereits ueber dem dokumentierten Default-Threshold 0.618.",
+      "bug_3_collapse_berechnet_nichts": "collapse() gibt nur den Input-Zeitpunkt zurueck und hartkodiert 'new_layer': 'consciousness' sowie 'collapsed': True fuer JEDEN Input - auch fuer unsinnige Werte. Kein Kriterium, keine Berechnung.",
+      "bug_4_chronology_verworfen": "ChronologyValidator-Ergebnis wird berechnet, aber verworfen. Das README bewirbt die '10-part chronology check'-Integration; der Code ruft sie in detect() tatsaechlich auf, verwirft aber das Ergebnis vollstaendig - nie geprueft, nie im Output sichtbar, rein dekorativ.",
+      "bug_5_version_mismatch": "__version__ = '0.1.0' vs. installiert 1.0.0 - bestaetigt, aber diesmal eine tote Konstante: wird nirgends im Code gelesen, es gibt kein cm --version-Flag. Unsichtbar fuer Nutzer, anders als bei medium-modulation/entropy-governance.",
+      "nebenbefunde": "matplotlib[animation]-Extra existiert nicht (Pip-Warnung beim Install, transitiv ueber implosive-genesis); CLI-Hilfetext hat ein Mojibake-Zeichen statt Gedankenstrich.",
+      "verdikt": "FALSE. Nichts im Output erklaert, warum 100 oder 21 'cosmic moments' erkannt wurden, was 'consciousness layer' numerisch bedeutet, oder was ein 'falsches' Ergebnis waere - keine Referenzskala, keine Fehlergrenze."
+    },
+    "erwartetes_ergebnis": "Sechster FALSE-Befund in der Kette. Besonders bemerkenswert: das README-eigene Demo-Beispiel ist so konstruiert, dass es garantiert 'vollstaendige Erkennung' zeigt - kein zufaelliger Doku-Fehler, sondern ein struktureller Design-Fehler in der Wahl der Default-Werte relativ zum Default-Threshold.",
+    "naechster_schritt": "Vier Findings zur Weitergabe an Johann: (1) Default-Threshold/Default-Parameter so waehlen, dass die Demo tatsaechlich eine Teilmenge zeigt; (2) collapse() mit echter Berechnung hinterlegen oder als Platzhalter kennzeichnen; (3) ChronologyValidator-Ergebnis tatsaechlich auswerten statt zu verwerfen; (4) Unicode-Zeichen aus CLI-Strings entfernen (dritter Fall).",
+    "alternativen_betrachtet": [
+      "Den 100/100-Befund als Zufall/Rundungsfehler werten. Verworfen: der Schwellen-Sweep zeigt einen klaren, erklaerbaren Mechanismus (Formel-Minimum liegt ueber dem Default-Threshold) - kein Zufall, sondern eine ueberpruefbare strukturelle Eigenschaft der gewaehlten Default-Werte."
+    ]
+  }
+}

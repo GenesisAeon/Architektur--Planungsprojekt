@@ -1,0 +1,35 @@
+{
+  "id": "utac-core-blindtest",
+  "title": "Genesis-Blindtest fuer utac-core: FALSE - erster dokumentierter Befehl laeuft gar nicht",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "measured",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 5)"
+  },
+  "created": "2026-07-29",
+  "related_adr": ["ADR-001"],
+  "depends_on": [],
+  "derived_from": ["fieldtheory-en-blindtest", "cosmic-moment-blindtest", "version-string-drift-audit"],
+  "blindtest_passed": false,
+  "content": {
+    "problem": "utac-core (P-CORE) ist das strukturelle Zentrum der vorgeschlagenen Core-Kette - laut genesis-core-scope.md das siebte und letzte Kettenglied, von dem sigillin, mandala-visualize, sonification, aeon-ai u.a. abhaengen. Muss laut Regel 6 den Genesis-Blindtest bestehen.",
+    "vorschlag_und_durchfuehrung": "Ein frischer, kontextfreier Subagent bekam ausschliesslich das vollstaendige README als Eingabe, installierte real und fuehrte jeden dokumentierten Befehl/API-Aufruf aus.",
+    "ergebnis": {
+      "install": "utac-core 1.0.0, als 'Production/Stable' klassifiziert.",
+      "bug_1_erster_befehl_kaputt": "Der allererste Quickstart-Befehl laeuft ueberhaupt nicht. utac fit --beta 0.0625 schlaegt sofort fehl: 'Error: No such option: --beta (Possible options: --theta)'. Die reale CLI-Signatur von fit kennt nur --r/--theta - kein --beta-Flag existiert.",
+      "bug_2_unicode_crash": "Alle vier CLI-Befehle crashen zusaetzlich unter Windows-Standardkonsole (UnicodeEncodeError fuer beta/sigma/Phi-Glyphen) - vierter bestaetigter Fall des Unicode-Crash-Musters in der Kette (nach medium-modulation, fieldtheory, cosmic-moment), hier am schwerwiegendsten: ohne PYTHONIOENCODING=utf-8 bekommt ein Windows-Erstnutzer null funktionierende Befehle.",
+      "bug_3_version_mismatch": "__version__ = '0.1.0' vs. installiert 1.0.0 - wieder bestaetigt.",
+      "bug_4_formel_diskrepanz": "Echte Formel-Diskrepanz im README-eigenen Python-Beispiel. Die Mathematik-Tabelle sagt v_RIG = beta*ln(t+1)*sigma_Phi, mit beta als unabhaengigem, gefittetem Parameter. Aber v_rig(t=10.0) im README-Beispiel nutzt implizit den Funktions-Default beta=SIGMA_PHI - nicht das zwei Zeilen zuvor im selben Code-Block berechnete beta_fit(...)-Ergebnis (0.089286). Nachgerechnet: mit dem gefitteten beta ergaebe sich 0.013381112, tatsaechlich ausgegeben wird aber 0.009366778 (= sigma_Phi^2 * ln(11)).",
+      "nach_workaround": "Nach manuellem Workaround (PYTHONIOENCODING=utf-8, --beta durch gueltige Flags ersetzt) laufen die Befehle und liefern intern konsistente Werte (utac_logistic z.B. korrekt im Sigmoid-Bereich [0,1]).",
+      "verdikt": "FALSE. Von vier Quickstart-CLI-Befehlen laeuft einer gar nicht wie dokumentiert, alle vier scheitern nativ unter Windows. Von vier Python-API-Werten stimmt einer exakt (frame_principle), einer ist plausibel aber unerklaert (utac_logistic), und zwei (beta_fit, v_RIG) liefern Zahlen ohne jede Referenzskala."
+    },
+    "erwartetes_ergebnis": "Siebter FALSE-Befund in der Kette - und der bislang schwerwiegendste, weil das strukturelle Zentrum der gesamten Kette betroffen ist: utac-core's eigener Quickstart funktioniert nicht einmal oberflaechlich, bevor man ueberhaupt zur Interpretierbarkeitsfrage kommt.",
+    "naechster_schritt": "Vier Findings zur Weitergabe an Johann: (1) utac fit --beta implementieren oder aus dem README entfernen; (2) Unicode-Zeichen aus allen vier CLI-Befehlen entfernen (jetzt vierter Fall - eine oekosystemweite Suche nach beta/sigma/Phi/proportional-zu/pfeil-Zeichen in allen cli.py-Dateien waere sinnvoll); (3) __version__-Sync; (4) v_rig-Beispiel im README korrigieren, damit es tatsaechlich das gefittete beta verwendet. Sammelbefund: vier von sieben getesteten Kettengliedern (medium-modulation, fieldtheory, cosmic-moment, utac-core) haben denselben Unicode-Crash-Typ unter Windows - kein Einzelfall mehr, sondern ein wiederkehrendes Scaffold-Problem.",
+    "alternativen_betrachtet": [
+      "Den --beta-Fehler als Tippfehler im README abtun, der leicht zu korrigieren waere. Nicht verworfen als Einschaetzung des Schweregrads (es IST leicht zu beheben), aber wichtig: es ist trotzdem ein Blocker fuer Regel 6 in der jetzigen Form - der Befund bleibt FALSE, unabhaengig davon wie einfach der Fix waere."
+    ]
+  }
+}

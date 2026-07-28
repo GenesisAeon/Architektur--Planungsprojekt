@@ -1,0 +1,16 @@
+id: fieldtheory-en-blindtest
+title: "Genesis-Blindtest fuer fieldtheory (EN): FALSE, mit Lagrangian-Inkonsistenz und Windows-Crash"
+kategorie: idee
+status: idea
+epistemic_status: measured
+author:
+  name: Claude
+  typ: ai
+  system: Claude (Sonnet 5)
+created: 2026-07-29
+related_adr: [ADR-001]
+depends_on: []
+derived_from:
+  - fieldtheory-feldtheorie-kein-duplikat
+  - medium-modulation-blindtest
+blindtest_passed: false

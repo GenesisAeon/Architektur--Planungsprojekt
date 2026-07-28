@@ -1,0 +1,34 @@
+{
+  "id": "fieldtheory-en-blindtest",
+  "title": "Genesis-Blindtest fuer fieldtheory (EN): FALSE, mit Lagrangian-Inkonsistenz und Windows-Crash",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "measured",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 5)"
+  },
+  "created": "2026-07-29",
+  "related_adr": ["ADR-001"],
+  "depends_on": [],
+  "derived_from": ["fieldtheory-feldtheorie-kein-duplikat", "medium-modulation-blindtest"],
+  "blindtest_passed": false,
+  "content": {
+    "problem": "fieldtheory (EN, T4) ist das sechste Kettenglied der Core-Kette. Bereits als eigenstaendig, kein Duplikat von Feldtheorie (DE), bestaetigt (siehe fieldtheory-feldtheorie-kein-duplikat). Muss laut Regel 6 den Genesis-Blindtest bestehen.",
+    "vorschlag_und_durchfuehrung": "Ein frischer, kontextfreier Subagent bekam ausschliesslich das vollstaendige README als Eingabe (explizit angewiesen, es nicht mit irgendeinem deutschen Feldtheorie-Projekt zu verwechseln), installierte real und fuehrte jeden dokumentierten Befehl/API-Aufruf aus.",
+    "ergebnis": {
+      "install": "fieldtheory 1.0.1. __version__ stimmt mit der installierten Version ueberein - kein Versions-Bug hier, im Gegensatz zu den meisten anderen Kettengliedern (gutes Gegenbeispiel, zeigt dass der Scaffold-Bug nicht universell ist).",
+      "bug_1_readme_override_noop": "README-eigenes Override-Beispiel ist ein No-Op. Der Quickstart zeigt ft simulate --s-a 1.0 --s-v 1.618 --depth 0.5 --threshold 0.618 als Beispiel fuer Parameter-Override - das sind aber exakt die CLI-eigenen Default-Werte. Output ist byte-identisch zum ersten Beispiel ohne Flags. Echte Overrides funktionieren nachweislich (verifiziert mit anderen Werten), aber das dokumentierte Beispiel demonstriert selbst keinen einzigen Override.",
+      "bug_2_unicode_crash": "ft --help crasht unter Windows - derselbe Unicode-Bug-Typ wie bei medium-modulation: das Zeichen im Typer help=-String ist nicht cp1252-darstellbar. Zweiter bestaetigter Fall desselben Musters in der Kette.",
+      "bug_3_lagrangian_inkonsistenz": "derive_lagrangian() liefert zwei nicht zueinander passende Gleichungen. Das zurueckgegebene lagrangian-Feld ist die statische L = S_A*S_V/(S_A+S_V) - (1+delta)/t^2 (kein S(t), kein kinetischer Term). Das euler_lagrange-Feld wird aber aus einer komplett anderen, nie zurueckgegebenen internen Lagrangian L_dyn = 0.5*Sdot^2 - (1+delta)/(t^2*(S/S_V+1)) abgeleitet. Die zwei ausgegebenen Zeilen unter ft lagrangian beschreiben also nicht dasselbe physikalische System.",
+      "nebenbefund": "cosmic_moments (69 bei steps=100, 138 bei steps=200) ist bei Code-Lektuere schlicht eine Zaehlung, wie viele der steps-Stichproben unter threshold*max(Serie) einer monoton fallenden Kurve liegen - im Grunde eine Umparametrisierung von steps/threshold, keine Erkennung diskreter Kollaps-Ereignisse.",
+      "verdikt": "FALSE. Reproduzierbar (dieselben Parameter liefern verlaesslich dieselben, intern konsistenten Werte unter Parameteraenderung), aber nicht interpretierbar - keine Referenzskala, kein Validierungsfall, keine Erklaerung, was ein gutes S_mod_mean oder eine plausible cosmic_moments-Zahl waere. Reproduzierbarkeit ist hier explizit nicht gleich Interpretierbarkeit."
+    },
+    "erwartetes_ergebnis": "Fuenfter FALSE-Befund in der Kette. Anders als bei den vorherigen: kein __version__-Bug hier (positives Gegenbeispiel), aber eine neue Fehlerklasse (interne Formel-Inkonsistenz zwischen zwei Feldern derselben Funktion) sowie der zweite Fall des Windows-Unicode-Crashs.",
+    "naechster_schritt": "Drei Findings zur Weitergabe an Johann: (1) das README-Override-Beispiel durch echte, vom Default abweichende Werte ersetzen; (2) Unicode-Zeichen aus cli.py's help=-String entfernen (zweiter Fall desselben Bugs wie bei medium-modulation); (3) derive_lagrangian() entweder dieselbe Lagrangian fuer beide Felder verwenden, oder die dynamische Variante explizit mit zurueckgeben und dokumentieren.",
+    "alternativen_betrachtet": [
+      "cosmic_moments-Nebenbefund als eigenstaendigen Blocker werten. Verworfen fuer dieses Verdikt: es ist kein Bug im engeren Sinn (der Code tut, was er tut, konsistent), sondern verstaerkt nur den bereits tragenden Interpretierbarkeits-Befund - separat genannt, aber nicht als vierter Bug gezaehlt."
+    ]
+  }
+}

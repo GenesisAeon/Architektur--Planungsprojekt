@@ -1,0 +1,34 @@
+{
+  "id": "medium-modulation-blindtest",
+  "title": "Genesis-Blindtest fuer medium-modulation: FALSE, mit totem Parameter und Windows-Crash",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "measured",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 5)"
+  },
+  "created": "2026-07-29",
+  "related_adr": ["ADR-001"],
+  "depends_on": [],
+  "derived_from": ["entropy-governance-blindtest", "version-string-drift-audit"],
+  "blindtest_passed": false,
+  "content": {
+    "problem": "medium-modulation (P-MEDIUM) ist das vierte Kettenglied der Core-Kette (nach entropy-table TRUE, implosive-genesis TRUE, entropy-governance FALSE). Muss laut Regel 6 den Genesis-Blindtest bestehen.",
+    "vorschlag_und_durchfuehrung": "Ein frischer, kontextfreier Subagent bekam ausschliesslich das vollstaendige README als Eingabe, installierte real und fuehrte jeden dokumentierten Befehl/API-Aufruf aus - gleiche Methodik wie bei den vorherigen Kettenglied-Tests.",
+    "ergebnis": {
+      "install": "medium-modulation 1.0.0 installierte sauber (zieht entropy-governance 1.0.0, entropy-table 2.0.1, implosive-genesis 1.0.0 als echte Abhaengigkeiten).",
+      "bug_1_unicode_crash": "mm --help crasht unter Windows. Die CLI-Hilfe (und die PyPI-Zusammenfassung) enthaelt das Zeichen 'proportional-zu' (Unicode), nicht darstellbar in cp1252, dem Windows-Standard-Terminal-Encoding. UnicodeEncodeError beim ersten dokumentierten Befehl.",
+      "bug_2_version_mismatch": "__version__ = '0.1.0' vs. installiert 1.0.0 - derselbe Scaffold-Rest-Bug wie in mindestens 5 anderen Paketen (siehe version-string-drift-audit), hier ein sechster bestaetigter Fall.",
+      "bug_3_toter_parameter": "coupling_factor's modulation_depth-Parameter hat keinerlei Effekt. Verifiziert: coupling_factor(A=1.0, V=1.618, modulation_depth=0.0/0.5/0.99) liefert immer exakt 1.236054994952565. Ursache: die Funktion ruft intern modulated_entropy(..., t=0.0) auf, und der Modulationsterm ist 1+depth*sin(freq*t) - mit hartkodiertem t=0.0 ist sin(freq*0)=0 immer, der depth-Term also immer mit Null multipliziert. Direkte Konsequenz: modulated_entropy und coupling_factor liefern in den README-Beispielen numerisch identische Werte, obwohl als zwei verschiedene physikalische Konzepte praesentiert.",
+      "bug_4_undokumentierter_befehl": "CLI hat drei Subcommands (modulate, spectrum, couple), README dokumentiert nur zwei - couple (genau der Befehl mit dem toten Parameter aus Bug 3) ist im Quickstart gar nicht erwaehnt.",
+      "verdikt": "FALSE. Keine Referenzskala/Einheit fuer S_mod/kappa/Spektrum-Werte, keine Erklaerung, warum zwei angeblich unterschiedliche Konzepte identische Zahlen liefern (echter Bug, kein Zufall), und 'Resonanzspektrum' suggeriert physikalische Struktur (Peak/Resonanzfrequenz/Daempfung), die der Code nicht hat - reiner Sinus, ausgewertet an den Stichprobenpunkten selbst."
+    },
+    "erwartetes_ergebnis": "Vierter FALSE-Befund in der Kette (nach genesis-scope, genesis-os, entropy-governance), mit konkreten technischen Bugs wie bei entropy-governance - kein reines Interpretierbarkeitsproblem.",
+    "naechster_schritt": "Drei Findings zur Weitergabe an Johann: (1) das Unicode-Zeichen aus CLI-Hilfetext/PyPI-Summary entfernen oder Encoding absichern; (2) modulation_depth in coupling_factor/mm couple tatsaechlich wirksam machen (der t=0.0-Hardcoding-Bug); (3) __version__-Sync, siehe version-string-drift-audit (jetzt 6. bestaetigter Fall: medium-modulation ergaenzt die Liste). 02_Plaene/genesis-core-scope.md entsprechend ergaenzt.",
+    "alternativen_betrachtet": [
+      "Den Unicode-Crash als reines Windows-Randproblem abtun. Verworfen: ein erheblicher Teil realer Erstnutzer duerfte auf Windows mit Standard-Codepage arbeiten - das ist kein exotischer Edge Case, sondern eine reale Zugangsbarriere direkt beim ersten dokumentierten Befehl (--help)."
+    ]
+  }
+}

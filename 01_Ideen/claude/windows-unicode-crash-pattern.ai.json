@@ -1,0 +1,43 @@
+{
+  "id": "windows-unicode-crash-pattern",
+  "title": "Windows-Unicode-Crash-Muster: 5 von 5 gezielt geprueften Kettengliedern betroffen",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "measured",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 5)"
+  },
+  "created": "2026-07-29",
+  "related_adr": [],
+  "depends_on": [],
+  "derived_from": [
+    "medium-modulation-blindtest",
+    "cosmic-moment-blindtest",
+    "fieldtheory-en-blindtest",
+    "sigillin-blindtest",
+    "utac-core-blindtest"
+  ],
+  "blindtest_passed": null,
+  "content": {
+    "problem": "Waehrend der Genesis-Blindtests der Core-Kette fiel wiederholt derselbe Absturz auf: CLI-Befehle crashen unter Windows-Standardkonsole (cp1252-Codepage), weil mathematische Unicode-Sonderzeichen direkt in rich-gerenderte Strings eingebettet sind. Ab dem vierten Kettenglied-Test wurde gezielt danach gesucht - das verdient einen eigenen, oekosystemweiten Befund statt fuenf Einzelerwaehnungen in den jeweiligen Blindtest-Eintraegen.",
+    "vorschlag_und_durchfuehrung": "Fuenf unabhaengige, kontextfreie Subagenten-Blindtests (Core-Kette: medium-modulation/cosmic-moment/fieldtheory/sigillin/utac-core) liefen jeweils auf echten, frischen Windows-Umgebungen und dokumentierten den exakten Fehlertext, wo aufgetreten.",
+    "ergebnis": {
+      "tabelle": [
+        {"paket": "medium-modulation", "zeichen": "proportional-zu-Symbol", "befehl": "mm --help, pip show"},
+        {"paket": "cosmic-moment", "zeichen": "Pfeil-Symbol", "befehl": "cm collapse"},
+        {"paket": "fieldtheory (EN)", "zeichen": "proportional-zu-Symbol", "befehl": "ft --help, pip show"},
+        {"paket": "sigillin", "zeichen": "Haken/Kreuz-Symbole", "befehl": "sig validate/inspect/render"},
+        {"paket": "utac-core", "zeichen": "beta/sigma/Phi", "befehl": "alle vier CLI-Befehle (schwerster Fall)"}
+      ],
+      "mechanismus": "Immer derselbe Mechanismus: rich's Legacy-Windows-Konsolen-Renderer kann das jeweilige Zeichen auf cp1252 (Windows-Standard-Codepage) nicht kodieren, UnicodeEncodeError: 'charmap' codec can't encode character. Workaround (PYTHONIOENCODING=utf-8 / PYTHONUTF8=1) funktioniert, wird aber in keinem der fuenf READMEs erwaehnt. Bei utac-core betrifft es ALLE VIER dokumentierten Quickstart-Befehle gleichzeitig - ein Windows-Erstnutzer ohne manuelles UTF-8-Setup bekommt dort keinen einzigen funktionierenden Befehl.",
+      "einschraenkung": "Die uebrigen drei bereits getesteten Kettenglieder (entropy-table, implosive-genesis, entropy-governance) wurden nicht gezielt auf dieses Muster geprueft, da es erst beim vierten Test auffiel - keine Aussage darueber, ob sie betroffen sind oder nicht."
+    },
+    "erwartetes_ergebnis": "Ein einziger, wiederkehrender Root-Cause-Typ statt fuenf isolierter Einzel-Bugs: mathematische Unicode-Symbole in rich/Typer-help=-Strings ohne Ruecksicht auf Windows-Standard-Terminals. Passt zum bereits dokumentierten __version__-Drift-Muster (version-string-drift-audit) als zweite, unabhaengige, scaffold-artige Fehlerklasse ueber mehrere Pakete hinweg.",
+    "naechster_schritt": "An Johann weiterzugeben als oekosystemweiter Fix-Vorschlag, nicht als fuenf Einzelkorrekturen: entweder (a) alle mathematischen Unicode-Zeichen in CLI-Hilfetexten/-Ausgaben durch ASCII-Aequivalente ersetzen, oder (b) die Diamond-Setup-Scaffold-Vorlage so anpassen, dass generierte cli.py-Dateien standardmaessig UTF-8-Ausgabe erzwingen, damit kuenftige Pakete den Fehler gar nicht erst erben. Die noch nicht auf dieses Muster geprueften Kettenglieder sollten bei Gelegenheit nachtraeglich geprueft werden.",
+    "alternativen_betrachtet": [
+      "Als fuenf getrennte, paketspezifische Bugs belassen (wie urspruenglich in den einzelnen Blindtest-Eintraegen notiert). Nicht falsch, aber unvollstaendig: ohne diesen zusammenfuehrenden Eintrag sieht es nach fuenf unabhaengigen Zufaellen aus, statt nach einem einzigen, systematischen Scaffold-Problem mit einem einzigen sinnvollen Fix."
+    ]
+  }
+}

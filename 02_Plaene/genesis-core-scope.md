@@ -159,6 +159,78 @@ erst einzeln pro Paket nach Blindtest + ADR (Regel 3, Regel 6).
    Fehlende Referenzskala/Einheiten für alle Ausgabewerte — Blindtest
    FALSE. Zur Weitergabe an Johann vorgesehen, Re-Test nach Fix analog
    zu `entropy-table`.
+10. **Viertes Kettenglied (`medium-modulation`) getestet, FALSE
+    (2026-07-29):** siehe `01_Ideen/claude/medium-modulation-blindtest`.
+    Installiert sauber, aber `mm --help` crasht unter Windows (∝-Zeichen,
+    cp1252), `__version__` steckt auf "0.1.0" fest, und
+    `coupling_factor`s `modulation_depth`-Parameter hat nachweislich
+    keinerlei Effekt (hartkodiertes `t=0.0` macht den Modulationsterm
+    immer Null) — direkte Konsequenz: zwei als unterschiedlich
+    präsentierte Größen (`modulated_entropy`, `coupling_factor`)
+    liefern identische Zahlen.
+11. **Fünftes Kettenglied (`cosmic-moment`) getestet, FALSE
+    (2026-07-29):** siehe `01_Ideen/claude/cosmic-moment-blindtest`.
+    Bemerkenswertester Einzelbefund der ganzen Kette: die
+    README-eigene Demo-Schwelle (0.618) liegt strukturell unter dem
+    Minimum der Default-Formel (~0.927) — das Flaggschiff-Beispiel
+    meldet dadurch *garantiert* "100/100 erkannt", unabhängig von der
+    tatsächlichen Funktion des Schwellenwerts. Zusätzlich: `collapse()`
+    berechnet nichts (hartkodierte Rückgabe für jeden Input), der
+    beworbene `ChronologyValidator`-Check wird aufgerufen, aber sein
+    Ergebnis verworfen, und ein dritter Fall des Unicode-Crash-Musters.
+12. **Sechstes Kettenglied (`fieldtheory`, EN) getestet, FALSE
+    (2026-07-29):** siehe `01_Ideen/claude/fieldtheory-en-blindtest`.
+    Bereits als kein Duplikat von `Feldtheorie` (DE) bestätigt (siehe
+    `fieldtheory-feldtheorie-kein-duplikat`). Kein `__version__`-Bug
+    hier (positives Gegenbeispiel). Aber: README-eigenes
+    "Override"-Beispiel nutzt zufällig exakt die CLI-Defaultwerte (No-Op,
+    keine echte Demonstration), vierter Unicode-Crash-Fall, und
+    `derive_lagrangian()` liefert zwei nicht zueinander passende
+    Gleichungen (die gezeigte Lagrangian hat kein `Ṡ`, aus dem sich die
+    gezeigte Euler-Lagrange-Gleichung herleiten ließe — sie stammt
+    nachweislich aus einer zweiten, nie zurückgegebenen internen Form).
+13. **Siebtes Kettenglied (`sigillin`) getestet, FALSE (2026-07-29):**
+    siehe `01_Ideen/claude/sigillin-blindtest`. Schwerwiegendster
+    Einzelbefund der Kette: die namensgebende "CREP-Validierung" prüft
+    nachweislich nur Feld-*Existenz*, keine Werte (ein Sigil mit
+    `coherence: -99999`, `resonance: "banana"` etc. besteht die
+    Validierung anstandslos). `render_mandala()` ist laut eigenem
+    Docstring ein erklärter Platzhalter und bit-identisch unabhängig
+    von den Sigil-Daten. Zusätzlich: `[stack]`-Empfehlung wird von
+    Rich-Markup verschluckt (CLI empfiehlt versehentlich den bereits
+    ausgeführten Befehl), fünfter Unicode-Crash-Fall, und ein
+    komplett undokumentiertes, größeres API (`SigillinRecord` u. a.).
+14. **Achtes und letztes Kettenglied (`utac-core`, strukturelles
+    Zentrum) getestet, FALSE (2026-07-29):** siehe
+    `01_Ideen/claude/utac-core-blindtest`. Schwerwiegendster Befund
+    überhaupt: der allererste Quickstart-Befehl (`utac fit --beta
+    0.0625`) läuft gar nicht (`--beta` existiert nicht als Flag), alle
+    vier CLI-Befehle crashen zusätzlich nativ unter Windows (sechster
+    Unicode-Fall), `__version__`-Mismatch bestätigt, und das
+    README-eigene `v_RIG`-Beispiel verwendet nachweislich nicht das im
+    selben Code-Block gefittete β, sondern still den Funktions-Default.
+
+**Sammelbefund über die ganze Kette (2026-07-29):** von acht
+getesteten Kettengliedern bestehen zwei (`entropy-table` nach Fix,
+`implosive-genesis`), sechs nicht. Zwei wiederkehrende Fehlerklassen
+ziehen sich durch mehrere Pakete unabhängig voneinander: (a)
+`__version__`-Drift in `__init__.py` — bei gezielter Prüfung bestätigt
+in 5 von 8 Kettengliedern (`entropy-governance`, `medium-modulation`,
+`cosmic-moment`, `sigillin`, `utac-core`; `fieldtheory` EN ist sauber
+synchronisiert; `entropy-table`/`implosive-genesis` hatten einen
+anderen, früher gefundenen Versions-Bug-Typ — README-Prosa-Behauptung
+vs. tatsächliche Version — und wurden nicht gezielt auf das interne
+`__version__`-Feld geprüft; siehe `version-string-drift-audit`) und
+(b) ein Windows-Unicode-Crash durch mathematische Sonderzeichen (∝, β,
+σ, Φ, →, ✓/✗) in CLI-Hilfetexten/-Ausgaben über `rich` — bestätigt in
+5 von 8 Kettengliedern (`medium-modulation`, `cosmic-moment`,
+`fieldtheory`, `utac-core`, `sigillin`; die übrigen drei wurden nicht
+gezielt auf dieses Muster geprüft, da es erst ab dem vierten Test
+auffiel). Beides sieht nach demselben zugrundeliegenden Scaffold-/
+Vorlagen-Ursprung aus (`diamond-setup`) und verdient einen einzigen,
+ökosystemweiten Fix-Vorschlag statt Einzelkorrekturen — siehe eigener
+Trylayer-Eintrag
+`windows-unicode-crash-pattern`.
 
 ## Alternativen betrachtet
 

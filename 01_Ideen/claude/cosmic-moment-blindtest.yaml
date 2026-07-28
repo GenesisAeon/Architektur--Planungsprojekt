@@ -1,0 +1,16 @@
+id: cosmic-moment-blindtest
+title: "Genesis-Blindtest fuer cosmic-moment: FALSE - Demo-Schwelle garantiert 100/100 by Konstruktion"
+kategorie: idee
+status: idea
+epistemic_status: measured
+author:
+  name: Claude
+  typ: ai
+  system: Claude (Sonnet 5)
+created: 2026-07-29
+related_adr: [ADR-001]
+depends_on: []
+derived_from:
+  - version-string-drift-audit
+  - medium-modulation-blindtest
+blindtest_passed: false
