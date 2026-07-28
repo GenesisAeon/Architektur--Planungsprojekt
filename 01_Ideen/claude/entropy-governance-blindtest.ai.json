@@ -1,0 +1,34 @@
+{
+  "id": "entropy-governance-blindtest",
+  "title": "Genesis-Blindtest fuer entropy-governance: FALSE, mit zwei echten Bugs",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "measured",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 5)"
+  },
+  "created": "2026-07-29",
+  "related_adr": ["ADR-001"],
+  "depends_on": [],
+  "derived_from": ["entropy-table-blindtest", "implosive-genesis-blindtest"],
+  "blindtest_passed": false,
+  "content": {
+    "problem": "entropy-governance (P-GOV-1) ist das dritte Kettenglied der vorgeschlagenen Core-Kette (02_Plaene/genesis-core-scope.md), nach entropy-table (TRUE nach Fix) und implosive-genesis (TRUE mit kleinen Doku-Bugs). Muss laut Regel 6 den Genesis-Blindtest bestehen, bevor es als 03_Architektur/-Eintrag mit status: accepted eingereicht werden kann.",
+    "vorschlag_und_durchfuehrung": "Ein frischer, kontextfreier Subagent (kein GenesisAeon-Vorwissen) bekam ausschliesslich das vollstaendige, echte README als Eingabe und wurde angewiesen, pip install entropy-governance real auszufuehren, jeden Quickstart-Befehl real laufen zu lassen und die Ergebnisse ungeschoent zu berichten - exakt dieselbe Methodik wie bei entropy-table-blindtest/implosive-genesis-blindtest.",
+    "ergebnis": {
+      "install": "pip install entropy-governance installierte real v1.0.0, passend zur README-Zitation. Keine Installationsfehler.",
+      "quickstart": "Alle vier CLI-Befehle (eg entropy-price, eg governance-sim, eg duality, eg table-export) sowie die Python-API liefen fehlerfrei und produzierten Werte, die die dokumentierten Formeln korrekt wiedergeben (verifiziert: entropy_price, duality_factor und crep stimmen exakt mit ihren Formeln ueberein).",
+      "bug_1_steps_ignoriert": "'--steps' beeinflusst die 'Tesseract Slices'-Tabelle ueberhaupt nicht. In cli.py::cmd_governance_sim ist ts.slice(t_start=0.0, n_steps=4) hartkodiert. Empirisch bestaetigt: --steps 10, --steps 200 und --steps 1000 drucken alle dieselbe 4-Zeilen-Tabelle (t=0.0/0.1/0.2/0.3). Das README suggeriert, --steps 200 konfiguriere Tesseract-Slices UND CREP gemeinsam - in Wirklichkeit ist die Slice-Tabelle rein dekorativ/statisch.",
+      "bug_2_versions_inkonsistenz": "pip show entropy-governance meldet 1.0.0 (passend zu PyPI/Wheel/Zitation), aber das Paket-eigene __version__ in entropy_governance/__init__.py ist hartkodiert auf '0.1.0' - bestaetigt durch direkte Code-Pruefung. Keine kosmetische Kleinigkeit: eg version gibt 'entropy-governance 0.1.0' aus, und jede table-export-YAML stempelt metadata.version: 0.1.0. Wer Domaenendaten exportiert, bekommt eine Datei, die intern eine andere Version behauptet als die tatsaechlich installierte.",
+      "nebenbefund_doku_implementierungs_gap": "Die README-'Physics'-Sektion zeigt S(t)=kappa*A(t) und S(t)=lambda*ln(V(t)) als Kern-Dualitaets-Gleichungen. Im Code existieren diese nur als ungenutzte, nie aufgerufene SymPy-Platzhalter-Symbole (DUALITY_A, DUALITY_V) - weder exportiert noch aus CLI/API berechenbar. Tatsaechlich berechenbar sind nur entropy_price (eine Ratenformel) und duality_factor (eine gemischte Kombination) - keins von beiden berechnet woertlich S proportional A oder S proportional V wie dargestellt.",
+      "verdikt": "FALSE. Die Arithmetik ist intern konsistent und korrekt (mehrfach gegenprobiert), aber es fehlt jede Referenzskala oder Einheit: nichts im README oder CLI-Output sagt, ob ein gegebener P_E-, CREP- oder D-Wert sinnvoll, gut, schlecht oder physikalisch plausibel fuer 'Governance' ist. Zusaetzlich: die Tesseract-Tabelle ignoriert sichtbar eines ihrer eigenen dokumentierten Flags - ein konkreter technischer Fehler, nicht nur fehlende Interpretierbarkeit (aehnlich dem genesis-os-Befund: Transitions=0 trotz dokumentierten Schwellenwerts)."
+    },
+    "erwartetes_ergebnis": "entropy-governance besteht den Genesis-Blindtest in der jetzigen Form nicht - dritter FALSE-Befund nach genesis-scope/genesis-os, aber anders als bei diesen: hier gibt es zusaetzlich zwei konkrete, leicht behebbare technische Bugs (statt reiner Interpretierbarkeitsluecke), plus einen Dokumentations-Implementierungs-Gap bei den Kern-Physik-Formeln.",
+    "naechster_schritt": "Zwei Findings zur Weitergabe an Johann: (1) --steps muss die Tesseract-Slice-Anzahl tatsaechlich steuern, nicht hartkodiert auf 4 bleiben; (2) __version__ in entropy_governance/__init__.py auf '1.0.0' synchronisieren (und idealerweise automatisiert an pyproject.toml koppeln, um erneutes Auseinanderlaufen zu vermeiden - siehe readme-vs-pyproject-version-mismatch-audit fuer denselben Bug-Typ in mind. 4 weiteren Paketen). Re-Test nach Fix vorgesehen, analog zu entropy-tables FALSE->TRUE-Zyklus. 02_Plaene/genesis-core-scope.md entsprechend ergaenzt.",
+    "alternativen_betrachtet": [
+      "Den Befund als reine Interpretierbarkeitsluecke werten (wie bei genesis-scope/genesis-os). Verworfen: hier gibt es zusaetzlich zwei konkrete, reproduzierbare technische Bugs (ignoriertes CLI-Flag, Versions-Inkonsistenz) - das ist eine andere Fehlerklasse und verdient eigene Nennung, nicht nur 'auch semantisch unklar'."
+    ]
+  }
+}

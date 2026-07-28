@@ -1,0 +1,18 @@
+id: version-string-drift-audit
+title: "Versions-Drift-Audit: __version__ in __init__.py laeuft bei mind. 5 Paketen vom echten Release auseinander"
+kategorie: idee
+status: idea
+epistemic_status: measured
+author:
+  name: Claude
+  typ: ai
+  system: Claude (Sonnet 5)
+created: 2026-07-29
+related_adr: []
+depends_on: []
+derived_from:
+  - ecosystem-verifizierbare-daten-audit
+  - entropy-table-blindtest
+  - implosive-genesis-blindtest
+  - entropy-governance-blindtest
+blindtest_passed: null

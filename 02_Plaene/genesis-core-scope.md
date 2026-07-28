@@ -144,6 +144,21 @@ erst einzeln pro Paket nach Blindtest + ADR (Regel 3, Regel 6).
    struktureller Defekt, sondern reine
    Dokumentations-/CLI-Konsistenzfehler, zur Weitergabe an Johann
    vorgesehen.
+9. **Drittes Kettenglied (`entropy-governance`) getestet, FALSE mit
+   zwei echten Bugs (2026-07-29):** siehe
+   `01_Ideen/claude/entropy-governance-blindtest`, `blindtest_passed:
+   false`. `pip install entropy-governance` (v1.0.0) liefert
+   funktionierendes CLI + Python-API, alle Formeln arithmetisch
+   korrekt — aber `--steps` beeinflusst die "Tesseract Slices"-Tabelle
+   nicht (hartkodiert auf 4 Zeilen, empirisch mit 10/200/1000 Schritten
+   bestätigt), das eigene `__version__` in `__init__.py` steckt auf
+   "0.1.0" fest und leckt in CLI-Output und Export-YAMLs (derselbe
+   Bug-Typ in mind. 4 weiteren Paketen, siehe
+   `version-string-drift-audit`), und die dokumentierten S∝A/S∝V-
+   Kernformeln existieren im Code nur als ungenutzte SymPy-Platzhalter.
+   Fehlende Referenzskala/Einheiten für alle Ausgabewerte — Blindtest
+   FALSE. Zur Weitergabe an Johann vorgesehen, Re-Test nach Fix analog
+   zu `entropy-table`.
 
 ## Alternativen betrachtet
 

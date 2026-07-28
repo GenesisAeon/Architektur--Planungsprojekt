@@ -1,0 +1,37 @@
+{
+  "id": "version-string-drift-audit",
+  "title": "Versions-Drift-Audit: __version__ in __init__.py laeuft bei mind. 5 Paketen vom echten Release auseinander",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "measured",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 5)"
+  },
+  "created": "2026-07-29",
+  "related_adr": [],
+  "depends_on": [],
+  "derived_from": [
+    "ecosystem-verifizierbare-daten-audit",
+    "entropy-table-blindtest",
+    "implosive-genesis-blindtest",
+    "entropy-governance-blindtest"
+  ],
+  "blindtest_passed": null,
+  "content": {
+    "problem": "entropy-table und implosive-genesis hatten beide eine README-vs-PyPI-Versions-Diskrepanz. ecosystem-verifizierbare-daten-audit vermutete daraus ein systematisches Release-Hygiene-Problem ueber den ganzen v1.0.0-Sprint. Das brauchte eine echte, mechanische Pruefung ueber alle 48 Pakete, nicht nur die zwei bereits bekannten Faelle.",
+    "vorschlag_und_durchfuehrung": "Ein Skript hat fuer jedes lokal vorliegende Paket (47 von 48 haben einen lokalen Checkout) drei Werte verglichen: pyproject.toml's version-Feld, die tatsaechlich auf PyPI publizierte neueste Version (pip index versions), und Versions-Erwaehnungen im README-Fliesstext. Erste Rohergebnisse enthielten viel Rauschen (README-Erwaehnungen alter Versionen in Changelog-artiger Prosa sind normal) - deshalb zusaetzlich gezielt der __version__-String in jedes Pakets src/<paket>/__init__.py geprueft.",
+    "ergebnis": {
+      "bestaetigte_diskrepanzklasse": "Mindestens 5 von 47 geprueften Paketen haben ein internes __version__ in __init__.py, das beim Diamond-Setup-Scaffold-Standardwert '0.1.0' steckengeblieben ist, obwohl pyproject.toml und PyPI laengst 1.0.0/1.1.0 zeigen: entropy-governance, quantum-genesis, AdvancedWeightingSystems, universums-sim, cosmic-moment (alle __version__=0.1.0 vs. echte Version 1.0.0).",
+      "gegenbeispiele_korrekt": "diamond-setup (2.2.0), spiking-aeon (1.0.0), cellular-genesis (1.0.0), worldview (1.0.0), genesis-os (1.0.11) sind korrekt synchronisiert - der Fehler ist nicht universell, aber real und wiederkehrend.",
+      "nicht_kosmetisch": "Direkt bestaetigt am Beispiel entropy-governance-blindtest: die veraltete __version__-Zeichenkette leckt in 'eg version's Ausgabe und in jede von table-export erzeugte YAML-Datei (metadata.version: 0.1.0), obwohl das tatsaechlich installierte Paket 1.0.0 ist.",
+      "zweite_variante": "amoc-utac zeigt eine kleinere, andere Variante desselben Musters: pyproject.toml sagt 1.1.0, PyPI hat aber bereits 1.1.1 - hier ist der lokale Checkout hinter der veroeffentlichten Version zurueck, nicht das Paket selbst inkonsistent."
+    },
+    "erwartetes_ergebnis": "Ein klar abgegrenzter, wiederkehrender Bug-Typ (stale __version__ in __init__.py, wahrscheinlich ein Diamond-Setup-Scaffold-Default, der beim ersten echten Release-Bump vergessen wurde) statt vager README-Versions-Verwirrung. Betrifft mindestens 5 Pakete, potenziell mehr, die noch nicht einzeln durch den Blindtest gelaufen sind.",
+    "naechster_schritt": "An Johann weiterzugeben: __version__ in den fuenf genannten Paketen auf den echten Release-Stand heben, idealerweise durch Kopplung an pyproject.toml (z.B. via importlib.metadata.version) ersetzen, um erneutes Auseinanderlaufen strukturell auszuschliessen. Fuer amoc-utac: lokalen Checkout auf 1.1.1 synchronisieren. Diese fuenf (plus amoc-utac) sind noch nicht einzeln blindgetestet - falls sie spaeter in die Core-Kette aufgenommen werden sollen, gehoert der __version__-Fix zu den Vorbedingungen.",
+    "alternativen_betrachtet": [
+      "Jede rohe README-Versionserwaehnung als Bug werten (erster, zu naiver Skript-Durchlauf). Verworfen: erzeugte zu viele Falsch-Positive aus normaler Changelog-Prosa (z.B. implosive-genesis's README erwaehnt 0.1.0-0.4.0 als Historie, kein aktueller Fehlbezug). Stattdessen der praezisere, tatsaechlich nutzer-sichtbare __version__-String direkt geprueft."
+    ]
+  }
+}
