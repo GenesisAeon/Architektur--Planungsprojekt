@@ -1,0 +1,33 @@
+{
+  "id": "gamma-rho-kritikalitaet-cross-domain-check",
+  "title": "Gamma-zu-Rho-Kritikalitaetsdecke: geprueft in beta-clustering-utac/phi-scaling-validator, betrifft sie nicht",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "measured",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 5)"
+  },
+  "created": "2026-07-29",
+  "related_adr": [],
+  "depends_on": [],
+  "derived_from": ["ecosystem-verifizierbare-daten-audit"],
+  "blindtest_passed": null,
+  "content": {
+    "problem": "ecosystem-verifizierbare-daten-audit benannte eine offene Frage: die nicht-monotone Formel Rho_sem = r * tanh^2(sigma*Gamma) * (1 - Gamma/Gamma_max) aus scope-resilience (Peak bei Gamma~0.46, danach fallend, harte Decke bei Gamma_max=0.920) koennte sich auf andere gamma-basierte Pakete uebertragen - insbesondere auf die beiden expliziten 'cross-domain meta-analysis'-Pakete beta-clustering-utac (P32) und phi-scaling-validator (P38), die laut ECOSYSTEM_MAP.yaml echte gamma-Werte aus ueber einem Dutzend anderer Pakete zusammenfuehren.",
+    "vorschlag_und_durchfuehrung": "Beide Repos liegen lokal vor. Quellcode direkt gelesen (nicht nur Beschreibungen): beta-clustering-utac/src/beta_clustering/{constants,phi_scaling,universality_test,crep_bridge,system}.py und phi-scaling-validator/src/phi_scaling/{crep_scaling,statistical_tests}.py. Gezielt nach GAMMA_MAX/gamma_max/1-gamma-artigen Kritikalitaets-Termen gesucht (grep), zusaetzlich die tatsaechliche Aggregationslogik gelesen.",
+    "ergebnis": {
+      "befund": "Die Kritikalitaetsdecke betrifft diese beiden Pakete NICHT - aus einem einfachen, ueberpruefbaren Grund: ihre Aggregationsmethode ist komplett anders als scope-resilience's Rho_sem-Formel.",
+      "beta_clustering_utac": "Vergleicht Beta-Cluster-Zentren fuenf realer Domaenen (climate=0.09, ecological=0.23, neural=0.50, astrophysical=0.90, ai=1.75) ueber Verhaeltnisse gegen die Konstante Phi^(1/3)~1.17480 (goldener Schnitt, Kubikwurzel) mittels ANOVA-F-Test (universality_test.py) und Verhaeltnis-Analyse (phi_scaling.py). crep_bridge.py hat zwar eine Gamma-Formel (Gamma = tanh(beta/sigma)), aber die ist monoton (kein Peak, keine Decke) und wird nicht mit einem (1-Gamma/Gamma_max)-Term kombiniert.",
+      "phi_scaling_validator": "Vergleicht sortierte, echte Gamma-Werte aus 14 realen Paketen (P17-P30, CREP_DATA in crep_scaling.py - Werte stimmen mit ECOSYSTEM_MAP.yaml ueberein, z.B. Cygnus-X-1=0.046, AMOC=0.251, Amazon=0.116, Quanten-Dekohaerenz=0.050) ueber Konsekutiv-Verhaeltnisse, ebenfalls gegen Phi^(1/3), per Ein-Stichproben-t-Test und Bootstrap-Konfidenzintervall (statistical_tests.py).",
+      "kein_treffer": "Kein GAMMA_MAX, keine Kritikalitaets-Decke, kein nicht-monotoner Term in beiden Codebasen gefunden.",
+      "nebenbefund_positiv": "phi-scaling-validator's CREP_DATA ist ehrlich mit Naeherungen umgegangen - P22 (Sandpile SOC) nutzt explizit den Mittelwert 0.336 aus dem dokumentierten Bereich 0.296-0.376 (im Code kommentiert), P28 (Epi-Sigillin) ist als 'dynamic, approximate' markiert, statt den in ECOSYSTEM_MAP.yaml als null gefuehrten Wert stillschweigend zu erfinden."
+    },
+    "erwartetes_ergebnis": "Die Gamma-zu-Rho-Kritikalitaetsdecke bleibt ein spezifisches Risiko von scope-resilience's HallucinationRisk.compute_rho() (und was auch immer sonst dieselbe Formel direkt wiederverwendet) - keine oekosystemweite Ansteckungsgefahr fuer jedes gamma-fuehrende Paket. Die Vermutung aus ecosystem-verifizierbare-daten-audit ist damit fuer dieses Paar geprueft und verworfen, nicht offen geblieben.",
+    "naechster_schritt": "Keine weitere Pruefung fuer beta-clustering-utac/phi-scaling-validator noetig. Falls kuenftig weitere Pakete mit expliziter Cross-Domain-Gamma-Aggregation auftauchen, lohnt sich derselbe, gezielte Code-Check (nicht nur Domaenenbeschreibung) - aber nicht als generelle Annahme, dass jede Gamma-Nutzung betroffen ist.",
+    "alternativen_betrachtet": [
+      "Aus der Namensaehnlichkeit (Gamma taucht in vielen Paketen auf) pauschal ein oekosystemweites Risiko ableiten, ohne Code zu lesen. Verworfen: genau der Fehler, den diese ganze Session immer wieder vermeiden sollte (Verifizieren statt Vermuten) - haette hier zu einer falschen Warnung gefuehrt."
+    ]
+  }
+}
