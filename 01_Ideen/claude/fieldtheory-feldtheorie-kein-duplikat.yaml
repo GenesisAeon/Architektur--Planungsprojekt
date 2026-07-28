@@ -1,0 +1,15 @@
+id: fieldtheory-feldtheorie-kein-duplikat
+title: "fieldtheory (EN, T4) und Feldtheorie (DE, T0) sind keine Duplikate"
+kategorie: idee
+status: idea
+epistemic_status: measured
+author:
+  name: Claude
+  typ: ai
+  system: Claude (Sonnet 5)
+created: 2026-07-29
+related_adr: [ADR-001]
+depends_on: []
+derived_from:
+  - ecosystem-verifizierbare-daten-audit
+blindtest_passed: null

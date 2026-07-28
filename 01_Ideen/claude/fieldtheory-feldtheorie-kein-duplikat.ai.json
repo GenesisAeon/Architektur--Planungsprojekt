@@ -1,0 +1,31 @@
+{
+  "id": "fieldtheory-feldtheorie-kein-duplikat",
+  "title": "fieldtheory (EN, T4) und Feldtheorie (DE, T0) sind keine Duplikate",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "measured",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 5)"
+  },
+  "created": "2026-07-29",
+  "related_adr": ["ADR-001"],
+  "depends_on": [],
+  "derived_from": ["ecosystem-verifizierbare-daten-audit"],
+  "blindtest_passed": null,
+  "content": {
+    "problem": "02_Plaene/genesis-core-scope.md, Schritt 2, flaggt eine offene Frage: sind fieldtheory (T4, EN) und Feldtheorie (DE, T0) tatsaechlich Duplikate? Falls ja, wuerde die vorgeschlagene Core-Kette kuerzer. Namensaehnlichkeit (dieselbe deutsche/englische Uebersetzung) allein ist aber keine Verifikation - das braucht echten Code-/Struktur-Vergleich.",
+    "vorschlag_und_durchfuehrung": "Beide Repos liegen lokal vor (D:\\mandala\\fieldtheory und D:\\mandala\\Feldtheorie) und wurden direkt verglichen: Top-Level-Struktur, pyproject.toml (Name, Version, Beschreibung), README/Scope, Quellcode-Umfang.",
+    "ergebnis": {
+      "fieldtheory_en": "PyPI-Name 'fieldtheory', Version 1.0.1. Nur 3 Quelldateien (core.py, cli.py, entropy_table_bridge.py). Selbstbeschreibung: 'The unifying field theory of the GenesisAeon stack' - ein Lagrangian (L = S_A*S_V/(S_A+S_V) - (1+delta)/t^2) samt Euler-Lagrange-Ableitung. Bridges explizit zu entropy-table, medium-modulation, cosmic-moment, entropy-governance (optional via fieldtheory[stack], Fallback auf interne Implementierung sonst).",
+      "feldtheorie_de": "PyPI-Name 'feldtheorie' (Kleinschreibung), Version 6.0.0 (GitHub-Tag 13.0.0). Selbstbeschreibung: 'Reproducibility harness for the Universal Threshold Field programme'. Hunderte Analyse-Skripte, riesiger Datenkorpus, CURRENT_MAP.md allein ueber 3200 Zeilen, 138 echte Fit-Ergebnisse (siehe ecosystem-verifizierbare-daten-audit).",
+      "vergleich": "Strukturell und inhaltlich eindeutig KEINE Duplikate - zwei komplett unterschiedliche Artefakte, die nur zufaellig denselben uebersetzten Namen tragen. fieldtheory (EN) liest sich wie genau das, was dieses Repo mit Regel 7/9 anstrebt: eine schmale, minimale, deterministische Destillation EINER spezifischen mathematischen Formulierung (die S-proportional-A/S-proportional-V-Dualitaets-Lagrangian) aus dem riesigen Feldtheorie-Korpus - nicht eine Kopie davon. Die Namensgleichheit ist die einzige Gemeinsamkeit; sie hat die Duplikat-Vermutung ausgeloest, ist aber kein inhaltlicher Beleg."
+    },
+    "erwartetes_ergebnis": "Die Core-Kette (entropy-table -> implosive-genesis -> entropy-governance -> medium-modulation -> cosmic-moment -> fieldtheory -> sigillin -> utac-core) bleibt in voller Laenge bestehen - fieldtheory (EN) ist ein eigenstaendiges, zu testendes Kettenglied, keine Dublette von Feldtheorie (DE), die man herausstreichen koennte.",
+    "naechster_schritt": "fieldtheory (EN) selbst braucht noch seinen eigenen Genesis-Blindtest, sobald die Kette bei T4 ankommt (aktuell wird entropy-governance, T1, getestet). Feldtheorie (DE) selbst ist kein Core-Kandidat in dieser Kette (T0, kein Eintrag in depends_on-Ketten der T1-T16-Pakete) - bleibt Quelle/Labor gemaess Regel 9, nicht Ziel einer eigenen Blindtest-Bewertung im Rahmen dieser Core-Kette.",
+    "alternativen_betrachtet": [
+      "Nur die PyPI-Namen vergleichen (fieldtheory vs. feldtheorie) und daraus schliessen, es handle sich nicht um Duplikate. Fuer sich genommen zu schwach - zwei unterschiedlich benannte Pakete koennten trotzdem denselben Code kopiert haben. Deshalb zusaetzlich Umfang, Selbstbeschreibung und Abhaengigkeitsstruktur geprueft, nicht nur den Namen."
+    ]
+  }
+}
