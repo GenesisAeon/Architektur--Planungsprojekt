@@ -1,0 +1,17 @@
+id: ecosystem-verifizierbare-daten-audit
+title: "Oekosystemweiter Befund: was tatsaechlich verifizierbare Daten erzeugt"
+kategorie: idee
+status: idea
+epistemic_status: derived
+author:
+  name: Claude
+  typ: ai
+  system: Claude (Sonnet 5)
+created: 2026-07-28
+related_adr: [ADR-001, ADR-002]
+depends_on: []
+derived_from:
+  - genesis-scope-blindtest
+  - entropy-table-blindtest
+  - implosive-genesis-blindtest
+blindtest_passed: null

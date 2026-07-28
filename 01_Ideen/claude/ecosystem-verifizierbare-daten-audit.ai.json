@@ -1,0 +1,47 @@
+{
+  "id": "ecosystem-verifizierbare-daten-audit",
+  "title": "Oekosystemweiter Befund: was tatsaechlich verifizierbare Daten erzeugt",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "derived",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 5)"
+  },
+  "created": "2026-07-28",
+  "related_adr": ["ADR-001", "ADR-002"],
+  "depends_on": [],
+  "derived_from": [
+    "genesis-scope-blindtest",
+    "entropy-table-blindtest",
+    "implosive-genesis-blindtest"
+  ],
+  "blindtest_passed": null,
+  "content": {
+    "problem": "Johann fragte nach einer ausfuehrlichen, oekosystemweiten Einschaetzung: was aus den 48 GenesisAeon-Paketen erzeugt tatsaechlich verifizierbare Daten und hat echten Nutzen - als Grundlage fuer die naechsten Bauentscheidungen. Dieses Repo hat dafuer bereits die richtige Methodik (Genesis-Blindtest, Regel 6) und vier reale Befunde (entropy-table, implosive-genesis, genesis-scope, genesis-os). Dieser Eintrag fuehrt diese Befunde mit unabhaengigen, in derselben Sitzung durchgefuehrten Untersuchungen in Feldtheorie, unified-mandala und genesis-tip/scope-resilience zusammen - als Synthese bereits gemessener Ergebnisse, nicht als neue Blindtests.",
+    "vorschlag_und_durchfuehrung": "Zusammenfuehrung von (a) den vier bereits in diesem Repo dokumentierten Genesis-Blindtest-Befunden mit (b) drei unabhaengigen Untersuchungen derselben Claude-Sitzung in anderen GenesisAeon-Repos: Feldtheorie (Archaeologie-Durchgaenge, Stichprobenverifikation gegen echte Analyse-Ergebnisse), genesis-tip/scope-resilience (drei aufeinanderfolgende empirische Tests der vorregistrierten TIP-x-Rho_sem-Korrelationshypothese, inkl. Bau eines optionalen LLM-Judge), unified-mandala (Codexwork-System-Verifikation, Simulation-Realitaetscheck).",
+    "ergebnis_diese_repo_bereits_bekannt": {
+      "entropy-table": "FALSE -> TRUE nach Fix. Erst technisch defekt (fehlende typer-Dependency, PyPI lieferte v2.0.0 statt behauptetem v1.0.0, hartkodierte Pfade, kaputter --format-Parser), nach v2.0.1 echt lauffaehig mit 31 realen Atlas-Datendateien (10 Domains/9 Relations/4 Claims) und echten Entropieproduktions-Berechnungen.",
+      "implosive-genesis": "TRUE. Sofort lauffaehig, 6 von 8 dokumentierten CLI-Befehlen plus vollstaendige Python-API liefern echten wissenschaftlichen Output (V_RIG, OIPK-Kernel, Tesseract-Rendering, Chronology-Validator). Nur zwei kleine, leicht behebbare Doku-/CLI-Bugs (full-summary-CLI fehlt, --n_sim/--n-sim-Inkonsistenz).",
+      "genesis-scope": "FALSE. Technisch fehlerfrei (coherence_score=0.496, drift_status='anchored'), aber strukturell leer - nie mit echten Sigillin-Ankern/Sessions befuellt. Johanns Praezisierung: kein Doku-Problem, sondern struktureller Leerzustand eines nie benutzten Systems.",
+      "genesis-os": "FALSE. Laeuft technisch (Phase='Initiation', Entropy=0.9986, Emergence Events=15), aber Transitions=0 in drei unabhaengigen Laeufen (Quickstart + zwei CLI-Varianten mit 50/100 Zyklen, Entropie oberhalb der dokumentierten Schwelle) - Widerspruch zum eigenen Anspruch als 'phase-transitioning system', ungeklaert ob Beispiel-Konfiguration, Logikfehler oder Absicht."
+    },
+    "ergebnis_diese_sitzung_ergaenzt": {
+      "feldtheorie_de_t0": "Vermutlich das dichteste real-verifizierte Datenreservoir im gesamten Oekosystem. analysis/results/ enthaelt 138 echte Fit-Ergebnisse mit eigenem Trilayer-Index (analysis_index.md). Stichprobe: die Behauptung Beta=3.47+/-0.47 fuer Wei's PaLM-Skalierungsdaten wurde gegen die echte llm_beta_extractor.json geprueft - exakt bestaetigt (beta_mean: 3.4695, beta_std: 0.4655), inklusive Delta-AIC gegen ein Power-Law-Nullmodell und der ehrlichen Selbstauskunft 'within_canonical_band: false'. Literaturbelegte Realdaten (NGRIP Ice Core, Gajer et al. 2012 Science, ENROLL-HD, Human Microbiome Project, Patel et al. 2015 Cell) bestaetigt. Direkt relevant fuer die offene Duplikat-Frage fieldtheory (T4/EN) vs. Feldtheorie (T0/DE) aus 02_Plaene/genesis-core-scope.md, Schritt 2: falls beide tatsaechlich Duplikate sind, ist die deutsche Version aufgrund dieser Tiefe die naheliegende Kandidatin zum Behalten - braucht aber einen echten Code-Diff, keine Namens-Vermutung.",
+      "genesis_tip_scope_resilience": "Ein echtes, vorregistriertes Falsifikations-Framework mit CREPGate-Disziplin (Pre-Registration-Anchor commit 1cf1730, Spearman-Schwellenwert 0.3, n>=30). Drei unabhaengige Versuche in dieser Sitzung (synthetischer Dummy-Agent, Replay echter historischer Antworten, echte Live-Antworten eines Qwen-Modells) fanden alle denselben konstanten tip_score=1.0 - zurueckgefuehrt auf metrics/consistency_scorer.py's enge Regex-Muster (I-did-X-vs-I-did-not-do-X, the-X-is-N wiederholt mit anderem N), die auf natuerlichem Text praktisch nie feuern (im Paket-eigenen Docstring bereits als Zukunftsarbeit vermerkt). Ein optionaler LLM-Judge (grok_judge, Callable[[str,str],bool]) wurde nachgerüstet und funktioniert nachweislich (isolierter Sanity-Check sowie 8 von 24 echten Testpaaren erfolgreich beurteilt, alle konsistent), aber ein kostenloses Grok-Kontingent (taeglicher Nutzungsdeckel, nicht nur Minuten-Rate-Limit) hat den vollstaendigen n>=30-Test bisher verhindert.",
+      "unified_mandala": "Gemischtes Bild: ein echtes, verifiziertes Codexwork-Automatisierungssystem (mehrstufige ToDo-/Fraktal-Pipeline, 65 reale 'Fraktal'-Durchlaeufe, stichprobenartig gegen echte Dateien bestaetigt), aber viele 'Simulation'-Pakete sind selbst-deklarierte Platzhalter (governance_simulator/singularity_simulator sagen woertlich 'placeholder' im eigenen Docstring). Ein kleinerer, aber echter Kern (nullfield_wave.py, ein realer 1D-Wellengleichungsloeser, nachweislich lokal ausgefuehrt via kompiliertem .pyc; universe-sim, ein echter laufender Go-Microservice, selbst als Prototyp deklariert) liegt dazwischen."
+    },
+    "drei_oekosystemweite_muster": [
+      "Der wiederkehrende Engpass ist fehlende echte Nutzungsdaten, nicht Codequalitaet. genesis-scope (kein Sigillin-Store befuellt) und genesis-tip (keine echte Session-Korpus, jetzt teilweise geschlossen) haben strukturell dasselbe Problem: der Mechanismus funktioniert, wurde aber nie mit echtem Material gefuettert.",
+      "Die Gamma-zu-Rho-Kritikalitaetsdecke aus scope-resilience (Rho steigt bis zu einem Peak-Gamma~0.46 und faellt danach, mit einer harten Decke bei Gamma_max=0.920) ist vermutlich kein Einzelfall. ECOSYSTEM_MAP.yaml listet echte Gamma-Werte fuer ueber ein Dutzend Pakete (amazon-utac 0.116, amoc-utac 0.251, sandpile-utac 0.296/0.376 u.a.), und beta-clustering-utac/phi-scaling-validator betreiben explizit cross-domain meta-analysis darueber - falls die zugrundeliegende Formel dieselbe Form hat, koennte eine naive Cross-Domain-Aggregation an derselben Stelle scheitern wie der heutige Proxy-Test. Noch nicht geprueft.",
+      "Versions-Diskrepanz zwischen README und PyPI ist bei zwei von zwei bisher getesteten Core-Kandidaten aufgetreten (entropy-table: README v1.0.0/installiert v2.0.0; implosive-genesis: README 'v0.4.0 current'/installiert v1.0.0) - deutet auf ein systematisches Release-Hygiene-Problem aus dem v1.0.0-Sprint hin, nicht auf Einzelfaelle."
+    ],
+    "erwartetes_ergebnis": "Eine gemeinsame, repo-uebergreifende Sicht auf 'was ist real', die die bisherigen Einzelbefunde dieses Repos ergaenzt, ohne sie zu ersetzen - plus drei konkrete, pruefbare Folgefragen (Duplikat-Check, Gamma-Rho-Audit, Versions-Audit), die aus den Mustern oben direkt ableitbar sind.",
+    "naechster_schritt": "Wird als eigene Roadmap sequenziell abgearbeitet: Blindtest-Kette mit entropy-governance fortsetzen; fieldtheory/Feldtheorie-Duplikat per Code-Diff klaeren; Gamma-Rho-Kritikalitaetscheck fuer beta-clustering-utac/phi-scaling-validator; genesis-tip-Judge-Test abschliessen sobald das Grok-Kontingent zurueckgesetzt ist; README-vs-PyPI-Versionsaudit ueber alle 48 Pakete.",
+    "alternativen_betrachtet": [
+      "Nur den bisherigen vier Blindtest-Befunden folgen, ohne externe Session-Funde einzubeziehen. Verworfen: die Feldtheorie- und genesis-tip-Funde sind unabhaengig gewonnen und direkt relevant fuer offene Fragen dieses Repos (Duplikat-Frage, Core-Kandidaten-Reife) - sie wegzulassen wuerde bereits vorhandenes Wissen ignorieren.",
+      "Sofort alle drei Folgefragen selbst beantworten, statt sie als offene Aufgaben zu dokumentieren. Verworfen fuer diesen Eintrag: jede der drei Fragen braucht eigene Untersuchung mit eigenem Belegstand - richtig als eigene, separate Eintraege zu behandeln, nicht als Seitenbemerkung hier."
+    ]
+  }
+}
