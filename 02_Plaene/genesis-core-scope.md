@@ -279,6 +279,32 @@ Trylayer-Eintrag
     weiterhin bestätigt bei `sonification`; `mandala-visualizer` und
     `cosmic-web` sind saubere Gegenbeispiele (jetzt insgesamt vier).
 
+16. **Orchestrierungskern (`unified-mandala`, P-MANDALA) getestet, FALSE,
+    aber substanziellster Einzelbefund bisher (2026-07-29):** siehe
+    `01_Ideen/claude/unified-mandala-blindtest`. Das README ist
+    zweigeteilt: ein `pip install unified-mandala`-Python/CLI-Strang
+    (direkt vergleichbar mit allen bisherigen Tests) und ein separater,
+    viel schwererer Node/pnpm/Docker/NATS/Ollama/OPA-Vollstack-Strang
+    ("5-Minute Quick Start"). Python/CLI-Strang real getestet: die
+    Landauer-Formel stimmt exakt, der zentrale φ=0.618-Parameter ist
+    echt und mathematisch wirksam (kein Marketing) — bislang seltener
+    positiver Befund dieser Güte —, `MetaQuestEngine` reagiert
+    nachweislich echt auf variierte Eingaben. Aber: `pip show` liefert
+    1.0.0, während README/CLI-Banner/`__version__` bei 0.3.2 verharren
+    (neue, grössere Variante des `version-string-drift-audit`-Musters),
+    und 8 von 9 CLI-Befehlen crashen ausserhalb einer nativen
+    PowerShell-7-Konsole mit `UnicodeEncodeError` — breitester
+    Einzelfall des `windows-unicode-crash-pattern` überhaupt. Der
+    separate Vollstack-Strang wurde nicht tatsächlich hochgefahren,
+    aber durch README-/Repo-Lektüre strukturell geprüft: er verlangt
+    Docker, einen NATS-JetStream-Server, zwei per Ollama zu ziehende
+    LLM-Modelle und ein OPA-Binary — real vorhandene, keine
+    Vaporware-Scripts, aber ein klares Missverhältnis zur eigenen
+    "5-Minute"-Bezeichnung. `windows-unicode-crash-pattern` und
+    `version-string-drift-audit` wurden um diesen Fund erweitert; dabei
+    auch die noch offenen Nachträge aus Schritt 15 (`sonification`,
+    `cosmic-web`, stille Mojibake-Variante) formal eingearbeitet.
+
 ## Alternativen betrachtet
 
 **genesis-os selbst als alleinigen Core definieren, alles andere als

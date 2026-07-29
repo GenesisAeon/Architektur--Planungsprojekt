@@ -52,6 +52,16 @@ Musters: `pyproject.toml` sagt 1.1.0, PyPI hat aber bereits 1.1.1 —
 hier ist der lokale Checkout hinter der veröffentlichten Version
 zurück, nicht das Paket selbst inkonsistent.
 
+**Nachtrag (2026-07-29) — grösster bisher gefundener Einzelfall:**
+`unified-mandala` (siehe `unified-mandala-blindtest`) zeigt dasselbe
+Grundmuster in deutlich grösserer Sprungweite: `pip show` liefert die
+tatsächlich installierte PyPI-Version **1.0.0**, während sowohl das
+interne `__version__` als auch das CLI-eigene Banner bei **0.3.2**
+verharren — mehrere Minor-/Major-Releases Rückstand, nicht nur ein
+einzelner vergessener Scaffold-Default. Bestätigt, dass dieses Muster
+nicht auf kleine Core-Kettenglieder beschränkt ist, sondern auch das
+grösste bisher getestete Paket betrifft.
+
 ## Erwartetes Ergebnis
 
 Ein klar abgegrenzter, wiederkehrender Bug-Typ (stale `__version__` in

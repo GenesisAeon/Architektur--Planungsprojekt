@@ -1,6 +1,6 @@
 {
   "id": "windows-unicode-crash-pattern",
-  "title": "Windows-Unicode-Crash-Muster: 5 von 5 gezielt geprueften Kettengliedern betroffen",
+  "title": "Windows-Unicode-Crash-Muster: 9 von 9 gezielt geprueften Paketen betroffen, plus stille Mojibake-Variante",
   "kategorie": "idee",
   "status": "idea",
   "epistemic_status": "measured",
@@ -17,27 +17,41 @@
     "cosmic-moment-blindtest",
     "fieldtheory-en-blindtest",
     "sigillin-blindtest",
-    "utac-core-blindtest"
+    "utac-core-blindtest",
+    "sonification-blindtest",
+    "cosmic-web-blindtest",
+    "mirror-machine-blindtest",
+    "climate-dashboard-blindtest",
+    "unified-mandala-blindtest"
   ],
   "blindtest_passed": null,
   "content": {
-    "problem": "Waehrend der Genesis-Blindtests der Core-Kette fiel wiederholt derselbe Absturz auf: CLI-Befehle crashen unter Windows-Standardkonsole (cp1252-Codepage), weil mathematische Unicode-Sonderzeichen direkt in rich-gerenderte Strings eingebettet sind. Ab dem vierten Kettenglied-Test wurde gezielt danach gesucht - das verdient einen eigenen, oekosystemweiten Befund statt fuenf Einzelerwaehnungen in den jeweiligen Blindtest-Eintraegen.",
-    "vorschlag_und_durchfuehrung": "Fuenf unabhaengige, kontextfreie Subagenten-Blindtests (Core-Kette: medium-modulation/cosmic-moment/fieldtheory/sigillin/utac-core) liefen jeweils auf echten, frischen Windows-Umgebungen und dokumentierten den exakten Fehlertext, wo aufgetreten.",
+    "problem": "Waehrend der Genesis-Blindtests der Core-Kette fiel wiederholt derselbe Absturz auf: CLI-Befehle crashen unter Windows-Standardkonsole (cp1252-Codepage), weil mathematische Unicode-Sonderzeichen direkt in rich-gerenderte Strings eingebettet sind. Ab dem vierten Kettenglied-Test wurde gezielt danach gesucht - das verdient einen eigenen, oekosystemweiten Befund statt isolierter Einzelerwaehnungen in den jeweiligen Blindtest-Eintraegen. Zusaetzlich zeigte sich bei zwei weiteren Paketen eine zweite, verwandte, aber unterscheidbare Ausprägung: stille Mojibake-Korruption statt Absturz.",
+    "vorschlag_und_durchfuehrung": "Neun unabhaengige, kontextfreie Subagenten-Blindtests liefen jeweils auf echten, frischen Windows-Umgebungen (Core-Kette: medium-modulation/cosmic-moment/fieldtheory/sigillin/utac-core; Programm-Kandidaten: sonification/cosmic-web/mirror-machine/climate-dashboard; Orchestrierungskern: unified-mandala) und dokumentierten den exakten Fehlertext, wo aufgetreten.",
     "ergebnis": {
-      "tabelle": [
+      "tabelle_absturz": [
         {"paket": "medium-modulation", "zeichen": "proportional-zu-Symbol", "befehl": "mm --help, pip show"},
         {"paket": "cosmic-moment", "zeichen": "Pfeil-Symbol", "befehl": "cm collapse"},
         {"paket": "fieldtheory (EN)", "zeichen": "proportional-zu-Symbol", "befehl": "ft --help, pip show"},
         {"paket": "sigillin", "zeichen": "Haken/Kreuz-Symbole", "befehl": "sig validate/inspect/render"},
-        {"paket": "utac-core", "zeichen": "beta/sigma/Phi", "befehl": "alle vier CLI-Befehle (schwerster Fall)"}
+        {"paket": "utac-core", "zeichen": "beta/sigma/Phi", "befehl": "alle vier CLI-Befehle (schwerster Fall in der Core-Kette)"},
+        {"paket": "sonification", "zeichen": "beta", "befehl": "soni entropy-gate (nach korrektem MIDI-Write)"},
+        {"paket": "cosmic-web", "zeichen": "Ungefaehr-Zeichen", "befehl": "cweb render (allererster Quickstart-Befehl)"},
+        {"paket": "unified-mandala", "zeichen": "Subskript-Null/Pfeil/Subskript-Zwei/Alpha/Phi/Pi/Minus", "befehl": "8 von 9 CLI-Befehlen (breitester Einzelfall ueberhaupt)"}
       ],
-      "mechanismus": "Immer derselbe Mechanismus: rich's Legacy-Windows-Konsolen-Renderer kann das jeweilige Zeichen auf cp1252 (Windows-Standard-Codepage) nicht kodieren, UnicodeEncodeError: 'charmap' codec can't encode character. Workaround (PYTHONIOENCODING=utf-8 / PYTHONUTF8=1) funktioniert, wird aber in keinem der fuenf READMEs erwaehnt. Bei utac-core betrifft es ALLE VIER dokumentierten Quickstart-Befehle gleichzeitig - ein Windows-Erstnutzer ohne manuelles UTF-8-Setup bekommt dort keinen einzigen funktionierenden Befehl.",
-      "einschraenkung": "Die uebrigen drei bereits getesteten Kettenglieder (entropy-table, implosive-genesis, entropy-governance) wurden nicht gezielt auf dieses Muster geprueft, da es erst beim vierten Test auffiel - keine Aussage darueber, ob sie betroffen sind oder nicht."
+      "tabelle_mojibake": [
+        {"paket": "mirror-machine", "zeichen": "Gedankenstrich", "effekt": "wird lautlos zu Ersatzzeichen statt zu crashen"},
+        {"paket": "climate-dashboard", "zeichen": "Box-Zeichnungszeichen", "effekt": "Tabellenrahmen im Dashboard-Footer korrumpiert"}
+      ],
+      "mechanismus": "Immer derselbe Mechanismus: rich's Legacy-Windows-Konsolen-Renderer kann das jeweilige Zeichen auf cp1252 (Windows-Standard-Codepage) nicht kodieren, UnicodeEncodeError: 'charmap' codec can't encode character. Workaround (PYTHONIOENCODING=utf-8 / PYTHONUTF8=1) funktioniert durchgaengig, wird aber in keinem der neun READMEs erwaehnt. Bei unified-mandala zeigte sich eine wichtige Nuance: das Risiko ist konsolenabhaengig - eine native, interaktive PowerShell-7-Sitzung ist unter PEP 528 automatisch UTF-8-faehig und crasht nicht, waehrend git-bash/MSYS-Terminals, Output-Umleitung und aeltere PowerShell-5.1-Konfigurationen den Fehler real ausloesen.",
+      "stille_variante": "Die Mojibake-Variante ist potenziell tueckischer als der harte Absturz: das Programm laeuft 'erfolgreich' durch, liefert aber sichtbar kaputten Text, ohne dass der Nutzer merkt, dass etwas falsch ist - verletzt Regel 6 auf eine andere Art als ein klarer Crash.",
+      "einschraenkung": "Die uebrigen, nicht gezielt geprueften Pakete (entropy-table, implosive-genesis, entropy-governance, mandala-visualizer, implosive-origin-utac) machen keine Aussage darueber, ob sie betroffen sind oder nicht - bei mandala-visualizer wurde stattdessen eine verwandte, aber andere Absturz-Variante gefunden (Crash nach erfolgreichem Datei-Export)."
     },
-    "erwartetes_ergebnis": "Ein einziger, wiederkehrender Root-Cause-Typ statt fuenf isolierter Einzel-Bugs: mathematische Unicode-Symbole in rich/Typer-help=-Strings ohne Ruecksicht auf Windows-Standard-Terminals. Passt zum bereits dokumentierten __version__-Drift-Muster (version-string-drift-audit) als zweite, unabhaengige, scaffold-artige Fehlerklasse ueber mehrere Pakete hinweg.",
-    "naechster_schritt": "An Johann weiterzugeben als oekosystemweiter Fix-Vorschlag, nicht als fuenf Einzelkorrekturen: entweder (a) alle mathematischen Unicode-Zeichen in CLI-Hilfetexten/-Ausgaben durch ASCII-Aequivalente ersetzen, oder (b) die Diamond-Setup-Scaffold-Vorlage so anpassen, dass generierte cli.py-Dateien standardmaessig UTF-8-Ausgabe erzwingen, damit kuenftige Pakete den Fehler gar nicht erst erben. Die noch nicht auf dieses Muster geprueften Kettenglieder sollten bei Gelegenheit nachtraeglich geprueft werden.",
+    "erwartetes_ergebnis": "Ein einziger, wiederkehrender Root-Cause-Typ (plus eine verwandte stille Variante) statt neun isolierter Einzel-Bugs: mathematische Unicode-Symbole in rich/Typer-help=-Strings ohne Ruecksicht auf Windows-Standard-Terminals. Passt zum bereits dokumentierten __version__-Drift-Muster (version-string-drift-audit) als zweite, unabhaengige, scaffold-artige Fehlerklasse ueber praktisch das gesamte Oekosystem hinweg - von den kleinsten Core-Kettengliedern bis zum groessten getesteten Paket (unified-mandala, 8 von 9 CLI-Befehlen).",
+    "naechster_schritt": "An Johann weiterzugeben als oekosystemweiter Fix-Vorschlag, nicht als neun Einzelkorrekturen: entweder (a) alle mathematischen Unicode-Zeichen in CLI-Hilfetexten/-Ausgaben durch ASCII-Aequivalente ersetzen, oder (b) die Diamond-Setup-Scaffold-Vorlage so anpassen, dass generierte cli.py-Dateien standardmaessig UTF-8-Ausgabe erzwingen, damit kuenftige Pakete den Fehler gar nicht erst erben - sowie (c) einen expliziten PYTHONIOENCODING=utf-8-Hinweis in alle betroffenen READMEs, solange (b) noch nicht oekosystemweit umgesetzt ist. Die noch nicht auf dieses Muster geprueften Pakete (entropy-table, implosive-genesis, entropy-governance, implosive-origin-utac) sollten bei Gelegenheit nachtraeglich geprueft werden.",
     "alternativen_betrachtet": [
-      "Als fuenf getrennte, paketspezifische Bugs belassen (wie urspruenglich in den einzelnen Blindtest-Eintraegen notiert). Nicht falsch, aber unvollstaendig: ohne diesen zusammenfuehrenden Eintrag sieht es nach fuenf unabhaengigen Zufaellen aus, statt nach einem einzigen, systematischen Scaffold-Problem mit einem einzigen sinnvollen Fix."
+      "Als neun getrennte, paketspezifische Bugs belassen (wie urspruenglich in den einzelnen Blindtest-Eintraegen notiert). Nicht falsch, aber unvollstaendig: ohne diesen zusammenfuehrenden Eintrag sieht es nach neun unabhaengigen Zufaellen aus, statt nach einem einzigen, systematischen Scaffold-Problem mit einem einzigen sinnvollen Fix.",
+      "Die stille Mojibake-Variante als denselben Befund wie den harten Absturz behandeln, ohne sie separat zu kennzeichnen. Verworfen: beide haben denselben Root-Cause, aber unterschiedliche Nutzer-Konsequenzen (sichtbarer Fehler vs. unbemerkt falsches Ergebnis) - fuer die Priorisierung eines Fixes und fuer Regel 6 ist diese Unterscheidung relevant."
     ]
   }
 }

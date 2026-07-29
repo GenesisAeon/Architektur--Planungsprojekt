@@ -1,0 +1,39 @@
+{
+  "id": "unified-mandala-blindtest",
+  "title": "Genesis-Blindtest fuer unified-mandala (P-MANDALA, Orchestrierungskern): FALSE",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "measured",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 5)"
+  },
+  "created": "2026-07-29",
+  "related_adr": ["ADR-001"],
+  "depends_on": [],
+  "derived_from": ["windows-unicode-crash-pattern", "version-string-drift-audit", "implosive-origin-utac-blindtest"],
+  "blindtest_passed": false,
+  "content": {
+    "problem": "unified-mandala ist laut eigenem README P-MANDALA - der Orchestrierungskern (UI, CREP, agents), der CREP-Evaluator, SigillinBridge, PolicyGate und die 17+ Adapter-Registry zu einem selbstreflektierenden Zyklus verbindet. Muss laut Regel 6 den Genesis-Blindtest bestehen. Das README ist zweigeteilt: ein pip-install-Python/CLI-Strang und ein separater Node/pnpm/Docker/NATS/Ollama/OPA-Vollstack-Strang.",
+    "vorschlag_und_durchfuehrung": "Python/CLI-Strang: frischer, kontextfreier Subagent bekam nur den README-Ausschnitt zu pip install, Python Quick Start und den 9 CLI-Befehlen, installierte real, fuehrte alles aus, rechnete die Landauer-Formel nach, inspizierte den Code auf die phi=0.618-Behauptung, testete Parametersensitivitaet. Vollstack-Strang: direkt durch eigene README- und Repo-Lektuere geprueft (package.json, referenzierte Scripts), ohne den Stack tatsaechlich hochzufahren.",
+    "ergebnis": {
+      "python_cli_install": "pip install unified-mandala installiert 1.0.0 (aktuellste PyPI-Version).",
+      "bug_1_version_mismatch_neue_variante": "unified_mandala.__version__ und das CLI-Banner melden '0.3.2' - exakt die vom README beworbene Version, aber weit hinter der echten installierten PyPI-Version 1.0.0. Groessere Sprungweite als die bisher gefundenen Faelle von version-string-drift-audit.",
+      "positiv_landauer_formel_stimmt": "E = k_B*T*ln(2) bei T=300K von Hand nachgerechnet: 2,870979e-21 J. Code-Output: 2,871e-21 J. Exakte Uebereinstimmung.",
+      "positiv_phi_0618_echt": "FRACTAL_SINGULARITY = 0.618033988749895 ist im Code der tatsaechliche Schwellenwert phi_c im Tainter-Term der Euler-Maruyama-Driftfunktion und steuert einen echten above_singularity-Zustandsflag - kein Marketing-Text, seltener positiver Befund.",
+      "positiv_metaquest_sensibel": "Vier verschiedene (phi, entropy)-Paare waehlen erkennbar unterschiedliche Tiers (GROUNDING/PROBING/SYNTHESIS/CHALLENGE) mit inhaltlich passendem Text. Nebenbefund: wiederholte Aufrufe mit identischen Eingaben liefern unterschiedlichen Text bei gleichem Tier - bucket-basiert plus Zufallskomponente.",
+      "teilbefund_planetary_coupling_unsensibel": "crep_phase ist echt kontinuierlich und monoton in energy_EJ (0,1695 bei 10 EJ bis 0,2028 bei 5000 EJ). Aber das kategoriale stress_level bleibt ueber den gesamten realistischen Bereich (10-5000 EJ, bis ~8x realer Weltenergieverbrauch) konstant auf 'stable' - eskaliert erst bei unrealistischen Werten (50.000+ EJ). Schwellenwerte real im Code vorhanden, aber praktisch wirkungslos im plausiblen Bereich.",
+      "bug_2_unicode_crash_breite_cli": "8 von 9 dokumentierten CLI-Befehlen crashen mit UnicodeEncodeError ausserhalb einer nativen PowerShell-7-Konsole (z.B. git-bash/MSYS, Output-Umleitung) - jeweils an einem anderen griechischen Buchstaben/Mathematiksymbol (Subskript-Null, Pfeil, Subskript-Zwei, Alpha, Phi, Pi, Minus). Siebter/achter bestaetigter Fall des Unicode-Crash-Musters, diesmal besonders breit (8 von 9 Befehlen eines einzigen Pakets).",
+      "positiv_kein_installationsfehler": "Echte, substanzielle Abhaengigkeiten (numpy, scipy, pydantic, rich, typer, loguru, networkx) - keine leere/Stub-Installation.",
+      "vollstack_befund_5min_unrealistisch": "Die 'TL;DR - 5-Minute Quick Start'-Sektion verlangt Node>=20+pnpm via Corepack, Docker, einen laufenden NATS-JetStream-Server, optional Prometheus/Grafana, und in einer zweiten Sektion weiter unten zusaetzlich Ollama mit zwei zu ziehenden LLM-Modellen sowie ein OPA-Binary mit eigener Policy-Bundle-Pipeline. Referenzierte Scripts (dev:all, nats:doctor, test:jetstream, opa:cover) existieren real in package.json - kein Vaporware, aber der Umfang steht in klarem Missverhaeltnis zur eigenen '5 Minuten'-Bezeichnung. epistemic_status fuer diesen Teilbefund: derived (README-/Repo-Lektuere, Stack nicht tatsaechlich hochgefahren).",
+      "verdikt": "FALSE. Zwei im Python/CLI-Strang tatsaechlich verifizierte Gruende: (1) pip show zeigt 1.0.0, README/CLI-Banner/__version__ zeigen 0.3.2 ohne Erklaerung; (2) 8 von 9 CLI-Befehlen crashen in mehreren realistischen Windows-Terminal-Konfigurationen. Gleichzeitig substanziellster Einzelbefund der ganzen Testreihe: Landauer-Formel exakt korrekt, phi=0.618 echt und wirksam, MetaQuestEngine/PlanetaryCouplingChain reagieren nachweislich echt auf variierte Eingaben."
+    },
+    "erwartetes_ergebnis": "Fuenfzehnter FALSE-Befund insgesamt, aber der differenzierteste: mehr echte, verifizierte mathematische Substanz als in jedem zuvor getesteten Programm-Kandidaten, bei gleichzeitig zwei klaren, konkreten Blindtest-Fehlern.",
+    "naechster_schritt": "Fuenf Findings zur Weitergabe an Johann: (1) __version__/CLI-Banner auf 1.0.0 nachziehen; (2) PYTHONIOENCODING=utf-8-Hinweis explizit ins README aufnehmen; (3) stress_level-Schwellenwerte fuer den realistischen Energiebereich nachschaerfen oder dokumentieren; (4) '5-Minute Quick Start'-Bezeichnung praezisieren oder umbenennen; (5) den funktionierenden Python/CLI-Pfad staerker vom Vollstack-Pfad abgrenzen.",
+    "alternativen_betrachtet": [
+      "Den Vollstack-Strang ebenfalls tatsaechlich hochfahren (Docker, NATS, Ollama, OPA) statt nur strukturell zu bewerten. Verworfen fuer diese Testrunde: Aufwand steht ausser Verhaeltnis zum Erkenntnisgewinn gegenueber der bereits klaren strukturellen Diskrepanz; kann bei Bedarf als eigener Test nachgeholt werden.",
+      "Den Gesamt-Befund allein am Vollstack-Umfang festmachen und den Python/CLI-Strang ignorieren. Verworfen: der Python/CLI-Strang ist ueber pip install genauso eigenstaendig erreichbar wie bei jedem anderen getesteten Paket und foerderte hier die ueberzeugendste positive Einzelsubstanz der ganzen Testreihe zutage."
+    ]
+  }
+}
