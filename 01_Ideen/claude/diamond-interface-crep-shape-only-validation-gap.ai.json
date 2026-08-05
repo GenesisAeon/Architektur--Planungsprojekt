@@ -1,0 +1,32 @@
+{
+  "id": "diamond-interface-crep-shape-only-validation-gap",
+  "title": "Diamond-Interface-Validator prueft nur Form, nie Bedeutung von CREP -- Ursache fuer leere get_crep_state()-Werte",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "measured",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 5)"
+  },
+  "created": "2026-08-05",
+  "related_adr": ["ADR-001"],
+  "depends_on": [],
+  "derived_from": ["resilience-core-blindtest", "gamma-rho-kritikalitaet-cross-domain-check"],
+  "blindtest_passed": false,
+  "content": {
+    "problem": "Johanns Frage, ob CREP als echte domaenenuebergreifende Bruecke definiert bleiben koennte, fuehrte zu einer Kette echter Code-Funde: afet-tensions (P34) liefert get_crep_state()['P'] = 0.8 hartkodiert; resilience-core (P40) liefert 'P' = float(not state.near_collapse), ein wiederverwendetes internes Flag statt einer eigens hergeleiteten Groesse. Frage: liegt der Fehler im einzelnen Paket, oder tiefer im System?",
+    "vorgehen_und_durchfuehrung": "Direkte Code-Inspektion auf drei Ebenen: (1) Feldtheorie/setup/universal_skeleton_builder.py -- der Skeleton-Builder, den Johann als Beleg fuer die Designabsicht zitierte. (2) afet-tensions/resilience-core: Suche nach sigillin_metrics.yaml (dem im Builder dokumentierten Anpassungs-Artefakt). (3) diamond_setup.validation.validate_diamond_instance (per inspect.getsource, echter installierter Code) -- der tatsaechliche Validator, gegen den contracts/diamond.interface.yaml in beiden Paketen verweist.",
+    "ergebnis": {
+      "designabsicht_bestaetigt": "universal_skeleton_builder.py definiert CREP explizit als 'Coherence, Resonance, Emergence, Potential' mit dem Kommentar 'ADAPT THIS to your project: Change weights... Replace metrics entirely' und liefert dokumentierte Alternativ-Templates fuer Business (ROI) und Engineering (KPI). Der vorgesehene Weg: die generierte config/sigillin_metrics.yaml von Hand mit echter, domaenenspezifischer Begruendung pro Buchstabe fuellen.",
+      "anpassungsschritt_nie_durchlaufen": "Weder afet-tensions noch resilience-core besitzen irgendwo im Repo eine sigillin_metrics.yaml. Stattdessen implementieren beide get_crep_state() direkt in Python, ohne Bezug zu diesem Konfigurationsmechanismus.",
+      "tiefere_ursache_validator": "contracts/diamond.interface.yaml (in beiden Paketen identisch) referenziert diamond_setup.protocol.DiamondPackage / diamond_setup.validation.validate_diamond_instance als den tatsaechlich durchgesetzten Vertrag. Dessen echter Quellcode prueft ausschliesslich: (a) Rueckgabetyp ist dict, (b) die Schluessel {C, R, E, P, Gamma} sind vorhanden. Keine Wertpruefung, kein Bezug zu sigillin_metrics.yaml, keine Pruefung auf Konstanten oder Trivialwerte.",
+      "verdikt": "Drei separate, teils widersprueliche CREP-Bedeutungen koexistieren im Oekosystem, ohne dass irgendein Mechanismus sie zusammenhaelt: (1) Ursprungsgeschichte -- Stabilitaet/Reproduktionsfaehigkeit/Konnektivitaet/Kinetik, physikalische Groessen. (2) universal_skeleton_builder.py -- Coherence/Resonance/Emergence/Potential, generisches Repo-Qualitaets-Template, explizit domaenenadaptierbar. (3) Faktische Paket-Implementierungen -- weder (1) noch (2), sondern Wiederverwendung vorhandener interner Variablen (teils hartkodierte Konstanten) rein um die Schluesselform des Validators zu erfuellen. Die Designabsicht (2) ist intakt und sinnvoll. Der Bruch liegt zwischen (2) und (3): der einzige technisch durchgesetzte Vertrag (der Validator) prueft nichts von dem, was die Designabsicht eigentlich verlangt."
+    },
+    "erwartetes_ergebnis": "Kein Paket muss deshalb zwangslaeufig umbenannt werden -- das eigentliche Problem ist eine Luecke im Validierungsvertrag, nicht (nur) einzelne Paket-Fehler. Ob CREP als Name fuer (1), (2), (3) oder nur eine bestimmte davon reserviert bleibt, ist eine Entscheidung, die nur Johann treffen kann.",
+    "naechster_schritt": "Zur Entscheidung an Johann vorgelegt: Soll validate_diamond_instance erweitert werden, um echte semantische Substanz einzufordern (z.B. Existenz + nicht-generischer Inhalt einer sigillin_metrics.yaml, oder ein Verbot literal hartkodierter Konstanten in get_crep_state()-Werten)? Falls ja, waere das eine zentrale Aenderung an diamond_setup selbst, mit Wirkung auf alle Pakete, die den Diamond-Vertrag nutzen -- nicht auf einzelne Repos beschraenkbar, daher hier zurueckgestellt statt eigenmaechtig umgesetzt.",
+    "alternativen_betrachtet": [
+      "Die drei CREP-Bedeutungen einfach als 'das ist halt so gewachsen' stehen lassen. Verworfen: genau das ist der Zustand, den Johanns Namensdisziplin-Entscheidung (CREP bleibt CREP nur bei gleicher Bedeutung) beheben sollte -- ohne Klaerung, welche der drei Bedeutungen als 'die' CREP gilt, laesst sich die Regel nicht anwenden."
+    ]
+  }
+}
