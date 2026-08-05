@@ -1,0 +1,36 @@
+{
+  "id": "resilience-core-blindtest",
+  "title": "Genesis-Blindtest fuer resilience-core: FALSE - README-Kalibrierung stimmt mit keinem der vier Referenzwerte ueberein",
+  "kategorie": "idee",
+  "status": "idea",
+  "epistemic_status": "measured",
+  "author": {
+    "name": "Claude",
+    "typ": "ai",
+    "system": "Claude (Sonnet 5)"
+  },
+  "created": "2026-08-05",
+  "related_adr": ["ADR-001"],
+  "depends_on": [],
+  "derived_from": ["entropy-governance-blindtest", "gamma-rho-kritikalitaet-cross-domain-check", "ecosystem-verifizierbare-daten-audit"],
+  "blindtest_passed": false,
+  "content": {
+    "problem": "Johann fragte direkt (anlaesslich der Donau-/Rhein-Niedrigwasserlage, siehe KlimaLageEuropaAktuell.txt), ob resilience-core (P40) und entropy-governance das Konzept 'kritische Verlangsamung nahe Kipppunkt + Nachwirkung bleibt nach der Stoerung' (critical slowing down, Scheffer et al. 2009) bereits sauber abbilden, als Grundlage fuer ein moegliches neues Modul das 2026er Realdaten einspeist und Resilienzschwaechung + Folgen vorhersagen soll. resilience-core bewirbt sich selbst genau dafuer: Rho = |lambda*|*(1-Gamma/Gamma_max)*coupling_factor, mit vier 'kalibrierten Referenzwerten' (AMOC, Arctic, Sandpile, Quantum) im README.",
+    "vorgehen_und_durchfuehrung": "Frische Installation (pip install -e, lokaler Quellcode, da PyPI per SSL durch Avast blockiert war) in isoliertem venv. Alle vier README-Quickstart-Beispiele real ausgefuehrt (compute_rho, ResilienceCore(domain=...).run_cycle()), Gamma-Sweep ueber den vollen Bereich [0.05, 0.98] gefahren, anschliessend direkte Code-Inspektion von rho_calculator.py, eigenrate.py, coupling.py, constants.py, system.py - dieselbe Methodik wie bei entropy-governance-blindtest.",
+    "ergebnis": {
+      "install": "lief sauber, v1.0.0, keine Fehler.",
+      "vier_referenzwerte_falsifiziert": "Quantum (Gamma=0.050): README ~0.90, real 0.0114 (Faktor ~79 zu niedrig). Sandpile (Gamma=0.296): README ~0.75, real 0.2223 (Faktor ~3.4 zu niedrig). AMOC (Gamma=0.251): README ~0.65, real 0.1834 (Faktor ~3.5 zu niedrig). Arctic (Gamma=0.920): README ~0.05, real exakt 0.0.",
+      "root_cause_1_domain_wirkungslos": "RhoCalculator.compute() nutzt nur eigenrate.compute(gamma) (r=1.0, sigma=2.2 global, unabhaengig vom Domain-String) und coupling.coupling_factor(domain) - letzteres liefert ohne registrierte Kopplungen fuer jeden beliebigen Domain-String 1.0. Keine domaenenspezifische Kalibrierung von r, sigma oder Gamma_max irgendwo im Code.",
+      "root_cause_2_tote_benchmark_daten": "BENCHMARK_GAMMA/BENCHMARK_RHO sind in constants.py definiert und werden in __init__.py re-exportiert, aber von keiner einzigen Funktion im Paket gelesen (verifiziert per grep ueber den kompletten src-Baum). Derselbe Fehlertyp wie die ungenutzten DUALITY_A/DUALITY_V-SymPy-Platzhalter aus entropy-governance-blindtest.",
+      "root_cause_3_gamma_max_selbstreferentiell": "GAMMA_MAX = 0.920, Kommentar 'Maximum observed Gamma in the CREP Atlas (ERA5 Arctic - most saturated system)' - exakt der Gamma-Wert, mit dem Arctic selbst getestet wird. Garantiert mathematisch criticality_margin = 1 - 0.920/0.920 = 0 fuer Arctic, unabhaengig von jeder echten Kalibrierung.",
+      "root_cause_4_nichtmonoton_bekanntes_risiko": "Rho(Gamma) = r*tanh^2(sigma*Gamma)*(1-Gamma/Gamma_max) steigt bis Peak bei Gamma~0.46 und faellt danach (bestaetigt: Peak Rho~0.293 bei Gamma=0.50, danach fallend bis exakt 0 bei Gamma>=Gamma_max). Dieselbe Formel mit identischem GAMMA_MAX=0.920 wie in scope-resilience/src/scope_resilience/hallucination_risk.py (Rho_sem = r*tanh^2(sigma*Gamma)*(1-Gamma/Gamma_max), GAMMA_MAX=0.920, per direktem Code-Vergleich verifiziert), bereits von gamma-rho-kritikalitaet-cross-domain-check als Risiko identifiziert - dort aber nur beta-clustering-utac/phi-scaling-validator geprueft (nicht betroffen), resilience-core selbst noch nicht, obwohl ecosystem-verifizierbare-daten-audit.md resilience-core bereits neben scope-resilience/genesis-tip als verwandtes Framework nennt.",
+      "was_korrekt_ist": "tanh^2(sigma*Gamma) als monoton wachsende Annaeherung an kritische Verlangsamung ist konzeptionell richtig und deckt sich mit Scheffer et al. 2009. Problem liegt in der Kombination mit (1-Gamma/Gamma_max) und fehlender echter Domaenen-Kalibrierung.",
+      "verdikt": "FALSE. Die Calibrated-Reference-Values-Tabelle ist Dokumentations-Fiktion, nicht durch den Code erzeugt. domain ist ein Bezeichner ohne Rechenwirkung ausserhalb manuell registrierter Kopplungen. Kein Hysterese-/Nachwirkungs-Mechanismus vorhanden - Rho ist rein zustandslos in Gamma, jeder run_cycle()-Aufruf ist unabhaengig vom vorherigen."
+    },
+    "erwartetes_ergebnis": "resilience-core besteht den Genesis-Blindtest in der jetzigen Form nicht. Fuer Johanns eigentliche Frage (critical slowing down + Hysterese/Nachwirkung modellieren): Grundidee (tanh^2(sigma*Gamma)) ist brauchbar, aber (a) Domaenen-Kalibrierung muss echt implementiert werden, (b) GAMMA_MAX darf nicht am eigenen Extremwert haengen, (c) ein neues Modul duerfte sich nicht blind auf resilience-cores Domain-Parameter oder Referenzwerte verlassen ohne eigene Kalibrierung, (d) fuer 'Folgen bleiben nach dem Ausschlag' fehlt aktuell jeder Zustand zwischen Zyklen - waere ein echter Zusatzbaustein, kein vorhandenes Feature.",
+    "naechster_schritt": "Zwei Findings zur Weitergabe an Johann: (1) BENCHMARK_GAMMA/BENCHMARK_RHO entweder wirklich verdrahten oder aus README/Export entfernen; (2) GAMMA_MAX sollte nicht am Arctic-eigenen Gamma haengen, sondern an einem unabhaengig begruendeten Maximalwert. Dieselbe Pruefung waere fuer scope-resilience selbst sinnvoll (dort bisher nur als Verdacht dokumentiert, nicht per Gamma-Sweep verifiziert) - als Anschlussarbeit vorgemerkt.",
+    "alternativen_betrachtet": [
+      "Den Fund nur als Doku-Ungenauigkeit werten und uebergehen. Verworfen: betrifft alle vier von vier beworbenen Referenzwerten (kein Ausreisser), und GAMMA_MAXs Selbstbezug auf Arctic ist ein struktureller Konstruktionsfehler, kein Rundungsfehler - derselbe Bug-Schweregrad wie entropy-governances ignoriertes --steps-Flag, nicht bloss Kosmetik."
+    ]
+  }
+}

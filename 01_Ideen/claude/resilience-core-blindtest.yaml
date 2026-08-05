@@ -1,0 +1,17 @@
+id: resilience-core-blindtest
+title: "Genesis-Blindtest fuer resilience-core: FALSE - README-Kalibrierung stimmt mit keinem der vier Referenzwerte ueberein"
+kategorie: idee
+status: idea
+epistemic_status: measured
+author:
+  name: Claude
+  typ: ai
+  system: Claude (Sonnet 5)
+created: 2026-08-05
+related_adr: [ADR-001]
+depends_on: []
+derived_from:
+  - entropy-governance-blindtest
+  - gamma-rho-kritikalitaet-cross-domain-check
+  - ecosystem-verifizierbare-daten-audit
+blindtest_passed: false
