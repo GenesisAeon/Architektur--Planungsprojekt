@@ -69,24 +69,39 @@ v2.3.0). Kein sofortiger Umbau nötig (siehe unten, Migrations-Prinzip).
 
 ---
 
-## UTAC — Bedeutung noch ungeklärt (offene Frage an Johann)
+## UTAC — kanonisch: Universal Threshold Adaptive Criticality
 
-**Status: zwei widersprüchliche Ausschreibungen gefunden, keine davon
-im zentralen `diamond-setup`-Paket selbst verankert.**
+**Status: geklärt, 2026-08-05, per Datumsbeleg aus der echten Historie.**
 
-- `resilience-core`-README: "UTAC (Universal Tipping Attractor
-  Cascade)".
-- `Feldtheorie/setup/universal_skeleton_builder.py`-Docstring: "UTAC
-  (Universal Threshold Activation-Coupling)".
-- `diamond_setup.protocol.UTACState` (die tatsächlich durchgesetzte
-  Form: `{H, H_star, K_eff}`) schreibt die Buchstaben nirgends aus —
-  strukturell ähnelt es einem logistischen Attraktor-Modell (H nähert
-  sich H_star mit effektiver Kapazität K_eff), was eher zu "Threshold
-  Activation" als zu "Tipping Attractor Cascade" passt, aber das ist
-  Interpretation, keine bestätigte Quelle.
+Kanonische Quelle: `Feldtheorie/docs/science/utac_theory_core.md`,
+angelegt **2025-12-25** (`git log --diff-filter=A`), von
+`Feldtheorie/README.md` explizit als "UTAC Theory" verlinkt. Enthält
+echten mathematischen Kern:
 
-**Noch nicht entschieden.** Braucht dieselbe Klärung wie CREP, bevor
-ein kanonischer Eintrag hier stehen kann.
+- Logistisches Schwellenmodell `P(R) = L / (1 + exp(-β(R-Θ)))` —
+  R = Kontrollparameter (Last/Stress/Skala), Θ = kritischer
+  Schwellenwert, β = Steilheit (empirisch β ≈ 4,2 ± 0,6 über Domänen
+  hinweg, laut Dokument in AI/Klima/Kognition/Ökologie gemessen).
+- Adaptive Schwellen: `Θ_{t+1} = Θ_t + ΔΘ(R_t, C_t, E_t)`.
+- Feld-Kopplung zwischen Systemen via `M[ψ, φ]`.
+
+**Zwei spätere, abweichende Ausschreibungen gefunden — beide vermutlich
+Abdrift, nicht alternative Quellen:**
+- `resilience-core`-README (README zuletzt geändert **2026-07-15**, gut
+  7 Monate nach der kanonischen Quelle): "Universal Tipping Attractor
+  Cascade".
+- `Feldtheorie/setup/universal_skeleton_builder.py`-Docstring:
+  "Universal Threshold Activation-Coupling" — ähnlich, aber nicht
+  identisch zum Original.
+
+`diamond_setup.protocol.UTACState` (`{H, H_star, K_eff}`) schreibt die
+Buchstaben nirgends aus, ist aber mit dem logistischen
+Attraktor-Modell aus `utac_theory_core.md` strukturell vereinbar (H
+nähert sich H_star, K_eff als effektive Kapazität/Steilheitsanalogon).
+
+**Empfehlung (nicht dringend, opportunistisch bei nächster Berührung):**
+`resilience-core`s README-Ausschreibung korrigieren, sobald das Paket
+ohnehin angefasst wird — kein eigener Umbau-Anlass nur dafür.
 
 ---
 
@@ -117,7 +132,7 @@ das vergessen wird.
 |---|---|---|---|---|
 | afet-tensions | P34 | ⬜ Nein | — | `P=0.8` hartkodiert, bekannter Fall |
 | resilience-core | P40 | ⬜ Nein | — | `P` = wiederverwendetes Bool-Flag |
-| diamond-setup | P72 | ✅ Feld hinzugefügt | 2026-08-05 | PR #9, noch nicht gemerged/released |
+| diamond-setup | P72 | ✅ Feld hinzugefügt | 2026-08-05 | PR #9 gemerged; PyPI-Release (v2.3.0) noch offen, kein Secret hinterlegt |
 
 *(Weitere Pakete werden ergänzt, sobald sie im laufenden Audit geprüft
 oder aus anderem Anlass angefasst werden.)*
